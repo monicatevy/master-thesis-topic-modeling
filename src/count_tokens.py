@@ -5,9 +5,8 @@ import tiktoken  # For OpenAI models
 from transformers import AutoTokenizer  # For LLaMA models
 
 TOKENIZERS = {
-    "gpt-3.5": tiktoken.encoding_for_model("gpt-3.5-turbo"),
     "gpt-4": tiktoken.encoding_for_model("gpt-4"),
-    "llama-3.2-3B": AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-3B"),
+    "llama-3.2-1B": AutoTokenizer.from_pretrained("meta-llama/Llama-3.2-1B"),
 }
 
 if len(sys.argv) < 2:
@@ -46,4 +45,4 @@ with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
     for filename, token_counts in results.items():
         writer.writerow([filename] + [token_counts[model] for model in TOKENIZERS.keys()])
 
-print(f"Token counts saved to {output_file}")
+print(f"✅ Saved to {output_file}")
