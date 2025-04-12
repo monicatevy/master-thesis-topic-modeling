@@ -1,0 +1,688 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an expert language model trained to extract meaningful topics from raw text.
+You must follow the instructions carefully and only produce valid XML — no explanations, no extra text.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Perform topic modeling on the following documents. Identify a set of coherent topics based on the content. For each topic, return 4 to 8 representative keywords that best capture its meaning.
+    Return ONLY valid XML output like:
+  <topics>
+    <topic id="1">
+      <word></word>
+    </topic>
+  </topics>
+</instruction>
+  <documents>
+    <document>
+      <chunk i="1">
+Cours PHP
+Versions 4.x et 5.x
+Sébastien ROHAUT
+Table des matières
+1 Introduction 7
+1.1 Définition 7
+1.2 Historique 7
+1.3 Utilisation pratique 7
+1.4 Pages statiques vs pages dynamiques 8
+1.5 Scripts CGI 8
+1.6 Pages dynamiques et PHP 8
+1.7 Pourquoi préférer PHP à d'autres langages comme ASP ? 8
+1.8 Ce que vous devez déjà connaître 9
+1.9 Le nécessaire serveur 9
+1.10 Le nécessaire client 9
+1.11 Le respect des standards 9
+2 Bases :Présentation 11
+2.0.1 Syntaxe de base 11
+2.1 Intégration à HTML 11
+2.2 Séparateur d'instructions 12
+2.3 Bloc d'instructions 12
+2.4 Commentaires 12
+3 Travailler avec des variables 13
+3.1 Déclarer une variable 13
+3.2 Portée des variables 13
+3.3 Variables prédéfinies 14
+3.4 Variables dynamiques 15
+3.5 Types de variables 15
+3.5.1 booléens 15
+3.5.2 Entiers 15
+3.5.3 Virgule flottante 16
+3.5.4 Chaînes de caractères 16
+3.5.5 Les tableaux 17
+3.5.6 La variable objet 18
+3.6 Les constantes 18
+3.7 Obtenir le type d'une variable 19
+3.8 Définir et supprimer une variable 19
+4 Les opérateurs 20
+4.1 La précédence des opérateurs 20
+4.2 Opérateurs arithmétiques 20
+4.3 Opérateurs d'assignation 20
+4.4 Opérateurs sur les bits 20
+4.5 Opérateurs de comparaison 21
+4.6 Opérateur d'erreur 21
+4.7 Opérateur d'exécution 21
+4.8 Opérateurs d'incrémentation/décrémentation 21
+4.9 Opérateurs logiques 21
+4.10 Opérateurs de chaînes 22
+4.11 Opérateur de tableaux 22
+5 La notion d'expression 23
+6 Les structures de contrôle 25
+6.1 if 25
+6.2 while 25
+S. ROHAUT
+Cours Programmation PHP
+Page 2/93
+6.2.1 while classique 25
+6.2.2 do while 25
+6.3 for 26
+6.4 foreach 26
+6.5 break et continue 27
+6.6 switch 27
+6.7 return 28
+6.8 require et include (_once) 28
+7 Les fonctions 29
+7.1 Syntaxe et portée 29
+7.2 Arguments 29
+7.3 Valeur de retour 30
+7.4 Fonctions internes 30
+8 Gestion des formulaires en PHP 31
+8.1 GET et POST 31
+8.2 Récupération par tableau 31
+8.3 Récupération directe 32
+8.4 Utiliser des tableaux 32
+9 Date et heure 34
+9.1 Localisation 34
+9.2 Récupérer la date et l'heure 34
+9.2.1 date() 34
+9.2.2 date locale strftime() 35
+9.2.3 Retour par tableau getdate() 36
+9.2.4 L'heure localtime() 37
+9.3 Récupérer n'importe quelle date 37
+10 MySQL 38
+10.1 Présentation 38
+10.2 Outils 38
+10.2.1 PhpMyAdmin 38
+10.2.2 MysqlCC 39
+10.3 Créer une base 39
+10.4 Utilisateurs et droits 39
+10.5 Créer et modifier des tables 40
+10.5.1 Types Numériques 40
+10.5.1.1 Types entiers 40
+10.5.1.2 Types réels (flottants) 40
+10.5.1.3 Types booléens 40
+10.5.2 Types caractères 40
+10.5.2.1 Types CHAR 41
+10.5.2.2 Types TEXT 41
+10.5.2.3 Type ENUM 41
+10.5.2.4 Type SET 42
+10.5.3 Types date 42
+10.5.3.1 Formats supportés 43
+10.5.3.2 Type DATETIME 43
+10.5.3.3 Type DATE 43
+10.5.3.4 Type TIMESTAMP 43
+10.5.3.5 Type TIME 44
+10.5.3.6 Type YEAR 44
+10.5.4 Création : Syntaxe SQL 44
+S. ROHAUT
+Cours Programmation PHP
+Page 3/93
+10.5.5 Types de tables (MyISAM et InnoDB) 45
+10.5.6 Index FULLTEXT 46
+10.5.6.1 Création 46
+10.5.6.2 Recherche 46
+10.5.6.3 Recherche booléenne 47
+10.6 MySQL et PHP 47
+10.6.1 Connexion à une base de données 47
+10.6.1.1 Connexion au serveur 47
+10.6.1.2 Choix d'une base 48
+10.6.1.3 Fermeture d'une connexion 48
+10.6.1.4 Séquence complète pour une base 48
+10.6.2 Les requêtes 48
+10.6.2.1 Exécuter une requête 48
+10.6.2.2 Nombre de lignes affectées 49
+10.6.2.3 Nombre de lignes retournées 49
+10.6.2.4 Récupérer les résultats 49
+10.6.2.5 Insertion avec auto-incrément 50
+10.6.3 Récupération des erreurs 50
+11 Le système de fichiers 51
+11.1 Travail sur les fichiers 51
+11.1.1 Ouverture 51
+11.1.2 Lecture 51
+11.1.2.1 fgets() 51
+11.1.2.2 fread(); 51
+11.1.2.3 fscanf() 52
+11.1.2.4 fgetc() 52
+11.1.2.5 fgetss() 52
+11.1.2.6 fgetcsv() 52
+11.1.2.7 Renvoyer un fichier par la sortie standard 52
+11.1.3 Ecriture 53
+11.1.4 Déplacement 53
+11.1.4.1 fseek() 53
+11.1.4.2 ftell() 53
+11.1.4.3 rewind() 53
+11.1.5 Fin de fichier 53
+11.1.6 Fermeture 54
+11.2 Travail sur les répertoires 54
+11.2.1 Répertoire actuel 54
+11.2.2 Se déplacer 54
+11.2.3 Ouvrir, lister, fermer 54
+11.2.4 Récupérer toutes les entrées 54
+11.3 Travail sur le système de fichiers 55
+11.3.1 Informations sur le fichier 55
+11.3.2 Actions sur les fichiers et répertoires 56
+11.4 Upload de fichiers 57
+12 Travail sur chaînes 59
+12.1 Fonctions pour code HTML et MySQL 59
+12.1.1 Gestion des caractères verrouillés 59
+12.1.2 balises et caractères spéciaux HTML 59
+12.2 Fonctions texte générales 60
+12.2.1 Découper une chaîne 60
+S. ROHAUT
+Cours Programmation PHP
+Page 4/93
+12.2.2 Rechercher et comparer 61
+13 Sessions et cookies 62
+13.1 Les cookies 62
+13.1.1 Création 62
+13.1.2 Accès 62
+13.1.3 Suppression 63
+13.2 Identification HTTP 63
+13.2.1 Connexion 63
+13.2.2 Déconnexion 64
+13.3 Sessions PHP 64
+13.3.1 Principe 64
+13.3.2 Utilisation 64
+13.3.2.1 Ouverture 64
+13.3.2.2 Variables de session 64
+13.3.3 Expiration de la session 65
+13.3.4 Changer l'accès par défaut 66
+14 Images 67
+14.1 Pré-requis importants 67
+14.2 Créer une image 67
+14.2.1 Types possibles 67
+14.2.2 Création 68
+14.2.2.1 Nouvelle image dynamique 68
+14.2.2.2 Récupération d'une image existante 68
+14.2.3 Publication 68
+14.2.4 Chargement via une autre page 69
+14.3 Travailler sur les Images 69
+14.3.1 Récupérer des informations 69
+14.3.2 Les couleurs 69
+14.3.3 Dessin 70
+14.3.3.1 Remplissage 70
+14.3.3.2 Point 70
+14.3.3.3 Ligne 70
+14.3.3.4 Rectangle 70
+14.3.3.5 Cercle, ellipse 70
+14.3.3.6 Polygones 71
+14.3.3.7 Texte simple 71
+15 La programmation objet 71
+15.1 Structure 71
+15.2 Création d'un objet 71
+15.3 Accès aux membres 72
+15.3.1 PHP 4 et 5 72
+15.3.2 PHP 5 72
+15.4 L'opérateur :: 72
+15.5 Les variables, protection 73
+15.5.1 PHP 4.x 73
+15.5.2 PHP 5.x 73
+15.5.2.1 Protection des variables et fonctions 73
+15.5.2.2 attributs et méthodes statiques 73
+15.5.2.3 constantes de classe 74
+15.6 Héritage et polymorphisme 74
+15.7 Les mots-clés parent et self 75
+S. ROHAUT
+Cours Programmation PHP
+Page 5/93
+15.8 Constructeurs 76
+15.8.1 PHP 4 et 5 76
+15.8.2 PHP 5 76
+15.9 Constructeurs et classes dérivées 76
+15.9.1 PHP 4 et 5 76
+15.9.2 PHP 5 77
+15.10 Destructeur 78
+15.10.1 PHP 4 78
+15.10.2 PHP 5 78
+15.11 Affectation d'objets 78
+15.11.1 Code commun 78
+15.11.2 PHP 4 79
+15.11.3 PHP 5 79
+15.12 Comparaison d'objets 80
+15.12.1 PHP 4 80
+15.12.2 PHP 5 82
+16 Nouveautés en PHP 5 83
+16.1 Les objets 83
+16.1.1 La fonction __autoload 83
+16.1.2 Les classes abstraites 83
+16.1.3 Classes, méthodes et variables finales 84
+16.1.4 Les interfaces objet 84
+16.1.5 Gestion dynamique des méthodes et attributs 86
+16.1.6 Les itérations d'objets 86
+16.1.7 Type hinting 87
+16.2 Les exceptions 88
+16.2.1 try catch 88
+16.2.2 Déclenchement avec throw 88
+16.2.3 classe Exception et classes personnalisées 88
+16.2.4 PHP : Erreur ou Exception ? 89
+16.2.5 Exception par défaut 90
+17 Sauvegarder ses objets 91
+17.1 Cas d'une session 91
+17.2 Autres cas 92
+S. ROHAUT
+Cours Programmation PHP
+Page 6/93
+
+1 Introduction
+1.1 Définition
+PHP est un langage de script HTML exécuté du côté du serveur. Il veut dire « PHP : Hypertext
+Preprocessor ». Sa syntaxe est largement inspirée du langage C, de Java et de Perl, avec des améliorations spécifiques. Le but du langage est d'écrire rapidement des pages HTML dynamiques.
+
+1.2 Historique
+L'origine de PHP remonte à 1995 quand Rasmus Lerdorf a créé PHP/FI, une librairie de scripts Perl
+utilisés pour la publication de son CV sur son site personnel. Au fur et à mesure des évolutions, la
+librairie a été portée en C et agrémentée de nouvelles fonctionnalités pour créer des pages dynamiques simples pour le web et accéder à quelques sources de données. PHP/FI signifie
+Personal Home Page/Forms Interpreter.
+
+PHP/FI 2.0 sort en 1997, toujours développé par une seule personne. C'est le succès : 50000 sites
+(1% des noms de domaines) disent l'utiliser ou le supporter. Les contributeurs affluent.
+
+PHP 3.0 sort en juin 1998, c'est la première version développée conjointement par Rasmus Lerdorf,
+Andi Gutmans et Zeev Suraski et entièrement réécrite (les versions précédentes étaient trop lentes
+pour une application commerciale). Outre les performances, PHP 3 est modulaire et extensible,
+permettant de lui greffer des API supplémentaires, ce qui n'a pas manqué avec le support de
+nombreuses bases de données, de formats et de protocoles, une syntaxe plus cohérente et un support
+basique de l'objet. Il a été installé sur 10% du parc mondial des serveurs web avec des dizaines de
+milliers de développeurs et des centaines de milliers de sites.
+
+Le moteur de PHP 4 a été repensé afin d'en améliorer les performances pour des applications
+complexes et d'augmenter encore la modularité. Un nouveau moteur a vu le jour, appelé Zend
+Engine (contraction de Zeev et Andi). PHP 4 sort officiellement en mai 2000 et apporte des performances accrues, le supports de plusieurs serveurs web, les sessions, une sécurité accrue. C'est
+actuellement la dernière version stable (nous ne comptons pas les 4.1, 4.2 et 4.3).
+
+Et PHP 5 ? Actuellement en version beta, un cycle qui peut durer plusieurs mois, le but de PHP 5
+est une amélioration des performances du moteur Zend (Zend Engine 2), un modèle objet étendu et
+très proche du C++, une compatibilité accrue avec de nouveaux standards et les anciens (RPC,
+XML, .NET, )
+
+1.3 Utilisation pratique
+– Forums et Messageries
+– Commerce électronique
+– Banque / Comptes en ligne
+– Publication en ligne
+– Moteurs de recherche
+– Tout ce que vous voulez, (sauf les jeux)
+Résumons quelques sigles que nous allons utiliser par la suite.
+
+• HTML : Hypertext Markup Language
+• PHP : People Hate Perl Non : PHP, Hypertext PreProcessor
+S. ROHAUT
+Cours Programmation PHP
+Page 7/93
+
+• SQL : Structured Query Language
+• MySQL : serveur de base de données et les outils pour y accéder
+• LAMP : Linux – Apache – MySQL – PHP, le quatuor gagnant des serveurs web.
+
+APACHE
+PHP
+MySQL
+Linux
+1.4 Pages statiques vs pages dynamiques
+Une page statique et une page écrite directement en HTML. Elle peut éventuellement incorporer du
+code Javascript lui donnant un semblant de 'dynamisme' mais uniquement du côté du navigateur et
+des données locales.
+
+Pour des traitements plus lourds nécessitant l'accès à une base de données, un formatage de tableau
+en fonction de résultats, une recherche poussée, du graphisme, il faut passer par des pages dynamiques et par un langage qui sera exécuté du côté du serveur : ASP sur les serveurs Microsoft/IIS, Perl, PHP
+
+1.5 Scripts CGI
+PHP peut être utilisé comme langage CGI. Pour rappel, un script ou programme CGI est un
+programme comme un autre mais dont la sortie est dédiée à un navigateur, par exemple un
+programme shell, C ou Perl qui sort du HTML. PHP étant un langage script comme un autre on peut
+l'utiliser dans ce cas, mais ce n'est pas forcément le mieux.
+
+1.6 Pages dynamiques et PHP
+PHP est un langage Server Side ou côté serveur. Lors du chargement d'une page PHP, c'est le
+serveur qui va lire, interpréter et exécuter le code. Puis il renvoie le résultat, généralement sous la
+forme de code HTML au navigateur. Ainsi le navigateur et l'utilisateur ne voient jamais le véritable
+code PHP exécuté. De plus le résultat étant une page web classique en HTML, pas besoin d'installer
+sur le client des composants spécifiques (java, ). Il n'y a donc pas de notion de vitesse d'exécution
+du côté du client, mais celle du serveur est prépondérante.
+
+1.7 Pourquoi préférer PHP à d'autres langages comme ASP ?
+
+ASP n'est pas entièrement un langage puisque ASP veut dire Active Server Page. ASP dispose bien
+entendu de ses propres API mais qui peuvent être accessibles via un autre langage. Il s'agit d'utiliser
+un langage (quelconque) pour créer des pages dynamiques. Nativement disponible avec IIS sous
+Windows, il ne l'est pas par défaut avec les autres systèmes ou serveurs web comme Apache. Il
+existe cependant des modules de compatibilité ASP pour Apache comme Apache::ASP qui reprend
+les API ASP en les étendant et en programmation PERL. Sous Windows, le code ASP se fait
+généralement en VBScript ou en Jscript. C'est aussi possible sous Unix/Linux et Apache, mais il
+faut alors se tourner vers des solutions commerciales (Sun One ASP, Instant ASP, ). Sous
+S. ROHAUT
+Cours Programmation PHP
+Page 8/93
+
+Windows ASP et VBScript sont utilisés pour l'accès aux ActiveX, composants bien pratiques mais
+véritables gruyères pour la sécurité. Il n'existe pas à ce jour de portage de ActiveX sur d'autres
+systèmes que Windows.
+
+PHP est disponible pour toutes les plate-formes et permet de faire la même chose, sinon plus, que
+ASP et VBScript. N'oublions pas que PHP dispose de plus de 2700 APIs !
+
+1.8 Ce que vous devez déjà connaître
+Vous devez connaître HTML ainsi qu'un langage de programmation procédural (C par exemple).
+
+Une connaissance basique du SQL peut être nécessaire mais sera abordée.
+
+1.9 Le nécessaire serveur
+PHP ne sert pas seulement à faire des pages dynamiques. C'est un langage interprété qui au même
+titre que Perl, Python ou TCL est capable de lancer des scripts intéractifs ou non. On peut même
+utiliser PHP pour créer des interfaces graphiques (extension GTK). Le minimum nécessaire et vital
+pour apprendre PHP est donc l'interpréteur PHP lui-même sur un environnement supporté (Unix,
+Windows, Mac, ).
+
+Si on parle de LAMP, on voit bien la référence. Un système Linux, un serveur Web Apache, un
+serveur de bases de données MySQL et un interpréteur PHP. La version 4 de PHP permet de
+fonctionner avec IIS, et MySQL existe aussi pour Windows. On peut donc utiliser une architecture
+WIMP (Windows, IIS, MySQL, PHP) ou WAMP (Windows, Apache, MySQL, PHP). Ajouter PHP
+à IIS, c'est laisser la porte ouverte à tous les vents, on préférera donc la seconde solution.
+
+Les distributions Linux disposent déjà du nécessaire pour l'architecture LAMP et le paramétrage est
+assez simple. De plus le mode « user_mod » de Apache permet à chaque utilisateur de créer son site
+web dans un répertoire spécifique de son répertoire personnel.
+
+Sous Windows, c'est déjà un peu plus complexe à mettre en oeuvre manuellement. On emploie donc
+des distributions toutes faites, la meilleure se nommant EasyPHP. Les versions 1.6 et 1.7 sont les
+meilleures pour développer. On peut ainsi développer son site sous Windows et le porter tel quel sur
+un serveur Unix.
+
+1.10 Le nécessaire client
+Pour développer il suffit d'un simple éditeur mais il vaut mieux préférer un éditeur plus évolué
+supportant la coloration syntaxique et quelques fonctions évoluées. L'éditeur HAPEdit 3 est parfait
+pour développer en PHP. L'accès aux bases MySQL peut se faire soit depuis un navigateur
+(phpMyAdmin) soit depuis une interface MySQLCC ou encore DBDesigner pour la conception.
+
+Pour les tests : un simple navigateur respectant les standards du web.
+
+1.11 Le respect des standards
+Le W3C est l'organisme international faisant loi dans le monde des standards du web. Il a défini une
+série de normes dont le HTML, le XML, le XHTML, les CSS, etc. Pourquoi respecter un standard ?
+
+C'est la garantie d'un bon fonctionnement et du bon affichage de manière identique de vos pages sur
+S. ROHAUT
+Cours Programmation PHP
+Page 9/93
+tous les navigateurs supportant ce standard.
+
+Avec une bonne déclaration (entête HTML) les navigateurs IE6, Mozilla 1.5, Opera 7, Galeon,
+Konqueror, etc, sont compatibles avec ces standards.
+
+L'utilisation de balises propriétaires à un navigateur (blink par exemple) ou de vbscript (sous IE) est
+à proscrire. La dernière norme HTML valide est HTML 4.01 STRICT. XHTML qui à terme
+remplacera définitivement HTML est aussi bien supporté. La dernière norme CSS et la 2.
+
+Cependant dans ce cas préférez CSS-1 car seul Opera supporte CSS-2.
+
+Prenez l'habitude quand c'est possible de tester votre site sur deux ou trois navigateurs : IE6 car c'est
+le plus répandu, Opera car il est extrêmement respectueux des standards et Mozilla car c'est LE
+challenger et probablement remplaçant à terme de IE (qui n'aura plus d'évolution de version avant
+LongHorn).
+
+S. ROHAUT
+Cours Programmation PHP
+Page 10/93
+
+2 Bases :Présentation
+PHP est langage très souple prenant ses sources dans divers langages comme le C, le Perl, le C++. Il
+est donc possible d'avoir plusieurs styles de scripts (programmation classique dite procédurale ou
+programmation objet, ou programmation bordélique). Cette souplesse permet une très grande
+liberté, un peu comme en Perl. L'inconvénient est qu'on peut très vite obtenir du code illisible
+(bordélique), même si ça marche très bien. Prenez donc l'habitude de commenter votre code, de
+l'indenter et de ne placer qu'une instruction par ligne.
+
+2.0.1 Syntaxe de base
+2.1 Intégration à HTML
+Une page php porte l'extension « .php ». Une page PHP peut être entièrement programmée en PHP
+ou mélangée avec du code html. PHP est un langage « Embedded HTML », c'est à dire qu'il
+apparaît à n'importe quel endroit de la page HTML. Pour ça on le place dans des balises particulières : <?php et ?>. On peut aussi utiliser les balises <script language="php"> et
+</script>. La première forme est préférable pour plus de simplicité et une compatibilité
+XHTML. On écrit donc une page HTML dans laquelle on intègre du code PHP.
+
+<html>
+<head>
+<title>Titre</title>
+</head>
+<body>
+<?php
+echo "Hello World !";
+?>
+</body>
+</html>
+Le code HTML généré sera le suivant
+<html>
+<head>
+<title>Titre</title>
+</head>
+<body>
+Hello World !
+
+</body>
+</html>
+L'utilisation de balises pour l'intégration de code dans une page web est très souple et permet de
+jongler facilement avec du code PHP et du code HTML :
+<?php
+if ( expression ) {
+?>
+<strong>Ceci est vrai.</strong>
+<?php
+} else {
+?>
+<strong>Ceci est faux.</strong>
+<?php
+}
+?>
+S. ROHAUT
+Cours Programmation PHP
+Page 11/93
+
+2.2 Séparateur d'instructions
+Comme en C une instruction se termine par un point-virgule « ; ». Notez que la balise fermante ?>
+implique la fin d'une instruction.
+
+<?php
+echo "Ceci est un test";
+?>
+<?php echo "Ceci est un test" ?>
+2.3 Bloc d'instructions
+Un bloc d'instructions se place entre accolades { et }. Un bloc d'instructions peut contenir du code
+de n'importe quelle longueur et est considéré dans le reste du code comme une instruction unique. Si
+c'est une expression (qui a une valeur) on peut donc assigner le bloc, faire des calculs,
+
+2.4 Commentaires
+Les commentaires s'utilisent comme en C et en C++ avec /* .. */ et //. Notez qu'une balise
+fermante ferme le commentaire en cours.
+
+<?php
+/* echo "salut !" */
+// Commentaire sur cette ligne
+?>
+S. ROHAUT
+Cours Programmation PHP
+Page 12/93
+
+3 Travailler avec des variables
+3.1 Déclarer une variable
+Une variable commence par un dollar « $ » suivi d'un nom de variable. Les variables ne sont pas
+typées au moment de leur création. Attention PHP est sensible à la casse : var et Var ne sont pas les
+mêmes variables ! Voici les règles à respecter :
+• Une variable peut commencer par une lettre
+• Une variable peut commencer par un souligné (underscore) « _ »
+• Une variable ne doit pas commencer par un chiffre.
+
+// Déclaration et règles
+$var=1; // $var est à 1
+$Var=2; // $ Var est à 2
+$_toto='Salut'; // Ok
+$3petitscochons=5; // Invalide : commence par un chiffre
+Leur type dépend de leur valeur et de leur contexte d'utilisation. Mais on peut forcer (cast) ponctuellement une variable à un type de données, ce qui s'appelle le transtypage. De même comme
+le type de variable peut changer en fonction de son utilisation ou du contexte, PHP effectue automatiquement un transtypage, ce qui peut parfois fournir des résultats surprenants. On affecte
+une valeur à une variable avec le signe égal « = » avec ou sans espace avant ou après.
+
+// Déclaration et transtypage
+$var='2'; // Une chaîne 2
+$var+=1; // $var est maintenant un entier 3
+$var=$var+0.3; // $var est maintenant un réel de type double 3.3
+$var=5 + "3 petits cochons"; // $var est un entier qui vaut 8
+Par défaut les variables sont assignées par valeur : la valeur assignée à la variable est recopiée dans
+la variable. PHP peut aussi travailler par référence. Une variable peut donc référencer une autre
+variable. On dit alors que la variable devient un alias, ou pointe sur une autre variable. On assigne
+par référence en utilisant le signe « & » devant la variable assignée
+$var=2;
+$ref=&$var; // $ref devient une référence de $var
+echo $ref; // affiche 2
+$var=3;
+echo $ref; // affiche 3
+$ref=4;
+echo $var; // affiche 4
+Attention à la valeur constante NULL insensible à la casse. Affecter une valeur NULL à une
+variable signifie ne pas puis affecter de valeur.
+
+3.2 Portée des variables
+La portée d'une variable dépend du contexte. Une variable déclarée dans un script et hors d'une
+fonction est globale mais par défaut sa portée est limitée au script courant, ainsi qu'au code éventuellement inclus (include, require) et n'est pas accessible dans les fonctions ou d'autres scripts.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 13/93
+
+$a=1; // globale par défaut
+function foo() {
+echo $a; // c'est une variable locale à la fonction : n'affiche rien
+}
+Pour accéder à une variable globale dans une fonction, il faut utiliser le mot-clé global.
+
+$a=1; // globale par défaut
+$b=2; // idem
+function foo() {
+global $a,$b; // on récupère les variables globales
+$b=$a+$b;
+}
+echo $b; // affiche 3
+PHP accepte les variables statiques. Comme en C une variable statique ne perd pas sa valeur quand
+on sort d'une fonction.
+
+function test_static() {
+static $a=0;
+echo $a; // +1 à chaque passage dans la fonction
+$a++;
+}
+3.3 Variables prédéfinies
+PHP dispose d'un grand nombre de variables prédéfinies. Ces variables sont généralement de type
+scalaires ou des tableaux. Elles sont souvent de type superglobales, c'est à dire accessible depuis
+n'importe où sans notion de portée. Voici quelques tableaux prédéfinis (voir au point Tableaux pour
+comprendre leur utilisation).
+
+• $_GLOBALS : tableau des variables globales. La clé est le nom de la variable.
+
+• $_SERVER : variables fournies par le serveur web, par exemple 'SERVER_NAME'
+• $_GET : variables fournies par HTTP par la méthode GET (formulaires)
+• $_POST : idem mais pour la méthode POST
+• $_COOKIE : les variables fournies par un cookie
+• $_FILES : variables sur le téléchargement d'un fichier (upload)
+• $_ENV : accès aux variables d'environnement du serveur
+• $_SESSION : les variables de session (voir cours sur les sessions)
+Note : avant la version 4.2.0 de PHP, les variables passées par la méthode GET, POST (formulaires
+et URL) et ainsi de suite étaient automatiquement créées dans le script de destination.
+
+http://www.toto.fr/page.php?action=enr créait automatiquement la variable $action qui prenait la
+valeur 'enr'.
+
+<input type="hidden" name="cache" value="toto"> créait dans la page cible (action du form) une variable $cache de valeur "toto".
+
+Ce n'est plus automatique depuis PHP 4.2.0. Il faut passer par les tableaux superglobaux ci-dessus.
+
+On peut cependant passer outre en modifiant la valeur register_globals dans le php.ini.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 14/93
+
+3.4 Variables dynamiques
+Une variable dynamique utilise la valeur d'une variable comme nom d'une autre variable. On utilise
+les variables dynamiques en rajoutant un « $ » devant le nom de la première variable.
+
+$a="var";
+$$a=1; // $$a=1 equivaut en fait à $var=1
+echo $a; // affiche var
+echo $$a; // affiche 1
+echo $var; // affiche 1
+Attention avec les tableaux ! Pour éviter toute ambiguïté, il est préférable de placer la variable entre
+accolades.
+
+3.5 Types de variables
+3.5.1 booléens
+Un booléen peut prendre deux valeurs TRUE ou FALSE. Les deux constantes TRUE et FALSE
+peuvent être utilisées sans aucune distinction de casse (pas de différences entre les majuscules et les
+minuscules).
+
+$var=FALSE; // FALSE, False, false,
+
+$var2=True; // TRUE, True, true,
+
+Tous les types peuvent être convertis en booléens. Voici les cas où une variable retournera FALSE
+en booléen suivant le type :
+• Booléen : FALSE
+• Entier : 0 (zéro)
+• Nombre flottant : 0.0 (zéro)
+• Chaîne : chaîne vide "" ou "0" (zéro)
+• Tableau : tableau vide sans aucun élément
+• Objet : objet vide sans aucun élément
+• Constante spéciale NULL
+Dans tous les autres cas, la valeur retournée est TRUE. Attention : -1 est considéré comme vrai
+donc TRUE. Comme en C, les tests de conditions dans les structures de contrôles effectuent une
+convertion booléenne du la condition.
+
+if($var==true) echo "ok";
+if($var) echo "ok"; // Identique
+3.5.2 Entiers
+Un entier est l'ensemble des nombres naturels, c'est à dire dans virgule, positifs ou négatifs. Les
+entiers sont généralement codés sur 32 bits mais cela dépend de l'architecture. Si on affecte un
+nombre entier qui dépasse la capacité de la variable, celle-ci sera transformée en réel (float). Enfin il
+n'y a pas de notion d'entier non signé.
+
+Lors de la conversion d'un booléen en entier, FALSE devient 0 et TRUE devient 1. Lors de la
+conversion d'un nombre à virgule flottante, le nombre sera arrondi à la valeur inférieure s'il est
+S. ROHAUT
+Cours Programmation PHP
+Page 15/93
+
+positif, ou supérieure s'il est négatif (conversion vers zéro). Pour la conversion depuis les chaînes,
+voir à ce type.
+
+3.5.3 Virgule flottante
+On parte ici des nombres réels, double ou float, c'est à dire les nombres à virgules. La virgule est
+spécifiée par le point « . ». La puissance de 10 s'exprime avec le « e » ou le « E ».
+
+$var=1.234;
+$var2=1.1e4; // 1.1 * 10^4 : 11000
+3.5.4 Chaînes de caractères
+Une chaîne est une séquence de caractères. PHP travaille en ASCII soit 256 caractères, mais ne
+supporte pas encore le format Unicode, prévu dans la version 5. Il n'y a pas de limite théorique pour
+la taille de la chaîne.
+
+On distingue trois syntaxes pour utiliser un chaîne
+• Les guillemets simples ' ' (apostrophes) : Comme en shell, tous les caractères inclus dans la
+chaîne sont sortis tels quels sans interprétation. Si vous devez afficher un guillemet simple, il
+faudra l'échapper : \'
+• Les guillemets doubles " " : Certaines séquences de caractères sont interprétées et les variables
+sont substituées (remplacées par leur valeur).
+
+• HereDoc : Identique aux HereScripts en Shell. Le texte saisi jusqu'à un délimiteur spécifié est
+placé dans la variable.
+
+Voici le tableau issu de la documentation PHP des sé
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>

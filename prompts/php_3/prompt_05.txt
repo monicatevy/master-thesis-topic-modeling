@@ -1,0 +1,817 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an expert language model trained to extract meaningful topics from raw text.
+You must follow the instructions carefully and only produce valid XML — no explanations, no extra text.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Perform topic modeling on the following documents. Identify a set of coherent topics based on the content. For each topic, return 4 to 8 representative keywords that best capture its meaning.
+    Return ONLY valid XML output like:
+  <topics>
+    <topic id="1">
+      <word></word>
+    </topic>
+  </topics>
+</instruction>
+  <documents>
+    <document>
+      <chunk i="5">
+'est pas si évidente que ça car une fois connecté, les identifiants sont placés dans la
+session. La méthode la plus simple consiste à fermer le navigateur et à le relancer.
+
+13.3 Sessions PHP
+13.3.1 Principe
+Les sessions permettent de préserver des données lors de la visite d'un site. Chaque personne se voit
+attribué un identifiant unique appelé identifiant de session, ou SID. Ce SID est soit stocké dans un
+cookie, soit passé par URL. On peut ainsi définir un nombre infini de variables qui seront accessibles durant toute la durée de la session.
+
+Notez que si vous fermez et relancez votre navigateur, vous changez d'identifiant, et donc la précédente session est perdue, même si elle était nommée.
+
+On peut connaître son SID grâce à la constante de même nom, ou par la fonction session_id().
+
+13.3.2 Utilisation
+13.3.2.1 Ouverture
+Si dans PHP.INI la valeur « session.auto_start » est activée, les sessions sont démarrées de manière
+automatique lors de l'accès à une page. Sinon il faut utiliser explicitement la fonction
+session_start(). Son appel créé une session ou restaure une session précédemment stockée sur le
+serveur.
+
+ATTENTION : L'ouverture d'une session doit obligatoirement apparaître avant toute
+sortie/affichage du script PHP ou de balises HTML, même une ligne vide !
+
+On peut créer ou récupérer une session nommée en précisant un session_name() qui prend comme
+paramètre le nom de la session qui doit être créée (premier appel) ou accédée (appels suivants). La
+session par défaut se nomme « PHPSESSID » et c'est celle-là qui est chargée si session_name()
+n'est pas appelée. Il faut donc appeler session_name() AVANT session_start() pour accéder à une
+session nommée.
+
+Une session peut aussi être indirectement créée ou ouverte avec l'utilisation de la fonction
+session_register().
+
+13.3.2.2 Variables de session
+Il y a deux moyens de créer des variables de session, qui seront accessibles depuis n'importe quelle
+page visitée à partir du moment ou session_start() a été appelée. Le premier moyen ne fonctionne ne
+fonctionne pas si register_globals est à off dans PHP.INI :
+Méthode 1 (déconseillée) :
+S. ROHAUT
+Cours Programmation PHP
+Page 64/93
+
+La fonction session_register() prend comme paramètre un nom de variable et la définit comme
+variable de session. Cette variable peut ensuite être accédée par son nom.
+
+$txt='Bonjour les amis';
+session_register('txt'); // txt devient une variable de session.
+
+Pour savoir si une variable est enregistrée dans la session courante, on utilise
+session_is_registered().
+
+if(session_is_registered('txt')) echo $txt;
+Pour supprimer une variable de session, il faut utiliser session_unregister(). Par contre il ne faut
+pas oublier d'utiliser unset() pour supprimer la variable globale, car la précédente fonction ne la
+supprime pas, elle empêche seulement sa sauvegarde à la fin du script.
+
+if(session_is_registered('txt')) {
+session_unregister('txt');
+unset($txt);
+}
+Méthode 2 (La meilleure à utiliser) :
+On utilise tout simplement le tableau global $_SESSION. Ainsi :
+$_SESSION['txt']="Bonjour les amis";
+crée la variable de session txt,
+echo $_SESSION['txt']
+l'affiche et
+unset($_SESSION['txt']);
+l'efface. Pour effacer toutes les variables de sessions, il suffit de faire
+$_SESSION=array();
+13.3.3 Expiration de la session
+La durée de vie d'une session PHP dépend de trois paramètres de configuration du fichier PHP.INI :
+session.gc_maxlifetime, session.cookie_lifetime et session.cache_expire. Le premier concerne la
+durée de vie des données sur le serveur, en nombre de secondes. Il est par défaut de 1440 secondes,
+soit 24 minutes. Au delà, les données sont supprimées et elles seront rechargées via le cookie de
+session lors du prochain appel.
+
+Le second est la durée de vie du cookie de session, exprimé en secondes. Par défaut la valeur est
+zéro (0) ce qui signifie : jusqu'à ce que le navigateur soit éteind.
+
+Le troisième est la durée de vie des données de session, en minutes. Sa valeur par défaut est de 180
+minutes, soit trois heures. Ce qui veut dire que dans une même session, on peut rester trois heures
+sur la même page, les valeurs ne sont pas perdues. Au delà, il faut rouvrir une nouvelle session et
+S. ROHAUT
+Cours Programmation PHP
+Page 65/93
+
+restaurer de nouvelles valeurs. A chaque chargement de page (ouverture de session), on recommence le décompte.
+
+On peut modifier le délai d'expiration de la session grâce à la fonction session_cache_expire() qui
+prend comme valeur la nouvelle durée en minutes. Sans paramètre elle retourne la valeur actuelle.
+
+13.3.4 Changer l'accès par défaut
+PHP sait très bien se débrouiller tout seul mais on peut remplacer la prise en charge par défaut des
+sessions par ses propres fonctions, dans le but de gérer l'ouverture et la fermeture ou encore la
+sauvegarde des données de session dans un fichier ou une base de données.
+
+Une autre utilisation peut être le traçage via PHP de toutes les ouvertures/fermetures des sessions.
+
+Pour ça on utilise la fonction session_set_save_handler(). Son étude dépasse le cadre du cours
+mais voici un exemple tiré de la documentation PHP.
+
+if(!mysql_table_exists("sessions",$DB)) {
+$query = 'CREATE TABLE sessions
+(
+SessionID char(255) not null,
+LastUpdated datetime not null,
+DataValue text,
+PRIMARY KEY ( SessionID ),
+INDEX ( LastUpdated )
+)';
+mysql_query($query);
+}
+
+function sessao_open($aSavaPath, $aSessionName){
+global $aTime;
+sessao_gc( $aTime );
+return True;
+}
+function sessao_close(){
+return True;
+}
+function sessao_read( $aKey ) {
+$query = "SELECT DataValue FROM sessions WHERE SessionID='$aKey'";
+$busca = mysql_query($query);
+if(mysql_num_rows($busca) == 1) {
+$r = mysql_fetch_array($busca);
+return $r['DataValue'];
+} ELSE {
+$query = "INSERT INTO sessions (SessionID, LastUpdated, DataValue)
+VALUES ('$aKey', NOW(), '')";
+mysql_query($query);
+return "";
+}
+}
+function sessao_write( $aKey, $aVal ) {
+$aVal = addslashes( $aVal );
+$query = "UPDATE sessions SET DataValue = '$aVal', LastUpdated = NOW()
+WHERE SessionID = '$aKey'";
+mysql_query($query);
+return True;
+S. ROHAUT
+Cours Programmation PHP
+Page 66/93
+
+}
+function sessao_destroy( $aKey ) {
+$query = "DELETE FROM sessions WHERE SessionID = '$aKey'";
+mysql_query($query);
+return True;
+}
+function sessao_gc( $aMaxLifeTime )
+{
+$query = "DELETE FROM sessions WHERE UNIX_TIMESTAMP(NOW()) - UNIX_TIMESTAMP
+(LastUpdated) > $aMaxLifeTime";
+mysql_query($query);
+return True;
+}
+session_set_save_handler("sessao_open", "sessao_close", "sessao_read",
+"sessao_write", "sessao_destroy", "sessao_gc");
+14 Images
+14.1 Pré-requis importants
+Ceci concerne les versions de PHP avant la 4.2.3 et EasyPHP 1.6: certaines fonctions comme
+gd_info() ou encore imagecreatetruetype() ne sont pas toujours disponibles car PHP fait appel à une
+bibliothèque externe appelée GD2. Pour les version 4.2.3 et au-delà on trouve des patches à l'adresse http://www.boutell.com/gd/. Avant ces versions, la version GD linkée avec PHP est la 1.8.4.
+
+Ceci concerne les utilisateurs de PHP 4.2.3 et + et EasyPHP 1.7 sur Windows : la configuration
+par défaut de EasyPHP 1.7 n'inclut pas le support des images. Pour cela il faut modifier le fichier
+PHP.INI en retirant le commentaire de :
+extension=php_gd2.dll
+14.2 Créer une image
+14.2.1 Types possibles
+Il faut tout d'abord choisir le type de l'image que vous souhaitez créer. Pour cela on peut tester quels
+types PHP peut générer avec la fonction imagetypes() et ses constantes associées :
+• IMG_PNG : format PNG
+• IMG_JPG : format JPEG
+• IMG_GIF : format GIF
+• IMG_WBMP : format Windows Bitmap BMP
+if (imagetypes() & IMG_PNG) {
+echo "Le type PNG est supporté";
+Puis au début du script, on envoie un header spécifiant le type d'image :
+S. ROHAUT
+Cours Programmation PHP
+Page 67/93
+
+header ("Content-type: image/png"); // ou image/gif ou image/jpeg
+14.2.2 Création
+14.2.2.1 Nouvelle image dynamique
+Et enfin on créé une image avec la fonction imagecreate() (basée sur une table de couleurs indexée)
+ou imagecreatetruecolor() (en truecolor) avec comme paramètres la largeur et la hauteur. La seconde est conseillée par la documentation PHP. Les fonctions retournent une ressource identifiant
+l'image. Par défaut l'image est noire.
+
+$img=@createimage(100,100) or die("Votre PHP ne supporte pas les images");
+14.2.2.2 Récupération d'une image existante
+PHP peut charger une image existante au lieu de la créer de toutes pièces. Dans ce cas l'image est
+chargée depuis un fichier et on peut ensuite la retravailler comme on le souhaite. On peut utiliser les
+fonctions :
+• imagecreatefromgif() : charge une image GIF
+• imagecreatefromjpeg() : charge une image JPEG
+• imagecreatefrompng() : charge une image PNG
+• imagecreatefromstring() : charge une image depuis une chaîne de texte (par exemple un champ)
+14.2.3 Publication
+Enfin, on publie l'image avec les fonctions imagexxx(). Si cette fonction est utilisée sans paramètre,
+l'image créée est redirigée vers la sortie standard. On peut toutefois préciser comme paramètre un
+nom de fichier. Dans ce cas, l'image est sauvée sur disque au format spécifié.
+
+• imagepng() : créé une image au format PNG
+• imagegif() : créé une image au format GIF
+• imagejpeg() : créé une image au format JPEG
+Une fois l'image crée, on peut la supprimer avec imagedestroy() ce qui la décharge de la mémoire.
+
+Voici donc le code d'une page PHP image.php retournant une image :
+header ("Content-type: image/png");
+$img=@imagecreatetruecolor (100, 50) or die ("Impossible de crée un flux d'image
+GD");
+/* ICI ON PLACE LES COMMANDES DE DESSIN OU MANIPULATION */
+imagepng ($img);
+imagedestroy ($img);
+S. ROHAUT
+Cours Programmation PHP
+Page 68/93
+
+14.2.4 Chargement via une autre page
+Pour appeler cette image dynamique depuis une page HTML ou PHP il suffit de la placer dans une
+balise IMG :
+<img src="image.php">
+14.3 Travailler sur les Images
+14.3.1 Récupérer des informations
+La fonction getimagesize() permet de récupérer des informations sur une image si on lui passe un
+nom de fichier (pas de ressource image). Elle retourne un tableau indexé.
+
+list($width,$height,$type,$attr)=getimagesize("toto.gif");
+• width : largeur x
+• height : hauteur y
+• type : 1 = GIF, 2 = JPG, 3 = PNG, 5 = PSD, 6 = BMP, 7 = TIFF (Ordre des octets Intel), 8 =
+TIFF (Ordre des octets Motorola), 9 = JPC, 10 = JP2, 11 = JPX, 12 = JB2, 13 = SWC, 14 = IFF
+• attr: chaine width/height pour HTML
+Si on travaille sur une image qu'on a créé nous-même :
+• imagesx() : largeur x de l'image
+• imagesy() : hauteur de l'image
+14.3.2 Les couleurs
+Il n'est pas possible de voir toutes les fonctions cependant une chose est à retenir : la notion de
+palette indexée (createimage()) et la notion de truetype. Dans le premier cas les couleurs sont
+indexées via un numéro. Dans le second cas, la couleur est une composante RVB.
+
+La fonction imagecolorallocate() permet de définir une couleur qui sera utilisée pour une image. Le
+premier paramètre est le ressource de l'image, les trois autres les niveaux de rouge, vert et bleu de la
+couleur.
+
+ATTENTION : Avec une image créée avec createimage(), la palette est indexée et le premier
+index est la couleur du fond. Donc : un premier appel à imagecolorallocate() dans ce cas
+modifie la couleur du fond.
+
+$white=imagecolorallocate($img,255,255,255);
+La fonction imagecolorat() retourne la valeur exacte (soit l'index de la palette, soit un entier RVB)
+du point aux coordonnées x/y de l'image.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 69/93
+
+$color=imagecolorextact($img,50,50);
+La fonction imagecolortransparent() permet de définir la couleur de transparence d'une image dont
+la palette est indexée. Le premier paramètre est la ressource de l'image
+OBLIGATOIREMENT créée avec imagecreate(), le second une valeur retournée par
+imagecolorallocate().
+
+La fonction imagecolorstotal() retourne le nombre total de couleurs utilisées pour l'image donnée.
+
+14.3.3 Dessin
+14.3.3.1 Remplissage
+On utilise la fonction imagefill() :
+$background=imagecolorallocate ($img,255,255,255);
+ImageFill($img,0,0,$background);
+La fonction imagefilltoborder() permet un remplissage d'une zone délimitée par une couleur
+donnée. Dans ce cas les deux derniers paramètres sont la couleur de la bordure et la couleur de
+remplissage.
+
+14.3.3.2 Point
+On utilise imagesetpixel() :
+$green=imagecolorallocate ($img,0,255,0);
+Imagesetpixel($img,2,2,$green);
+14.3.3.3 Ligne
+On utilise imageline() :
+imageline($img, 10,10,30,40,$blue);
+14.3.3.4 Rectangle
+On utilise imagerectangle() pour un rectangle simple, imagefilledrectangle() pour un rectangle
+rempli.
+
+$blue=ImageColorAllocate($img,0,0,255);
+imagerectangle($img, 10,10,30,40,$blue);
+imagefilledrectangle($img,12,12,27,37,$green);
+14.3.3.5 Cercle, ellipse
+On utilise imageellipse() ou imagefilledellipse(). Attention les deux premiers paramètres sont les
+coordonnées du centre de l'ellipse, les deux autres la largeur et la hauteur de l'ellipse.
+
+imageellipse ($img, 50, 50,30, 20, $red);
+On peut aussi faire des arcs de cercles avec les fonctions imagearc() et imagefilledarc() : Juste
+S. ROHAUT
+Cours Programmation PHP
+Page 70/93
+
+avant la couleur on précise le début et la fin de l'arc en degrés (de 0 à 360).
+
+14.3.3.6 Polygones
+On utilise les fonctions imagepolygone() et imagefilledpolygone(). Les sommets du polygone sont
+définis dans un tableau : Tab[0]=x0, Tab[1]=y0, Tab[1]=x1, Tab[2]=y1,
+
+On doit aussi préciser le nombre de sommets.
+
+imagepolygon($img, array (0, 0,100, 200, 300, 200),3, $blue);
+14.3.3.7 Texte simple
+On utilise imagestring() :
+imagestring($img, 1, 5, 5, "Une simple chaîne de texte", $text_color);
+Le second paramètre est le numéro de police par défaut de la page actuelle ou du navigateur.
+
+15 La programmation objet
+15.1 Structure
+Une classe est une collection de variables (attributs) et de fonctions (méthodes) qui fonctionnent
+avec ces variables. L'ensemble forme les membres ou les propriétés de l'objet. Une classe est définie
+en utilisant le mot-clé « class » :
+class Panier {
+// Eléments de notre panier
+var $contenu;
+// Ajout de $qte articles de type $code au panier
+function ajout_article ($code, $qte) {
+if(isset($this->contenu[$code])) $this->contenu[$code] += $qte;
+else $this->contenu[$code] = $qte;
+}
+// Suppression de $num articles du type $artnr du panier
+function suppr_article ($code, $qte) {
+if ($this->contenu[$code] > $qte) {
+$this->contenu[$code] -= $qte;
+return TRUE;
+} else {
+return FALSE;
+}
+}
+}
+15.2 Création d'un objet
+On utilise le mot-clé « new ».
+
+$mon_caddie=new Panier;
+Si le constructeur existe (voir plus loin) on peut bien entendu passer des valeurs à la création :
+S. ROHAUT
+Cours Programmation PHP
+Page 71/93
+
+$o1=new Obj("riri");
+15.3 Accès aux membres
+15.3.1 PHP 4 et 5
+On utilise les caractères « -> ». On accède aux membres avec la syntaxe suivante. Notez qu'on
+utilise pas le $ devant un nom d'attribut.
+
+$mon_caddie->contenu=array('ref01' => 2, 'ref02' => 1);
+Au sein d'un objet, on accède aux attributs de la classe en la précisant avec la variable « $this ».
+
+Si on ne le précise pas, on utilise en fait la variable localz à la méthode.
+
+$this->contenu['ref01']+=1;
+15.3.2 PHP 5
+Le PHP 5 étend les possibilités d'accès aux membres (variables et fonctions) via les variables
+dynamiques. Ex :
+class Panier {
+// Eléments de notre panier
+public $etat=false; // false : vide
+
+}
+function bidon() {
+return 'etat';
+}
+$mon_caddie=new Panier;
+$pipo='etat';
+echo $mon_caddie->$pipo; // affiche $this->etat
+$fonction='affiche_panier';
+$mon_caddie->$fonction();
+echo $nom_caddie->{bidon()};
+15.4 L'opérateur ::
+L'opérateur « :: » permet de faire référence aux membres d'une classe de base (voir héritage), ou
+d'utiliser des méthodes alors que la classe n'a pas été instanciée.
+
+class A {
+function example() {
+echo "Je suis la fonction originale.<br>\n";
+}
+}
+// Il n'y a pas d'objets de classe A.
+
+// L'affichage est : Je suis la fonction originale.
+
+A::example();
+Dans le cas d'un appel à une méthode avec :: d'une classe non instanciée (pas d'objets), la
+méthode ne doit pas appeler d'attributs de la classe, puisqu'ils n'existent pas. De même pour
+la même raison il ne faut pas employer la variable $this dans les méthodes appelées.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 72/93
+
+15.5 Les variables, protection
+15.5.1 PHP 4.x
+On déclare les attributs avec le mot-clé « var ». Les attributs sont considérés comme étant tous
+publics. PHP 4 ne possède aucun mécanisme de protection des variables. Ainsi un attribut est
+accessible depuis toute les classes dérivées et depuis l'extérieur de la classe.
+
+var $mavariable;
+Il est interdit d'initialiser une variable lors de sa déclaration.
+
+var $toto="salut !"; // Ne marche pas !
+
+15.5.2 PHP 5.x
+15.5.2.1 Protection des variables et fonctions
+Le PHP 5 rajoute la notion de protection des données qui manquait à PHP 4. On appelle ça les trois
+« P » : « public », « protected », « private », avec les mots-clés correspondants.
+
+Voici un tableau récapitulatif de leur effet:
+Accès
+Public
+Protected
+Private
+Dans la classe elle-même
+ü
+ü
+ü
+Depuis une classe dérivée
+ü
+ü
+û
+Depuis l'extérieur
+ü
+û
+û
+Note : Les mots-clés public, private et protected peuvent bien entendu être utilisés
+pour les méthodes (fonctions) auquel cas la protection s'étend de la même manière.
+
+Le mot-clé « var » est toujours utilisable en PHP 5 et dans ce cas les attributs sont considérés
+comme publics.
+
+Il est possible d'initialiser les variables à leur création avec n'importe quelle valeur.
+
+class Panier {
+// Eléments de notre panier, privé
+private $contenu=array();
+
+}
+15.5.2.2 attributs et méthodes statiques
+On peut aussi définir des attributs et des méthodes statiques qui seront accessibles en dehors de la
+classe, l'objet n'étant pas forcément déclaré. On rajoute le mot-clé « static » après la définition
+de la visibilité de l'attribut. Un « static » n'ayant pas de portée définie est considéré comme
+public. Par exemple, voici un compteur permettant de savoir combien de fois une classe a été
+instanciée. Notez l'utilisation de « self » à la place de « $this ». « $this » ne peut pas être
+utilisé ici il fait référence à un objet et un attribut statique fait référence à la classe elle-même.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 73/93
+
+class A {
+public static $compteur=0;
+function A()
+{
+self::$compteur++; // On incrémente
+}
+function affiche()
+{
+echo self::$compteur."<br />"; // self !
+
+}
+}
+$o1=new A;
+$o1->affiche(); // 1
+$o2=new A;
+$o2->affiche(); // 2
+$o3= new A;
+$o3->affiche(); // 3
+echo A::$compteur; // 3
+15.5.2.3 constantes de classe
+On peut créer des constantes dans une classe à l'aide du mot-clé « const ». La déclaration d'une
+constante ne doit pas être précédée d'un indicateur de visibilité. Une constante est toujours publique.
+
+On ne peut pas non plus assigner à une constante une valeur elle-même dynamique, comme le retour
+d'une fonction. Comme pour les variables statiques, on utilise « self » pour accéder à sa valeur.
+
+class A {
+const classname="A";
+function __construct()
+{
+echo self::classname;
+}
+}
+$o1=new A; // Affiche A
+15.6 Héritage et polymorphisme
+L'héritage permet de définir des classes génériques réutilisables. On peut alors faire des extensions à
+une classe, faire dériver une classe d'une autre. La classe dérivée hérite de toutes les méthodes et
+variables de la classe de base et peut redéfinir ses propres fonctions et variables.
+
+Une classe ne peut hériter que d'une seule autre classe. L'héritage multiple n'est pas supporté, ni par
+PHP 4, ni par PHP 5. Par contre rien n'empêche de faire des héritages en cascade.
+
+Le « polymorphisme » permet de redéfinir une méthode de même nom dans une classe dérivée, par
+d'autres paramètres éventuels.
+
+NOTE : Le « polymorphisme » n'est pas une surcharge. Une surcharge consiste à définir
+plusieurs méthodes de même nom mais de prototypes différents. PHP 5 ne supporte pas cette
+forme de surcharge. Le polymorphisme remplace une méthode par une autre dans une classe
+dérivée.
+
+Pour créer un héritage on utilise le mot-clé « extends ».
+
+S. ROHAUT
+Cours Programmation PHP
+Page 74/93
+
+class Panier_nomme extends Panier {
+var $proprietaire;
+function nom_proprietaire ($nom) {
+$this->proprietaire = $nom;
+}
+}
+On créé une classe « Panier_nomme » qui hérite de « Panier ». Elle possède donc les mêmes
+propriétés que la classe « Panier » à laquelle on rajoute un nouvel attribut et une nouvelle méthode.
+
+$ncart = new Panier_nomme;
+$ncart->nom_proprietaire ("Slyce");
+print $ncart->proprietaire;
+$ncart->ajout_article("ref03", 1);
+Par le polymorphisme on peut redéfinir dans la classe dérivée les méthodes de la classe héritée.
+
+class A {
+function affiche() {
+echo "Classe A<br />";
+}
+}
+class B extends A {
+function affiche() {
+echo "Classe B<br />";
+}
+}
+$test=new B;
+$test->affiche(); // Affiche Classe B
+15.7 Les mots-clés parent et self
+Le mot-clé « parent » représente la classe de base (celle présente après un « extends ») et
+permet de faire référence aux variables et fonctions d'une classe de base.
+
+class A {
+function example() {
+echo "Je suis A::example(), fonctionnalité de base.<br>\n";
+}
+}
+class B extends A {
+function example() {
+echo "Je suis B::example(), fonctionnalité supplémentaire.<br>\n";
+parent::example();
+}
+}
+$b = new B;
+// appelle B::example(), qui, à sont tour, appelle A::example().
+
+$b->example();
+Le mot-clé « self » représente la classe elle-même et peut donc être utilisée pour préciser l'accès
+à un membre précis, comme un attribut statique.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 75/93
+
+15.8 Constructeurs
+15.8.1 PHP 4 et 5
+Le constructeur est la méthode qui est automatiquement appelée lors de la création d'un objet par
+« new ». Une méthode devient un constructeur si elle porte le même nom que la classe dans
+laquelle elle est définie.
+
+class auto_panier extends Panier_nomme {
+function auto_panier() {
+$this->proprietaire=session_id();
+}
+}
+Cette classe hérite de Panier_nomme. Le constructeur initialise le nom du propriétaire comme étant
+l'identifiant de session. Le constructeur peut prendre comme n'importe quelle méthode des
+paramètres optionnels.
+
+class auto_panier extends Panier_nomme {
+function auto_panier($nom="anonyme") {
+$this->proprietaire=$nom;
+}
+}
+$panier=new auto_panier; // le constructeur est appelé avec sa valeur par défaut
+$panier2=new auto_panier(session_id()); // valeur passée
+15.8.2 PHP 5
+Outre le nom de la classe elle-même, PHP 5 propose une méthode générique appelée
+« __construct » (avec deux underscores « _ » au début) en lieu et place de la première méthode
+vue ci-dessus. Ainsi :
+function __construct() {
+$this->proprietaire=session_id();
+}
+revient exactement au même.
+
+15.9 Constructeurs et classes dérivées
+15.9.1 PHP 4 et 5
+Soit les classes A et B suivantes :
+class A {
+function A () {
+echo "Je suis la classe A<br />";
+}
+}
+class B extends A {
+function B () {
+echo "Je suis la classe B<br />";
+}
+}
+S. ROHAUT
+Cours Programmation PHP
+Page 76/93
+
+La création d'un nouvel objet de type B :
+$b=new B;
+Affichera
+Je suis la classe B
+Si une classe n'a pas de constructeur, c'est le constructeur de la classe de base qui est appelé :
+class A {
+function A () {
+echo "Je suis la classe A<br />";
+}
+}
+class B extends A {
+var $var;
+}
+$b=new B; // Je suis la classe A
+On remarque que les constructeurs ne sont pas appelés en cascade. Ainsi dans le cas la classe B, le
+constructeur de la classe A n'est pas appelé, ce qui est logique car PHP ne peut pas savoir par défaut
+comment appeler le constructeur (quels paramètres). On doit donc l'appeler explicitement à l'aide du
+mot-clé « parent »:
+class A {
+function A () {
+echo "Je suis la classe A<br />";
+}
+}
+class B extends A {
+var $var;
+function B()
+{
+echo "Je suis la classe B<br />";
+parent::A();
+}
+}
+$b=new B; // Affiche : je suis la classe B, Je suis la classe A
+15.9.2 PHP 5
+Le PHP 5 réagit de manière presque identique que PHP 4, sauf qu'il est possible d'appeler un
+constructeur en cascade, toujours avec le mot-clé « parent », mais sans connaître le nom du
+constructeur de la classe de base, en utilisant « __construct » :
+class A {
+function A () {
+echo "Je suis la classe A<br />";
+}
+}
+class B extends A {
+var $var;
+function __construct()
+S. ROHAUT
+Cours Programmation PHP
+Page 77/93
+
+{
+echo "Je suis la classe B<br />";
+parent::__construct(); // Appelle le constructeur de A : A()
+}
+}
+$b=new B; // Affiche : je suis la classe B, Je suis la classe A
+15.10 Destructeur
+15.10.1 PHP 4
+Il n'y a pas de destructeur en PHP 4. On fera confiance dans ce cas à la gestion de la mémoire
+(ramasse-miettes) de PHP, ou appeler une méthode particulière de la classe à la fin du script,
+chargée de faire le ménage, ce qui peut être important par exemple lorsqu'on a alloué une ressource
+pour une image dynamique. Pour détruire un objet, il suffit de réaffecter sa variable, ou de la
+détruire avec « unset ». L'objet sera détruit de toute façon implicitement à la fin de l'exécution du
+script.
+
+15.10.2 PHP 5
+Le destructeur est présent en PHP 5. Il se nomme « __destruct » et sera automatiquement
+appelé lors de la destruction de l'objet. Tout comme le constructeur, il n'est pas appelé en cascade et
+doit donc être appelé explicitement lors d'un héritage.
+
+class A {
+function __destruct() {
+echo "Au revoir la classe A<br />";
+}
+}
+class B extends A {
+function __destruct() {
+echo "Au revoir la classe B<br />";
+parent::__destruct();
+}
+}
+$b=new B;
+unset($b); // destruction de l'objet, affiche Au revoir la classe B et A
+
+15.11 Affectation d'objets
+15.11.1 Code commun
+Le fonctionnement des affectations des objets en PHP 4 et PHP 5 n'est pas le même. En, effet sur
+PHP 4, l'affectation se fait par copie, et par référence en PHP 5 ce qui peut induire de grandes
+différences de fonctionnement lorsque du code objet en PHP 4 est utilisé en PHP 5. Nous allons
+voir un exemple à l'aide d'une classe très simple.
+
+class A {
+var $a;
+function A()
+{
+$this->a="Salut";
+S. ROHAUT
+Cours Programmation PHP
+Page 78/93
+
+}
+function affiche()
+{
+echo "$this->a<br />";
+}
+}
+function modif($objet)
+{
+$objet->a='coucou';
+}
+15.11.2 PHP 4
+En PHP 4, les objets sont affectés par copie, un nouvel objet est créé reprenant toutes les propriétés du premier, mais est totalement indépendant. Ainsi voici le résultat du code suivant :
+$obj1=new A;
+$obj2=$obj1; // affectation par copie
+$obj1->affiche(); // affiche salut
+$obj2->affiche(); // affiche Salut
+$obj1->a="Bonjour";
+$obj1->affiche(); // affiche Bonjour
+$obj2->affiche(); // affiche Salut
+modif($obj1); // Par copie !
+
+$obj1->affiche(); // affiche Bonjour
+$obj2->affiche(); // affiche Salut
+De même si on créé une fonction qui doit modifier un objet, comme il est passé par défaut en copie,
+on ne modifie en fait que la copie locale de l'objet. Dans ce cas on le passe par référence.
+
+function modif(&$objet)
+{
+$objet->a='coucou';
+}
+$obj2=&$obj1; // Par référence
+modif($obj1); // Par référence
+$obj1->affiche(); // affiche coucou car on a modifié par référence
+$obj2->affiche(); // affiche coucou
+Donc, si on souhaite créer un code objet en PHP 4 (un peu) compatible avec les objets de PHP5,
+alors on doit effectuer des copies par référence, et passer les objets aux fonctions par référence. Le
+code modifié ci-dessus marche dans les deux cas.
+
+15.11.3 PHP 5
+En PHP 5, les objets sont affectés par référence par défaut et de manière implicite. Ainsi on a
+$obj1=new A;
+$obj2=$obj1; // affectation par référence
+$obj1->affiche(); // affiche salut
+$obj2->affiche(); // affiche Salut
+$obj1->a="Bonjour";
+$obj1->affiche(); // affiche Bonjour
+S. ROHAUT
+Cours Programmation PHP
+Page 79/93
+
+$obj2->affiche(); // affiche Bonjour
+modif($obj1); // Par référence
+$obj1->affiche(); // affiche coucou
+$obj2->affiche(); // affiche coucou
+Ce qui simplifie énormément la tâche des développeurs. Cependant, on peut explicitement
+demander la copie d'un objet à l'aide d'une méthode spéciale « __clone » et de l'instruction
+« clone ». Le clonage consiste à recopier tous les attributs d'une classe dans une autre. Le clonage
+peut être implicite (copie directe par un mécanisme interne de PHP) ou explicite (via la méthode
+__clone).
+
+$obj3=clone $obj1; // on copie implicitement $obj1 dans $obj3
+$obj1->a='Bonjour';
+$obj3->a='Au revoir';
+$obj1->affiche(); // Affiche bonjour
+$obj3->affiche(); // Affiche Au revoir
+Cette méthode fonctionne bien tant qu'on n'utilise pas des informations complexes comme des
+ressources ou des descripteurs de fichiers. Par exemple si dans $obj1 on avait ouvert une connexion
+sur une base de données, on a copié une ressource Base de données, mais elle serait inutilisable, car
+pas ouverte. Il faudrait la rouvrir avec « __clone » :
+class Base {
+private $db;
+function __construct() {
+$this->db=mysql_connect('localhost');
+}
+function __clone() {
+$this->db=mysql_connect('localhost');
+}
+}
+$obj1=new Base;
+$obj2=clone $obj1; // copie : __clone rouvre la connexion pour la copie
+Note : la méthode « __clone » est appelée implicitement si le mot-clé « clone » est utilisé. On
+ne peut pas appeler explicitement cette méthode.
+
+15.12 Comparaison d'objets
+15.12.1 PHP 4
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>

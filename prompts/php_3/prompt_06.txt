@@ -1,0 +1,880 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an expert language model trained to extract meaningful topics from raw text.
+You must follow the instructions carefully and only produce valid XML — no explanations, no extra text.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Perform topic modeling on the following documents. Identify a set of coherent topics based on the content. For each topic, return 4 to 8 representative keywords that best capture its meaning.
+    Return ONLY valid XML output like:
+  <topics>
+    <topic id="1">
+      <word></word>
+    </topic>
+  </topics>
+</instruction>
+  <documents>
+    <document>
+      <chunk i="6">
+On peut effectuer des comparaisons d'objets en PHP4. Deux instances d'objets sont égales si et
+seulement si :
+• elles proviennent de la même classe,
+• elles sont les mêmes attributs,
+• les attributs sont de même valeur.
+
+On peut employer indifféremment la comparaison avec « == » ou « ».
+
+function bool2str($bool) {
+if ($bool false) {
+return 'FALSE';
+} else {
+S. ROHAUT
+Cours Programmation PHP
+Page 80/93
+return 'TRUE';
+}
+}
+function compareObjects(&$o1, &$o2) {
+echo 'o1 == o2 : '.bool2str($o1 == $o2)."\n";
+echo 'o1 != o2 : '.bool2str($o1 != $o2)."\n";
+echo 'o1 o2 : '.bool2str($o1 $o2)."\n";
+echo 'o1 !== o2 : '.bool2str($o1 !== $o2)."\n";
+}
+class Flag {
+var $flag;
+function Flag($flag=true) {
+$this->flag = $flag;
+}
+}
+class SwitchableFlag extends Flag {
+function turnOn() {
+$this->flag = true;
+}
+function turnOff() {
+$this->flag = false;
+}
+}
+$o = new Flag();
+$p = new Flag(false);
+$q = new Flag();
+$r = new SwitchableFlag();
+echo "Compare des instances créées avec les mêmes paramètres\n";
+compareObjects($o, $q);
+echo "\nCompare des instances créées avec différents paramètres\n";
+compareObjects($o, $p);
+echo "\nCompare une instance d'un parent avec celle d'une sous-classe\n";
+compareObjects($o, $r);
+Cet exemple va afficher :
+Compare des instances créées avec les mêmes paramètres
+o1 == o2 : TRUE
+o1 != o2 : FALSE
+o1 o2 : TRUE
+o1 !== o2 : FALSE
+Compare des instances créées avec différents paramètres
+o1 == o2 : FALSE
+o1 != o2 : TRUE
+o1 o2 : FALSE
+o1 !== o2 : TRUE
+Compare une instance d'un parent avec celle d'une sous-classe
+o1 == o2 : FALSE
+o1 != o2 : TRUE
+o1 o2 : FALSE
+o1 !== o2 : TRUE
+S. ROHAUT
+Cours Programmation PHP
+Page 81/93
+
+15.12.2 PHP 5
+PHP 5 fait une différence entre la comparaison simple « == » et complète « ».
+
+Avec « == », PHP retournera vrai si les deux objets ont les mêmes attributs et valeurs, et s'ils sont
+des instances de la même classe, comme pour PHP 4.
+
+Avec « », PHP retournera vrai si les deux objets font référence au même objet de la même
+classe.
+
+$o1=new A;
+$o2=$o1; // référence
+$o3= new A;
+if($o1==$o2) echo "o1==o2<br />";
+else echo "o1!==o2<br />";
+if($o1$o2) echo "o1o2<br />";
+else echo "o1!o2<br />";
+if($o1==$o3) echo "o1==o3<br />";
+else echo "o1!==o3<br />";
+if($o1$o3) echo "o1o3<br />";
+else echo "o1!o3<br />";
+Va afficher
+o1==o2 // o1 et o2 sont identiques (même classe, mêmes attributs et props.)
+
+o1o2 // o1 et o2 sont des références du même objet
+o1==o3 // o1 et o3 sont identiques (même classe, mêmes attributs et props.)
+
+o1!o3 // o1 et o3 ne sont pas des références sur le même objet)
+S. ROHAUT
+Cours Programmation PHP
+Page 82/93
+
+16 Nouveautés en PHP 5
+16.1 Les objets
+16.1.1 La fonction __autoload
+La fonction « __autoload » indique à PHP comment réagir quand on tente de créer un objet
+depuis une classe qui n'a pas été définie. C'est une facilité offerte qui ne se substitue pas forcément
+aux require et include. Elle peut être utile par exemple pour éviter d'inclure l'ensemble des classes
+utilisées dans un projet. On préférera inclure la définition de la classe au moment de la création de
+son instance. La fonction « __autoload » ne prend qu'un paramètre, le nom de la classe. A vous
+de la programmer ensuite pour inclure le code nécessaire.
+
+function __autoload($class) {
+require_once("/inc/{$class]}.php");
+}
+16.1.2 Les classes abstraites
+Les classes abstraites sont une nouveauté de PHP 5. Une classe abstraite est une classe sans implémentation (qui ne peut être instanciée), représentée par au moins une fonction abstraite
+(virtuelle pure, sans code), l'implémentation étant effectuée dans les classes dérivées.
+
+Les classes abstraites servent essentiellement à définir une classe de base normalisée dont la structure pourra être reprise pour le développement d'autres classes effectives.
+
+Toute classe qui contient au moins une méthode abstraite doit être définie comme abstraite.
+
+Si la classe dérivée ne redéfinit pas une méthode abstraite de la classe parente (de base), elle devra
+être déclarée abstraite à son tour et ne pourra être instanciée.
+
+La classe qui implémente la méthode abstraite doit être définie avec la même visibilité ou plus
+faible. Si la méthode abstraite est définie en tant que protégée, la fonction l'implémentant doit être
+définie en tant que protégée ou publique.
+
+L'instruction pour définir des classes et méthodes est « abstract ».
+
+// Classe abstraite : elle contient une méthode abstraite
+abstract class AbstractClass {
+// Méthode abstraite qui devra être redéfinie dans la classe dérivée
+abstract protected function getValue();
+public function prt() {
+print $this->getValue();
+}
+}
+class ConcreteClass1 extends AbstractClass {
+// Redéfinition de la méthode abstraite de la classe de base
+protected function getValue() {
+return "ConcreteClass1";
+}
+}
+S. ROHAUT
+Cours Programmation PHP
+Page 83/93
+
+class ConcreteClass2 extends AbstractClass {
+// Redéfinition de la méthode abstraite de la classe de base
+protected function getValue() {
+return "ConcreteClass2";
+}
+}
+$class1 = new ConcreteClass1;
+$class1->prt(); // affiche ConcreteClass1
+$class2 = new ConcreteClass2;
+$class2->prt(); // affiche ConcreteClass2
+16.1.3 Classes, méthodes et variables finales
+PHP inclut un nouveau mécanisme de protection interdisant aux classes dérivées de réimplémenter
+une méthode ou une variable, ou à une classe d'être elle-même dérivée. Avec le mot-clé
+« final », on indique que la classe, la méthode ou la variable sont définitives et qu'elles ne
+pourront plus être implémentées. Voici un cas d'erreur :
+class A {
+protected $val;
+function __construct() {
+$this->val=1;
+}
+final function affiche() {
+print $this->val;
+}
+}
+class B extends A {
+function __construct() {
+parent::_construct();
+}
+function affiche() { // ERREUR ! ON NE PEUT PAS REDEFINIR !
+
+print $this->val;
+}
+}
+$o1=new B;
+$o1->affiche();
+Dans la classe B nous avons tenté de récrire la méthode affiche déclarée en « final », et PHP
+nous retournera une erreur.
+
+16.1.4 Les interfaces objet
+Les interfaces permettent de créer du code qui spécifie quelles méthodes et attributs une classe peut
+implémenter sans avoir à définir comment elles seront gérées. Toutes les méthodes spécifiées dans
+l'interface doivent être implémentées dans la classe qui la définit. L'interface est donc un moyen de
+définir les pré-requis obligatoires à la construction d'un modèle de classe en en donnant la liste des
+prototypes.
+
+On créé une interface avec le mot-clé « interface ». Dans notre exemple, nous allons définir
+que toutes les classes qui implémentent notre interface doivent obligatoirement définir les fonctions
+affiche et incrémente.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 84/93
+interface Template
+{
+public function affiche();
+public function incremente($cpt);
+}
+Attention : la déclaration des méthodes (notamment des paramètres) doit être
+rigoureusement identique dans la classe à celle de l'interface.
+
+On indique qu'une classe implémente une interface avec le mot-clé « implements ».
+
+class A implements Template {
+protected $val;
+function __construct() {
+$this->val=1;
+}
+function affiche() {
+print $this->val;
+}
+function incremente($cpt) {
+$this->val+=$cpt;
+}
+}
+$o1=new A;
+$o1->incremente(2);
+$o1->affiche();
+Une classe peut implémenter plusieurs interfaces en même temps. Dans ce cas la liste des interfaces
+doit être précisée après le mot-clé « implements », et chaque interface séparée par des virgules.
+
+interface Template {
+public function affiche();
+public function incremente($cpt);
+}
+interface Template2 {
+public function decremente($cpt);
+}
+class A implements Template, Template2 {
+protected $val;
+function __construct() {
+$this->val=1;
+}
+function affiche() {
+print $this->val;
+}
+function incremente($cpt) {
+$this->val+=$cpt;
+}
+function decremente($cpt) {
+$this->val-=$cpt;
+}
+}
+S. ROHAUT
+Cours Programmation PHP
+Page 85/93
+
+16.1.5 Gestion dynamique des méthodes et attributs
+On ne peut toujours pas surcharger directement ses méthodes, attributs et opérateurs en PHP 5
+comme en C++. Cependant de nouvelles fonctions permettent d'intercepter des appels à des
+méthodes ou attributs non prévus.
+
+Note : Ces méthodes peuvent uniquement être déclenchées lorsque votre objet, hérité ou non,
+ne contient pas l'attribut ou la méthode que vous tentez d'accéder. Dans le cas contraire, la
+méthode ou l'attribut sont utilisés.
+
+Pour une méthode, on utilise la méthode « __call » qui prend deux paramètres. Le premier est le
+nom de la méthode, le second est un tableau des paramètres passés à la méthode. Imaginons que
+nous souhaitons appeler la méthode « test » de notre objet, mais que nous n'avions pas prévu ce
+cas. Il suffit de gérer ce cas dans la méthode « __call » :
+class A {
+function __call($m, $a) { // Gère les appels aux méthodes non définies
+if($m=="test") {
+echo "fonction test appelée avec les valeurs $a";
+return $a;
+}
+}
+}
+$o1 = new A();
+$a = $o1->test(1, "2", 3.4, true); // test n'existe pas et pourtant
+
+print_r($a); // ça marche et ça retourne les paramètres de test.
+
+Pour un attribut, on utilise les méthodes « __get » et « __set ». La méthode « __get » est
+appelée implicitement lorsque vous tentez d'accéder à la valeur d'une variable qui n'est pas définie
+dans votre classe. Elle prend comme unique paramètre le nom de l'attribut auquel vous tentez
+d'accéder. La méthode « __set » est appelée lorsque vous tentez d'affecter une valeur à un attribut
+qui n'est pas défini, et prend deux paramètres : le nom de la variable et la valeur affectée.
+
+class A {
+private $tab=array();
+function __get($v) {
+if(!isset($this->tab[$v])) return false;
+else return $this->tab[$v];
+}
+function __set($v,$c) {
+$this->tab[$v]=$c;
+}
+}
+$o1 = new A();
+$o1->var=1; // Le membre var n'existe pas et pourtant
+
+echo $o1->var; // ça marche et ça affiche 1 !
+
+16.1.6 Les itérations d'objets
+PHP 5 indexe les attributs de ses objets. Il est possible d'accéder à la liste des attributs (si la
+visibilité le permet) à l'aide du simple boucle itérative comme « foreach ».
+
+S. ROHAUT
+Cours Programmation PHP
+Page 86/93
+
+class A {
+public $v1="salut";
+public $v2="les";
+public $v3="amis !";
+private $v4="privé";
+}
+$o1 = new A();
+foreach($o1 as $cle => $valeur) {
+echo "$cle = $valeur <br />\n";
+}
+Ce code affiche
+v1 = salut
+v2 = les
+v3 = amis !
+
+Et les attributs qui ne sont pas visibles ne sont pas affichés.
+
+Il existe des interfaces prédéfinies permettant de créer sa propre classe d'itération. La classe
+« Iterator » implémente les cinq méthodes suivantes :
+• current
+• next
+• key
+• valid
+• rewind
+On peut donc créer une classe implémentant cette interface pour, par exemple, naviguer dans le
+résultat d'une requête de base de données, ou dans un tableau.
+
+16.1.7 Type hinting
+PHP 5 permet de contrôler le type de valeur passé en paramètre à une fonction. Prenons le code
+suivant qui retourne les infos d'un utilisateur de classe « utilisateur » :
+function detail($user) {
+return $user->infos();
+}
+La fonction attend un objet particulier de classe utilisateur. Tout fonctionnera à merveille si votre
+code est blindé. Cependant si on lui passe un entier, ça ne marchera pas, mais c'est seulement lors
+du « return $user->infos() » que PHP générera une erreur. Le « type hinting »
+indique à PHP ce qu'attend exactement la fonction.
+
+function detail(utilisateur $user) {
+return $user->infos();
+}
+Cette fois PHP 5 retournera une erreur dès l'appel à la fonction si elle ne reçoit pas un objet de
+classe utilisateur.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 87/93
+
+16.2 Les exceptions
+16.2.1 try catch
+PHP 5 inclut enfin le support des exceptions avec le bloc « try catch ». Ainsi on peut
+placer du code « à risque » ou un code « exceptionnel » qui peut produire une erreur dans un bloc
+« try », et gérer l'erreur, selon son type, dans des blocs « catch ». On put utiliser plusieurs
+blocs « catch » suivant le type d'erreur généré. Attention, quand c'est possible on gérera les
+erreurs avec du code normal.
+
+try { // Code à risque d'erreur
+}
+catch (Exception $e) {
+// Code réglant la situation exceptionnelle
+}
+Au sein du bloc « try », l'exécution d'une instruction erronée va déclencher l'émission d'un signal
+: une exception. Ce signal interrompt l'exécution du reste de tout le bloc. En fonction du signal, PHP
+exécutera le bloc « catch » approprié.
+
+On remarque que dans le bloc « catch », PHP gère les exceptions à l'aide d'une classe spéciale
+appelée « Exception ». Une exception est en fait définie par un objet de cette classe ou d'une
+classe dérivée. On peut donc créer ses propres gestionnaires d'exceptions. Comme on peut écrire
+plusieurs blocs « catch » pour gérer les exceptions suivant le type d'objet.
+
+16.2.2 Déclenchement avec throw
+On peut déclencher manuellement une exception à l'aide de l'instruction « throw ». Voici un code
+qui provoque toujours une exception :
+try {
+$erreur="Message d'erreur";
+throw new Exception($erreur);
+echo 'Jamais exécuté';
+} catch (Exception $e) {
+echo 'Exception: '.$e->getMessage().' à la ligne '.$e->getLine()."\n";
+}
+A l'aide de l'instruction « throw » nous avons provoqué l'émission d'une exception qui sera gérée
+par la classe « Exception ». Dans ce cas, PHP va rechercher le bloc « catch » correspondant au
+type d'objet créé pour gérer l'exception, ici «catch(Exception $e) ».
+
+16.2.3 classe Exception et classes personnalisées
+La classe « exception » est imposée par PHP comme classe de base et parente de toute classe
+utilisable avec « catch ». La classe de base dispose des méthodes suivantes:
+• __construct($erreur,$code) : le constructeur avec le message d'erreur et le
+code
+• getMessage() : retourne le message d'erreur généré
+S. ROHAUT
+Cours Programmation PHP
+Page 88/93
+
+• getCode() : Code erreur de l'exception
+• getLine() : numéro de la ligne du script ayant provoqué l'exception
+• getFile() : nom du script PHP ayant provoqué l'exception
+• getTrace() et getTraceAstring() : gestion de la pile d'appels, un peu comme
+Java.
+
+• __toString() : chaîne formatée à afficher.
+
+Les méthodes « getXXXX() » sont finales. On ne peut donc pas les étendre. Mais le constructeur
+et la méthode « __toString » peuvent être étendus. On peut donc créer sa propre classe
+dérivée.
+
+class MonException extends Exception {
+public function __construct($message="Erreur par défaut", $code = 0) {
+parent::__construct($message, $code);
+}
+}
+$a=1;
+try {
+switch($a) {
+case 1: throw new MonException("Ouille !",$a);
+break;
+case 2: throw new Exception("Aie !",$a);
+break;
+}
+}
+catch(MonException $e) {
+echo $e->getMessage();
+}
+catch (Exception $e) {
+echo 'Exception: '.$e->getMessage().' ligne '.$e->getLine()."\n";
+}
+Si $a vaut 1, « MonException » sera envoyé, si $a vaut 2, ce sera « Exception ».
+
+16.2.4 PHP : Erreur ou Exception ?
+
+Il se peut que dans certains cas, PHP déclenche naturellement une exception suivant l'exécution
+d'une fonction. Dans ce cas, ce sera indiqué dans la documentation PHP (voir site PHP) en ligne.
+
+Mais dans la plupart des cas, c'est l'ancien système de gestion des erreurs qui est utilisé. Ainsi le
+code suivant
+try { $a=fopen('toto','r');
+}
+catch(Exception $e) {
+echo 'Exception: '.$e->getMessage();
+}
+ne donnera pas du tout le résultat escompté. L'exécution de « fopen » ne provoquera pas l'émission
+d'une exception mais une erreur PHP de type WARNING :
+Warning: fopen(toto) [function.fopen]: failed to open stream: No such file or S. ROHAUT
+Cours Programmation PHP
+Page 89/93
+
+directory in C:\apachefriends\xampp\htdocs\objet\panier.php on line 21
+PHP gère plusieurs niveau d'erreurs : WARNING, NOTICE, etc. Par exemple, un problème
+d'ouverture de fichier émet une erreur de type WARNING, une erreur de syntaxe PARSE,
+l'utilisation d'une variable non déclarée un NOTICE. On peut régler et modifier les niveaux d'erreurs
+dans le php.ini, mais aussi dynamiquement via des fonctions.
+
+Parmi ces fonctions, deux peuvent nous intéresser. « set_error_handler » permet de modifier
+le comportement par défaut de PHP lorsqu'il rencontre une erreur dans votre script. Au lieu d'exécuter son propre gestionnaire, il exécutera le votre. Attention, ce gestionnaire ne peut pas gérer
+certains types d'erreurs (syntaxe, etc, voir http://www.php.net/manual/en/function.set-error-
+handler.php), mais dans le cas d'un simple WARNING ou NOTICE il n'y a pas de problème. On lui passe en paramètre le nom de sa propre fonction qui doit gérer l'erreur. Les paramètres sont assez
+parlants. Dans notre fonction, nous allons déclencher une exception à la réception de n'importe
+quelle erreur.
+
+function gest_erreur($errno, $errstr, $errfile, $errline)
+{
+throw new Exception("$errstr line $errline",$errno);
+}
+set_error_handler("gest_erreur");
+A l'exécution de notre bloc « try catch », nous aurons cette fois
+Exception: fopen(toto) [function.fopen]: failed to open stream: No such file or directory line 21
+ce que nous voulions : nous avons bien déclenché une exception.
+
+16.2.5 Exception par défaut
+Si certaines instructions PHP génèrent des exceptions et que ces instructions ne sont pas au sein
+d'un bloc « try catch », PHP générera une exception par défaut avec son propre gestionnaire
+d'exceptions. On peut modifier cet état avec la fonction « set_exception_handler ».
+
+function exception_handler($exception) {
+echo "Exception imprévue : " , $exception->getMessage(), "\n";
+}
+set_exception_handler('exception_handler');
+S. ROHAUT
+Cours Programmation PHP
+Page 90/93
+
+17 Sauvegarder ses objets
+17.1 Cas d'une session
+Les informations indiquées ici fonctionnent aussi bien en PHP 4 qu'en PHP 5. Il faut distinguer le
+cas des sessions où il faut passer un objet d'une page à l'autre et le cas d'une sauvegarde d'un objet
+sur disque.
+
+Dans le premier cas, si les sessions sont utilisées les objets peuvent être passés directement d'une
+page à une autre en respectant quelques règles :
+• La session doit être ouverte sur chaque page par la fonction « session_start() » avant l'utilisation
+de l'objet
+• Les classes doivent être définies avant l'ouverture de session par session_start() et l'appel à l'objet, ce qui implique soit de répéter cette déclaration dans chaque page, soit de la placer dans
+un fichier à inclure avec « require() » ou « require_once() » en début de script.
+
+• L'objet doit être une variable de session stockée soit par la fonction « session_register() », soit à
+l'aide du tableau global « $_SESSION[] ».
+
+Voici un exemple :
+objet.inc :
+<?
+
+class Panier {
+// Eléments de notre panier
+var $contenu;
+// Ajout de $qte articles de type $code au panier
+function ajout_article ($code, $qte) {
+if(isset($this->contenu[$code])) $this->contenu[$code] += $qte;
+else $this->contenu[$code] = $qte;
+}
+// Suppression de $num articles du type $artnr du panier
+function suppr_article ($code, $qte) {
+if ($this->contenu[$code] > $qte) {
+$this->contenu[$code] -= $qte;
+return TRUE;
+} else {
+return FALSE;
+}
+}
+function liste_article() {
+foreach($this->contenu as $ref => $qte) echo "$ref=$qte <br />";
+}
+}
+class Panier_nomme extends Panier {
+var $proprietaire;
+function nom_proprietaire ($nom) {
+$this->proprietaire = $nom;
+}
+}
+S. ROHAUT
+Cours Programmation PHP
+Page 91/93
+
+?>
+objet.php :
+<?php
+require_once("objet.inc");
+session_start();
+?>
+<html>
+<head>
+<title>Page 1</title>
+</head>
+<body>
+<?
+
+$_SESSION['objet']=new Panier_nomme;
+$_SESSION['objet']->nom_proprietaire("seb");
+$_SESSION['objet']->ajout_article("ref01",3);
+$_SESSION['objet']->suppr_article("ref01",1);
+$_SESSION['objet']->ajout_article("ref02",3);
+echo "{$_SESSION['objet']->proprietaire}<br />";
+?>
+<a href="objet2.php">Page 2</a>
+</body>
+</html>
+objet2.php :
+<?php
+require_once("objet.inc");
+session_start();
+?>
+<html>
+<head>
+<title>Page 2</title>
+</head>
+<body>
+<?
+
+echo $_SESSION['objet']->proprietaire."<br />";
+$_SESSION['objet']->liste_article();
+?>
+</body>
+</html>
+17.2 Autres cas
+Rien n'empêche de conserver un objet pour le récupérer plus tard, même après avoir fermé une
+session. Pour ça on peut le stocker dans un fichier ou en base de données. Pour récupérer un format
+correct de données pour stockage, il faut utiliser les fonctions « serialize() » et « unserialize() ».
+
+La première fonction retourne une chaîne de texte représentant la variable (pas forcément un objet)
+passée en paramètre. Ce format de donnée peut ainsi être stocké dans la manière qui vous convient.
+
+Le seconde fonction prend comme paramètre la chaîne de texte issue de serialize et retourne la
+variable du type originel, dans notre cas un objet.
+
+classa.inc:
+<?php
+class A {
+var $one = 1;
+function show_one() {
+echo $this->one;
+S. ROHAUT
+Cours Programmation PHP
+Page 92/93
+}
+}
+?>
+page1.php:
+<?php
+include("classa.inc");
+$a = new A;
+$s = serialize($a);
+// enregistrez $s où la page2.php pourra le trouver.
+
+$fp = fopen("store", "w");
+fputs($fp, $s);
+fclose($fp);
+?>
+page2.php:
+<?php
+// Ceci est nécessaire pour que unserialize() fonctionne correctement
+include("classa.inc");
+$s = implode("", @file("store"));
+unserialize($s);
+// maintenant, utilisez la méthode show_one de l'objet $a.
+
+$a->show_one();
+?>
+S. ROHAUT
+Cours Programmation PHP
+Page 93/93
+
+Document Outline
+
+1Introduction 1.1Définition
+1.2Historique
+1.3Utilisation pratique
+1.4Pages statiques vs pages dynamiques
+1.5Scripts CGI
+1.6Pages dynamiques et PHP
+1.7Pourquoi préférer PHP à d'autres langages comme ASP ?
+
+1.8Ce que vous devez déjà connaître
+1.9Le nécessaire serveur
+1.10Le nécessaire client
+1.11Le respect des standards
+
+2Bases :Présentation 2.0.1Syntaxe de base
+2.1Intégration à HTML
+2.2Séparateur d'instructions
+2.3Bloc d'instructions
+2.4Commentaires
+
+3Travailler avec des variables 3.1Déclarer une variable
+3.2Portée des variables
+3.3Variables prédéfinies
+3.4Variables dynamiques
+3.5Types de variables 3.5.1booléens
+3.5.2Entiers
+3.5.3Virgule flottante
+3.5.4Chaînes de caractères
+3.5.5Les tableaux
+3.5.6La variable objet
+
+3.6Les constantes
+3.7Obtenir le type d'une variable
+3.8Définir et supprimer une variable
+
+4Les opérateurs 4.1La précédence des opérateurs
+4.2Opérateurs arithmétiques
+4.3Opérateurs d'assignation
+4.4Opérateurs sur les bits
+4.5Opérateurs de comparaison
+4.6Opérateur d'erreur
+4.7Opérateur d'exécution
+4.8Opérateurs d'incrémentation/décrémentation
+4.9Opérateurs logiques
+4.10Opérateurs de chaînes
+4.11Opérateur de tableaux
+
+5La notion d'expression
+6Les structures de contrôle 6.1if
+6.2while 6.2.1while classique
+6.2.2do while
+
+6.3for
+6.4foreach
+6.5break et continue
+6.6switch
+6.7return
+6.8require et include (_once)
+
+7Les fonctions 7.1Syntaxe et portée
+7.2Arguments
+7.3Valeur de retour
+7.4Fonctions internes
+
+8Gestion des formulaires en PHP 8.1GET et POST
+8.2Récupération par tableau
+8.3Récupération directe
+8.4Utiliser des tableaux
+
+9Date et heure 9.1Localisation
+9.2Récupérer la date et l'heure 9.2.1date()
+9.2.2date locale strftime()
+9.2.3Retour par tableau getdate()
+9.2.4L'heure localtime()
+
+9.3Récupérer n'importe quelle date
+
+10MySQL 10.1Présentation
+10.2Outils 10.2.1PhpMyAdmin
+10.2.2MysqlCC
+
+10.3Créer une base
+10.4Utilisateurs et droits
+10.5Créer et modifier des tables 10.5.1Types Numériques 10.5.1.1Types entiers
+10.5.1.2Types réels (flottants)
+10.5.1.3Types booléens
+
+10.5.2Types caractères 10.5.2.1Types CHAR
+10.5.2.2Types TEXT
+10.5.2.3Type ENUM
+10.5.2.4Type SET
+
+10.5.3Types date 10.5.3.1Formats supportés
+10.5.3.2Type DATETIME
+10.5.3.3Type DATE
+10.5.3.4Type TIMESTAMP
+10.5.3.5Type TIME
+10.5.3.6Type YEAR
+
+10.5.4Création : Syntaxe SQL
+10.5.5Types de tables (MyISAM et InnoDB)
+10.5.6Index FULLTEXT 10.5.6.1Création
+10.5.6.2Recherche
+10.5.6.3Recherche booléenne
+
+10.6MySQL et PHP 10.6.1Connexion à une base de données 10.6.1.1Connexion au serveur
+10.6.1.2Choix d'une base
+10.6.1.3Fermeture d'une connexion
+10.6.1.4Séquence complète pour une base
+
+10.6.2Les requêtes 10.6.2.1Exécuter une requête
+10.6.2.2Nombre de lignes affectées
+10.6.2.3Nombre de lignes retournées
+10.6.2.4Récupérer les résultats
+10.6.2.5Insertion avec auto-incrément
+
+10.6.3Récupération des erreurs
+
+11Le système de fichiers 11.1Travail sur les fichiers 11.1.1Ouverture
+11.1.2Lecture 11.1.2.1fgets()
+11.1.2.2fread();
+11.1.2.3fscanf()
+11.1.2.4fgetc()
+11.1.2.5fgetss()
+11.1.2.6fgetcsv()
+11.1.2.7Renvoyer un fichier par la sortie standard
+
+11.1.3Ecriture
+11.1.4Déplacement 11.1.4.1fseek()
+11.1.4.2ftell()
+11.1.4.3rewind()
+
+11.1.5Fin de fichier
+11.1.6Fermeture
+
+11.2Travail sur les répertoires 11.2.1Répertoire actuel
+11.2.2Se déplacer
+11.2.3Ouvrir, lister, fermer
+11.2.4Récupérer toutes les entrées
+
+11.3Travail sur le système de fichiers 11.3.1Informations sur le fichier
+11.3.2Actions sur les fichiers et répertoires
+
+11.4Upload de fichiers
+
+12Travail sur chaînes 12.1Fonctions pour code HTML et MySQL 12.1.1Gestion des caractères verrouillés
+12.1.2balises et caractères spéciaux HTML
+
+12.2Fonctions texte générales 12.2.1Découper une chaîne
+12.2.2Rechercher et comparer
+
+13Sessions et cookies 13.1Les cookies 13.1.1Création
+13.1.2Accès
+13.1.3Suppression
+
+13.2Identification HTTP 13.2.1Connexion
+13.2.2Déconnexion
+
+13.3Sessions PHP 13.3.1Principe
+13.3.2Utilisation 13.3.2.1Ouverture
+13.3.2.2Variables de session
+
+13.3.3Expiration de la session
+13.3.4Changer l'accès par défaut
+
+14Images 14.1Pré-requis importants
+14.2Créer une image 14.2.1Types possibles
+14.2.2Création 14.2.2.1Nouvelle image dynamique
+14.2.2.2Récupération d'une image existante
+
+14.2.3Publication
+14.2.4Chargement via une autre page
+
+14.3Travailler sur les Images 14.3.1Récupérer des informations
+14.3.2Les couleurs
+14.3.3Dessin 14.3.3.1Remplissage
+14.3.3.2Point
+14.3.3.3Ligne
+14.3.3.4Rectangle
+14.3.3.5Cercle, ellipse
+14.3.3.6Polygones
+14.3.3.7Texte simple
+
+15La programmation objet 15.1Structure
+15.2Création d'un objet
+15.3Accès aux membres 15.3.1PHP 4 et 5
+15.3.2PHP 5
+
+15.4L'opérateur ::
+15.5Les variables, protection 15.5.1PHP 4.x
+15.5.2PHP 5.x 15.5.2.1Protection des variables et fonctions
+15.5.2.2attributs et méthodes statiques
+15.5.2.3constantes de classe
+
+15.6Héritage et polymorphisme
+15.7Les mots-clés parent et self
+15.8Constructeurs 15.8.1PHP 4 et 5
+15.8.2PHP 5
+
+15.9Constructeurs et classes dérivées 15.9.1PHP 4 et 5
+15.9.2PHP 5
+
+15.10Destructeur 15.10.1PHP 4
+15.10.2PHP 5
+
+15.11Affectation d'objets 15.11.1Code commun
+15.11.2PHP 4
+15.11.3PHP 5
+
+15.12Comparaison d'objets 15.12.1PHP 4
+15.12.2PHP 5
+
+16Nouveautés en PHP 5 16.1Les objets 16.1.1La fonction __autoload
+16.1.2Les classes abstraites
+16.1.3Classes, méthodes et variables finales
+16.1.4Les interfaces objet
+16.1.5Gestion dynamique des méthodes et attributs
+16.1.6Les itérations d'objets
+16.1.7Type hinting
+
+16.2Les exceptions 16.2.1try catch
+16.2.2Déclenchement avec throw
+16.2.3classe Exception et classes personnalisées
+16.2.4PHP : Erreur ou Exception ?
+
+16.2.5Exception par défaut
+
+17Sauvegarder ses objets 17.1Cas d'une session
+17.2Autres cas
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
