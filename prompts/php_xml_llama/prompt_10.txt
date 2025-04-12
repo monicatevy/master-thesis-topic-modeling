@@ -1,0 +1,994 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an expert language model trained to extract meaningful topics from raw text.
+You must follow the instructions carefully and only produce valid XML — no explanations, no extra text.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Perform topic modeling on the following documents. Identify a set of coherent topics. For each topic, return a few representative keywords that capture its meaning.
+    Return ONLY valid XML output like:
+  <topics>
+    <topic id="1">
+      <word></word>
+      <word></word>
+      <word></word>
+    </topic>
+  </topics>
+</instruction>
+  <documents>
+    <document>
+      <chunk i="4">
+matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+</contact>
+<contact id="2" >
+<prenom> JEAN</prenom>
+<nom> DURAND</nom>
+<naissance> 1983-01-13</naissance>
+</contact>
+<contact id="3" >
+<prenom> JEANNE</prenom>
+<nom> GUDULE</nom>
+<naissance> 1967-11-06</naissance>
+</contact>
+<contact id="4" >
+<prenom> EMILIO</prenom>
+<nom> ZAPATA</nom>
+<naissance> 1956-12-01</naissance>
+</contact>
+<contact id="5" >
+<prenom> NICOLAS</prenom>
+<nom> JOURDAIN</nom>
+<naissance> 2000-09-10</naissance>
+</contact>
+<contact id="6" >
+<prenom> MARIE</prenom>
+<nom> DUPUY</nom>
+<naissance> 1986-01-11</naissance>
+</contact>
+<contact id="7" >
+<prenom> LOU</prenom>
+<nom> ANDREAS</nom>
+<naissance> 1861-02-12</naissance>
+</contact>
+<contact id="9" >
+<prenom> Franz</prenom>
+<nom> Kafka</nom>
+<naissance> 1883-07-03</naissance>
+</contact>
+<contact id="11" >
+<prenom> Joe</prenom>
+<nom> Dalton</nom>
+<naissance> 2003-12-06</naissance>
+</contact>
+</mescontacts>
+3.26.7 Traitements avec DOM :
+Ecriture de fichier XML avec DOM en utilisant des données provenant d’une Base de Données.
+
+Partons de la table films suivante :
+3.26. Manipuler XML avec PHP
+65
+Cours PHP Accéléré, Version 0.9.1
+CREATE TABLE IF NOT EXISTS `films` (
+`code_filmìnt(11) NOT NULL AUTO_INCREMENT,
+`titre_original` varchar(50) DEFAULT NULL,
+`titre_francais` varchar(50) DEFAULT NULL,
+`pays` varchar(20) DEFAULT NULL,
+`dateìnt(11) DEFAULT NULL,
+`dureeìnt(11) DEFAULT NULL,
+`couleur` varchar(10) DEFAULT NULL,
+`realisateurìnt(11) DEFAULT NULL,
+ìmagè varchar(20) DEFAULT NULL,
+PRIMARY KEY(`code_film`)
+)
+et créons un fichier XML avec les données de cette table en utilisant DOM :
+<?php
+// avec le fichier connexion.php utilisé auparavant
+require("connexion.php");
+$connexion=connect_bd();
+$sql="SELECT * from films limit 10";
+$data=$connexion->query($sql);
+if ($data){
+$document = new DomDocument();
+$document->preserveWhiteSpace = false;
+$document->formatOutput = true;
+// on crée la racine <lesfilms> et on l'insère dans le document
+$lesfilms = $document->createElement('lesfilms');
+$document->appendChild($lesfilms);
+// On boucle
+pour tous les films trouvés dans la BD:
+while($unfilm=$data->fetch(PDO::FETCH_OBJ))
+{
+$film=$document->createElement('film');
+$film->setAttribute('idreal', $unfilm->realisateur);
+$lesfilms->appendChild($film);
+// on crée l'élément title et on l'ajoute à $film
+$title = $document->createElement('titre');
+$film->appendChild($title);
+// on définit le texte pour $title
+$text=$document->createTextNode(utf8_encode($unfilm->titre_
+˓→original));
+$title->appendChild($text);
+//crée et ajoute le realisateur a $film
+$realisateur=$document->createElement('date');
+$id=$document->createTextNode($unfilm->date);
+$realisateur->appendChild($id);
+$film->appendChild($realisateur);
+}
+$document->save('myFilms.xml');
+(suite sur la page suivante)
+66
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+echo "Export XML fini !";
+}
+else { echo "Aucun film dans la base !" ;}
+?>
+3.26.8 Exécution :
+Creation XML avec DOM
+3.26.9 Resultat :
+<?xml version="1.0"?>
+<lesfilms>
+<film idreal="7" >
+<titre> Pandora and the flying Dutchman
+</
+˓→titre>
+<date> 1951</date>
+</film>
+<film idreal="8" >
+<titre> Johnny Guitar
+</
+˓→titre>
+<date> 1954</date>
+</film>
+<film idreal="9" >
+<titre> Woman under the Influence (A)
+</
+˓→titre>
+<date> 1974</date>
+</film>
+<film idreal="10" >
+<titre> Apartment (The)
+</
+˓→titre>
+<date> 1960</date>
+</film>
+<film idreal="11" >
+<titre> Victor/Victoria
+</
+˓→titre>
+<date> 1982</date>
+</film>
+<film idreal="12" >
+<titre> Modern Times
+</
+˓→titre>
+<date> 1936</date>
+</film>
+<film idreal="13" >
+(suite sur la page suivante)
+3.26. Manipuler XML avec PHP
+67
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+<titre> M&#xC3;&#xA9; pris (Le)
+˓→
+</titre>
+<date> 1963</date>
+</film>
+<film idreal="14" >
+<titre> Jour de f&#xC3;&#xAA; te
+˓→
+</titre>
+<date> 1948</date>
+</film>
+<film idreal="15" >
+<titre> Olvidados (Los)
+</
+˓→titre>
+<date> 1950</date>
+</film>
+<film idreal="16" >
+<titre> West Side Story
+</
+˓→titre>
+<date> 1961</date>
+</film>
+</lesfilms>
+3.26.10 Relecture avec SimpleXML :
+<?php
+$lesfilms = simplexml_load_file('myFilms.xml');
+foreach ($lesfilms->film as $film) {
+echo "Titre :". utf8_decode($film->titre)."<br/> \n"; foreach($film->attributes() as $a => $b) {
+echo $a, '="', $b, " \"\n";
+}
+print "Annee : {$film->annee} <br/> \n";
+}
+?>
+3.26.11 Exécution :
+Lecture XML avec SimpleXML
+3.26.12 Resultat brut :
+68
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+Titre :Pandora and the flying Dutchman
+˓→<br/>
+idreal="7"
+Annee :
+<br/>
+Titre :Johnny Guitar
+˓→<br/>
+idreal="8"
+Annee :
+<br/>
+Titre :Woman under the Influence (A)
+˓→<br/>
+idreal="9"
+Annee :
+<br/>
+Titre :Apartment (The)
+˓→<br/>
+idreal="10"
+Annee :
+<br/>
+Titre :Victor/Victoria
+˓→<br/>
+idreal="11"
+Annee :
+<br/>
+Titre :Modern Times
+˓→<br/>
+idreal="12"
+Annee :
+<br/>
+Titre :Mépris (Le)
+˓→<br/>
+idreal="13"
+Annee :
+<br/>
+Titre :Jour de fête
+˓→<br/>
+idreal="14"
+Annee :
+<br/>
+Titre :Olvidados (Los)
+˓→<br/>
+idreal="15"
+Annee :
+<br/>
+Titre :West Side Story
+˓→<br/>
+idreal="16"
+Annee :
+<br/>
+3.27 Architecture de type MVC avec PHP
+3.27.1 Problème
+Lorsqu’un projet augmente, le besoin de s’organiser et de permettre plus de réutilisabilité et de lisibilité demande une certaine méthode. MVC = Modèle Vue Controleur peut être une solution 3.27. Architecture de type MVC avec PHP
+69
+Cours PHP Accéléré, Version 0.9.1
+intéressante.
+
+Nous allons commencer à nous familiariser avec les composants d’un Framework MVC et à
+voir l’utilité de recourir à de tels outils.
+
+Une
+introduction
+générale
+à
+ce
+sujet
+se
+trouve
+ici
+(http
+://sym-
+fony.com/doc/current/book/from_flat_php_to_symfony2.html)
+3.27.2 Du PHP pur aux templates PHP :
+Considérons le code suivant en interrogeant la table CARNET vue précemment depuis PHP
+avec PDO :
+<?php
+require("connect.php");
+$dsn="mysql:dbname=".BASE.";host=".SERVER;
+try{
+$connexion=new PDO($dsn,USER,PASSWD);
+}
+catch(PDOException $e){
+printf("Echec connexion : %s\n", $e->getMessage());
+exit();
+}
+$sql="SELECT * from CARNET";
+if(!$connexion->query($sql))
+echo "Pb pour acceder au CARNET";
+else
+{
+foreach ($connexion->query($sql) as $row){
+echo $row['NOM']<br/>\n";
+}
+}
+?>
+On peut observer quelques défauts dans le code ci-dessus :
+— Réutilisabilté du code très réduite
+— Si on fabrique un formulaire avec les entrées du carnet, où doit-on mettre le code correspondant ?
+
+3.27.3 Un template PHP :
+On peut améliorer un peu les choses :
+<?php
+require("connect.php");
+$dsn="mysql:dbname=".BASE.";host=".SERVER;
+try
+{
+(suite sur la page suivante)
+70
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+$connexion=new PDO($dsn,USER,PASSWD);
+}
+catch(PDOException $e)
+{
+printf("Echec connexion : %s\n", $e->getMessage());
+exit();
+}
+$sql="SELECT * from CARNET";
+if(!$connexion->query($sql))
+echo "Pb pour acceder au CARNET";
+else
+{
+$amis=Array();
+foreach ($connexion->query($sql) as $row){
+$amis[]=$row;
+}
+require "templates/listeamis.php";
+}
+?>
+Avec un template listeamis.php à placer dans templates/listeamis.php :
+<!DOCTYPE html>
+< html>
+< head>
+< title>Liste de mes Amis</title>
+</head>
+< body>
+< h1>List of friends</h1>
+< ul>
+<?php foreach ($amis as $ami): ?>
+< li>
+< a href="/recherche?nom=<?php echo $ami['ID'] ?>">
+</a>
+</li>
+<?php endforeach; ?>
+</ul>
+</body>
+</html>
+On commence ainsi à séparer la présentation du codage « métier ».
+
+3.27.4 Isolons la logique applicative :
+<?php
+//modele.php
+require("connect.php");
+(suite sur la page suivante)
+3.27. Architecture de type MVC avec PHP
+71
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+function connect_db()
+{
+$dsn="mysql:dbname=".BASE.";host=".SERVER;
+try
+{
+$connexion=new PDO($dsn,USER,PASSWD);
+}
+catch(PDOException $e)
+{
+printf("Echec connexion : %s\n",
+$e->getMessage());
+exit();
+}
+return $connexion;
+}
+// Puis
+function get_all_friends()
+{
+$connexion=connect_db();
+$amis=Array();
+$sql="SELECT * from CARNET";
+foreach ($connexion->query($sql) as $row)
+{
+$amis[]=$row;
+}
+return $amis;
+}
+?>
+On peut maintenant avoir un controleur très simple qui interroge le modèle puis passe les données au template pour affichage.
+
+<?php
+//c-list.php
+require_once 'modele.php';
+$amis = get_all_friends();
+require 'templates/listamis.php';
+?>
+3.27.5 Layout :
+Il reste une partie non réutilisable dans le code à savoir le layout. Essayons de remédier à ça :
+<!-- templates/baseLayout.php -->
+<!DOCTYPE html>
+(suite sur la page suivante)
+72
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+<html>
+<head>
+<title><?php echo $title ?></title>
+</head>
+<body>
+<?php echo $content ?>
+</body>
+</html>
+3.27.6 Héritage de templates :
+<?php
+// templates/t-list.php
+$title = 'Liste des amis';
+ob_start();
+?>
+<h1>List de mes amis</h1>
+<ul>
+<?php foreach ($amis as $ami): ?>
+<li>
+<a href="/recherche?nom=<?php echo $ami['nom'] ?>">
+<?php echo $ami['VILLE'] ?>
+</a>
+</li>
+<?php endforeach; ?>
+</ul>
+<?php
+$content = ob_get_clean();
+include 'baseLayout.php'
+?>
+Observez l’utilisation de la bufferisation avec ob_start() et ob_get_clean(). Cette dernière fonction récupère le contenu bufferisé et nettoie ensuite le buffer.
+
+Affichage des détails d’une personne
+On va ajouter à notre modèle une fonction pour afficher les détails d’une personne :
+<?php
+function get_friend_by_id($id)
+{
+$connexion=connect_bd();
+$sql="SELECT * from CARNET where ID=:id";
+$stmt=$connexion->prepare($sql);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+(suite sur la page suivante)
+3.27. Architecture de type MVC avec PHP
+73
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+return $stmt->fetch();
+}
+On peut maintenant créer un nouveau controleur c-details.php :
+<?php
+//c-details.php
+require_once 'modele.php';
+$pers = get_friend_by_id($_GET['id']);
+require 'templates/t-details.php';
+?>
+Qui utilise le template :
+<?php
+//templates/t-details.php
+$title = $pers['NOM'];
+ob_start();
+?>
+<h1>details sur
+<?php echo $pers['PRENOM'].' '.$pers['NOM'] ?>
+</h1>
+<p>
+<?php
+echo ' Ne le '.$pers['NAISSANCE'];
+echo '<br/>Ville:'.$pers['VILLE'];
+$content = ob_get_clean();
+include 'baseLayout.php'
+?>
+Vous pouvez tester en entrant l’URL de c-details.php avec un paramètre id. Le code est similaire à celui du premier template et nous pouvons réutiliser le template de base, mais il subsiste plusieurs problèmes :
+— Si le paramètre id n’est pas fourni, notre application va provoquer une erreur.
+
+— Nous n’avons pas de controleur principal.
+
+Regroupons d’abord le code des 2 contrôleurs (c-list.php et c-details.php) dans un fichier unique controllers.php
+<?php
+// controllers.php
+function list_action()
+{
+$amis = get_all_friends();
+require 'templates/t-list.php';
+}
+function detail_action($id)
+{
+$pers = get_friend_by_id($id);
+(suite sur la page suivante)
+74
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+require 'templates/t-detail.php';
+}
+?>
+Nous pouvons enfin proposer un controleur principal (Front Controller) index.php :
+<?php
+// index.php
+// On charge les modeles et les controleurs
+require_once 'modele.php';
+require_once 'controllers.php';
+// gestion des routes
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+if ('/index.php' == $uri)
+{
+list_action();
+}
+elseif ('/index.php/detail' == $uri && isset($_GET['id']))
+{
+detail_action($_GET['id']);
+}
+else
+{
+header('Status: 404 Not Found');
+echo '<html><body><h1>Page Not Found</h1></body></html>';
+}
+?>
+Nous avons maintenant une structure de ce type :
+connect.php
+connexion.php
+controlleur.php
+modele.php
+recherche.php
+templates
+layout.php
+listeamis.php
+On peut améliorer tout cela en intégrant dans un même Objet tout le modèle. Voir sur
+github/roza/php-basic-mvc (https ://github.com/roza/php-basic-mvc/) pour le code complet.
+
+Mais ce système de routage est encore très incomplet et nous allons plutôt utliser pour continuer les outils d’un framework Web de référence : Symfony.
+
+3.28 Templates Twig en PHP
+L’installation de Twig se fait grâce à l’outil composer
+3.28. Templates Twig en PHP
+75
+Cours PHP Accéléré, Version 0.9.1
+3.28.1 composer
+Installons d’abord l’outil composer qui servira à beaucoup de tâches courantes dans un projet PHP. On va d’abord créer un répertoire bin à la racine de notre HOME, placez-y l’exécutable composer.phar et renommez le composer.
+
+cd
+mkdir bin
+cd bin
+curl -s https://getcomposer.org/installer | php
+mv composer.phar composer
+Vérifiez la définition de vos variables d’environnement http_proxy et https_proxy dans
+votre .bashrc Ajoutez également la ligne suivante à votre .bashrc :
+export PATH=$PATH:~/bin
+de manière à ce que tous les programmes installés dans le répertoire bin de votre HOME soient accessibles de n’importe où.
+
+3.28.2 Installation
+Installons Twig : .. code-block : : none
+composer require twig/twig :~1.0
+Ceci créera dans le répertoire courant un dossier vendor contenant les librairies demandées.
+
+On définit d’abord un template de base, BaseTemplate.html :
+<!DOCTYPE html>
+< html lang="fr">
+< head>
+{% block head %}
+< meta charset="utf-8">
+< link rel="stylesheet" href="style.css" />
+< title>{% block title %}{% endblock %}</title>
+{% endblock %}
+</head>
+< body>
+< section id="content">
+{% block content %}{% endblock %}
+</section>
+< footer id="footer">
+{% block footer %}
+&copy; Copyright 2018 < a href="http://monsite.com">
+Mon super Site</a>.
+
+{% endblock %}
+</footer>
+</body>
+</html>
+76
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+Puis un template plus spécialisé qui en hérite, menu.html :
+{% extends "BaseTemplate.html" %}
+{% block title %}Menu de la semaine{% endblock %}
+{% block head %}
+{{ parent() }}
+< style type="text/css">
+.important { color: #336699; }
+</style>
+{% endblock %}
+{% block content %}
+< h1>Menu</h1>
+< p class="important">
+Voici votre menu de la semaine:
+< dl>
+< dt>Lundi</dt>
+< dd>{{Lundi}}</dd>
+< dt>Mardi</dt>
+< dd>{{Mardi}}</dd>
+< dt>Mercredi</dt>
+< dd>{{Mercredi}}</dd>
+< dt>Jeudi</dt>
+< dd>{{Jeudi}}</dd>
+</dl>
+</p>
+{% endblock %}
+Enfin, on utilise ce template dans un fichier menu.php en chargeant d’abord l”autoloader :
+<?php
+// inclure
+l'autoloader
+include 'vendor/autoload.php';
+try {
+// Définir le dossier ou on trouve les templates
+$loader = new Twig_Loader_Filesystem('templates');
+// initialiser l'environement Twig
+$twig = new Twig_Environment($loader);
+// charger le template
+$template = $twig->loadTemplate('menu.html');
+// Affecter les variables du template et appeller le rendu
+echo $template->render(array(
+'Lundi' => 'Steak Frites',
+'Mardi' => 'Raviolis',
+'Mercredi' => 'Pot au Feu',
+'Jeudi' => 'Couscous',
+'Vendredi' => 'Poisson'
+));
+} catch (Exception $e) {
+die ('ERROR: ' . $e->getMessage());
+(suite sur la page suivante)
+3.28. Templates Twig en PHP
+77
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+}
+3.28.3 Affichage des personnes du Carnet
+Affichons à présent les personnes du Carnet à l’aide d’un template Twig. On réutilise le fichier modele.php vu précédemment :
+<?php
+// modele.php
+class Carnet {
+private static $connexion;
+function __construct(){
+$dsn="mysql:dbname=".BASE.";host=".SERVER;
+try{
+self::$connexion=new PDO($dsn,USER,PASSWD);
+}
+catch(PDOException $e){
+printf("Échec de la connexion : %s\n", $e->
+˓→getMessage());
+$this->connexion = NULL;
+}
+}
+/** Récupére la liste des contacts sous forme d'un tableau */
+function get_all_friends(){
+$sql="SELECT * from CARNET";
+$data=self::$connexion->query($sql);
+return $data;
+}
+/** Ajoute un contact à la table CARNET */
+function add_friend($data){
+$sql = "INSERT INTO CARNET(NOM,PRENOM,NAISSANCE,VILLE)
+˓→values
+(?,?,?,?)";
+$stmt = self::$connexion->prepare($sql);
+return $stmt->execute(array($data['nom'],
+$data['prenom'], $data['naissance'],$data['ville']));
+}
+/** Récupére un contact à partir de son ID */
+function get_friend_by_id($id)
+{
+$sql="SELECT * from CARNET where ID=:id";
+$stmt=self::$connexion->prepare($sql);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+return $stmt->fetch(PDO::FETCH_OBJ);
+}
+<?php
+(suite sur la page suivante)
+78
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+// fichier carnet.php
+include 'vendor/autoload.php';
+// on inclus le modele
+include 'modele.php';
+// On instancie un Carnet
+$car = new Carnet();
+try {
+// Indiquer le dossier ou on trouve les templates
+$loader = new Twig_Loader_Filesystem('templates');
+// initialiser l'environement Twig
+$twig = new Twig_Environment($loader);
+// Récupérer les données depuis la base
+$amis = $car->get_all_friends();
+// Charger le template
+$template = $twig->loadTemplate('carnet.html');
+$titre="Liste des membres du carnet trié par ville";
+echo $template->render(array(
+'titre' => $titre,
+'amis' => $amis,
+));
+} catch (Exception $e) {
+die ('ERROR: ' . $e->getMessage());
+}
+?>
+et un template carnet.html :
+{% extends "BaseTemplate.html" %}
+{% block title %}Personnes du Carnet {% endblock %}
+{% block head %}
+{{ parent() }}
+< style type="text/css">
+.important { color: #336699; }
+</style>
+{% endblock %}
+{% block content %}
+< p align="center" class="Style1">{{titre}}</p>
+< table border="2" align="center" cellspacing="0" cellpadding="2" >
+< tr bgcolor="#CA9999">
+< td width="50">< strong>numero</strong></td>
+< td width="50">< strong>Nom</strong></td>
+< td width="50">< strong>Prenom</strong></td>
+< td width="30">< strong>Age</strong></td> (suite sur la page suivante)
+3.28. Templates Twig en PHP
+79
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+< td width="50">< strong>Ville</strong></td>
+</tr>
+{% set i=0 %}
+{% for ami in amis %}
+{% set i=i+1 %}
+{% if i is odd %}
+< tr bgcolor="#F0F0F0">
+{% else %}
+< tr bgcolor="#A6A6A6">
+{% endif %}
+< td>{{ami.ID}}</td>
+< td>{{ami.NOM}}</td>
+< td>{{ami.PRENOM}}</td>
+< td>{{ami.NAISSANCE}}</td>
+< td>{{ami.VILLE}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
+Ce template est un peu maladroit mais il montre l’expressivité du langage de template Twig avec des boucles, des conditionnelles, calculs avec des variables, etc.
+
+Nous pouvons bien sûr en proposer un plus simple avec le CSS adéquat.
+
+3.28.4 Affichage des Personnes avec un template plus simple :
+(carnet2.html)
+{% extends "BaseTemplate.html" %}
+{% block title %}Personnes du Carnet{% endblock %}
+{% block head %}
+{{ parent() }}
+< link rel="stylesheet" href="static/css/tabstyle.css" />
+{% endblock %}
+{% block content %}
+< h2>{{titre}}</h2>
+< table id="jolie" class="centre" >
+< tr>
+< td>numero</td>
+< td>Nom</td>
+< td>Prenom</td>
+< td>Age</td>
+< td>Ville</td>
+</tr>
+(suite sur la page suivante)
+80
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+{% for ami in amis %}
+< tr>
+< td>{{ami.ID}}</td>
+< td>{{ami.NOM}}</td>
+< td>{{ami.PRENOM}}</td>
+< td>{{ami.NAISSANCE}}</td>
+< td>{{ami.VILLE}}</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
+avec le style qui va bien sur les tableaux . . .
+
+Nous pouvons ainsi compléter le développement MVC effectué précédemment en utilisant des templates Twig. Voir sur github/roza/php-basic-mvc (https ://github.com/roza/php-basic-mvc/) pour un code plus complet. Mais le système de routage employé est encore très rudimentaire et nous allons plutôt utliser les outils d’un framework Web de référence : Symfony 4 pour aller plus loin.
+
+3.29 Composer, Symfony 4 et Flex
+Nous allons à présent nous familiariser avec les outils et composants d’un Framework de réfé-
+rence : Symfony 4 qui est très modulaire et permet d’installer des composants très riches comme SwiftMailer pour envoyer des mails, FOSUserBundle pour gérer des utilisateurs, FOSREST-Bundle ou APIPlatform pour réaliser rapidement une API complète. Le Framework Symfony
+4 est basé sur un Micro-noyau (Micro-Kernel) 70% plus léger que le noyau de Symfony 3.
+
+Une introduction générale à ce framework se trouve ici (https ://symfony.com/4) La gestion des dépendances se fait à présent grâce à l’outil Symfony Flex qui permet d’établir des recettes ou recipes décrivant les dépendances et la configuration d’un projet. L’outil de base est composer
+Indication : Composer permet d’installer des centaines de packages librement disponibles.
+
+On les trouve sur Packagist (https ://packagist.org/) . Il permet de gérer les dépendances d’un projet et également de créer le squellette d’une application Symfony 4.
+
+3.29.1 composer
+Installons d’abord l’outil composer qui servira à beaucoup de tâches courantes dans un projet PHP. On va d’abord créer un répertoire bin à la racine de notre HOME, placez-y l’exécutable composer.phar et renommez le composer.
+
+3.29. Composer, Symfony 4 et Flex
+81
+Cours PHP Accéléré, Version 0.9.1
+cd
+mkdir bin
+cd bin
+curl -s https://getcomposer.org/installer | php
+mv composer.phar composer
+Vérifiez la définition de vos variables d’environnement http_proxy et https_proxy dans
+votre .bashrc Ajoutez également la ligne suivante à votre .bashrc :
+export PATH=$PATH:~/bin
+de manière à ce que tous les programmes installés dans le répertoire bin de votre HOME soient accessibles de n’importe où.
+
+Si on veux juste installer un composant simple comme HTTP Foundation », on place à la racine du dossier de travail le fichier *composer.json suivant :
+{
+"require": {
+"symfony/http-foundation": "~4.0"
+}
+}
+Ceci indique que nous n’installons pour l’instant que ce seul composant et que nous demandons la dernière version stable de la branche 4 pour http-foundation. Puis utilisons composer pour installer les composants demandés :
+composer update -o
+Notez l’utilisation de l’option -o pour optimize-autoloader qui optimise « au mieux » le chargement automatique des classes.
+
+3.29.2 HttpFoundation :
+Les 2 principaux composants de HttpFoundation à savoir Request et Response sont alors
+prêts à l’emploi.
+
+Remarquez l’usage des espaces de nommages en PHP semblables à ceux du C++ ou aux import de packages en java pour éviter des conflits de nommages entre différents vendor c’est à dire différentes entités fournissant du code à votre projet :
+<?php
+// chargement autoloader
+require_once __DIR__.'vendor/autoload.php';
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+// Actual request :
+//$request = Request::createFromGlobals();
+(suite sur la page suivante)
+82
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+// fake request
+$request = Request::create('/essai.php?name=Zozo');
+// URI demandee (sans les parametres)
+$path=$request->getPathInfo();
+// recup GET de variables
+$nom=$request->query->get('name','World');
+$prenom=$request->query->get('surname','Joe');
+echo "Bonjour $surname $name<br/>";
+On peut aussi récupérer d’autres informations sur le Client et fabriquer une réponse :
+<?php
+// recup
+variables SERVER
+$host=$request->server->get('HTTP_HOST');
+// get
+COOKIES
+$request->cookies->get('PHPSESSID');
+// HTTP headers
+$headers=$request->headers->get('host');
+$content_type=$request->headers->get('content_type');
+$method=$request->getMethod();
+//GET, POST, PUT, DELETE ou HEAD
+$langs=$request->getLanguages();
+$IP == $request->getClientIp();
+$response =
+new Response($IP." ".$host." ".$path." ".$headers."
+".$content_type." ".$method." ".$nom." ".$langs[0]); $response->send();
+?>
+3.29.3 Squellette d’application Symfony 4 :
+Créons un répertoire de travail mvc-sf4 dans votre dossier Web, par exemple ~/www (ou ~/pu-blic_html) si on utilise user_dir d’Apache ou n’importe où si on utilise le serveur Web embar-qué de PHP.
+
+et créons la trame d’une application symfony4 à l’aide de composer
+composer create-project symfony/skeleton hello-sf4
+Veillez à bien avoir une version à jour de composer et si besoin :
+composer self-update
+La structure du projet ainsi créé est la suivante :
+3.29. Composer, Symfony 4 et Flex
+83
+Cours PHP Accéléré, Version 0.9.1
+hello-sf4/
+bin
+console
+composer.json
+composer.lock
+config
+bundles.php
+packages
+routes.yaml
+services.yaml
+public
+index.php
+src
+Controller
+Kernel.php
+symfony.lock
+var
+cache
+log
+vendor
+autoload.php
+composer
+psr
+symfony
+Le répertoire bin contient l’outil console qui permet d’effectuer les tâches de routine pour créer ou gérer un projet. Le répertoire config contient les fichiers de configuration. Le répertoire public contient le fichier index de l’application Le dossie src les controleurs, le Kernel mais aussi les entités etc. Le dossier var contient les cache et les logs et le dossier vendor les classes des Bundles installés comme http-foundation.
+
+Vous pouvez consulter le fichier symfony.lock qui se trouve à la racine du dossier hello-sf4 pour voir la liste des dépendances installées :
+{
+"psr/cache": {
+"version": "1.0.1"
+},
+"psr/container": {
+"version": "1.0.0"
+},
+"psr/log": {
+"version": "1.0.2"
+},
+"psr/simple-cache": {
+"version": "1.0.1"
+},
+"symfony/cache": {
+"version": "v4.1.0"
+},
+(suite sur la page suivante)
+84
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+"symfony/config": {
+"version": "v4.1.0"
+},
+"symfony/console": {
+"version": "3.3",
+"recipe": {
+"repo": "github.com/symfony/recipes",
+"branch": "master",
+"version": "3.3",
+"ref": "e3868d2f4a5104f19f844fe551099a00c6562527"
+}
+},
+"symfony/debug": {
+"version": "v4.1.0"
+},
+"symfony/dependency-injection": {
+"version": "v4.1.0"
+},
+"symfony/dotenv": {
+"version": "v4.1.0"
+},
+"symfony/event-dispatcher": {
+"version": "v4.1.0"
+},
+"symfony/filesystem": {
+"version": "v4.1.0"
+},
+"symfony/finder": {
+"version": "v4.1.0"
+},
+"symfony/flex": {
+"version": "1.0",
+"recipe": {
+"repo": "github.com/symfony/recipes",
+"branch": "master",
+"version": "1.0",
+"ref": "cc1afd81841db36fbef982fe56b48ade6716fac4"
+}
+},
+"symfony/framework-bundle": {
+"version": "3.3",
+"recipe": {
+"repo": "github.com/symfony/recipes",
+"branch":
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>

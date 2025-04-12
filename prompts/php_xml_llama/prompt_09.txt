@@ -1,0 +1,935 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an expert language model trained to extract meaningful topics from raw text.
+You must follow the instructions carefully and only produce valid XML — no explanations, no extra text.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Perform topic modeling on the following documents. Identify a set of coherent topics. For each topic, return a few representative keywords that capture its meaning.
+    Return ONLY valid XML output like:
+  <topics>
+    <topic id="1">
+      <word></word>
+      <word></word>
+      <word></word>
+    </topic>
+  </topics>
+</instruction>
+  <documents>
+    <document>
+      <chunk i="3">
+arnet php
+Fabrication d’une table HTML avec les résultats :
+<html>
+<head>
+<title>
+Connexion à MySQL avec PDO
+</title>
+<meta charset="utf-8">
+<body>
+<h1>
+Interrogation de la table CARNET avec PDO
+</h1>
+<?php
+require("connect.php");
+$dsn="mysql:dbname=".BASE.";host=".SERVER;
+try{
+$connexion=new PDO($dsn,USER,PASSWD);
+}
+catch(PDOException $e){
+printf("Échec de la connexion : %s\n", $e->getMessage());
+exit();
+}
+$sql="SELECT * from CARNET";
+if(!$connexion->query($sql)) echo "Pb d'accès au CARNET";
+else{
+?>
+<table>
+<tr> <td> Nom </td> <td> Prénom </td></tr>
+<?php
+foreach ($connexion->query($sql) as $row)
+echo "<tr><td>".$row['NOM']."</td><td>".
+
+$row['PRENOM']."</td></tr> \n";
+?>
+</table>
+<?php } ?>
+(suite sur la page suivante)
+44
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+</body>
+</html>
+Résultats bruts :
+<html>
+<head>
+<title>
+Connexion à MySQL avec PDO
+</title>
+<meta charset="utf-8">
+<body>
+<h1>
+Interrogation de la table CARNET avec PDO
+</h1>
+<table>
+<tr> <td> Nom </td> <td> Prénom </td></tr>
+<tr><td>SMITH</td><td>JOHN</td></tr>
+<tr><td>DURAND</td><td>JEAN</td></tr>
+<tr><td>GUDULE</td><td>JEANNE</td></tr>
+<tr><td>ZAPATA</td><td>EMILIO</td></tr>
+<tr><td>JOURDAIN</td><td>NICOLAS</td></tr>
+<tr><td>DUPUY</td><td>MARIE</td></tr>
+<tr><td>ANDREAS</td><td>LOU</td></tr>
+<tr><td>Kafka</td><td>Franz</td></tr>
+<tr><td>Dalton</td><td>Joe</td></tr>
+</table>
+</body>
+</html>
+Execution
+Carnet Table
+On peut faire un petit refactoring avec une fonction qui établit la connexion à la base :
+<?php
+require("connect.php");
+function connect_bd(){
+$dsn="mysql:dbname=".BASE.";host=".SERVER;
+try{
+$connexion=new PDO($dsn,USER,PASSWD);
+}
+(suite sur la page suivante)
+3.18. Connexion aux bases de données depuis PHP
+45
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+catch(PDOException $e){
+printf("Échec de la connexion : %s\n", $e->
+˓→getMessage());
+exit();
+}
+return $connexion;
+}
+?>
+et améliorer l’affichage des résultats :
+<html>
+<head>
+<title>
+Connexion à MySQL avec PDO
+</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tabstyle.css" />
+</head>
+<body>
+<h1>
+Interrogation de la table CARNET avec PDO
+</h1>
+<?php
+require_once('connexion.php');
+$connexion=connect_bd();
+$sql="SELECT * from CARNET";
+if(!$connexion->query($sql)) echo "Pb d'accès au CARNET";
+else{
+?>
+<table class="centre" id="jolie">
+<tr> <td> ID </td> <td> Prénom </td> <td> Nom </td><td> Naissance </
+˓→td>
+</tr>
+<?php
+foreach ($connexion->query($sql) as $row)
+echo "<tr><td>".$row['ID']."</td>
+<td>".$row['PRENOM']."</td>
+<td>".$row['NOM']."</td>
+<td>".$row['NAISSANCE']."</td></tr><br/> \n";
+?>
+</table>
+<?php } ?>
+</body>
+</html>
+46
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+Avec le fichier CSS :
+/* Bordure simple autour des tableaux */
+table, th, td { border: 1px solid grey;}
+table{border-collapse:collapse;}
+/* Centrage tableau */
+table.centre{ margin:auto;}
+/* centrage du texte dans les cellules du tableau */
+table.centre td{text-align:center;}
+table#jolie tr:first-child{
+background:LightPink;
+}
+table#jolie tr:nth-child(2n){
+background:#EFD3C9;
+}
+table#jolie tr:nth-child(2n+3){
+background:#BCBCD0;
+}
+/* si un tableau a une seule ligne on l'affiche en rouge */
+table tr:only-child{
+background:red;
+}
+Résultats bruts :
+<html>
+<head>
+<title>
+Connexion à MySQL avec PDO
+</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="tabstyle.css" />
+</head>
+<body>
+<h1>
+Interrogation de la table CARNET avec PDO
+</h1>
+<table class="centre" id="jolie">
+<tr> <td> ID </td> <td> Prénom </td> <td> Nom </td><td> Naissance </
+˓→td>
+</tr>
+<tr><td>1</td>
+<td>JOHN</td>
+<td>SMITH</td>
+<td>1980-12-17</td></tr><br/>
+<tr><td>2</td>
+(suite sur la page suivante)
+3.18. Connexion aux bases de données depuis PHP
+47
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+<td>JEAN</td>
+<td>DURAND</td>
+<td>1983-01-13</td></tr><br/>
+<tr><td>3</td>
+<td>JEANNE</td>
+<td>GUDULE</td>
+<td>1967-11-06</td></tr><br/>
+<tr><td>4</td>
+<td>EMILIO</td>
+<td>ZAPATA</td>
+<td>1956-12-01</td></tr><br/>
+<tr><td>5</td>
+<td>NICOLAS</td>
+<td>JOURDAIN</td>
+<td>2000-09-10</td></tr><br/>
+<tr><td>6</td>
+<td>MARIE</td>
+<td>DUPUY</td>
+<td>1986-01-11</td></tr><br/>
+<tr><td>7</td>
+<td>LOU</td>
+<td>ANDREAS</td>
+<td>1861-02-12</td></tr><br/>
+<tr><td>9</td>
+<td>Franz</td>
+<td>Kafka</td>
+<td>1883-07-03</td></tr><br/>
+<tr><td>11</td>
+<td>Joe</td>
+<td>Dalton</td>
+<td>2003-12-06</td></tr><br/>
+</table>
+</body>
+</html>
+Execution
+Carnet Table Version2
+On peut générer des pages différentes avec des listes déroulantes ou des listes de liens, listes à puces etc.
+
+Création d’une liste déroulante :
+<!doctype html>
+<html>
+(suite sur la page suivante)
+48
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+<head>
+<title>
+Connexion à MySQL avec PDO
+</title>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>
+Interrogation de la table CARNET avec PDO
+</h1>
+<?php
+require_once('connexion.php');
+$connexion=connect_bd();
+$sql="SELECT * from CARNET";
+if(!$connexion->query($sql)) echo "Pb d'accès au CARNET";
+else {
+?>
+<form action="recherche.php" method="GET">
+<select name="ID">
+<?php
+foreach ($connexion->query($sql) as $row)
+if(! empty($row['NOM']))
+echo "<option value='".$row['ID']."'>"
+.$row['PRENOM']." ".$row['NOM']."</option> \n";
+?>
+</select>
+<input type="submit" value="Rechercher">
+</form>
+<?php
+}
+?>
+</body>
+</html>
+Remarquez l’usage de la clef primaire de la table comme value des options, ce qui assurent l’unicité des valeurs et évite toute amiguité.
+
+Résultats bruts :
+<!doctype html>
+<html>
+<head>
+<title>
+Connexion à MySQL avec PDO
+</title>
+<meta charset="utf-8">
+</head>
+<body>
+(suite sur la page suivante)
+3.18. Connexion aux bases de données depuis PHP
+49
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+<h1>
+Interrogation de la table CARNET avec PDO
+</h1>
+<form action="recherche.php" method="GET">
+<select name="ID">
+<option value='1'>JOHN SMITH</option>
+<option value='2'>JEAN DURAND</option>
+<option value='3'>JEANNE GUDULE</option>
+<option value='4'>EMILIO ZAPATA</option>
+<option value='5'>NICOLAS JOURDAIN</option>
+<option value='6'>MARIE DUPUY</option>
+<option value='7'>LOU ANDREAS</option>
+<option value='9'>Franz Kafka</option>
+<option value='11'>Joe Dalton</option>
+</select>
+<input type="submit" value="Rechercher">
+</form>
+</body>
+</html>
+Execution
+Carnet Select
+3.19 Requêtes préparées en PHP
+3.19.1 Recherche simple en PHP avec PDO
+<!doctype html>
+<html>
+<head>
+<title>
+Recherche d'une personne par ID
+</title>
+<meta charset="utf-8">
+</head>
+<body>
+<?php $wanted=$_GET['ID'];
+if (! empty($wanted)){
+echo "<h1>Recherche de
+$wanted </h1>";
+require_once('connexion.php');
+$connexion=connect_bd();
+$sql="SELECT * from CARNET where ID='".$wanted."'";
+(suite sur la page suivante)
+50
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+if(!$connexion->query($sql))
+echo "Pb de requete";
+else{
+foreach ($connexion->query($sql) as $row)
+echo $row['NOM']." ".$row['PRENOM']."</br> \n";
+}
+}
+?>
+</body>
+</html>
+Appel
+avec
+le
+paramètre
+ID
+passé
+sur
+l’URL
+:
+php
+exemples/pdo/recherche.php ?ID=3
+Execution
+recherche php
+Mais lorsqu’il y a de nombreux paramètres, on se retrouve avec de nombreuses concaténations de chaines entourées de “cotes” ce qui est une grande source d’erreurs et de lenteurs d’écriture.
+
+Pour remédier à cela, on peut utiliser des requêtes préparées qui permettent de bien dissocier la requête des paramètres qui vont lui être fournis avant son exécution. Ces PreparedStatement seront également bien préférables en termes de sécurité et à utiliser systématiquement.
+
+3.19.2 Recherche avec PreparedStatement
+<!doctype html>
+<html>
+<head>
+<title>
+Recherche d'une personne par ID
+</title>
+<meta charset="utf-8">
+</head>
+<body>
+<?php $wanted=$_GET['ID'];
+if (! empty($wanted)){
+echo "<h1>Recherche de
+$wanted </h1>";
+require_once('connexion.php');
+$connexion=connect_bd();
+$sql="SELECT * from CARNET where ID=:id";
+$stmt=$connexion->prepare($sql);
+$stmt->bindParam(':id', $_GET['ID']);
+$stmt->execute();
+if (!$stmt) echo "Pb d'accès au CARNET";
+else{
+(suite sur la page suivante)
+3.19. Requêtes préparées en PHP
+51
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+if ($stmt->rowCount()==0) echo "Inconnu !<br/>";
+else
+foreach ($stmt as $row)
+echo $row['PRENOM']." ".$row['NOM'].
+
+"né(e) le ".$row['NAISSANCE']."<br/>";
+}
+}
+?>
+</body>
+</html>
+Les requêtes préparées limitent fortement la possibilité d”injections SQL comme nous le ver-ront plus tard.
+
+3.20 Compléments sur PDO - Sécurité
+3.20.1 Filtrage d’entrées
+On peut vouloir nourrir une requête directement avec des données provenant d’un formulaire :
+<?php
+$sql = sprintf(
+'SELECT id FROM CARNET WHERE email = "%s"',$_GET['email'])
+);
+?>
+On voit bien que la valeur de l’entrée email dans le tableau _GET n’est absolument pas vérfifiée avant son utilisation !
+
+On peut essayer dans ce cas d’utiliser un filtre PHP pour contrôler un peu les choses :
+<?php
+$sql = sprintf(
+'SELECT id FROM CARNET WHERE email = "%s"',
+filter_input(INPUT_GET, 'email')
+);
+?>
+Mais ceci constitue une manière peu sûre de procéder malgré l’utilisation du filtre PHP. Cela laisse en effet la possiblilité d’insertion de code malveillant non contrôlé.
+
+L’exemple classique est la requête SQL construite dans la chaine suivante :
+<?php
+$sql = "SELECT nom FROM USERS WHERE login='".
+
+$_REQUEST['login']."' AND PASSWD='".
+
+$_REQUEST['pass']."'";
+?>
+52
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+Qui donne lors de son exécution avec $_REQUEST[“login”] = » toto” – » :
+SELECT nom FROM USERS WHERE login='toto'
+-- ' AND PASSWD= '".$_
+˓→REQUEST['pass']."'
+";
+Avertissement : Le - - constituant un début de commentaire SQL, ceci constitue une in-
+jection SQL qui est l’une des principales failles de sécurité exploitées par les Hackers. Pour s’en prémunir, il faut utiliser à la fois le filtrage des entrées et les requêtes préparées.
+
+<?php
+$sql = 'SELECT id FROM CARNET WHERE email = :email';
+$statement = $pdo->prepare($sql);
+$email = filter_input(INPUT_GET, 'email');
+$statement->bindValue(':email', $email);
+?>
+Il faut parfois préciser dans un troisième argument le type des paramètres attendus :
+<?php
+$sql = 'SELECT email FROM CARNET WHERE id = :id';
+$statement = $pdo->prepare($sql);
+$userId = filter_input(INPUT_GET, 'id');
+$statement->bindValue(':id', $userId, PDO::PARAM_INT);
+?>
+3.21 Filtrage en PHP
+Les vérifications dans les formulaires HTML5 et en JavaScript sont valables uniquement côté client. Pour des raisons de sécurité, il faut réeffectuer complètement toutes les vérifications côté serveur. PHP met pour cela à la disposition des programmeurs tout un ensemble de filtres. La première des vérifications consiste à bien prendre en compte les caractères spéciaux.
+
+3.21.1 Gestion des caractères spéciaux :
+Les « magic quotes » :
+Avant PHP 5.4, une directive concernant ces magic quotes existait. Si dans le fichier de configuration de PHP, la directive magic_quotes_gpc etait activée, PHP modifiait automatiquement certaines entrées de formulaires en procédant à des protections de certains caractères spéciaux par des insertion de « backslashes ». Par exemple
+— les caractères accentués
+— les apostrophes
+— les backslashes
+3.21. Filtrage en PHP
+53
+Cours PHP Accéléré, Version 0.9.1
+Un peu à la manière de la fonction addslashes().
+
+Cette protection était destinée à préparer les données avant des requêtes SQL pour empêcher une éventuelle injection SQL. Ce comportement automatique est toutefois parfois gênant si on veut simplement réafficher les chaines saisies et non pas les utiliser dans des requêtes SQL. En outre, on ne veut pas toujours protéger les chaines de la même façon selon l’usage qu’on veut en faire par la suite.
+
+On peut vouloir dans certains cas, protéger des chaines par exemple :
+— htmlspecialchars() pour éviter des injections de code HTML
+— PDO : :quote() pour se protéger d’injections SQL
+<?php
+$pdo = new PDO('sqlite:./tmp/mydb.sqlite');
+$string = 'Orléans';
+print "Chaîne sans quotes: $string\n";
+print "Chaîne avec quotes: " . $pdo->quote($string) . " \n"; Cela ne vous dispense pas d’utiliser les PreparedStatement vus précédemment.
+
+Les filtres PHP :
+Les plus directs à utiliser sur les formulaires sont basés sur la fonction filter_input() avec en paramètre INPUT_GET ou INPUT_POST Voici quelques exemples typiques :
+<?php
+$entier = filter_input(INPUT_POST, 'var1', FILTER_SANITIZE_
+˓→NUMBER_INT);
+$url = filter_input(INPUT_POST, 'var2', FILTER_VALIDATE_URL);
+if (!filter_input(INPUT_GET, "email",
+FILTER_VALIDATE_EMAIL))
+echo("Email non valide");
+else echo("Email valide");
+?>
+On peut aussi filtrer des carctères spéciaux :
+<?php
+$search_html = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_
+˓→SPECIAL_CHARS);
+$search_url = filter_input(INPUT_GET, 'search', FILTER_SANITIZE_
+˓→ENCODED);
+echo "Vous avez recherché $search_html. \n";
+echo "<a href='?search=$search_url'>Nouvelle recherche.</a>";
+?>
+54
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+3.22 Gestion des transactions avec PDO
+3.22.1 Problème
+Une série de requêtes SQL sont logiquement liées entre elles et on voudrait qu’elles soient toutes exécutées ou aucune. En effet dans certains cas, la prise en compte d’une partie des requêtes seulement peut conduire à une incohérence dans le système d’information. La base de données peut ainsi être corrompue et très difficile à rectifier par la suite. Par exemple, si on a 2
+requêtes qui se suivent et qui sont liées :
+<?php
+require 'connexion.php';
+$connexion=connect_bd();
+$stmt1 = $pdo->prepare('
+UPDATE compte
+SET solde = solde - :montant
+WHERE nom = :nom
+');
+$stmt2 = $pdo->prepare('
+UPDATE compte
+SET solde = solde + :montant
+WHERE nom = :nom
+');
+// Retrait du Compte1
+$cpte1 = 'Compte1';
+$montant = 50;
+$stmt1->bindParam(':nom', $cpte1);
+$stmt1->bindParam(':solde', $montant, PDO::PARAM_INT);
+$stmt1->execute();
+// Credit du Compte2
+$cpte2 = 'Compte2';
+$depot = 50;
+$stmt2->bindParam(':nom', $cpte2);
+$stmt->bindParam(':montant', $depot, PDO::PARAM_INT);
+$stmt->execute();
+?>
+Ceci peut conduire à un problème en cas d’interruption de cette séquence. En particulier le Compte1 peut avoir été débité sans que le Compte2 soit crédité.
+
+On peut résoudre cette fragilité en utilisant une transaction :
+<?php
+require 'connexion.php';
+$connexion=connect_bd();
+(suite sur la page suivante)
+3.22. Gestion des transactions avec PDO
+55
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+$stmt1 = $connexion->prepare('
+UPDATE compte
+SET solde = solde - :solde
+WHERE nom = :nom
+');
+$stmt2 = $connexion->prepare('
+UPDATE compte
+SET solde = solde + :montant
+WHERE nom = :nom
+');
+// On commence la transaction
+$connexion ->beginTransaction()
+// Retrait du Compte1
+$cpte1 = 'Compte1';
+$montant = 100;
+$stmt1->bindParam(':nom', $cpte1);
+$stmt1->bindParam(':solde', $montant, PDO::PARAM_INT);
+$stmt1->execute();
+// Credit du Compte2
+$cpte2 = 'Compte2';
+$depot = 50;
+$stmt2->bindParam(':nom', $cpte2);
+$stmt->bindParam(':montant', $depot, PDO::PARAM_INT);
+$stmt->execute();
+//on termine la transaction
+$connexion -> commit();
+?>
+Si la séquence échoue, PDO commandera un RollBack automatique, c’est à dire une annulation de toute la transaction.
+
+3.23 Connexion persistante avec PDO
+Pour créer une connexion persistante avec PDO, il suffit d’utiliser l’attribut ATTR PERSISTENT
+à l’instanciation de l’objet PDO. Lors des appels ultérieurs, si les paramètres de création sont identiques, l’objet déjà créé sera simplement réutilisé.
+
+<?php
+function connect_db()
+{
+$dsn="mysql:dbname=".BASE.";host=".SERVER;
+try
+{
+$connexion=new PDO($dsn,USER,PASSWD,
+array(PDO::ATTR_PERSISTENT => true));
+(suite sur la page suivante)
+56
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+}
+catch(PDOException $e)
+{
+printf("Échec de la connexion : %s\n", $e->getMessage());
+exit();
+}
+return $connexion;
+}
+?>
+3.24 Validation et contrôle d’entrées avec GUMP
+On peut également utiliser des librairies aidant à gérer la validation comme : GUMP (https ://github.com/Wixel/GUMP)
+3.24.1 Pour installer :
+Créons un fichier composer.json dans notre répertoire de travail :
+{
+"require": {
+"wixel/gump": "dev-master"
+}
+}
+Puis utilisons l’outil PHP composer pour installer les composants demandés :
+composer update
+3.24.2 Nous pouvons utiliser Gump pour vérifier des entrées :
+<?php
+require "vendor/wixel/gump/gump.class.php";
+$is_valid = GUMP::is_valid($_POST, array(
+'username' => 'required|alpha_numeric',
+'password' => 'required|max_len,100|min_len,6'
+));
+if($is_valid) {
+echo "valid username and password ";
+} else {
+print_r($is_valid);
+(suite sur la page suivante)
+3.24. Validation et contrôle d’entrées avec GUMP
+57
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+}
+?>
+3.24.3 ou de manière plus détaillée :
+<?php
+require "vendor/wixel/gump/gump.class.php";
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+$validator = new GUMP();
+$name = $_POST['name'];
+$password = $_POST['password'];
+$_POST = array(
+'name' => $name,
+'password' => $password);
+// néttoie les données et convertit les chaines en utf-8 si besoin
+$_POST = $validator->sanitize($_POST);
+// Définissons les règles et les filtres:
+$rules = array(
+'name' => 'required|alpha_numeric|max_len,100|min_len,6',
+'password' => 'required|max_len,100|min_len,6');
+$filters = array(
+'name'
+=> 'trim|sanitize_string',
+'password'
+=> 'trim|base64_encode');
+// On applique les filtres
+$_POST = $validator->filter($_POST, $filters);
+// On valide
+$is_valid
+= $validator->validate($_POST, $rules);
+// On vérifie le résultat
+if ($is_valid true )
+{
+echo $name;
+echo $password;
+exit;
+}
+else
+{
+echo "Erreurs détectées dans les entrées:\n";
+(suite sur la page suivante)
+58
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+// on affiche les erreurs en html
+echo $validator->get_readable_errors(true);
+}
+}
+3.25 Http et la conservation d’informations sur les
+clients
+3.25.1 Problème
+Le protocole HTTP est un protocole sans mémoire. Une requête d’un client ou les informations qui y sont rattachées ne sont pas mémorisées par défaut.
+
+Plusieurs techniques ont été développées pour remédier à ce manque :
+— Envoyer de l’information sur l’URL
+— Utiliser un champ caché HTML
+— Utiliser des Cookies
+— Utiliser des Sessions
+Envoi d’information sur l’URL :
+Considérons une première page, page1.php :
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title> Formulaires</title>
+</head>
+<body>
+<?php
+if (!isset($_GET['login'])){
+?>
+<form method='GET'
+action=<?php echo $_SERVER['PHP_SELF'] ?>
+>
+<p>Login: <input type="text" name="login"></p>
+<input type="submit" value="Valider">
+</form>
+<?php
+}
+else {
+header('Location:page2.php?login='.$_GET['login']);
+}
+?>
+(suite sur la page suivante)
+3.25. Http et la conservation d’informations sur les clients
+59
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+</body>
+</html>
+qui se poursuit par une page2 :
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Formulaires</title>
+</head>
+<body>
+<?php
+if (isset($_GET['login'])){
+echo $_GET['login'];
+}
+else {
+header('Location:page1.php');
+}
+?>
+</body>
+</html>
+Exécution :
+Passage d’info sur l’URL
+Utiliser des cookies :
+L’information est stockée dans un petit fichier texte sur le navigateur du client. On peut par exemple s’en servir pour stocker un identifiant de session, un login, un compteur de visites ou encore mesurer un temps de connexion.
+
+<?php
+if (isset($_COOKIE['compteur']))
+{
+$message = "Vous etes deja venu ".$_COOKIE['compteur']." fois
+˓→<br/> \n";
+$valeur = $_COOKIE['compteur'] + 1;
+}
+else
+{
+$message = "Je vous met un petit cookie<br/> \n";
+$valeur = 1;
+}
+setCookie("compteur", $valeur);
+(suite sur la page suivante)
+60
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+echo $message;
+?>
+Exécution :
+Cookies en PHP
+Mais si on a des informations en plus grand nombre à stocker ou qui revètent un caractère plus sensible, on préférera les stocker essentiellement côté serveur et utiliser le mécanisme plus complet des sessions. Celui-ci consiste à utiliser le tableau associatif _SESSION[] qui permet de stocker toute sorte d’informations associées à ce client (données de type nombres ou chaines, tableaux ou objets PHP).
+
+Considérons une première page mettant en place une session :
+<?php
+// session1.php
+session_start();
+if (!isset($_SESSION['cpt']))
+$_SESSION['cpt']=0;
+else
+$_SESSION['cpt']++;
+echo "Vous avez vu cette page ".$_SESSION['cpt']." fois <br/> \n"; echo "Le SID courant est " . session_id();
+echo "<br/> <a href=\" session2.php\" >Aller à la page suivante
+˓→session2.php</a>";
+?>
+Puis on va relire les informations stockées en variables de session dans une autre page :
+<?php
+// session2.php
+session_start();
+if (!isset($_SESSION['cpt']))
+$_SESSION['cpt']=0;
+else
+$_SESSION['cpt']++;
+echo "bonjour {$_SESSION['login']} !<br> \n"; echo "vous avez vu cette page " . $_SESSION['cpt'] . " fois<br/> \n"; echo "Votre SID est toujours " . session_id();
+echo "<br/> <a href=\" session1.php\" >Retour a session1.php</a>";
+?>
+Exécution :
+Utilisation variable de session PHP
+3.25. Http et la conservation d’informations sur les clients
+61
+
+Cours PHP Accéléré, Version 0.9.1
+Champs cachés
+Un quatrième mécanisme est employé pour conserver de l’information dans des pages Web
+elles-mêmes comme l’utilisation de champs cachés : input de type hidden. Ces champs peuvent par exemple servir à stocker dans des formulaires HTML un champ spécial dit csrf token qui contiendra un identifiant unique temporaire pour se prémunir des attaques de type CSRF : Cross Site Request Forgery dont un exemple est l’envoi d’un mail contenant une image a quelqu’un et cette image est en fait un lien vers une page d’administration sur laquelle le destinataire du mail a des droits particuliers comme editer ou supprimer une ressource.
+
+Cette page pourra déclencher une suppression ou une modification de contenu non souhaitée.
+
+Les principaux Frameworks Web comme Symfony, Laravel en PHP ou Django, Flask en Python
+prennent en charge la génération automatique de ce token et sa mise en variable de session mais il faut tout de même l’appeler dans les formulaires ou lors de l’utilisation d’Ajax.
+
+3.26 Manipuler XML avec PHP
+Le format XML est utilisé de façon très variée. Nous le trouvons dans des services Web, des fichiers de configuration, des formats comme SVG, MathML, docx, odt, etc. Sa manipulation dans un langage comme PHP est donc particulièrement importante.
+
+On peut manipuler XML de différentes manières
+— A la main
+— Avec XMLWriter/XMLReader
+— Avec DOM
+— Avec SimpleXML
+ou des combinaisons de ces méthodes.
+
+— DOM ou Document Object Model est une méthode qui recrée toute l’arborescence d’un
+document XML sous forme d’objets PHP. Son utilisation est simple mais elle est cou-
+teuse en ressources, en temps d’exécution et un peu verbeuse.
+
+— XMLWriter et XMLReader traitent les fichiers XML a plus bas niveau mais leur uti-
+lisation exclusive rend parfois le code délicat à implémenter surtout pour la lecture de fichiers complexes.
+
+— SimpleXML représente une sorte de compromis Simplicité/Performance.
+
+— Traiter des fichiers xml « à la main » est généralement à éviter sauf pour créer des
+fichiers très simples.
+
+3.26.1 Traitement de fichiers XML à la main :
+Observons d’abord comment créer un fichier XML contenant une liste de programmes TV : La lecture de fichiers XML sans API est peu recommandée.
+
+<?php
+header('Content-Type: text/xml');
+print '<?xml version="1.0"?>' . " \n";
+print "<programmes> \n";
+(suite sur la page suivante)
+62
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+$programmes = array(
+array('nom'=> 'Simpsons',
+'chaine'=> 'TF18',
+'debut' => '21:00',
+'duree' => '30'),
+array('nom'=> 'Blake et Mortimer',
+'chaine' => 'M54',
+'debut'=>'20:00','duree'=>'60'));
+foreach ($programmes as $show) {
+print " \t<show> \n";
+foreach($show as $tag => $data) {
+print " \t< $tag>"
+. htmlspecialchars($data)
+. " \t</$tag> \n";
+}
+print "</show> \n";}
+print "</programmes> \n";
+?>
+3.26.2 Exécution :
+Ecriture XML à la main
+3.26.3 Resultat brut html :
+<?xml version="1.0"?>
+<programmes>
+<show>
+<nom>Simpsons
+</nom>
+<chaine>TF18
+</chaine>
+<debut>21:00
+</debut>
+<duree>30
+</duree>
+</show>
+<show>
+<nom>Blake et Mortimer
+</nom>
+<chaine>M54
+</chaine>
+<debut>20:00
+</debut>
+<duree>60
+</duree>
+</show>
+</programmes>
+3.26.4 Ecriture avec XMLWriter :
+Un exemple simple pour démarrer :
+3.26. Manipuler XML avec PHP
+63
+Cours PHP Accéléré, Version 0.9.1
+<?php
+$xml = new XMLWriter();
+$xml->openURI('test.xml');
+$xml->startElement('toto');
+$xml->writeElement('url', 'http://totototo.com');
+$xml->endElement();
+$xml->flush();
+?>
+3.26.5 Resultat brut :
+<toto><url> http://toto.com</url></toto>
+et si on récupère des données de la table CARNET pour les exporter en XML :
+<?php
+require_once('connexion.php');
+$connexion=connect_bd();
+$sql="SELECT * from CARNET";
+$data=$connexion->query($sql);
+$xml= new XMLWriter();
+$xml->openUri("contacts.xml");
+$xml->startDocument('1.0', 'utf-8');
+$xml->startElement('mescontacts');
+while($pers=$data->fetch()){
+$xml->startElement('contact');
+$xml->writeAttribute('id', $pers['ID']);
+$xml->writeElement('prenom',$pers['PRENOM']);
+$xml->writeElement('nom',$pers['NOM']);
+$xml->writeElement('naissance',$pers['NAISSANCE']);
+$xml->endElement();
+}
+$xml->endElement();
+$xml->endElement();
+$xml->flush();
+?>
+3.26.6 Resultat :
+<?xml version="1.0" encoding="UTF-8"?>
+<mescontacts>
+<contact id="1" >
+<prenom> JOHN</prenom>
+<nom> SMITH</nom>
+<naissance> 1980-12-17</naissance>
+(suite sur la page suivante)
+64
+Chapitre 3. Tables des
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>

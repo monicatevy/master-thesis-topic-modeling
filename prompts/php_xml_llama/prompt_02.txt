@@ -1,0 +1,771 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an expert language model trained to extract meaningful topics from raw text.
+You must follow the instructions carefully and only produce valid XML — no explanations, no extra text.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Perform topic modeling on the following documents. Identify a set of coherent topics. For each topic, return a few representative keywords that capture its meaning.
+    Return ONLY valid XML output like:
+  <topics>
+    <topic id="1">
+      <word></word>
+      <word></word>
+      <word></word>
+    </topic>
+  </topics>
+</instruction>
+  <documents>
+    <document>
+      <chunk i="2">
+quences pouvant être utilisés avec les
+guillemets doubles.
+
+Séquence
+Valeur
+\n
+Nouvelle ligne (linefeed, LF ou 0x0A (10) en ASCII)
+\r
+Retour à la ligne (carriage return, CR ou 0x0D (13) en ASCII)
+\t
+Tabulation horizontale (HT ou 0x09 (9) en ASCII)
+\\
+Antislash
+\$
+Caractère $
+\"
+Guillemets doubles
+Une séquence de caractères qui permet de rechercher un nombre en
+\[0-7]{1,3}
+notation octale.
+
+\x[0-9A-Fa-
+Une séquence de caractères qui permet de rechercher un nombre en
+f]{1,2}
+notation hexadécimale.
+
+echo 'Attention l\'abus d\'alcool est dangereux';
+$var=2345;
+echo "la valeur de \$var est $var\n";
+$toto= <<<FIN
+S. ROHAUT
+Cours Programmation PHP
+Page 16/93
+
+Salut les amis
+Comment ça va ?
+
+FIN;
+echo $toto;
+N'importe quelle variable peut être affichée dans une chaîne comme ci-dessus mais attention si deux
+variables ont un nom proche ! Il faut alors utiliser les accolades { } comme en shell. Enfin on peut
+accéder à n'importe quel caractère dans une chaîne en indiquant sa position (qui commence à zéro)
+entre deux accolades collées juste après le nom de la variable.
+
+$fic='toto.fic';
+$fics='riri fifi loulou';
+echo "$fics ${fic}s"; // affiche riri fifi loulou toto.fics
+echo "$fic{3}"; // affiche o
+On peut facilement concaténer deux chaînes avec l'opérateur point « . ». On peut ajouter du texte à
+une chaîne avec l'opérateur point égal « .= ».
+
+$str="Salut les Amis !\n";
+$str.="Comment ça va ?"; // "Salut les Amis !\nComment ça va ?
+
+$str2=$str."\n"; // "Salut les Amis !\nComment ça va ?\n
+Si vous devez utiliser une chaîne de caractères comme valeur numérique (dans une addition par
+exemple, attention à son contenu. La chaîne sera de type double (réel) si elle contient un 'e' ou un
+'E'. Sinon ce sera un entier. La valeur numérique est ensuite définie par le début de la chaîne. Si la
+chaîne commence par une valeur numérique, elle sera utilisée, sinon elle sera égale à 0 zéro. Si la
+première expression est une chaîne, le type de variable dépend de la seconde expression.
+
+$val=10+"2.55"; // float, 12.55
+$val=1+"toto2"; // 1 + 0 = 1
+$val=2+"3 petits cochons"; // 2 + 3 = 5 (le 3 est en premier dans la chaîne)
+3.5.5 Les tableaux
+Un tableau PHP est une association ordonnée. Une association fait correspondre des valeurs à des
+clés. Les tableaux sont très souples, ils peuvent avoir de multiples dimensions, être indexés par une
+clé numérique ou texte, être utilisés comme table de hachage, une pile, une queue, Une valeur de
+tableau peut être elle-même un tableau, pour créer des arbres par exemple.
+
+Un tableau est créé avec la fonction array() qui prend comme arguments des paires « key =>
+value » séparées par des virgules. La clé peut être soit un entier soit du texte. Attention, 8 est un
+entier, 08 une chaîne ! Si la clé est absente alors c'est la dernière clé entière plus 1 qui est choisie. Si
+c'est la première, c'est 0 zéro.
+
+On accède aux éléments d'un tableau à l'aide des crochets « [ et ] ». On place entre ces crochets la
+clé entière ou la chaîne.
+
+$var=array(10,15,17,23,9);
+echo $var[0]; // 10
+echo $var[3]; // 17
+$tab=array("a"=>12,"nom"=>"toto","pipo",17,4=>5);
+echo $tab[0]; // pipo
+echo $tab[1]; // 17
+echo $tab['a']; // 12
+echo $tab['nom']; // toto
+S. ROHAUT
+Cours Programmation PHP
+Page 17/93
+
+L'utilisation de la fonction array n'est pas obligatoire et on peut déclarer un tableau à la volée.
+
+$tab2[1]=2;
+$tab2[]=6; // equivaut $tab2[2]=6
+$tab2['test']='Ma chaîne';
+On peut aussi créer des tableaux multidimensionnels à l'aide des deux méthodes précédentes.
+
+$tab=array("un"=>array("riri",1=>"fifi",2=>'loulou'),2=>array(1,2,3),array('un',
+'deux','trois'));
+echo $tab['un'][0]; // riri
+echo $tab[2][1]; // 2
+echo $tab[3][2]; // trois
+$tab2['un']['deux']='test'; // créé un tableau à deux dimensions
+Il existe une fonction très pratique pour lister le contenu d'un tableau, ou pour modifier les éléments
+: foreach().
+
+$tab=array(1=>'un',2=>'deux',3=>'trois');
+foreach($tab as $valeur) {
+echo "$valeur \n"; // affiche un deux trois
+}
+foreach($tab as $cle => $valeur) {
+echo "$cle => $valeur\n"; // affiche 1 => un, 2 => deux, 3 => trois
+}
+3.5.6 La variable objet
+Les objets se créent avec l'instruction class. Pour créer une instace de l'objet il faut utiliser le mot
+clé new.
+
+class test {
+function affiche_hello() {
+echo "Hello !";
+}
+}
+$obj=new test;
+$obj->affiche_hello();
+3.6 Les constantes
+Les constantes est un nom qui prend une valeur ne pouvant pas être modifiée une fois fixée. Une
+constante n'est accessible qu'en lecture seule. Elles sont sensibles à la casse et doivent par convention être écrites en majuscules.
+
+On définit une constante avec la fonction define() et doit respecter certaines règles :
+• une constante ne commence pas par un $
+• une constante est accessible depuis n'importe quel endroit du code
+• une constante ne peut pas être redéfinie
+• une constante ne peut contenir d'un scalaire (entier, booléen, chaîne, double).
+
+define(CONSTANTE,"valeur");
+echo CONSTANTE; // affiche "valeur"
+S. ROHAUT
+Cours Programmation PHP
+Page 18/93
+
+3.7 Obtenir le type d'une variable
+Pour obtenir le type d'une variable, on utilise la fonction « gettype » qui retourne une chaîne de
+texte indiquant le type. Mais attention rien ne garantit que le résultat soit le même d'une
+version PHP à une autre.
+
+Les types retournés sont "boolean", "integer", "double" (pour des raisons historiques, "double" est retournée lorsqu'une valeur de type float est fournie, au lieu de la chaîne "float"), "string", "array",
+"object", "resource" (depuis PHP 4), "NULL" (depuis PHP 4), "unknown type"
+Si vous souhaitez réellement tester le type d'une variable, il est préférable d'utiliser les fonctions de
+type « is_* » : is_array, is_bool, is_double, is_float, is_int, is_integer, is_long, is_null, is_numeric, is_object, is_real, is_resource, is_string, is_callable (est-ce une fonction).
+
+3.8 Définir et supprimer une variable
+Si vous souhaitez savoir si une variable est définie, c'est à dire si elle est affectée, on utilise
+« isset ».
+
+Enfin si vous souhaitez supprimer une variable, il faut utiliser « unset ».
+
+S. ROHAUT
+Cours Programmation PHP
+Page 19/93
+
+4 Les opérateurs
+4.1 La précédence des opérateurs
+C'est l'ordre dans lequel les valeurs doivent être analysées. Ainsi l'expression 4 + 3 * 7 n'est pas lue
+de gauche à droite et ne retourne pas 49 mais 25. Voici le tableau des priorités des opérateurs par
+ordre croissant de priorité :
+Associativité
+Opérateurs
+gauche
+,
+gauche
+or
+gauche
+xor
+gauche
+and
+droite
+print
+gauche
+= += -= *= /= .= %= &= |= ^= ~= <<=>>=
+gauche
+? :
+gauche
+|
+gauche
+&&
+gauche
+|
+gauche
+^
+gauche
+&
+non-associative == != !==
+non-associative < <= > >=
+gauche
+<< >>
+gauche
++ - .
+
+gauche
+* / %
+droite
+! ~ ++ -- (int) (double) (string) (array) (object) @
+droite
+[
+non-associative new
+4.2 Opérateurs arithmétiques
+Les opérateurs +, -, *, / et %. Le « % » est le modulo : le reste de la division.
+
+4.3 Opérateurs d'assignation
+Le principal est le = mais on a aussi comme en C des opérateurs combinés +=, -=, *=, /=, %=, .=
+
+4.4 Opérateurs sur les bits
+Les opérateurs sont le & (AND), | (OR), ^ (XOR), ~ (NOT, ~$a), >> ($a>>$b décalage de $b bits
+S. ROHAUT
+Cours Programmation PHP
+Page 20/93
+
+sur la gauche) et << ($a << $b décalage de $b bits sur la droite). Un décalage de bits sur la gauche équivaut à une multiplication par deux, un décalage sur la droite à une division par deux.
+
+4.5 Opérateurs de comparaison
+Les opérateurs sont == ($a==$b, même valeur), ($a$b, même valeur et même type), != ou
+<> (différent), <, >, <=, >=.
+
+Il y a aussi l'opérateur ternaire « ?: » expr1?expr2:expr3 Si expr1 est vrai alors expr2 sinon expr3.
+
+4.6 Opérateur d'erreur
+On dispose d'un opérateur spécial @ qui appliqué à une expression empêche la sortie d'un message
+d'erreur en cas de problème. On peut toujours récupérer le message d'erreur éventuel à l'aide de la
+variable $php_errormsg mais uniquement si l'option « track_errors » est à « On » dans le php.ini.
+
+$retour=@$tab['toto']; // ne retourne pas d'erreurs si l'index toto n'existe pas
+4.7 Opérateur d'exécution
+On peut exécuter des commandes externes au PHP comme en Shell avec les opérateurs « guillemts
+inverses « ` » (altgr+6). Attention l'option « safe_mode » doit être à « On » dans le php.ini. On peut
+aussi utiliser la fonction « shell_exec » qui fait exécuter une commande par le shell.
+
+4.8 Opérateurs d'incrémentation/décrémentation
+On dispose comme en C des opérateurs ++ et --, à utiliser avant ou après le nom de variable.
+
+$a++; // retourne $a puis l'incrémente de 1
+++$a; // incrémente $a de 1 puis retourne $a
+$a--; // retourne $a puis décrémente de 1
+--$a; // décrémente $a de 1 puis retourne $a
+Attention ! Les opérateurs réagissent aux types de variables. Le PHP réagit comme en PERL. Ainsi :
+$a='Z';
+$a++;
+echo $a; // retourne AA
+$a++;
+echo $a; // retourne AB
+4.9 Opérateurs logiques
+Les opérateurs logiques sont :
+« and » ou « && » ($a and $b, $a && $b) vrai si $a et $b sont vrais
+« or » ou « || » ($a or $b, $a || $b) vrai si $a ou $b sont vrais
+« xor » ($a xor $b) vrai si $a ou $b sont vrais mais pas les deux en même temps
+« ! » (!$a) vrai si $a est faux.
+
+Attention, and et or n'ont pas la même priorité (priorité plus faible) que && et || !
+
+S. ROHAUT
+Cours Programmation PHP
+Page 21/93
+
+4.10 Opérateurs de chaînes
+Il y a deux opérateurs de chaînes : le « . » qui concatène deux chaînes entre elles et le « .= » déjà vu
+qui est l'opérateur d'assignation.
+
+$a="Bonjour";
+$b=$a." les amis"; // $b contient Bonjour les amis
+$b.="! Salut."; // $b contient Bonjour les amis! Salut.
+
+4.11 Opérateur de tableaux
+On peut « additionner » deux tableaux entre eux avec le « + » : le tableau de droite est ajouté au
+tableau de gauche.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 22/93
+
+5 La notion d'expression
+En PHP, une expression peut être résumée en « tout ce qui a une valeur ». Ceci dit, on remarque vite
+que en PHP tout ou presque est une expression. Une variable ou une constante se voient affectés des
+valeurs. Cette valeur est donc l'expression de la variable ou de la constante.
+
+Nous pouvons résumer en disant qu'une expression représente tout ce qui peut être évalué. On ne
+peut évaluer que les valeurs
+
+Une fonction peut aussi être une expression si elle retourne une valeur. On dit généralement qu'une
+fonction a retourné telle valeur. Une comparaison est aussi une expression : elle retourne une valeur
+booléenne. Un calcul est aussi une expression, puisqu'une valeur est retournée, affectée, calculée.
+
+PHP est orienté expression ce qui fait que tout ou presque en PHP est une expression. PHP cherche
+donc à décomposer tout ce qui est possible en expressions à évaluer, pour optimiser ses traitements.
+
+Voici quelques exemples.
+
+$a=2;
+On distingue au premier coup d'oeil deux valeurs : la variable $a et la valeur 2, la variable $a étant
+mise à jour avec la valeur 2. Or en interne il y a une troisième valeur qui rentre en jeu: la valeur de
+l'assignation, ici elle-même assignée à 2. Cette ligne signifie en fait : « $a=2 est une expression qui
+vaut 2 ».
+
+$b=$a=2;
+Les assignations sont analysées de droite à gauche. Ici nous avons l'expression $a=2 qui vaut donc
+2. $b vaut donc 2 aussi. C'est plus rapide à écrire et à exécuter que $a=2; $b=2;
+$a=$a+3;
+PHP évalue d'abord l'expression $a+3 soit la valeur de $a incrémentée de 3, et assigne la nouvelle
+valeur à $a.
+
+$a+=3;
+Le résultat est le même, mais il est plus rapide car $a n'est évalué qu'une seule fois. On peut en
+arriver à avoir des expressions surprenantes :
+$a=2;
+$b=$a+=3;
+La variable $a est incrémentée de 3 et vaut donc 5. L'expression $a+=3 vaut 5. $b se voit assigné la
+valeur 5. L'expression vaut donc 5.
+
+Dernière chose :
+$a?$b:$c
+si l'expression $a est vrai, l'expression $b est évaluée, sinon l'expression $c est évaluée.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 23/93
+$a=TRUE; $b=2;$c=3;
+echo $a?$b:$c; // affiche 2
+S. ROHAUT
+Cours Programmation PHP
+Page 24/93
+
+6 Les structures de contrôle
+6.1 if
+if(expression) commande ou { bloc de commandes }
+else commande ou { bloc de commandes }
+Il y a aussi le « elseif », combinaison du if et du else. Le elseif en un mot peut aussi s'écrire en deux
+mots : le résultat est le même. On peut écrire des elseif en chaîne. Le premier dont l'expression est
+vrai est exécuté.
+
+If(expression) commande ou { bloc de commandes }
+elsif(expression) commande ou { bloc de commandes }
+elsif(expression) commande ou { bloc de commandes }
+
+On peut placer du HTML comme commande ou dans le bloc de commande.
+
+<?php if ($a == 5) { ?>
+A = 5
+<?php } ?>
+On peut aussi utiliser une syntaxe alternative : on ouvre le bloc (juste après le if, le else ou le elseif)
+avec les « : » deux points, et on ferme l'instruction avec « endif ».
+
+<?php
+if ($a == 5):
+print "a = 5";
+print " ";
+elseif ($a == 6):
+print "a = 6";
+print "!!!";
+else:
+print "a ne vaut ni 5 ni 6";
+endif;
+?>
+6.2 while
+6.2.1 while classique
+C'est la boucle « tant que » simple : tant que la condition n'est pas vraie, on continue la boucle.
+
+L'expression est placée en début de boucle : si l'expression est fausse avant de rentrer dans la
+boucle, la boucle n'est pas exécutée.
+
+While(expression) commande ou { bloc de commandes }
+On peut aussi utiliser la syntaxe alternative :
+while(expression): commande ou { bloc de commandes }
+endwhile
+6.2.2 do while
+C'est la seconde possibilité. Dans ce cas la commande ou le bloc de commande est exécutée au
+S. ROHAUT
+Cours Programmation PHP
+Page 25/93
+
+moins une fois, car l'expression conditionnelle est testée en fin de boucle.
+
+do { bloc de commandes } while(expression)
+6.3 for
+Le « for » du PHP est identique au « for » du C.
+
+for(expr1;expr2;expr3) commande ou { bloc de commandes }
+« expr1 » est exécutée à la première entrée dans la boucle. « expr2 » est exécutée à chaque début
+d'itération jusqu'à ce que l'expression soit fausse auquel cas on sort de la boucle. « expr3 » est
+exécutée à la fin de l'itération.
+
+L'usage habituel d'une telle boucle est de placer l'état initial en expr1, la condition de sortie en expr2
+et le calcul en expr3. Mais on peu effectuer toutes sortes de choses.
+
+// de 1 à 10
+for ($i = 1; $i <= 10; print $i, $i++)
+// infini
+for(;;)
+// de 1 à 10
+for ($i = 1; $i <= 10; print $i, $i++) ;
+On peut employer une syntaxe alternative avec le « : » et « endfor ».
+
+for(expr1;expr2;expr3): commande ou { bloc de commandes }
+endfor
+6.4 foreach
+La boucle « foreach » est peut-être l'une des plus intéressantes pour la manipulation de tableaux ou
+de résultats de requêtes SQL. Elle permet de lister les tableaux. Elle dispose de deux syntaxes.
+
+foreach(array_expression as $value) commandes
+foreach(array_expression as $key => $value) commandes
+La première syntaxe récupère les éléments du tableau un par un, séquentiellement. La valeur de
+l'élément courant du tableau est placée dans $value.
+
+La seconde syntaxe est presque identique, sauf qu'en plus la clé (l'index) de l'élément actuel est
+placée dans $key.
+
+Attention : modifier la valeur de $value (ou de $key) ne modifie pas le tableau car cette boucle
+travaille sur une copie, pas une référence. Par contre dans le second cas, comme on dispose de la
+clé, rien n'empêche d'assigner quoi que ce soit à l'élément courant.
+
+Remarque : un appel à foreach « rembobine » automatiquement le tableau à son premier élément.
+
+Mais pas dans les autres boucles, il faut alors utiliser « reset ».
+
+reset($arr);
+while (list(, $value) = each ($arr)) {
+echo "Valeur: $value<br>\n";
+}
+S. ROHAUT
+Cours Programmation PHP
+Page 26/93
+
+foreach ($arr as $value) {
+echo "Valeur: $value<br>\n";
+}
+$a = array (
+"un" => 1,
+"deux" => 2,
+"trois" => 3,
+"dix-sept" => 17
+);
+foreach($a as $k => $v) {
+print "\$a[$k] => $v.\n";
+}
+6.5 break et continue
+L'instruction « break » permet de sortir d'un for, while, foreach ou switch. On peut lui indiquer de
+combien de structures on souhaite sortir si elles sont emboîtées.
+
+L'instruction « continue » permet de passer à l'itération suivante. Attention PHP conside le switch
+comme une boucle, et dans ce cas, réévalue le switch. On peut indiquer à continue combien de
+structures emboîtées relancer.
+
+6.6 switch
+Le « switch » est équivalent à une série de if et permet de comparer avec un grand nombre de
+valeurs.
+
+switch ($i) {
+case 0:
+print "i egale 0";
+break;
+case 1:
+print "i egale 1";
+break;
+case 2:
+print "i egale 2";
+break;
+default:
+print "i est inférieur à 0 ou supérieur à 2 »;
+}
+Le switch s'arrête à la première expression case vraie puis exécute le code suivant dans l'ordre
+indiqué, jusqu'à la première instruction break. S'il n'y a pas de break, tout le code jusqu'à la fin du
+switch est exécuté. Dans l'exemple suivant, si $i vaut 0, tous les print seront affichés !
+
+switch ($i) {
+case 0:
+print "i egale 0";
+case 1:
+print "i egale 1";
+case 2:
+print "i egale 2";
+}
+Notez aussi que le default doit intervenir en dernier, sinon il n'a aucun intérêt.
+
+Enfin on peut employer une syntaxe alternative avec « : » et « endswitch ».
+
+S. ROHAUT
+Cours Programmation PHP
+Page 27/93
+
+switch ($i):
+case 0:
+print "i egale 0";
+break;
+case 1:
+print "i egale 1";
+break;
+endswitch
+6.7 return
+Contrairement à d'autres langages, « return » n'est pas une fonction mais une instruction. Dans une
+fonction, return sert à sortir de celle-ci et à retourner une valeur. Dans un script, elle sort de celui-ci.
+
+Attention cependant dans les scripts inclus (voir require et include) : le return dans ce type de code
+considère qu'il sort de la fonction « require » ou « include » et donc ne sort pas du script ou de la
+fonction dans lesquels ce code a été inclus !
+
+Comme return est un élément du langage et pas une fonction il y a pas besoin d'utiliser les parenthèses.
+
+6.8 require et include (_once)
+« require » et « include » incluent à l'endroit actuel et exécutent le fichier PHP. Ils sont identiques
+dans leur fonctionnement à une exception : le traitement des erreurs. Un include produit un
+« warning » (le code continue en principe à s'exécuter) tandis qu'un require produit une « erreur
+fatale » (l'exécution s'arrête).
+
+Comme require et include sont des éléments du langage et pas des fonctions il y a pas besoin
+d'utiliser les parenthèses.
+
+« require_once » et « include_once » ressemblent à leurs homologues avec cependant une
+différence. Quoi qu'il arrive, le fichier est inclus une seule fois. Si un second « require_once »
+apparaît avec le même fichier, l'instruction ne sera pas exécutée.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 28/93
+
+7 Les fonctions
+7.1 Syntaxe et portée
+Voici la syntaxe d'une fonction.
+
+function fonc($arg1, $arg2, $arg3, , $argn) {
+bloc de commandes
+return $valeur
+}
+Une fonction n'a pas besoin d'être déclarée avant d'être utilisée (sauf si vous voulez rester compatible avec PHP3), du moment qu'elle apparaît dans le script.
+
+Il y a cependant deux exceptions : si la fonction est conditionnelle, c'est à dire déclarée dans un if,
+ou si la fonction est déclarée dans une autre fonction. Dans le premier cas elle sera inconnue du
+reste du code tant que la condition du if n'est pas vraie. Dans le second cas elle ne sera connue que
+quand la première fonction sera exécutée. Voici un exemple tiré du manuel.
+
+Pour le premier cas :
+$makefoo = true;
+/* Impossible d'appeler foo() ici, car cette fonction n'existe pas.
+
+Mais nous pouvons utiliser bar() */
+bar();
+if ($makefoo) {
+function foo () {
+echo "Je n'existe pas tant que le programme n'est pas passé ici.\n";
+}
+}
+/* Maitenant, nous pouvons appeler foo() car $makefoo est maintenant vrai */
+if ($makefoo) foo();
+function bar() {
+echo "J'existe dès le début du programme.\n";
+}
+Pour le second cas :
+function foo() {
+function bar() {
+echo "Je n'existe pas tant que foo() n'est pas appelé.\n";
+}
+}
+/* Impossible d'appeler bar() ici car il n'existe pas. */
+foo();
+/* Maintenant, nous pouvons appeler bar(), car l'utilisation de foo() l'a rendu
+accessible. */
+bar();
+7.2 Arguments
+On peut passer autant d'arguments que souhaité à une fonction PHP, de tous types. Les arguments
+S. ROHAUT
+Cours Programmation PHP
+Page 29/93
+
+sont séparés par des virgules. Par défaut ils sont passés par copie.
+
+function affiche($msg) {
+echo $msg;
+}
+Il est possible de passer des arguments par référence, on peut donc en changer la valeur à l'intérieur
+de la fonction. Pour cela on rajoute un « & » devant l'argument. On peut passer ponctuellement une
+variable par référence en plaçant un « & » devant son nom lors de l'appel de la fonction.
+
+function modif(&$msg) {
+$msg="coucou";
+}
+$msg="salut";
+modif($msg);
+echo $msg; // coucou
+On peut aussi définir des valeurs par défaut mais ATTENTION, dans la liste des paramètres les
+valeurs par défaut doivent être en dernier.
+
+function affiche($nom, $prenom="toto") {
+echo "$nom $prenom";
+}
+Enfin on peut utiliser un nombre variable d'arguments avec les fonctions func_num_args,
+func_get_arg et func_get_args.
+
+function foo() {
+$numargs = func_num_args();
+echo "Nombre d'arguments: $numargs\n";
+}
+foo (1, 2, 3); // affiche 'Nombre d'arguments: 3'
+7.3 Valeur de retour
+On retourne une valeur avec l'instruction « return ». On peut retourner tout type de valeurs, mais pas
+plusieurs en même temps. Cependant rien n'empêche dans ce cas de retourner un tableau. Une
+fonction peut aussi retourner une référence. Dans ce cas elle doit être déclarée avec un « & » devant
+son nom.
+
+function carre ($num) {
+return $num * $num;
+}
+echo carre (4); // affiche '16'
+7.4 Fonctions internes
+En plus des fonctions définies par l'utilisateur PHP propose un grand nombre de fonctions internes
+couvrant une multitude de domaines. Pour accéder à ces fonctions il faut simplement les appeler par
+leur nom et que le module correspondant soit compilé avec PHP. Nous verrons dans les chapitres
+suivants comment en utiliser certaines.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 30/93
+
+8 Gestion des formulaires en PHP
+8.1 GET et POST
+Le but est de récupérer le contenu des champs d'un formulaire HTML dans notre code PHP pour
+pouvoir le traiter. Lorsqu'un formulaire est envoyé à un script PHP, toutes les variables seront
+disponibles automatiquement dans le script.
+
+Les formulaires peuvent être de type GET ou POST. Pour rappel, dans un formulaire de type GET,
+les informations sont passées directement par l'URL en clair, ce qui peut poser des problèmes de
+limitations suivant le serveur (de 256 à 8192 octets selon le cas). La méthode POST n'a pas ce genre
+de limitation, car les informations sont transmises par le conteneur de variables globales (dans
+l'entête) et sont de plus cachées. PHP peut gérer les deux méthodes de manière transparente.
+
+8.2 Récupération par tableau
+Chaque champ de formulaire en PHP est défini par un nom et une valeur. Dans un script, PHP va
+récupérer ces noms et ces valeurs dans des tableaux spéciaux dit superglobaux (accessibles depuis
+partout). Pour la méthode GET, le tableau est $_GET, pour la méthode POST le tableau est
+$_POST. Si vous ne souhaitez pas vous soucier de la méthode, vous pouvez utiliser le tableau
+$_REQUEST. En index on aura le nom du champ de formulaire (ou de la variable passée en URL)
+et en valeur la valeur du champ. Par exemple :
+<form action="foo.php" method="post">
+Name: <input type="text" name="username"><br>
+Email: <input type="text" name="email"><br>
+<input type="submit" name="submit" value="Submit me!">
+</form>
+Dans la page PHP foo.php on aura :
+<?php
+echo $_POST['username'];
+echo $_REQUEST['email'];
+?>
+Imaginons l'appel d'une page test.php par une URL comme ceci :
+http://www.monsite.com/test.php?id=1
+Ici on transmet une variable via une URL et donc la méthode implicite GET. Pour récupérer « id »
+dans un code PHP on peut donc faire :
+<?php
+echo $_GET['id'];
+echo $_REQUEST['id'];
+?>
+$_GET ne contiendra que les variables de type GET. $_POST ne contiendra que les variables de
+type POST. $_REQUEST contient les variables de type POST et GET mais aussi les variables de
+cookies. Il est aussi possible de procéder autrement en récupérant le nom du champ directement en
+tant que variable sans passer par un tableau. Pour cela il faut vérifier dans le fichier php.ini que
+la valeur register_globals est à on. Dans ce cas les noms des champs de formulaire seront les
+S. ROHAUT
+Cours Programmation PHP
+Page 31/93
+
+noms des variables :
+<?php
+echo $username;
+echo $email;
+?>
+8.3 Récupération directe
+Si cette valeur est à off et que pour diverses raisons (sécurité, pas le droit, etc) vous ne souhaitez/pouvez pas la modifier, il existe tout de même une méthode. La fonction
+« import_request_variables » permet d'effectuer explicitement la même chose. Cette fonction
+prend un ou deux paramètres, le second étant optionnel. Après exécution, on récupère les variables
+sans passer par un tableau. Le premier paramètre est le type de variables qu'on souhaite récupérer :
+– P / p : variables de type POST
+– G / g : variables de type GET
+– C / c : variables de type cookie
+On peut cumuler l'ensemble mais attention à l'ordre ! Le second paramètre est le préfixe qu'on
+souhaite donner au nom des variables qu'on va récupérer. Voici deux exemples :
+<?php
+import_request_variables("p");
+echo $username;
+?>
+<?php
+import_request_variables("P","Post_");
+echo $Post_username;
+?>
+On peut aussi passer par la fonction « extract » qui permet d'exporter un tableau en variables. Ainsi
+pour le tableau $_POST :
+<?php
+extract($_POST);
+echo $username;
+?>
+8.4 Utiliser des tableaux
+Les formulaires permettent d'utiliser des listes à choix multiples et PHP doit donc récupérer l'ensemble des choix de l'utilisateur. Pour ça il faut utiliser les tableaux.
+
+<form action="<?php echo $HTTP_SERVER_VARS['PHP_SELF']; ?>" method="post">
+Name: <input type="text" name="personal[name]"><br>
+Email: <input type="text" name="personal[email]"><br>
+Beer: <br>
+<select multiple name="vin[]">
+<option value="bordeaux">bordeaux</option>
+<option value="beaujolais">beaujolais</option>
+<option value="loire">loire</option>
+</select><br>
+S. ROHAUT
+Cours Programmation PHP
+Page 32/93
+<input type="hidden" name="action" value="submitted">
+<input type="submit" name="submit" value="submit me!">
+</form>
+Dans l'exemple précédent si par exemple on sélectionne plusieurs vins (ex : bordeaux et beaujolais)
+on aura dans $vin[0] bordeaux et $vin[1] beaujolais.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 33/93
+
+9 Date et heure
+9.1 Localisation
+Le format de date et d'heure (format et langue) est dépendant de l'environnement d'exécution du
+code PHP. Généralement la plupart des serveurs web incorporant PHP sont configurés en langue
+anglaise avec une gestion des informations de localisation en anglais. Il peut être préférable de
+passer en français pour un site francophone ce qui simplifie largement la tâche. On peut effectuer
+cela avec la fonction « setlocale ». Voici deux exemples : un sous NT/2000 et un autre sous Linux.
+
+if (substr(php_uname(), 0, 7) != "Windows") {
+setlocale(LC_TIME,"fr_FR@euro");
+} else {
+setlocale(LC_TIME,"fr");
+}
+Dans cet exemple, nous vérifions d'abord à quel système nous avons à faire (fonction php_uname)
+puis en fonction du résultat nous passons en localisation française selon deux méthodes. Après ce
+changement, les appels aux fonctions retournant des jours de la semaine ou des mois le feront en
+français.
+
+9.2 Récupérer la date et l'heure
+9.2.1 date()
+Le plus simple est d'utiliser la fonction « date » qui retourne l'heure locale sous forme d'une chaîne
+de caractères à préciser en premier paramètre. En second paramètre on peut préciser un
+« timestamp » si on ne souhaite pas l'heure actuelle. Pour récupérer la date du jour :
+echo date("d/m/Y"); // 06/01/2004
+Voici les caractères utilisables (documentation PHP) :
+• a - "am" (matin) ou "pm" (après-midi)
+• A - "AM" (matin) ou "PM" (après-midi)
+• B - Heure Internet Swatch
+• d - Jour du mois, sur deux chiffres (éventuellement avec un zéro) : "01" à
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>

@@ -1,0 +1,673 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an expert language model trained to extract meaningful topics from raw text.
+You must follow the instructions carefully and only produce valid XML — no explanations, no extra text.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Perform topic modeling on the following documents. Identify a set of coherent topics. For each topic, return a few representative keywords that capture its meaning.
+    Return ONLY valid XML output like:
+  <topics>
+    <topic id="1">
+      <word></word>
+      <word></word>
+      <word></word>
+    </topic>
+  </topics>
+</instruction>
+  <documents>
+    <document>
+      <chunk i="4">
+($b_base) or die("erreur à la selection de $b_base);
+mysql_close();
+10.6.2 Les requêtes
+10.6.2.1 Exécuter une requête
+On exécute une requête SQL avec la fonction mysql_query(). Cette fonction prend au moins un
+paramètre : une requête SQL sous forme de chaîne. La fonction retourne FALSE en cas d'échec
+(colonne ou table invalide, droits insuffisants, pas de connexion, etc).
+
+ATTENTION : Ce n'est pas parce que l'appel à mysql_query() n'a pas retourné d'erreur que la
+fonction retourne des lignes de résultats dans le cas d'un SELECT par exemple. Enfin, la requête
+SQL ne doit pas finir par un point-virgule.
+
+La requête peut être de n'importe quel type (selection, mise à jour, destruction, etc). Dans le cas d'un
+SELECT, SHOW, EXPLAIN ou DESCRIBE, mysql_query() retourne une ressource qui sera
+ensuite utilisée pour lire le résultat.
+
+$result=mysql_query("select id_message, sujet from f_message");
+S. ROHAUT
+Cours Programmation PHP
+Page 48/93
+
+10.6.2.2 Nombre de lignes affectées
+Dans le cas d'un DELETE, INSERT, REPLACE ou UPDATE, on peut connaître le nombre de
+lignes affectées (modifiées) par la requête à l'aide de la fonction mysql_affected_rows().
+
+$result=mysql_query("delete from f_message where login='toto'");
+if($result) echo mysql_affected_rows()." Enregistrements supprimés";
+10.6.2.3 Nombre de lignes retournées
+Dans le cas d'un SELECT, le nombre d'enregistrements (lignes) retourné est obtenu avec la fonction
+mysql_num_rows().
+
+$result=mysql_query("select * from f_message where id_message > 10");
+if($result) echo mysql_num_rows().' enregistrements retournés');
+10.6.2.4 Récupérer les résultats
+La fonction la plus sympathique pour récupérer les enregistrements après l'exécution d'une sélection
+est mysql_fetch_array(). Elle prend au minimum un paramètre : une ressource résultat (résultat de
+mysql_query). Elle retourne une ligne de résultat sous forme d'un tableau associatif, d'un tableau
+indexé ou des deux. Par défaut, le tableau retourné est à la fois associatif et indexé.
+
+Dans un tableau associatif, l'index du tableau est le nom du champ correspondant à la colonne. Dans
+un tableau indexé, les colonnes sont numérotées à partir de zéro.
+
+Notez que mysql_fetch_array() ne retourne qu'une seule ligne de résultat. Pour passer à la suivante,
+il faut exécuter la fonction à nouveau. Elle retournera FALSE quand il n'y aura plus de lignes à lire.
+
+$result=mysql_query("select sujet,texte from f_message where login='toto'");
+$tab=mysql_fetch_array($result); // Première ligne du résultat
+echo $tab['sujet'].', '.$tab['texte']; // affiche les champs sujet et texte
+echo $tab[0].', '.$tab[1]; // idem
+Si plusieurs colonnes portent le même nom, la dernière colonne sera prioritaire. Dans une requête
+affichant des noms de colonnes identiques, le mieux est de les renommer :
+SELECT t1.nom as col1, t2_nom as col2 FROM t1, t2
+
+Le second paramètre de mysql_fetch_array() peut être :
+• MYSQL_ASSOC : le résultat est uniquement un tableau associatif (index=nom de colonne)
+• MYSQL_NUM : le résultat est uniquement un tableau indexé numériquement.
+
+• MYSQL_BOTH (par défaut) : les deux
+Voici comment récupérer tous les résultats :
+$result=mysql_query("select sujet,texte from f_message where login='toto'");
+while ($result && $tab=mysql_fetch_array($result)) {
+echo $tab['sujet'].', '.$tab['texte']; // affiche les champs sujet et texte
+}
+S. ROHAUT
+Cours Programmation PHP
+Page 49/93
+
+Notez l'expression du while. Pour y rentrer, il faut que le résultat de la requête ($result) ne soit pas FALSE (donc que la requête ait fonctionné) et qu'il reste des lignes à lire. Autrement dit si la
+requête ne retourne rien, on ne rentre pas dans la boucle.
+
+Notez enfin qu'il existe deux autres fonctions possibles :
+• mysql_fetch_row() : équivaut à mysql_fetch_array($var,MYSQL_NUM)
+• mysql_fetch_assoc() : équivaut à mysql_fetch_array($var, MYSQL_ASSOC)
+10.6.2.5 Insertion avec auto-incrément
+L'identifiant unique d'une table est souvent un entier auto-incrémenté. L'avantage est qu'il n'y a pas
+besoin de gérer cet identifiant, c'est MySQL qui le détermine tout seul. Mais dans certains cas, il
+peut être nécessaire de récupérer la valeur de ce champ auto-incrémenté après une insertion pour,
+par exemple, mettre à jour un autre enregistrement (liste chaînée, jointure, etc). On utilise pour ça la
+fonction mysql_insert_id().
+
+$result=mysql_query("insert into f_message (sujet, texte) values
+('test','test')");
+$id=mysql_insert_id();
+$result=mysql_query("select sujet, texte from f_message where id_message=$id");
+$tab=mysql_fetch_array($result);
+echo $tab['sujet'].', '.$tab['texte']; // test, test
+10.6.3 Récupération des erreurs
+En cas d'erreur lors d'une manipulation sur MySQL, on peut récupérer le numéro de l'erreur MySQL
+par la fonction mysql_errno(). De même on peut récupérer le message d'erreur par la fonction
+mysql_error().
+
+On peut trouver la liste des codes d'erreurs ici :
+http://www.mysql.com/doc/en/Error-returns.html
+S. ROHAUT
+Cours Programmation PHP
+Page 50/93
+
+11 Le système de fichiers
+11.1 Travail sur les fichiers
+11.1.1 Ouverture
+La fonction fopen() permet d'ouvrir ou de créer un fichier selon divers modes. Elle prend en premier
+pramètre le nom du fichier avec son chemin. Ce nom de fichier peut être une URL (il faut pour cela
+que la directive allow_url_fopen soit activée dans le php.ini). Le second paramètre est le mode
+d'ouverture :
+– r :lecture seule, en début de fichier
+– r+: lecture/écriture, en début de fichier
+– w : écriture seule , taille du fichier à 0 (ancien contenu effacé), créé s'il n'existe pas
+– w+ : lecture/écriture, taille du fichier à 0, créé s'il n'existe pas
+– a : écriture seule, en fin de fichier, créé s'il n'existe pas
+– a+ : lecture/écriture, en fin de fichier, créé s'il n'existe pas.
+
+On peut sous Windows rajouter la lettre 'b' pour le type binaire, inutile sous Unix.
+
+Enfin, fopen() admet un troisième paramètre : 1. Dans ce cas le fichier à ouvrir sera recherché dans
+le include_path (voir php.ini).
+
+La valeur retournée est une ressource de fichier (identifiant de fichier) ou la valeur FALSE en cas
+d'échec.
+
+$file=fopen('server.log','a+',1);
+11.1.2 Lecture
+11.1.2.1 fgets()
+La fonction fgets() permet de lire une ligne d'un fichier en mode texte. La fonction s'arrête lorsqu'elle arrive à la fin du fichier ou à un retour chariot. On peut préciser en second paramètre une
+longueur de texte en octet qui est par défaut 1024 et ce paramètre est obligatoire avant les versions
+4.2. Le premier paramètre est l'identifiant du fichier. FALSE sera retourné en cas d'erreur.
+
+ATTENTION : fgets() ne retourne pas FALSE à la fin du fichier.
+
+$ligne=fgets($file);
+11.1.2.2 fread();
+La fonction fread() permet de lire un fichier en mode binaire. Le second paramètre est la longueur
+souhaitée. Sous Windows il faut penser à placer 'b' dans fopen(). La lecture s'arrête lorsque les n
+octets (longueur) ont été lus, la fin du fichier a été atteinte ou qu'une erreur est survenue.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 51/93
+
+$file=fopen('monimage.gif','rb');
+$img=fread($file, $filesize('nomimage.gif'));
+fclose($file);
+11.1.2.3 fscanf()
+La fonction fscanf() lit des lignes d'un fichier en fonction d'un formatage particulier.
+
+$file=fopen('users.txt','r');
+while($ligne=fscanf($file,"%s\t%s\t%s\n")) {
+echo $ligne;
+}
+11.1.2.4 fgetc()
+La fonction fgetc() lit un seul caractère dans le fichier. Contrairement à fgets(), elle retourne FALSE
+à la fin du fichier. Le premier paramètre est l'identifiant du fichier.
+
+11.1.2.5 fgetss()
+La fonction fgetss() fonction est identique à fgets() mais la ligne retournée est débarrassée de ses
+éventuelles balises PHP ou HTML. On peut préciser en troisième paramètre une liste de balises
+autorisées.
+
+11.1.2.6 fgetcsv()
+La fonction fgetcsv() est une fonction très puissante car elle permet de lire un fichier de type CSV,
+c'est à dire dont les champs sont délimités, pour récupérer les champs dans un tableau. Lesond
+paramètre est la longueur maximale d'une ligne du fichier, le troisième paramètre le séparateur, qui
+est la virgule par défaut.
+
+Voici un exemple permettant de lire un fichier CSV et d'en afficher le résultat sous forme d'un
+tableau HTML :
+$filename = "book1.csv";
+$id = fopen($filename, "r");
+while ($data = fgetcsv($id, filesize($filename))) $table[] = $data;
+fclose($id);
+echo "<table>\n";
+foreach($table as $row) {
+echo "<tr>";
+foreach($row as $data) echo "<td>$data</td>";
+echo "</tr>\n";
+}
+echo "</table>\n";
+11.1.2.7 Renvoyer un fichier par la sortie standard
+La fonction readfile() prend comme paramètre un nom de fichier et renvoie son contenu par la
+sortie standard. La fonction readgzfile() effectue la même chose mais le fichier est au format
+compressé gzip (zlib).
+
+S. ROHAUT
+Cours Programmation PHP
+Page 52/93
+
+11.1.3 Ecriture
+Les deux fonctions fwrite() et fputs() sont identiques 100% car fputs() est un alias de fwrite().
+
+Elles écrivent une chaîne dans un fichier. On peut limiter la longueur de la chaîne en troisième
+paramètre mais par défaut toute la chaîne est écrite. La valeur retournée est le nombre d'octets écrits,
+ou FALSE en cas d'erreur.
+
+$file=fopen('monfic.txt','a);
+$ret=fwrite($file,'Une ligne dans mon fichier');
+fclose($file);
+En cas de travail sur un fichier binaire, il ne faut pas oublier sous Windows de rajouter l'option 'b'.
+
+11.1.4 Déplacement
+11.1.4.1 fseek()
+La fonction fseek() permet de se déplacer dans un fichier. Le second paramètre (offset) est le
+nombre d'octets de déplacement. Il peut être négatif. Par défaut le déplacement est calculé à partir
+du début du fichier mais un troisième paramètre peut modifier cet état. La valeur retournée est 0
+(zéro) en cas de réussite, -1 sinon. Un positionnement après la fin du fichier n'est pas une erreur.
+
+– SEEK_SET : Calcul à partir du début du fichier. Position finale : Début+offset
+– SEEK_CUR : Calcul à partir de l'emplacement actuel. Position finale : Actuelle+offset
+– SEEK_END : Calcul à partir de la fin du fichier. Position finale : Fin+Offset.
+
+$ret=fseek($file,0, SEEK_END); // Fin du fichier
+11.1.4.2 ftell()
+La fonction fseek() renvoie la position actuelle du pointeur dans le fichier.
+
+$pos=ftell($file);
+11.1.4.3 rewind()
+La fonction rewind() permet de retourner au début du fichier. Elle retourne TRUE en cas de
+réussite, FALSE sinon.
+
+11.1.5 Fin de fichier
+La fonction feof() indique si on est à la fin du fichier ou non. Elle retourne TRUE si la fin de fichier
+a été atteinte, FALSE sinon.
+
+$fd = fopen ("/tmp/inputfile.txt", "r");
+while (!feof ($fd)) {
+$buffer = fgets($fd, 4096);
+echo $buffer;
+}
+fclose ($fd);
+S. ROHAUT
+Cours Programmation PHP
+Page 53/93
+
+11.1.6 Fermeture
+On ferme un fichier avec la fonction fclose().Elle retourne TRUE en cas de réussite, FALSE sinon.
+
+11.2 Travail sur les répertoires
+11.2.1 Répertoire actuel
+La fonction getcwd() retourne le nom du dossier de travail courant, c'est à dire là où on est.
+
+Attention sous Windows : cette fonction ne fait pas de distinctions entre les majuscules et les
+minuscules.
+
+$chemin=getcwd();
+echo $ chemin ; :: /srv/www/site
+11.2.2 Se déplacer
+On se déplace avec la fonction chdir(). L'argument peut être absolu ou relatif. En cas d'erreur,
+FALSE est retourné.
+
+if(chdir('./rep'))
+getcwd();
+else
+die('Impossible de se déplacer');
+11.2.3 Ouvrir, lister, fermer
+On ouvre un répertoire en lecture avec la fonction opendir() qui prend comme unique paramètre un
+nom ou chemin de répertoire. En cas d'échec, la fonction retourne FALSE sinon un identifiant
+(handler) de répertoire.
+
+On lit une entrée avec la fonction readdir() qui prend comme paramètre l'identifiant de répertoire.
+
+Quand il n'y a plus rien à lire, la fonction retourne FALSE sinon elle retourne le nom de l'entrée
+actuellement lue. ATTENTION, les entrées « . » et « .. » sont lues comme les autres.
+
+On ferme un répertoire en cours de lecture avec la fonction closedir() qui prend comme paramètre
+l'identifiant de répertoire.
+
+$handle=opendir('.');
+while ($file = readdir($handle)) {
+if ($file != "." && $file != "..") {
+echo "$file\n";
+}
+}
+closedir($handle);
+On peut retourner au début du répertoire avec la fonction rewinddir() qui prend comme paramètre
+un identifiant de répertoire. La prochaine lecture sera la première du répertoire.
+
+11.2.4 Récupérer toutes les entrées
+Même s'il est possible de récupérer l'ensemble des entrées d'un répertoire avec les fonctions S. ROHAUT
+Cours Programmation PHP
+Page 54/93
+
+précédentes et une boucle, la fonction scandir() propose la même chose, en une ligne et en plaçant tous les noms de fichiers du chemin indiqué dans un tableau. Le premier paramètre est un chemin de
+répertoire. Le second est optionnel et définit l'ordre du tri qui est alphabétique par défaut. Un « 1 »
+indique un tri alphabétique décroissant.
+
+$files=scandir('./rep');
+print_r($files);
+11.3 Travail sur le système de fichiers
+11.3.1 Informations sur le fichier
+On peut obtenir diverses informations sur un fichier à l'aide des commandes de type is_x() :
+– is_dir() : TRUE si le nom de fichier est un répertoire
+– is_file() : TRUE si le nom de fichier est un véritable fichier normal
+– is_executable() : TRUE si le fichier est exécutable. Sous Windows il faut PHP 5.x.
+
+– is_readable() : TRUE sir le fichier est lisible
+– is_writeable(), is_writable() : TRUE si le fichier est accessible en écriture
+– is_link() : TRUE si le fichier est un lien.
+
+De même, on peut obtenir des détails sur un fichier avec les fonctions filexxx() :
+– file_exists() : TRUE si le fichier existe
+– fileatime() : retourne sous forme de TIMESTAMP la dernière date d'accès. Sous Windows, ce
+sera la dernière date de modification.
+
+– filectime() : retourne la date de création
+– filemtime() : retourne la date de modification
+– filegroup() : retourne le GID du fichier. On récupère le nom réel du groupe avec la fonction
+posix_getgrgid().
+
+– fileowner() : retourne le UID du fichier. On récupère le nom réel de l'utilisateur avec la fonction
+posix_getpwuid().
+
+– fileinode() : retourne l'inode du fichier
+– fileperms() : retourne les permissions du fichier. ATTENTION le résultat est en base 10. Il
+faudra convertir en base 8 avec la fonction base_convert().
+
+– filesize() : retourne la taille du fichier en octets.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 55/93
+
+– filetype() : retourne le type du fichier. ATTENTION il s'agit des types de fichiers sur disque, pas de leur contenu (image, etc) : fifo, char, dir, block, link, file, unknown.
+
+Si un fichier est déjà ouvert on peut obtenir des informations avec la fonction fstat() qui prend
+comme paramètre un identifiant de fichier retourné par fopen() et qui retourne un tableau indexé
+numériquement ou associatif. La fonction stat() retourne la même chose mais on lui précise un
+chemin ou nom de fichier. La fonction lstat() est quasi-identique sauf que dans le cadre du lien, ce
+sont les informations sur le lien lui-même (et pas le fichier pointé) qui sont retournées.
+
+0. volume (ou encore dev)
+1. inode (ou encore ino)
+2. droits d'accès au fichier (mode de protection du inode). A convertir en octal. Voir aussi fileperms(). (ou encore mode)
+3. nombre de liens (ou encore nlink)
+4. id de l'utilisateur propriétaire (ou encore uid)
+5. id du groupe propriétaire (ou encore gid)
+6. type du volume de l'inode * (ou encore rdev )
+7. taille en octets (ou encore size)
+8. date du dernier accès (ou encore atime)
+9. date de la dernière modification (ou encore mtime)
+10.date du dernier changement (ou encore ctime)
+11.taille de bloc du système pour les entrées/sorties * (ou encore blksize)
+12.nombre de blocs alloués (ou encore blocks)
+11.3.2 Actions sur les fichiers et répertoires
+On retrouve ici des fonctions qui portent souvent le même nom que leurs équivalents sous le shell
+Unix :
+– dirname(), basemane() : isolent le chemin et le nom d'un fichier
+– chown(), chgrp() : changent le propriétaire et le groupe d'un fichier. Le premier paramètre est le
+fichier, le second le groupe ou le propriétaire (UID, GID, ou en toutes lettres)
+– chmod() : modifie les droits. Le premier paramètre est le nom du fichier, le second les droits en
+octal. ATTENTION sous Windows, les résultats peuvent surprendre
+
+S. ROHAUT
+Cours Programmation PHP
+Page 56/93
+
+– copy() : copie d'un fichier : source et destination
+– link() : créé un lien hard link: cible, nom du lien
+– symlink() : créé un lien symbolique : cible, nom du lien
+– mkdir() : créé un répertoire, le second paramètre est le mode (droits par défaut) AVANT
+application du masque.
+
+– rename() : renomme et/ou déplace un fichier : orgine, destination.
+
+– rmdir() : supprime un répertoire. Il doit être vide.
+
+– unlink() : supprime un fichier.
+
+– umask() : modifie le umask par défaut
+11.4 Upload de fichiers
+L'upload de fichiers permet d'envoyer depuis un poste client un fichier sur le serveur. Cette opération nécessite un navigateur sachant prendre en charge une balise spéciale et l'appel d'un script
+PHP.
+
+Côté Page HTML, il faut modifier la définition d'un formulaire, placer le champ formulaire de type
+FILE et indiquer la taille maximale du fichier téléchargé avec un nom HIDDEN de bom MAX_FILE_SIZE. Cette taille est précisée en octets. Ce champ doit être placé AVANT
+l'apparition du champ de type FILE.
+
+Le formulaire doit être de type POST (bien que GET soit possible, voir documentation PHP) et le
+type d'encodage ENCTYPE "/multipart/form-data" doit être précisé.
+
+<form ENCTYPE="multipart/form-data" action="/page.php" method="post">
+<INPUT TYPE="hidden" name="MAX_FILE_SIZE" value="35840">
+<INPUT NAME="avatar" TYPE="file" SIZE=50>
+<input type="submit" value="Enregistrer"/>
+</form>
+Notes : Certains navigateurs se fichent totalement du poid (taille) des fichiers envoyés en ne réagissant pas à la variable MAX_FILE_SIZE. Dans ce cas la vérification doit être faite du côté du
+serveur. Au pire on peut limiter côté serveur la taille maximale à l'aide du paramètre
+upload_max_filesize dans le php.ini.
+
+On choisit son fichier via la boite de dialogue du gestionnaire de fichiers quand on clique sur le
+bouton Parcourir. Une fois le formulaire validé, les données du formulaire et le fichier sont envoyés
+à la page PHP.
+
+Côté PHP, on récupère les informations sur le fichier uploadé via un tableau $_FILE dont les index
+sont les suivants $_FILE[nom][propiete] le nom étant le nom du champ du formulaire FILE et la
+propriété :
+– $_FILES['userfile']['name'] : Le nom original du fichier, tel que sur la machine du client web.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 57/93
+– $_FILES['userfile']['type'] : Le type MIME du fichier, si le navigateur a fourni cette information.
+
+Par exemple, cela pourra être "image/gif"
+– $_FILES['userfile']['size'] : La taille, en octets, du fichier téléchargé.
+
+– $_FILES['userfile']['tmp_name'] : Le nom temporaire du fichier qui sera chargé sur la machine
+serveur.
+
+– $_FILES['userfile']['error'] : Le code d'erreur associé au téléchargement de fichier (PHP 4.2)
+Par défaut le fichier téléchargé et en attente de déplacement est placé dans le répertoire temporaire
+du système (variable système TEMP ou TMPDIR) ou dans le répertoire précisé par le paramètre de
+configuration upload_tmp_dir du fichier php.ini. Il est conseillé d'initialiser et d'utiliser ce paramètre. Le chemin du fichier temporaire uploadé est donc :
+$tmp_file=ini_get("upload_tmp_dir").'/'.$_FILE['userfile']['tmp_name'];
+Pour savoir si un fichier a été correctement uploadé par la méthode POST, on peut utiliser la
+fonction is_uploaded_file() qui prend comme paramètre le nom du fichier uploadé.
+
+if(is_uploaded_file($_FILE['userfile']['name'])) {// ou tmp_name
+echo $_FILES['userfile']['size'];
+}
+Sachant la position du fichier temporaire uploadé et s'il a été correctement uploadé, on peut utiliser
+la fonction copy. Mais le mieux est d'utiliser la fonction move_uploaded_file() qui teste la réussite
+de l'upload et qui déplace le fichier. Le premier paramètre est le nom du fichier uploadé. Ce peut
+être le nom du champ FILE, le nom réel du fichier ou le nom du fichier temporaire.
+
+if(move_uploaded_file($_FILES['avatar']['tmp_name'],$_SERVER['DOCUMENT_ROOT']. "/
+forum/avatars/$login".$_FILES['avatar']['name'])) {
+$avatar=$login.$_FILES['avatar']['name'];
+chmod($_SERVER['DOCUMENT_ROOT']."/forum/avatars/$avatar",0644);
+}
+S. ROHAUT
+Cours Programmation PHP
+Page 58/93
+
+12 Travail sur chaînes
+12.1 Fonctions pour code HTML et MySQL
+12.1.1 Gestion des caractères verrouillés
+La fonction addslashes() rajoute des slashes (backslashes \) devant tous les caractères qui doivent
+être verrouillés. Ces caractères sont le « " », le « ' », le « \ » et le caractère nul (NULL). Ainsi la
+chaîne résultante peut être utilisée pour être placée en base de données via des commandes SQL.
+
+La fonction stripslashes() effectue l'opération inverse : elle supprime les anti-slash sauf dans le cas
+des doubles anti-slash \\, elle n'en supprime qu'un.
+
+$chaine="L'oreille cassée";
+$c1=addslashes($chaine);
+echo $c1; // L\'oreille cassée
+echo stripslashes($c1); // L'oreille cassée
+12.1.2 balises et caractères spéciaux HTML
+La fonction strip_tags() permet de filtrer une chaîne contenant des balises (tags) HTML en autorisant certains et interdisant d'autres. Le premier paramètre est la chaîne HTML. Le second est
+la liste des tags autorisés. ATTENTION : la fonction ne modifie pas le contenu des balises autorisées, laissant ainsi les attributs CLASS, STYLE et appels JavaScript.
+
+$chaine="<u><i><b>Bonjour les amis</b></i></u>";
+echo strip_tags($chaine,'<u><i><b>'); // Bonjour les amis
+echo strip_tags($chaine,'<b>'); // <b>Bonjour les amis</b> en gras
+La fonction htmlspecialchars() convertit certains caractères spéciaux en entités HTML. Ces
+caractères sont :
+– « & » :&amp;
+– « " » : &quot; si ENT_NOQUOTES est utilisé
+– « ' » : &#039; si ENT_QUOTES est utilisé
+– « < » : &lt;
+– « > » : &gt;
+Le second paramètre (ENT_xxx) définit le fonctionnement par rapport aux quotes.
+
+La fonction htmlentities() va plus loin en remplaçant TOUS les caractères qui ont des équivalents
+en HTML. Pour décoder une telle chaîne, il faut alors utiliser la fonction html_entity_decode().
+
+La fonction nl2br() remplace tous les retour-chariots d'une chaîne en retours à la ligne HTML : <br
+/>.
+
+La fonction urlencode() formate une chaîne pour son utilisation dans une URL. Les espaces sont
+S. ROHAUT
+Cours Programmation PHP
+Page 59/93
+
+remplacés par des « + » et tous les caractères non-alphanumériques (sauf « - », « . » et « _ ») sont
+remplacés par leur équivalent hexadécimal %XX. Une telle chaîne sera décodée par la fonction
+urldecode().
+
+12.2 Fonctions texte générales
+12.2.1 Découper une chaîne
+La fonction explode() permet de découper une chaîne selon un séparateur. Elle retourne un tableau
+contenant les divers éléments découpés. Le premier paramètre est le séparateur, le second la chaîne.
+
+Un troisième paramètre permet de limiter le nombre de valeurs retournées.
+
+$chaine='login:pwd:uid:gid';
+$tab=explode(':',$chaine);
+foreach($tab as $value) echo $value; // login pwd uid gid
+La fonction inverse se nomme implode().Le premier paramètre est la « colle » : le ou les caractères
+de séparation qui seront placés entre les divers éléments de la chaîne reconstituée. Le second
+paramètre est un tableau.
+
+// suite de l'exemple précédent
+$newchaine=implode(',',$tab);
+echo $chaine; // login,pwd,uid,gid
+La fonction join() est un alias de implode().
+
+On peut aussi effectuer un découpage tous les n caractères avec la fonction chunk_split(). Elle
+découpe le premier paramètre en morceaux de longueur du second paramètre (par défaut 76
+caractères) avec comme séparateur le troisième paramètre (\n\r par défaut).
+
+$chaine='FF5EB649C4';
+$n_chaine=chunk_split($chaine,2,':');
+echo n_chaine; // FF:5E:B6:49:C4
+La fonction wordwrap() effectue la césure d'une chaîne. La chaîne résultante sera le texte découpé
+en tenant compte des mots. Par défaut la longueur (second paramètre) est de 75 caractères. On peut
+préciser la chaîne de coupure de ligne en troisième paramètre, et le dernier paramètre s'il est à 1
+force la coupure même au milieu d'un mot. Pour un affichage en HTML, il faut encapsuler le
+résultat dans un nl2br().
+
+$chaine="Bonjour les amis et bienvenus dans le merveilleux monde du langage
+PHP !";
+echo nl2br(wordwrap($chaine,20));
+retourne
+Bonjour les amis et
+bienvenus dans le
+merveilleux monde
+du langage PHP !
+
+La fonction str_split() découpe une chaîne de caractère en tableau. Par défaut la longueur est de 1
+mais on peut la choisir en second paramètre.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 60/93
+
+On peut découper une partie de chaîne avec la fonction substr(). Le premier paramètre est la chaîne, le second le début (depuis 0) et le dernier la longueur. Le début de la chaîne peut être une valeur
+négative et dans ce cas on compte en partant de la fin de la chaîne.
+
+$chaine='abcdef';
+echo substr($chaine,0); // abcdef
+echo substr($chaine,2,3); // cde
+echo substr($chaine,-1); // f
+echo substr($chaine,-3,2); // de
+Les fonctions trim(), rtrim() et ltrim() suppriment les caractères invisibles à droite (trim, rtrim) et à gauche (trim, ltrim) de la chaîne.
+
+12.2.2 Rechercher et comparer
+La fonction strcmp() effectue une comparaison de deux chaînes. Retourne <0 si la chaine1 est
+inférieure à chaine2, 0 si égale, >0 sinon. La fonction strncmp() à le même effetmais sur une
+longueur donnée, en troisième paramètre.
+
+Les fonctions strcasecmp() et strncasecmp() sont des versions insensibles à la casse.
+
+La fonction strstr() recherche la première occurrence du second paramètre dans le premier et
+retourne la chaîne depuis cette position jusqu'à la fin. La fonction strchr() est un alias de strstr(). La
+fonction stristr() est la même mais insensible à la casse.
+
+La fonction strrchr() effectue quasiment la même chose sauf qu'elle retourne la fin de la chaîne
+depuis le dernier caractère trouvé.
+
+La fonction strpos() recherche dans la chaîne du premier paramètre la chaîne en second paramètre
+et retourne sa position. On peut placer en troisième paramètre la position de départ de la recherche.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 61/93
+
+13 Sessions et cookies
+13.1 Les cookies
+13.1.1 Création
+Un cookie s'envoie avec la fonction setcookie(). Les arguments sont les suivants :
+• Nom
+• Valeur
+• date d'expiration (un timestamp unix)
+• chemin (validité du cookie suivant le chemin dans l'url)
+• domaine (pare défaut, le vôtre)
+• secure : flag de sécurité : le cookie n'est accessible que via une connexion sécurisée.
+
+Seul le premier argument est obligatoire. Pour ne pas spécifier une valeur, il suffit de ne rien mettre.
+
+Attention à quelques limitations :
+• Un cookie étant envoyé avec les entêtes HTTP, il ne peut pas être envoyé si une sortie a déjà eu
+lieu (html, texte, )
+
+• Un cookie n'est pas disponible dans la page qui l'a créé. Il faut soit recharger la page, soit pointer
+sur une autre.
+
+• Un cookie ne peut être supprimé qu'avec les mêmes paramètres qui ont servi à sa création. C'est
+le navigateur qui supprime le cookie.
+
+setcookie("testcookie",session_id(),time()+3600);
+if(isset($_COOKIE['testcookie'])) echo $_COOKIE['testcookie'];
+Dans l'exemple précédent, au premier chargement rien ne sera affiché car le contenu du cookie n'est
+pas encore accessible. Au deuxième chargement la valeur sera réellement affichée, mais attention au
+décalage entre la mise à jour et l'accès.
+
+if(!isset($_COOKIE['testcookie'])) {
+setcookie("testcookie",'toto',time()+3600);
+header("Location: http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+}
+Dans cet exemple, on regarde si le cookie existe, sinon on le créé et on rappelle la page.
+
+13.1.2 Accès
+On accède au cookie grâce à la variable globale $_COOKIE qui est un tableau. L'index du tableau
+est le nom du cookie.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 62/93
+
+$valeur=$_COOKIE['testcookie'];
+echo $valeur; // par rapport à l'exemple précédent : toto
+Note : on peut placer les tableaux avec les cookies. Il suffit de nommer son cookie avec une
+notation par crochets.
+
+setcookie("testcookie[1]",'toto',time()+3600);
+setcookie("testcookie[2]",'titi',time()+3600);
+setcookie("testcookie[3]",'tata',time()+3600);
+(page suivante)
+foreach($_COOKIE as $tab) {
+if(is_array($tab)) foreach($tab as $key => $value) echo "$key => $value";
+}
+13.1.3 Suppression
+Pour supprimer un cookie, il suffit de donner une date antérieure à la date actuelle à celui-ci.
+
+if(!isset($_COOKIE['testcookie'])) {
+setcookie("testcookie",'toto',time()+3600);
+} else {
+setcookie("testcookie",'',time()-3600);
+}
+if(isset($_COOKIE['testcookie'])) echo "OK";
+else echo "Pas de cookie";
+Dans l'exemple précédent, les appels au script vont provoquer successivement l'affichage de « pas
+de cookie » et « OK ».
+
+13.2 Identification HTTP
+13.2.1 Connexion
+Cette possibilité n'est disponible que si PHP est utilisé comme module Apache, et pas en tant que
+script CGI. L'identification HTTP permet via l'envoi d'un HEADER HTTP de demander une
+identification au client. Dans ce cas le navigateur va ouvrir une fenêtre de connexion demandant une
+saisie de login et de mot de passe. PHP récupère bien entendu ces valeurs. Voici l'exemple issu de la
+documentation PHP
+if (!isset($_SERVER['PHP_AUTH_USER'])) {
+header('WWW-Authenticate: Basic realm="Slyunix"');
+header('HTTP/1.0 401 Unauthorized');
+echo 'Texte utilisé si le visiteur utilise le bouton d\'annulation';
+exit;
+} else {
+echo "<p>Bonjour, {$_SERVER['PHP_AUTH_USER']}.</p>";
+echo "<p>Votre mot de passe est {$_SERVER['PHP_AUTH_PW']}.</p>";
+}
+Dans cet exemple, on passe en entête une demande d'authentification. En cas d'échec (bouton
+annuler) un message d'annulation est affiché. Sinon on peut récupérer les valeurs via les variables :
+• $_SERVER['PHP_AUTH_USER'] : login
+S. ROHAUT
+Cours Programmation PHP
+Page 63/93
+
+• $_SERVER['PHP_AUTH_PW'] : mot de passe
+13.2.2 Déconnexion
+La déconnexion n
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>

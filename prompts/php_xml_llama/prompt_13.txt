@@ -1,0 +1,822 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an expert language model trained to extract meaningful topics from raw text.
+You must follow the instructions carefully and only produce valid XML — no explanations, no extra text.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Perform topic modeling on the following documents. Identify a set of coherent topics. For each topic, return a few representative keywords that capture its meaning.
+    Return ONLY valid XML output like:
+  <topics>
+    <topic id="1">
+      <word></word>
+      <word></word>
+      <word></word>
+    </topic>
+  </topics>
+</instruction>
+  <documents>
+    <document>
+      <chunk i="2">
+, des piles. .
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+Création de tableaux : la fonction array
+$tab = array(15);
+$tab= array(12);
+// Ecrase le tableau précédent
+$a1 = array("un","deux","trois","nous irons au bois"); $a2 = array(1 => "un","deux","trois","nous irons au bois"); $a3 = array(1 => "un",2 => "deux",3 => "trois",4 => "nous irons . ."); Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+Manipulation d'éléments de tableaux
+$tab = array(15);
+$tab[]=12;
+// On ajoute 12 à la fin du tableau (index 1) $tab[1]=24
+// on remplace 12 par 24
+unset($arr[0]); // supprime l'élément de clef 0
+unset($arr);
+// supprime le tableau
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+Afficher un tableau : mot clef « f
+oreach »
+
+<?php
+$tab = array('rouge','bleu','vert','jaune'); foreach ( $tab as $couleur )
+{ echo "Aimez vous la couleur $couleur?\n"; }
+/* Affiche : Aimez vous la couleur rouge? Aimez vous la couleur bleu?
+
+Aimez vous la couleur vert? Aimez vous la couleur jaune? */
+?>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+modifier tous les éléments d'un tableau :
+<?php
+foreach( $tab as $cle => $couleur )
+{ // ne marche pas
+//$couleur = strtoupper($couleur);
+//marche :
+$couleurs[$cle] = strtoupper($couleur);
+}?>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+Exercices :
+● Ecrire une page html qui affiche la page suivante :
+● Ecrire une page php qui affiche un tableau 1D sous la forme précédente.
+
+● Ecrire une page php qui fasse la même chose pour des tableau 2D.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+Fonctions utiles de manipulations de tableaux :
+● reset($array)
+Remet le pointeur interne de tableau au début.
+
+● pos($array)
+Retourne la valeur de l'élément courant d'un tableau.
+
+● key($array)
+Retourne l'indice de l'élément courant d'un tableau.
+
+● current($array)
+Retourne la valeur de l'élément courant d'un tableau.
+
+● next($array)
+Avance le pointeur interne d'un tableau.
+
+● prev($array)
+Recule le pointeur courant de tableau.
+
+● end($array)
+Positionne le pointeur de tableau en fin de tableau.
+
+● each($array)
+Retourne la paire clé/valeur courante et avance le pointeur de tableau.
+
+Chacune de ces fonctions renvoie false en cas de problème.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+Le mot­clef list :Transforme une liste de variables en tableau.
+
+$info = array('rhum', 'transparent', 'alcool');
+// Liste de toutes les variables
+list ($drink, $color, $power) = $info; echo "$drink est $color et l'$power le rend particulier.\n";
+// Liste de certaines variables
+list ($drink, , $power) = $info;
+echo "$drink contient de l'$power.\n";
+// Ou bien, n'utilisons que le troisième list( , , $power) = $info;
+echo "J'ai besoin d'$power!\n"; Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+Utilisation de list : parcours de tableaux $info = array('rhum', 'transparent', 'alcool'); while (list ($key, $val) = each ($info))
+{ echo "$key => $val \n";
+}
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+Fonctions et opérateurs utiles pour les tableaux :
+● Opérateur +
+Ajoute deux tableaux. (clefs égales. )
+● array_merge ($tab1, $tab2. . )
+Ajoute deux tableaux (clefs égales. .)
+
+● count ($tab)
+Compte les éléments d'un tableau.
+
+● array_keys($tab)
+Retourne toutes les clés d'un tableau
+● array_values($tab)
+Retourne les valeurs d'un tableau
+● array_key_exists($key, $tab)
+Regarde si une clef existe.
+
+● array_search($val,$tab)
+Recherche la clé associée à une valeur.
+
+● array_flip($tab) :
+Retourne un tableau : clefs <­> valeurs Chacune de ces fonctions renvoie false en cas de problème.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+Exemple de fusions de tableaux :
+<?
+
++ et merge. .
+
+?>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Tableaux PHP
+Fonctions utiles de tris de tableaux :
+● sort ($array )
+Trie un tableau par valeurs croissantes.
+
+● rsort ($array )
+Trie un tableau par valeurs décroissantes.
+
+● ksort($array)
+Trie un tableau par valeurs de clefs croissantes.
+
+● krsort($array)
+Trie un tableau par valeurs de clefs décroissantes.
+
+● shuffle ($array )
+Mélange les éléments d'un tableau.
+
+Chacune de ces fonctions renvoie false en cas de problème.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Fonctions PHP
+Définir et appeler une fonction
+function somme ($arg1, $arg2,$arg3)
+{ print "$arg1";
+$retval = $arg1+$arg2+$arg3;
+return $retval;
+}$toto=5;
+$resu = somme(1,2,$toto);
+print "$resu";
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Fonctions PHP
+Passage des arguments d'une fonction
+Passage par valeurs : Une fonction ne modifie pas ses arguments.
+
+function bidon ($arg1)
+{ $arg1=0;
+}
+$toto=15;
+bidon($toto);
+echo "toto = $toto";
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Fonctions PHP
+Passage de paramètres par référence
+Pour pouvoir modifier une variable tout le temps
+<?php
+function add_some_extra(&$string)
+{$string .= ', et un peu plus.';
+}
+$str = 'Ceci est une chaîne';
+add_some_extra($str);
+echo $str; // affiche 'Ceci est une chaîne, et un peu plus.'
+?>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Fonctions PHP
+Passage de paramètres par référence
+Pour pouvoir modifier une variable ponctuellement
+<?php
+function foo ($bar)
+{ $bar .= ', et un peu plus.'; }
+$str = Ceci est une chaîne';
+foo ($str);
+echo $str; // affiche 'Ceci est une chaîne'
+foo (&$str);
+echo $str; // affiche 'Ceci est une chaîne, et un peu plus.'
+?>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Fonctions PHP
+paramètres par défaut des fonctions
+<?php
+function servir_apero ($type = "ricard")
+{return "Servir un verre de $type.\n";
+}
+echo servir_apero();
+echo servir_apero("whisky");
+?>
+Valeurs par défaut : constantes
+Paramètres avec valeurs par défaut sont passés après les autres Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Fonctions PHP
+Nombre de paramètres variables
+● Passer un tableau de variables (le plus simple)
+● Utiliser les fonctions suivantes (en TP).
+
+● func_num_args ,
+● func_get_arg
+● func_get_args .
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Inclusion de fichiers PHP
+Pour inclure des librairies de fonctions :
+● Mots clefs
+● « r
+equire »
+« r
+equire_once »
+
+« i
+nclude »
+«
+i
+nclude_once »
+
+● Ne se différencient que par leur gestion d'erreur :
+● Inclut et exécute un fichier php.
+
+● « r
+equire »
+génère une erreur (le script s'interrompt)
+● « i
+nclude »
+génère une alerte (le script continue).
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Inclusion de fichiers PHP
+Exemple
+<?php
+// Avec une chaine constante :
+require 'prepend.php';
+// Avec une variable :
+require $somefile;
+// En pseudo fonction :
+require ('unfichier.txt');
+?>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Variables prédéfinies PHP
+Liste des variables prédéfinies (auto
+globales / super globales)
+$GLOBALS // Ref sur chaque var globales. Clef = nom de variable.
+
+$_SERVER // variables fournies par httpd ou relatives au script courant.
+
+$_GET
+// variables fournies par http en méthode get.
+
+$_POST
+// variables fournies par http en méthode post.
+
+$_COOKIE // variables fournies par http dans les cookies.
+
+$_FILES
+// variables fournies par http suite à un chargement de fichier.
+
+$_ENV
+// variables fournies par l'environnement.
+
+$_REQUEST // variables fournies par tout mécanisme d'entrée.
+
+$_SESSION // variables enregistrée dans la session.
+
+Connaître certaines variables prédéfinies: phpinfo(); Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Portée des variables en PHP
+● Une variable utilisée dans une fonction est locale !
+
+● La portée d'une variable concerne la totalité du script.
+
+● Pour récupérer une variable globale dans une fonction :
+● utiliser le mot clef « g
+lobal »
+.
+
+● utiliser le tableau $globals
+● Variables statiques : comme en C
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Pourquoi faire ?
+
+On utilise des formulaires dans le cas suivant :
+● L'utilisateur doit fournir des infos au serveur.
+
+● Le serveur doit traiter ces infos.
+
+● Le serveur renvoie une réponse au client.
+
+Un formulaire est mis en forme en HTML.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Début d'explication
+Les informations que fournit le formulaire doivent être identifiées pour le traitement. Elles portent un nom.
+
+● Le contenu de l'information dépend du type d'information.
+
+● Le serveur traite et renvoie une réponse au client.
+
+Un formulaire est mis en forme en HTML.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Ecriture d'un formulaire HTML :
+<form action= "
+mon_script.php method= "
+post">
+Votre Nom est : <br>
+<input type="text" name="YourName"> <p>
+
+Quel est votre sport prefere ? <br>
+<input type="text" name="FavoriteSport"> <p>
+
+<input type="submit" name="submit" value="Envoyez !">
+</form>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Résultat du formulaire précédent :
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Les <inputs> qui existent
+Ils se distinguent par l'attribut type
+● text
+: une ligne de texte
+● password : idem mais caché.
+
+● hidden
+: invisible (pour passer des variables).
+
+● checkbox : selection multiple.
+
+● radio
+: selection d'une possibilité parmi X.
+
+● submit
+: bouton d'envoi de formulaire
+● reset
+: bouton de remise dans l'état par défaut
+● file
+: saisie d'un nom de fichier (et bouton parcourir. .) Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Autres balises de formulaires
+Attention, ce sont des balises
+● <select></select>
+: liste de sélection déroulante.
+
+● <option></option>
+: options de liste déroulante.
+
+● <textarea></textarea>
+: zone de texte multilignes. .
+
+● <button></button>
+: un bouton.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Traitement du formulaire : Script PHP
+● Le formulaire est envoyé à un script
+défini par l'attribut action de la balise <form> (ici mon_script.php)
+● Deux méthodes d'envoi : GET et POST
+défini par l'attribut method de la balise <form> (ici post)
+● Le contenu du formulaire est accessible via une variable meta­globale (ici $_POST$)
+● Chaque champ du formulaire crée une variable portant son nom (attention aux checkbox. .)
+
+● Le résultat du traitement est renvoyé au client.
+
+Utiliser print_r($_POST) pour debugger. .
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Traitement du formulaire : Script PHP
+<?php
+$name = $_POST["YourName"]; $sport = $_POST["FavoriteSport"]; printf ("Salut %s\n",$name); printf ("Vous aimez le %s !\n",$sport);
+?>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Résultat du traitement du formulaire précédent : Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Méthode Post et Méthode Get
+● Méthode GET
+● Méthode par défaut.
+
+● Le formulaire est passé par ajout à l'url.
+
+● La requête a la forme : "GET /doc.html?var1=val1&var2=val2.. .
+
+HTTP/1.0"
+● Le script php peut les récupérer avec la méta­globale $_GET
+● Bookmarkable.
+
+● Petits volumes de données.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Formulaires HTML
+Méthode Post et Méthode Get
+● Méthode POST
+● Le formulaire est passé après l'url.
+
+● Les données sont transmises sur l'entrée standard du script.
+
+● Un script php peut les récupérer avec $_POST
+● Non bookmarkables
+● Petits ou gros volumes de données.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Sessions et Cookies
+But : Conserver des informations lors de la navigation d'un client sur le serveur.
+
+Exemples d'utilisation :
+➢ Identification (accès controlé)
+➢ Panier d'achat
+➢ Affichage adapté au contexte.
+
+En effet : http fonctionne en Mode non connecté.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Cookies
+● Qu'est ce ?
+
+➢ Un fichier créé par le navigateur sur le poste client, à la demande du serveur.
+
+➢ Sur la mdk9.2, les cookies de mozilla sont tous placés dans un fichier cookies.txt.
+
+● Fonctionnement :
+➢ Le navigateur qui se connecte à un domaine envoie au serveur les cookies rattachés au domaine.
+
+➢ Le cookie a une durée de vie limitée. Il est supprimé lorsqu'il est périmé.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Cookies
+● Les Cookies sont crées coté client :
+➢ Problème d'acceptation.
+
+● Php gère les cookies de façon simple.
+
+➢ Les cookies sont envoyés comme en­tête du document (avant tout autre chose).
+
+● Envoyer un cookie :
+bool setcookie (string name, string value, int expire, string path, string domain, int secure)
+● Regarder les cookies : $_COOKIE
+Attention : cookies envoyés avant toute chose (doctype).
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Cookies
+Exemple :
+<?php
+$duree = 24*60*60; // 1 journee en secondes !
+
+$value=$_SERVER["REMOTE_ADDR"]; setcookie("moncookie",$value,time()+$duree,"/","127.0.0.1");
+?>
+<html> </body>
+vous venez de recevoir un cookie <br>
+<a href="lire_cookie.php"> Lire le cookie </a>
+</body></html>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Cookies
+Si vous avez besoin des cookies :
+● vérifiez que vous pouvez les utiliser : Envoyez en un et regardez si il est reçu.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Sessions
+● Qu'est ce que c'est :
+● Un identifiant SID associé à un navigateur accédant à une page.
+
+● Le SID est défini par le serveur.
+
+● Coté serveur, on stocke pour chaque SID un ensemble de variables.
+
+● Mode de passage du SID :
+● Par url.
+
+Peu sécurisé.
+
+● Par cookie.
+
+Risque de non acceptation des cookies.
+
+● Choix du mode de passage : php.ini
+● Accès aux variables de sessions : $_SESSION
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Sessions
+● Utiliser les sessions :
+<?php
+session_start();
+if (!isset($_SESSION['compteur']))
+{ $_SESSION['compteur'] = 0; }
+else
+{ $_SESSION['compteur']++; }
+?>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Cookies et sessions
+● Authentification sécurisée (ma banque) :
+● Authentification par session.
+
+➢ limite les transmissions.
+
+● Passage du SID par cookie.
+
+➢ pas par l'url.
+
+● Le cookie à une durée de vie de 0
+➢ détruit quand on ferme le navigateur.
+
+● https : tous les échanges de données sont cryptés.
+
+➢ l'url passe quand même en clair
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Manipulation de fichiers en
+PHP
+Script exécuté par le serveur : les droits sur les fichiers sont ceux d'apache ou nobody.
+
+● Obtenir des informations sur les fichiers locaux
+● file_exists , is_dir, is_executable, is_file, is_link, is_readable, is_writable
+● stat, lstat, readlink
+● fileowner, filesize, filegroup, fileinode, fileperms
+● fileatime, filemtime
+● disk_free_space, disk_total_space
+● basename, dirname,
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Manipulation de fichiers en
+PHP
+Script exécuté par le serveur : les droits sur les fichiers sont ceux d'apache ou nobody.
+
+● Quelques fonctions bash­like :
+● Créer
+: touch, mkdir, link, symlink, copy, tempnam
+● Déplacer, effacer
+: rename, rmdir
+● Modifier les droits
+: umask, chmod, chmod, chgroup
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Manipulation de fichiers en
+PHP
+Quelques fonctions C­like
+● les « p
+ointeurs de fichiers »
+utilisés sont de type ressource.
+
+● Ouverture fermeture : fopen, fclose, feof, fflush
+● Répertoires
+: opendir, readdir;
+● Déplacement
+: rewind, fseek
+● Ascii
+: fscanf, fprint, fgetc, fgets, fgetss (sécu tags)
+● Binaire
+: fread, fwrite.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Manipulation de fichiers en
+PHP
+Quelques fonctions typiques php
+● glob : Trouve les noms de fichiers correspondant à une règle.
+
+foreach (glob("*.txt") as $filename) {echo $filename;}
+● file : Met le contenu d'un fichier dans un tableau foreach (file ("toto.txt", "./") as $ligne) {echo $ligne;}
+● file_get_contents : idem file mais dans une chaine.
+
+echo file ("toto.txt", "./"); Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Fichiers PHP
+Afficher le contenu d'un répertoire
+<?php
+$handle=opendir('.');
+echo "Pointeur de dossier: $handle <br>"; echo "Fichiers: <br>"; while ($file = readdir($handle))
+{
+echo "$file <br>";
+}
+closedir($handle);
+?>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Exemples PHP
+Comment faire :
+● Une page affichant toutes les images d'un répertoire.
+
+● Une page affichant
+● un tas d'apercus d'images.
+
+● Liées aux images.
+
+● commentaire pour chaque apercu.
+
+● Comment faire pour que seules certaines personnes ne puissent voir ces images. Images non confidentielles, juste privées.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+PhP – Postgress
+Fonctions utiles
+● pg_connect
+: se connecter sur un serveur postgress
+● pg_connection_status
+: . .
+
+● pg_query
+: faire une requete.
+
+● pg_fetch_array : Lit une ligne de resultat dans un tableau.
+
+● pg_fetch_row() : Lit une ligne dans un tableau (indices colonnes)
+● pg_close
+: se déconnecter
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Exemple PhP – Postgress
+Exemples de connections
+<?php
+$dbconn = pg_connect("dbname=marie"); $dbconn2 = pg_connect("host=localhost port=5432 dbname=marie"); $dbconn3 = pg_connect ("host=sheep port=5432 dbname=marie user=mouton password=baaaa");
+$conn_string = "host=sheep port=5432 dbname=test user=lamb password=bar";
+?>
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Exemple PhP – Postgress
+Exemples de requete
+$db = pg_connect(".. ");
+$query = "SELECT * FROM friends"; $result = pg_query($db, $query);
+$row=0;
+$numrows = pg_numrows($result);
+do {
+$myrow = pg_fetch_row ($result,$row); echo $myrow[0].$myrow[1]. $myrow[2]; $row++;
+} while ($row < $numrows);
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Générations d'images en
+lignes
+Faut remplir ici bibliothèque GD.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+
+Sécurité
+Considérations de sécurité : Rappels
+● Droits des scripts.
+
+● Conservation de renseignements (cookies/session)
+● Moyen de se loguer sur un SGBDR.
+
+● Sécurisation des échanges client / serveur.
+
+Vincent Pagé
+vpage@univ­ag.fr
+Université Antilles Guyane
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>

@@ -1,0 +1,964 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are an expert language model trained to extract meaningful topics from raw text.
+You must follow the instructions carefully and only produce valid XML — no explanations, no extra text.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Perform topic modeling on the following documents. Identify a set of coherent topics. For each topic, return a few representative keywords that capture its meaning.
+    Return ONLY valid XML output like:
+  <topics>
+    <topic id="1">
+      <word></word>
+      <word></word>
+      <word></word>
+    </topic>
+  </topics>
+</instruction>
+  <documents>
+    <document>
+      <chunk i="5">
+"master",
+"version": "3.3",
+"ref": "c0c0bf94174609d740ca2a61e0201949c5683d50"
+}
+},
+"symfony/http-foundation": {
+(suite sur la page suivante)
+3.29. Composer, Symfony 4 et Flex
+85
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+"version": "v4.1.0"
+},
+"symfony/http-kernel": {
+"version": "v4.1.0"
+},
+"symfony/lts": {
+"version": "4-dev"
+},
+"symfony/polyfill-mbstring": {
+"version": "v1.8.0"
+},
+"symfony/routing": {
+"version": "4.0",
+"recipe": {
+"repo": "github.com/symfony/recipes",
+"branch": "master",
+"version": "4.0",
+"ref": "cda8b550123383d25827705d05a42acf6819fe4e"
+}
+},
+"symfony/yaml": {
+"version": "v4.1.0"
+}
+}
+3.29.4 Application simple Symfony 4
+Complétons à présent l’application Symfony 4.
+
+3.30 Tester une application PHP - TDD
+Nous allons à présent nous attaquer à une problématique fondamentale dans toute application qu’elle soit Web, mobile ou autres : Les tests.
+
+3.30.1 TDD
+TDD veut dire Test Driven Development c’est à dire Développement dirigé par les tests C’est une démarche mise en avant en Méthodologie Agile Elle consiste en général en l’application des points suivants :
+— écrire un test
+— vérifier qu’il échoue (car le code qu’il teste n’existe pas)
+— écrire juste le code suffisant pour passer le test
+— vérifier que le test passe
+86
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+— procéder à un refactoring du code, c’est-à-dire l’améliorer en gardant les mêmes fonctionnalités.
+
+3.30.2 Intérêt de la démarche :
+Les avantages principaux de cette démarche sont :
+— Préciser au mieux les spécifications du code et l’API envisagée
+— Ceci oblige à faire des choix de conception qui restent parfois trop dans le flou au début du développement
+— Plus tard, disposer d’une large base de tests est une riche pour une application car elle permet de vérifier à tout moment que les tests installés ne sont pas mis en défaut par de nouveaux développements ou des refactoring de code
+Tous les langages de programmation disposent de Frameworks de tests. Par exemple Java offre JUnit.
+
+PHP quand a lui propose PHPUnit. On peut l’installer via composer :
+{
+"require": {
+"phpunit/phpunit": "6.3.*",
+},
+"autoload": {
+"psr-0": {
+"Exemple": "src"
+}
+}
+}
+composer.phar install
+Ecrivons à présent notre premier test dans le dossier Tests :
+<?php
+use Exemple\FileLoader;
+class FileLoaderTest extends PHPUnit_Framework_TestCase
+{
+public function testFileLoaderClassCanBeCreated()
+{
+$f = new FileLoader;
+}
+}
+Pour tester : Placer un fichier phpunit.xml à la racine de votre projet contenant :
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+(suite sur la page suivante)
+3.30. Tester une application PHP - TDD
+87
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+PHPUnit Configuration
+
+Fichier de configuration standard de phpunit
+-->
+<phpunit backupGlobals="false"
+backupStaticAttributes="false"
+colors="true"
+bootstrap="vendor/autoload.php"
+convertErrorsToExceptions="true"
+convertNoticesToExceptions="true"
+convertWarningsToExceptions="true"
+processIsolation="false"
+stopOnFailure="false"
+syntaxCheck="false"
+>
+<testsuites>
+<testsuite>
+<directory> tests</directory>
+</testsuite>
+</testsuites>
+</phpunit>
+Nous sommes prêts à lancer notre premier test :
+phpunit
+Ecrivons maintenant un peu de code pour nous permettre de passer notre premier test :
+Nous allons compléter notre test par une vérification qu’un fichier situé dans les textit{fixtures}
+de test a bien été chargé :
+<?php
+class FileLoaderTest extends PHPUnit_Framework_TestCase
+{
+public function testFileLoaderClassCanBeCreated()
+{
+$f = new FileLoader;
+}
+/**
+* Nous voulons récupérer le contenu d'un fichier via
+* une méthode get()
+*/
+public function testFileLoaderCanLoadFileContent()
+{
+$f = new FileLoader;
+$r = $f->get(__DIR__.'/fixtures/simple.md');
+$this->assertEquals("Foo\n", $r);
+}
+}
+88
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+Puis si nous avons besoin de Mock Objects, nous installerons la librairie mockery :
+composer require --dev mockery/mockery
+3.31 Mettre en place un Web Service REST
+3.31.1 Problème
+Dans une architecture REST classique, un serveur présente les données d’une table et un Client riche (ou RIA) en JavaScript ou un client Mobile permet de les récupérer et des les afficher.
+
+REST signifie Representational State Transfer.
+
+Cette architecture permet de réaliser des applications de type onepage en reportant sur le client une bonne partie de la logique métier et en offrant des point d’entrée aux clients pour lire des données sur le serveur ou lui en envoyer.
+
+Ces données pourront être envoyées en XML ou de plus en plus aujourd’hui en JSON : JavaScript Object Notation, c’est à dire des objets directement utilisables en JS.
+
+On pose les définitions suivantes :
+— RIA = Rich Internet Application
+— REST = Representational State Transform
+— Logique métier déportée vers le client
+— Tâche principale du serveur : Offrir des services de récupération et de stockage de
+données
+Un flux de news pourra ainsi offrir par exemple une ressource du type : /api/v1/news/314159 qui permettra aux clients de récupérer la news numéro 314159 en JSON ou en XML en employant la méthode HTTP GET dans la version 1 de notre API. Dans cet exemple, la news est ici la ressource ou élément manipulée dans l’API version 1. La méthode GET sera employée pour
+récupérer des éléments individuellement ou par Collections.
+
+La méthode POST sera quand à elle employée pour envoyer vers le serveur un ou plusieurs élé-
+ments. D’autres méthodes HTTP pour créer ou modifier complètement (PUT) ou partiellement (PATCH) des éléments ou les effacer (DELETE) seront souvent également disponibles dans
+l’API.
+
+Les technologies concurrentes à REST sont XML-RPC et SOAP (Microsoft) REST est une
+façon moderne de concevoir ce genre de service et possède les avantages suivants :
+— Bonne montée en charge du serveur
+— Simplicité des serveurs (retour aux sources du protocole HTTP)
+— Equilibrage de charge
+— le serveur offre une API
+— les services sont représentés par des URL’s donc simplicité et bonne gestion du cache
+— Possibilité de décomposer des services complexes en de multiples services plus simples qui communiquent entre eux
+Les
+principes
+de
+REST
+ont
+été
+théorisés
+par
+Roy
+Fielding
+dans
+sa
+thèse
+(http ://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm) :
+1. Séparation claire entre Client et Serveur
+3.31. Mettre en place un Web Service REST
+89
+
+Cours PHP Accéléré, Version 0.9.1
+2. Le client contient la logique métier, le serveur est sans Etat
+3. Les réponses du serveur peuvent ou non être mises en cache
+4. L’interface doit être simple, bien définie, standardisée
+5. Le système peut avoir plusieurs couches comme des proxys, systèmes de cache, etc
+6. Eventuellement, les clients peuvent télecharger du code du serveur qui s’exécutera dans le contexte du client
+Pour mémoire, une API REST peut offrir les méthodes suivantes :
+Méthodes HTTP et REST :
+Méthode
+Rôle
+Code retour HTTP
+GET URL
+Récupération Element
+200
+GET URL
+Récupération Collection
+201
+POST URL
+Envoi d’Elements
+201
+DELETE URL
+Effacer Element(s)
+200
+PUT URL
+Modifier un Element
+200
+PATCH URL
+Modif. partielle d’Elt.
+
+200
+Mais on peut aussi avoir des erreurs comme :
+Code Erreur
+Description
+Signification
+400
+Bad Request
+requête mal formée
+404
+Not Found
+Resource demandée inexistante
+401
+Unauthorized
+Authentification necessaire pour accéder à la
+resource.
+
+405
+Method Not Allowed
+Méthode interdite pour cette resource.
+
+409
+Conflict
+Par exemple, un PUT qui crée une ressource
+2 fois
+500
+Internal Server Error
+Autres erreurs du serveur.
+
+Par ailleurs, le serveur REST ne maintient pas d’état, les requêtes sont indépendantes les unes des autres. C’est un retour aux fondamentaux du protocole HTTP qui n’est pas doté de beaucoup de capacités de mémorisation . . .
+
+La logique et l’ergonomie de l’application sont gérées côté client. C’est une méthode aujourd’hui plebiscitée pour faire dialoguer des clients (mobiles ou Web) avec des serveurs.
+
+3.32 Exemple de service REST avec PHP
+3.32.1 Problème
+Nous allons réaliser en PHP l’implémentation d’un service REST qui exposera les données de la table de contact appellée CARNET utilisée dans les autres exemples.
+
+90
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+Un contact sera ainsi ainsi accessible à une route du type : /api/v1/contact/12 qui permettra aux clients de récupérer le contact en JSON employant la méthode HTTP GET dans la version 1 de notre API. Dans cet exemple, le contact constitue la ressource manipulée dans notre API. La méthode GET sera employée pour récupérer des éléments individuellement ou par Collections.
+
+Méthode
+Action réalisée
+URI
+GET
+Récup. tous les liens
+/api/v1/
+GET
+Récuperation un Element
+/api/v1/contact/{id}
+GET
+Récupération Collection
+/api/v1/contact
+POST
+Creation d’Elements
+/api/v1/contact
+DELETE
+Effacer Element
+/api/v1/contact/{id}
+PUT
+Modifier un Element
+/api/v1/contact/{id}
+PATCH
+Modif. partielle d’Elt.
+
+/api/v1/contact/{id}
+La route /api/v1/ en GET renverra la liste des URLs des contacts plutôt que la liste de tous les contacts avec tous leurs détails. Ceci permet d’avoir un serveur REST auto-documenté où la récupération d’une première URL permet en suivant d’obtenir la liste des ressources présentes sur le service avec leurs URLs respectives.
+
+On pourra également paginer les réponses pour ne pas manipuler trop de données simultané-
+ment.
+
+Pour assurer le routage simplement nous allons continuer avec Silex (http ://silex.sensiolabs.org/)
+Nous pouvons donc modifier le fichier index.php déjà mis en place comme suit :
+<?php
+require_once __DIR__.'/vendor/autoload.php';
+require_once 'modele.php';
+$app = new Silex\Application();
+$app['debug']=true;
+$app->get('/contact', function () {
+$content ='<ul>';
+$amis=get_all_friends();
+foreach ($amis as $ami){
+$content.='<li>'.$ami['NOM'].'</li>';
+}
+$content.='</ul>';
+return $content;
+});
+$app->get('/api/', function () {
+$amis=get_all_friends_links();
+return json_encode($amis);
+});
+$app->get('/api/contact', function () {
+(suite sur la page suivante)
+3.32. Exemple de service REST avec PHP
+91
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+$amis=get_all_friends();
+return json_encode($amis);
+});
+?>
+avec une nouvelle méthode dans modele.php :
+<?php
+function get_all_friends_links()
+{
+$connexion=connect_db();
+$amis=Array();
+$sql="SELECT * from CARNET";
+$data=$connexion->query($sql);
+while($pers=$data->fetch(PDO::FETCH_ASSOC))
+{
+$res=Array();
+$res['NOM'] = $pers['NOM'];
+$res['URL']=$_SERVER["REQUEST_SCHEME"].'://'.
+
+$_SERVER['HTTP_HOST'].
+
+$_SERVER['CONTEXT_PREFIX'].
+
+'/silex/api/contact/'.$pers['ID'];
+$amis[] = $res;
+}
+return $amis;
+}
+?>
+Indication : La vue de base de notre API renvoie maintenant la liste des liens de nos contacts et quelqu’un qui s’y connecte pourra décrouvrir par la d’autres URLs gérées par notre API.
+
+Une bonne API REST se doit d’être autodocumentée dans la mesure du possible !
+
+Puis assurons le GET sur l’URI /api/contact/id en ajoutant à index.php :
+<?php
+$app->get('/api/contact/{id}', function($id) use ($app) {
+$ami = get_friend_by_id($id);
+if (!$ami) $app->abort(404, "Contact inexistant");
+else return json_encode($ami,JSON_PRETTY_PRINT);
+});
+?>
+qui marchera si on ajoute la nouvelle méthode get_friend_by_id() au modèle :
+<?php
+function get_friend_by_id($id)
+{
+(suite sur la page suivante)
+92
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+$connexion=connect_db();
+$sql="SELECT * from CARNET where ID=:id";
+$stmt=$connexion->prepare($sql);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+return $stmt->fetch(PDO::FETCH_OBJ);
+}
+?>
+Continuons avec la méthode http DELETE sur la même route en ajoutant à index.php :
+<?php
+$app->delete('/api/contact/{id}', function($id) use ($app) {
+$ami = get_friend_by_id($id);
+if (!$ami)
+$app->abort(404, "Contact inexistant");
+else {
+delete_friend_by_id($id);
+return json_encode($ami,JSON_PRETTY_PRINT);
+}
+});
+?>
+en ajoutant au modèle :
+<?php
+function delete_friend_by_id($id)
+{
+$connexion=connect_db();
+$sql="Delete from CARNET where ID=:id";
+$stmt=$connexion->prepare($sql);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+return $stmt->fetch(PDO::FETCH_OBJ);
+}
+?>
+Enfin le POST doit nous permettre d’envoyer un nouveau contact pour peupler la table CARNET sur la route /api/contact. Nous assurons d’abord la récupération du contenu json sous la forme d’un tableau PHP avec la méthode before de Silex :
+<?php
+$app->before(function (Request $request) {
+if (0 strpos($request->headers->get('Content-Type'),
+˓→
+'application/json'))
+{
+$data = json_decode($request->getContent(), true);
+$request->request->replace(is_array($data) ? $data
+˓→:
+array());
+(suite sur la page suivante)
+3.32. Exemple de service REST avec PHP
+93
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+}
+});
+?>
+Puis la méthode post proprement dite :
+<?php
+$app->post('/api/contact', function (Request $request) use (
+˓→$app)
+{
+$data = $request->request->all();
+add_friends($data);
+return new Response(json_encode($data), 200, array('Content-
+˓→Type'
+=> 'application/json'));
+});
+?>
+N’oubliez pas de faire appel aux objets Request et Response au début du fichier index.php :
+<?php
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+?>
+Il ne reste plus qu’à ajouter au modèle :
+<?php
+function add_friends($data)
+{
+$connexion=connect_db();
+$sql="INSERT INTO CARNET(NOM,PRENOM,NAISSANCE,VILLE) values (?
+
+˓→,?,?,?)";
+$stmt=$connexion->prepare($sql);
+return $stmt->execute(array($data['NOM'], $data['PRENOM'],
+˓→$data['NAISSANCE'],$data['VILLE']));
+}
+?>
+Il n’y a plus qu’à implémenter un PUT et surtout à Tester ! !
+
+3.33 Tester une API REST avec votre navigateur ou
+avec curl
+Pour tester notre API nous pouvons dans un premier temps utiliser l’extension Postman de Chrome ou l’extension RESTClient pour Firefox.
+
+94
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+Avertissement : Attention à bien désactiver les proxys dans vos navigateurs si vous voulez utiliser ces extensions. Pour chrome on peut le lancer en ligne de commande avec l’option
+–no-proxy-server
+Si on veut une solution en ligne de commande, curl permet de manipuler les différentes mé-
+thodes HTTP. La syntaxe n’est pas idéale mais on peut tester toutes les méthodes HTTP.
+
+Avertissement :
+Si vous avez déclaré des variables d’environnement http_proxy ou
+https_proxy, il vaut mieux les désactiver pour que curl n’essaie pas de passer par un proxy ce qui serait problématique pour certaines de ces requêtes curl :
+unset http_proxy
+unset https_proxy
+3.33.1 Pour tester un GET :
+curl -i http://localhost/silex/api/v1/contact/2
+ou si on utilise le module user_dir d’Apache.
+
+curl -i http://localhost/~login/silex/api/v1/contact/2
+Avertissement : Attention dans le cas ou on utilise user_dir, les réglages pour utiliser toutes les methodes du protocole HTTP/1.1 peuvent s’avérer délicats.
+
+Notamment le fichier /etc/apache2/mods-available/userdir.conf doit être modifié comme suit (les user_dir sont dans www, syntaxe pour Apache > 2.2) :
+<IfModule mod_userdir.c>
+UserDir www
+UserDir disabled root
+<Directory /home/*/www>
+AllowOverride All
+Options MultiViews Indexes SymLinksIfOwnerMatch
+<Limit GET POST PUT DELETE OPTIONS>
+Require all granted
+</Limit>
+<LimitExcept GET POST PUT DELETE OPTIONS>
+Require all denied
+</LimitExcept>
+</Directory>
+</IfModule>
+3.33. Tester une API REST avec votre navigateur ou avec curl
+95
+
+Cours PHP Accéléré, Version 0.9.1
+et il faut aussi dans votre dossier sous voter user_dir (par exemple ~/www/silex ) avoir le
+.htaccess suivant :
+<Limit GET POST DELETE PUT OPTIONS>
+allow from all
+</Limit>
+FallbackResource /~roza/silex/index.php
+RewriteBase /~roza/silex
+Dans tous les cas, préciser si besoin dans votre php.ini ou un fichier équivalent :
+always_populate_raw_post_data = -1
+3.33.2 Pour tester un POST :
+curl -i -H "Content-Type: application/json" -X POST
+-d '{"NOM":"Dalton", "PRENOM":"joe", "NAISSANCE":"2000-08-15",
+˓→"VILLE":"Orleans"}'
+http://localhost/silex/api/contact
+3.33.3 Test un PUT :
+curl -i -H "Content-Type: application/json" -X PUT -d '{"done":true}
+˓→'
+http://localhost/silex/api/contact/5
+3.33.4 Test de DELETE :
+curl -i -H "Content-Type: application/json" -X "DELETE"
+http://localhost/silex/api/contact/7
+3.34 Tester une API
+3.34.1 Tester une API avec Postman
+C’est le moyen le plus simple pour tester une API. On l’installe en téléchargeant l’App de
+Postman (https ://www.getpostman.com/apps) pour votre OS. On peut alors se constituer des collections de requêtes HTTP pour tester une API REST spécifique.
+
+96
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+3.34.2 Tester une API REST avec Guzzle
+Les tests de notre API REST avec curl sont peu lisibles. Si vous préférez disposer d’une batterie de tests en PHP, vous pouvez utiliser une librairie spécialisée comme Guzzle. On peut installer cette dernière avec composer :
+composer require guzzlehttp/guzzle
+3.35 Feuilles de TD Lic Pro Web et Mobile
+3.35.1 Année 2018-2019
+— TD1
+— TD2
+— TD3
+3.36 Feuilles de TD 2ème Année IUT informatique
+3.36.1 Année 2018-2019
+— TD1
+— TP1
+— TD2
+— TP2
+— TP3
+— TD3
+— Git init
+3.37 Feuilles de TD Lic Pro Web et Mobile
+3.37.1 Année 2017-2018
+— TD1
+— TD2
+— TD3
+— TD4
+— TD5
+— TD6
+— TD7
+3.35. Feuilles de TD Lic Pro Web et Mobile
+97
+
+Cours PHP Accéléré, Version 0.9.1
+3.38 Feuilles de TD CVRH Tours
+3.38.1 Formation de Juin 2015
+— TD1
+— TD2
+— TD3
+3.39 Alice démarre avec git :
+3.39.1 Paramétrage et initialisations :
+On configure d’abord ses paramètres
+git config --global user.name "Alice Torvalds"
+git config --global user.email "alice@kernel.org"
+3.39.2 Création d’un dossier local versionné
+mkdir monprojet
+cd monprojet
+git init
+Si vous avez déja du contenu :
+git add .
+
+3.39.3 Création d’un dépot « monprojet » sur gitlab
+— Privé
+— Public
+— ou Interne à gitlab
+Bitbucket (https ://bitbucket.org/) offre également la possibilité d’avoir des dépôts privés de taille limitée.
+
+Github (https ://github.com/) offre les dépôts public et fait payer les dépôts privés.
+
+3.39.4 Connexion entre le local et le gitlab :
+Eventuellement : git config push.default simple
+98
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+git remote add origin https://gitlab.com/alice/monprojet.git
+git push -u origin master
+ou simplement :
+git push
+par la suite
+3.39.5 Réalisation d’une fonctionnalité par Alice :
+— Alice prend une chose à réaliser et implémente le code nécessaire
+— Alice fait les tests et vérifie que ça marche
+— git commit -am « Message de commit »
+3.39.6 Alice pousse son master sur son remote :
+git push -u origin master
+3.40 Bob travaille avec Alice grâce à git :
+Bob fait d’abord comme Alice pour paramétrer et initialiser son dépôt local.
+
+3.40.1 Bob vérifie qu’il a bien 2 remotes :
+— Le sien, origin qu’il crée au besoin en faisant :
+git remote add origin https://gitlab.com/bob/monprojet.git
+— celui d’Alice qu’il ajoute :
+git remote add alice https://gitlab.com/alice/monprojet.git
+— il tape git remote -v pour vérifier ses remotes
+— Si il se trompe :
+git remote remove alice
+3.40.2 Bob récupère le master d’Alice :
+git fetch Alice master
+3.40. Bob travaille avec Alice grâce à git :
+99
+
+Cours PHP Accéléré, Version 0.9.1
+3.40.3 Bob consulte la branche locale correspondant au master
+d’Alice :
+git branch -av
+git checkout Alice/master
+puis vérifie que le code d’Alice est correct
+3.40.4 Bob revient dans son master :
+git checkout master
+3.40.5 Bob merge le travail d’Alice et pousse les modifs dans son
+dépôt distant :
+git merge Alice/master
+git push
+Puis detruit la branche locale d’Alice :
+git branch -d Alice/master
+3.41 Alice se met à jour :
+— ajoute le remote de Bob
+— fetche le master de Bob pour se mettre à jour :
+git fetch Bob master
+— Fusionne :
+git merge Bob/master
+3.42 Alice travaille sur une branche git :
+Alice doit par exemple intégrer une feature de connexion à une base de données. Elle va pour cela créer une branche bd dédiée à la réalisation de cette feature et se placer dedans.
+
+100
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+3.42.1 Création et choix de la branche :
+git checkout -b bd
+Elle fait ensuite son travail, le teste puis :
+git commit -am "Intégration BD"
+3.42.2 Alice pousse sa branche sur son remote :
+git push origin bd
+3.43 Bob et la branche d’Alice :
+3.43.1 Bob récupère la branche d’Alice :
+git fetch Alice bd
+3.43.2 Bob consulte la branche d’Alice :
+S’il le souhaite, Bob consulte la liste des branches disponibles puis se place dans la branche d’Alice pour faire une petite revue du code de sa collaboratrice. . .
+
+git branch -av
+git checkout Alice/bd
+3.43.3 Bob revient dans sa branche master :
+git checkout master
+3.43.4 Bob merge la branche d’Alice et pousse les modifs :
+git merge Alice/bd
+git push
+3.43. Bob et la branche d’Alice :
+101
+
+Cours PHP Accéléré, Version 0.9.1
+3.44 Alice récupère la dernière version du master :
+3.44.1 Alice fetche le master de Bob pour se mettre à jour :
+git fetch Bob master
+git merge Bob/master
+3.44.2 Alice efface sa branche bd :
+git branch -d bd
+102
+Chapitre 3. Tables des matières :
+
+CHAPITRE 4
+GIT
+Tout bon développeur doit aujourd’hui savoir utiliser un système de gestion de version pour son code et pour collaborer. Git est aujourd’hui le plus répandu. Vous trouverez à la fin de ce cours un rappel des principales commandes git pour démarrer :
+GIT start
+et quelques commandes pour travailler à plusieurs sur un projet avec les branches git :
+GIT branches
+103
+Cours PHP Accéléré, Version 0.9.1
+104
+Chapitre 4. GIT
+
+CHAPITRE 5
+Références
+— Manuel PHP (http ://php.net/manual/fr/)
+— intro
+JS
+(https
+://www.univ-orleans.fr/iut-orleans/informatique/intra/tuto/js-
+initiation/slides1.html#/le-langage-javascript)
+— compléments JS (https ://www.univ-orleans.fr/iut-orleans/informatique/intra/tuto/js-initiation/slides2.html#/versions-de-javascript)
+105
+Cours PHP Accéléré, Version 0.9.1
+106
+Chapitre 5. Références
+
+CHAPITRE 6
+Index et recherche
+— genindex
+— search
+107
+Cours PHP Accéléré, Version 0.9.1
+108
+Chapitre 6. Index et recherche
+
+Index
+Symbols
+csrf, 59
+==, 30
+CURL, 90, 94
+, 30
+cvrh, 97
+$_GET[], 23, 34
+D
+$_GLOBALS[], 24, 34
+$_POST[], 23, 34
+DataBase, 41
+$_SERVER[], 34
+DB, 41
+2017-2018, 97
+define, 24
+2018-2019, 97
+DELETE, 89, 90, 94, 96
+2eme Année, 97
+directives, 9
+dirname, 35
+Numbers
+DOM, 62
+2015, 97
+E
+2018, 97
+echo, 20
+A
+Ensembles, 39
+array_walk, 31
+equals, 36
+associatif, 31
+ereg(), 26
+autoload, 81
+eregi(), 26
+autoloader, 81
+eval, 30
+B
+F
+Bases, 41
+Filtrage, 53
+BD, 41, 54
+filtrage, 52, 57
+bundles, 81
+foreach, 31
+formulaire, 23
+C
+G
+caché, 59
+chaine, 26
+génération, 5
+clefs, 31
+GET, 89, 90, 94, 96
+Collections, 39
+gettype, 29
+composer, 81
+GUMP, 57
+concaténation, 26
+GUZZLE, 96
+constructeur, 36
+H
+controleur, 69
+Cookies, 59
+hidden, 59
+109
+Cours PHP Accéléré, Version 0.9.1
+HTTP, 23, 89, 90, 94, 96
+PHPUnit, 86
+Http, 59
+Piles, 39
+HttpFoundation, 81
+portée, 24
+POST, 89, 90, 94, 96
+I
+PreparedStatement, 50
+imbrication, 22
+print, 20
+include, 35
+print_r, 31
+include_once, 35
+PUT, 89, 90, 94, 96
+injection SQL, 52
+Q
+installation, 8, 9
+interpréteur, 5
+Queue, 39
+is_array, 29
+R
+is_double, 29
+is_int, 29
+recherche, 50
+is_long, 29
+request, 81
+is_string, 29
+require, 35
+IUT, 97
+require_once, 35
+response, 81
+L
+REST, 89, 90, 94, 96
+Lamp, 8
+route, 81
+Lerdorf, 6
+routes, 81
+licence professionnelle, 97
+S
+M
+sécurité, 52, 53
+méthodes, 36
+SAX, 62
+magic quotes, 53
+sessions, 59
+Mamp, 8
+Set, 39
+modele, 69
+settype, 29
+mvc, 69, 75, 81
+SimpleXML, 62
+MySQL, 41
+sort, 31
+SQL, 54
+N
+Stack, 39
+Namespace, 39
+string, 26
+stristr(), 26
+O
+strlen(), 26
+Objets, 36
+strstr(), 26
+OPTIONS, 89
+suppression, 50
+Orleans, 97
+symfony, 81
+P
+T
+Pair, 39
+tableau, 31, 34
+PATCH, 89
+td, 97
+PDO, 41, 50, 52
+TDD, 86
+persistante, 54
+template, 69, 75
+PHP, 5, 6, 57, 97
+test, 86
+php.ini, 9
+TESTS, 90, 94, 96
+PHP5, 36
+tests, 86
+PHP7, 6
+time, 36
+phpinfo, 20
+timestamp, 36
+110
+Index
+Cours PHP Accéléré, Version 0.9.1
+toString, 36
+Tours, 97
+transactions, 54
+twig, 75
+type, 29
+U
+URL, 59
+user-agent, 20
+useragent, 26
+V
+valeurs, 31
+validation, 53, 57
+variables, 20, 24
+variables PHP, 30
+vue, 69, 75
+W
+Wamp, 8
+Web, 97
+X
+Xampp, 8
+XML, 62
+XMLReader, 62
+XMLWriter, 62
+Z
+Zend, 6
+Index
+111
+
+Document Outline
+
+Ce cours au format epub
+Ce cours au format pdf
+Tables des matières : Caractéristiques Principales
+Fonctionnement
+Historique
+Installation PHP
+Configuration PHP
+Exemples simples
+Imbrication de code HTML et PHP
+Un formulaire HTML et sa réponse en PHP
+Les variables en PHP
+Les chaînes en PHP
+Le typage en PHP
+Quelques particularités de PHP
+Les tableaux en PHP
+Les tableaux prédéfinis de PHP
+L’inclusion de fichiers externes
+Les Objets en PHP
+Les collections en PHP
+Connexion aux bases de données depuis PHP
+Requêtes préparées en PHP
+Compléments sur PDO - Sécurité
+Filtrage en PHP
+Gestion des transactions avec PDO
+Connexion persistante avec PDO
+Validation et contrôle d’entrées avec GUMP
+Http et la conservation d’informations sur les clients
+Manipuler XML avec PHP
+Architecture de type MVC avec PHP
+Templates Twig en PHP
+Composer, Symfony 4 et Flex
+Tester une application PHP - TDD
+Mettre en place un Web Service REST
+Exemple de service REST avec PHP
+Tester une API REST avec votre navigateur ou avec curl
+Tester une API
+Feuilles de TD Lic Pro Web et Mobile
+Feuilles de TD 2ème Année IUT informatique
+Feuilles de TD Lic Pro Web et Mobile
+Feuilles de TD CVRH Tours
+Alice démarre avec git:
+Bob travaille avec Alice grâce à git:
+Alice se met à jour:
+Alice travaille sur une branche git:
+Bob et la branche d’Alice:
+Alice récupère la dernière version du master :
+
+GIT
+Références
+Index et recherche
+Index
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
