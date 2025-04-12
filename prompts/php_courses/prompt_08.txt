@@ -1,0 +1,885 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are a helpful assistant specialized in topic modeling. Always respond in valid JSON format only.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Write the results of simulating topic modeling for the following documents.
+Assume you will identify 8 topics, each composed of 8 representative words.
+    Return ONLY valid JSON output like:
+[
+  { "id": "topic_1", "keywords": ["...", "...", "..."] }
+]
+</instruction>
+  <documents>
+    <document>
+      <chunk i="2">
+reprendre en HTML
+— etc.
+
+3.7.1 Exemple :
+<!doctype html>
+<html>
+<head>
+<title>
+Navigateur
+</title>
+<body>
+Les informations sur le Navigateur sont :
+<?php
+$AGENT=$_SERVER['HTTP_USER_AGENT'];
+echo $AGENT;
+echo(" \n<P>");
+if (stristr($AGENT,"MSIE")) {
+?>
+<b>Vous semblez utiliser Internet Explorer !</b>
+<?php }
+elseif (preg_match("/Firefox/i",$AGENT))
+{ ?>
+<b>Vous semblez utiliser Firefox !</b>
+<?php }
+elseif (preg_match("/chrome/i",$AGENT))
+{ ?>
+(suite sur la page suivante)
+22
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+<b>Vous semblez utiliser Chrome !</b>
+<?php }
+elseif (preg_match("/Safari/",$AGENT))
+{ ?>
+<b>Vous semblez utiliser Safari !</b>
+<?php }
+else echo "Navigateur Inconnu !";
+?>
+</body>
+</html>
+ATTENTION : ça peut vite devenir ILLISIBLE
+3.7.2 Exécution
+user-agent php
+3.7.3 Remèdes :
+Pour ne pas écrire ce genre de code, quelques solutions courantes :
+— Utiliser des fonctions PHP
+— Utiliser des Classes et Objets PHP
+— Séparer les modèles des Vues
+— Séparer les Modèles, les Vues et les Contrôleurs (Modèle MVC)
+— Utiliser des systèmes de templates comme Twig
+3.8 Un formulaire HTML et sa réponse en PHP
+On code ici :
+— un petit formulaire HTML
+— et sa réponse en PHP
+3.8.1 Formulaire HTML :
+<!doctype html>
+< html>
+< head>
+< meta charset="utf-8" />
+< title>
+Formulaire html
+</title>
+</head>
+< body>
+< form action="reponse.php" method="GET">
+(suite sur la page suivante)
+3.8. Un formulaire HTML et sa réponse en PHP
+23
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+Votre nom :< input type="text" name="nom">
+Votre âge :< input type="text" name="age">
+< p>
+< input type=submit value="Envoyer">
+</form>
+</body>
+</html>
+3.8.2 Sa réponse :
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>
+Test Formulaire PHP
+</title>
+</head>
+<body>
+<h1>Bonjour,
+<?php echo $_GET['nom'] ?></h1>
+<h2>Vous semblez avoir
+<?php echo $_GET['age'] ?></h2>
+<?php
+$n = $_GET['nom'];
+$a = $_GET['age'];
+?>
+Votre nom est stocké dans la variable $n
+dont le type est <?php echo gettype($n) ?>
+Votre âge est stocké dans la variable <b>$a</b>
+<br/> dont le type est <i><?php echo gettype($a); ?></i>
+<br/> On peut la transformer en <i>integer</i> en faisant :
+<?php settype($a,"integer"); ?>
+<br/>
+Type de $a :<?php echo gettype($a); ?>
+</body>
+</html>
+3.8.3 Exécution :
+Formulaire
+24
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+3.9 Les variables en PHP
+3.9.1 Déclaration simple :
+<?php
+$variable = "une variable en PHP";
+// Une autre variable :
+$Variable = 1000;
+?>
+3.9.2 Existence de variables, la fonction isset() :
+<?php
+$a = "une variable en PHP";
+if(isset($a)) echo "la variable a existe";
+unset($a);
+echo "la variable a a été supprimée ";
+?>
+3.9.3 Test de variables, la fonction empty() :
+<?php
+$a = "une variable en PHP";
+if (! empty($a)) echo " La variable existe et elle n\'est
+˓→pas
+vide !";
+?>
+Avertissement : La fonction empty() répond vrai si la variable n’existe pas et ceci sans faire aucun warning ! En outre, avant PHP 5.5, on ne peut pas l’utiliser sur autre chose que des variables (impossible d’appeller une fonction dans l’argument qu’on lui passe)
+3.9.4 Test de variables en PHP 7 avec l’opérateur coalescent :
+L’opérateur Null coalescent ? ? permet de simplifier certains tests d’existence de variables et d’alternatives, comme par exemple :
+<?php
+// $a non initialisée
+$b = 143;
+(suite sur la page suivante)
+3.9. Les variables en PHP
+25
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+echo $a ?? 3; // affiche 3
+echo PHP_EOL;
+echo $a ?? $b ?? 7; // affiche 143
+echo PHP_EOL;
+Ce qui permet de limiter le recours à isset dans de nombreuses situations comme :
+<?php
+// Récupère la valeur de $_GET['email'] et
+retourne 'nobody
+˓→'
+// si elle n'existe pas.
+
+$mail = $_GET['email'] ?? 'nobody@null';
+// Equivalent à:
+$mail = isset($_GET['email']) ? $_GET['email'] :
+˓→'nobody@null';
+// Coalescing ?? peut être chainé :
+// On renvoie la première valeur définie parmi
+// $_GET['email'], $_POST['email'], et 'nobody@null.com'.
+
+$mail = $_GET['email'] ?? $_POST['email'] ?? 'nobody@null';
+echo " $mail\n";
+3.9.5 Portée des variables :
+— Par défaut, toutes les variables sont locales
+— Leur portée se réduit à la fonction ou au bloc de leur déclaration
+— Pour déclarer une variable globale, on peut utiliser le tableau $_GLOBALS[ ]
+<?php $_GLOBALS['MaVar']="Bonjour"; ?>
+3.9.6 Constantes :
+<?php
+define("USER","TOTO");
+echo USER; // Notez l'absence de $ ici
+?>
+3.10 Les chaînes en PHP
+3.10.1 Les bases :
+26
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+Guillemets ou Cotes :
+<?php
+$var="Hello PHP";
+$machaine="le contenu de \$var est $var<br>";
+echo $machaine;
+//ou avec des '
+':
+$mystring='le contenu de $var est '.$var;
+echo $mystring;
+?>
+dont le résultat sera toujours :
+le contenu de $var est Hello PHP
+La concaténation :
+A l’aide de .
+
+La longueur d’une chaine :
+<?php int lg=strlen($chaine); ?>
+Accéder au caractère i d’une chaine :
+<?php echo $chaine[i]; ?>
+La chaine est traitée comme un tableau indéxé par un *entier*
+La plupart des tableaux de PHP sont indéxés par des chaines
+
+Mettre en majuscules/minuscules :
+— avec strtoupper() pour obtenir des majuscules
+— avec strtolower() pour mettre en minuscules
+— avec ucfirst() pour mettre en majuscule la première lettre d’une chaine
+— avec ucwords() pour mettre en majuscule la première lettre de chaque mot dans une
+chaine
+3.10.2 Recherche de sous-chaines ou de motifs dans une chaine :
+— avec strstr()
+— avec stristr()
+— avec ereg() ou eregi()
+3.10. Les chaînes en PHP
+27
+Cours PHP Accéléré, Version 0.9.1
+Par exemple :
+<?php
+$AGENT=$_SERVER['HTTP_USER_AGENT'];
+echo $AGENT;
+echo(" \n<P>");
+if (stristr($AGENT,"MSIE"))
+echo "Vous semblez utiliser Internet Explorer !</b>";
+elseif (ereg("Firefox",$AGENT))
+echo "Vous semblez utiliser Firefox !</b>";
+elseif (eregi("chrome",$AGENT))
+echo "Vous semblez utiliser Chrome !</b>";
+?>
+Indication : Les variantes de ces fonctions comportant un i indiquent une insensibilité à la casse c’est à dire que les majuscules et minuscules sont considérées comme identiques.
+
+Exemple : Test un peu plus complet du UserAgent :
+<?php
+function getBrowser($userAgent){
+if (preg_match("/MSIE(.{5})/i",$userAgent,$num))
+return $num[0];
+elseif (preg_match("/Firefox(.*)/i",$userAgent,$num))
+return $num[0];
+elseif (preg_match("/chrome(.{4})/i",$userAgent,$num))
+return $num[0];
+elseif (preg_match("/safari/i",$userAgent,$num)){
+preg_match("/Version(.{4})/",$userAgent,$num);
+return "Safari ".$num[0];
+}
+else return "Navigateur Inconnu";
+}
+if (! empty($_SERVER['HTTP_USER_AGENT'])){
+echo "Votre navigateur semble etre:\n";
+echo getBrowser($_SERVER['HTTP_USER_AGENT']);
+}
+// Test avec des UserAgent connus:
+$FF="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/
+˓→20100101
+Firefox/32.0";
+$msie="Mozilla/5.0 (compatible; MSIE 10.6; Windows NT 6.1; Trident/
+˓→5.0;
+InfoPath.2; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.
+
+˓→30729;
+.NET CLR 2.0.50727) 3gpp-gba UNTRUSTED/1.0";
+$chrome="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.
+
+˓→36
+(KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36";
+$safari="Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/
+˓→536.26
+(KHTML, like Gecko) Version/6.0 Mobile/10A5355d Safari/
+(suite sur la page suivante)
+˓→8536.25";
+28
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+echo "<br/> Test Firefox:<br/> \n";
+echo getBrowser($FF)."<br/> \n";
+echo "<br/> Test MSIE: \n";
+echo getBrowser($msie)."<br/> \n";
+echo "<br/> Test Chrome: \n";
+echo getBrowser($chrome)."<br/> \n";
+echo "<br/> Test Safari: \n";
+echo getBrowser($safari);
+?>
+Résultat :
+<br/> Test Firefox:<br/>
+Firefox/32.0<br/>
+<br/> Test MSIE:
+MSIE 10.6<br/>
+<br/> Test Chrome:
+Chrome/37.<br/>
+<br/> Test Safari:
+Safari Version/6.0
+3.11 Le typage en PHP
+3.11.1 Les fonctions gettype( ) et settype( ) :
+gettype( ) renvoie l’un des résultats suivants :
+— integer
+— double
+— string
+— array
+— object
+— class
+— « unknown type »
+settype( ) change le type d’un élément :
+<?php
+$a=3.5;
+settype($a,"integer");
+(suite sur la page suivante)
+3.11. Le typage en PHP
+29
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+echo "le contenu de la variable a est ".$a;
+?>
+dont le résultat sera :
+le contenu de la variable a est 3
+3.11.2 Fonctions de test :
+— is_int()
+— is_long()
+— is_double()
+— is_array()
+— is_object()
+— is_string()
+Attention : N’oubliez pas comme en JavaScript la différence entre l’opérateur == et
+Le premier vérifie l’égalité des contenus en ne tenant pas compte d’une éventuelle diffé-
+rence de typage (int ou string par exemple) tandis que le second vérifie une égalité stricte.
+
+En d’autres termes : 5 == « 5 » est VRAI tandis que 5 « 5 » est FAUX
+3.12 Quelques particularités de PHP
+3.12.1 Valeurs des variables :
+<?php
+$toto = "Bonjour<br/> \n";
+$var = "toto";
+echo $$var;
+?>
+dont le résultat sera toujours :
+3.12.2 Résultat brut
+Bonjour<br/>
+30
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+3.12.3 La fonction eval() :
+Permet l’évaluation d’expressions arithmetiques directement en PHP. Existe aussi en JavaScript. Délicat à manipuler, problématique en termes de sécurité.
+
+3.13 Les tableaux en PHP
+3.13.1 Tableaux associatifs - parcours avec boucle foreach :
+<?php
+$jours=array("Lu"=>"Lundi","Ma"=>"Mardi",
+"Me"=>"Mercredi","Je"=>"Jeudi","Ve"=>"Vendredi",
+"Sa"=>"Samedi","Di"=>"Dimanche" );
+foreach($jours as $key=>$val) echo $key." ".$val."<br> \n";
+?>
+Ce qui donne :
+Lu Lundi
+Ma Mardi
+Me Mercredi
+Je Jeudi
+Ve Vendredi
+Sa Samedi
+Di Dimanche
+3.13.2 Affichage avec print_r() :
+<?php
+print_r($jours);
+?>
+3.13.3 Résultat brut html :
+Array
+(
+[Lu] => Lundi
+[Ma] => Mardi
+[Me] => Mercredi
+[Je] => Jeudi
+[Ve] => Vendredi
+(suite sur la page suivante)
+3.13. Les tableaux en PHP
+31
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+[Sa] => Samedi
+[Di] => Dimanche
+)
+3.13.4 Essayez vous-même
+tabs
+3.13.5 Utilisation de la fonction array_walk :
+<?php array_walk($jours,'aff_tab'); ?>
+En ayant défini au préalable :
+<?php
+function aff_tab($val, $key){
+echo " $key-$val<br/> \n";
+}
+?>
+On obtient le même résultat qu’avec la boucle foreach
+3.13.6 Tri simple d’un tableau :
+<?php
+sort($jours);
+array_walk($jours,'aff_tab');
+?>
+3.13.7 On obtient :
+0-Dimanche
+1-Jeudi
+2-Lundi
+3-Mardi
+4-Mercredi
+5-Samedi
+6-Vendredi
+C’est à dire que :
+— Le tableau est trié selon l’ordre de ses valeurs
+32
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+— les clefs sont effacées et réaffectées avec des entiers.
+
+Si on veut préserver également les clefs du tableau associatif, il faut utiliser la méthode suivante :
+3.13.8 Tri selon l’ordre naturel avec natsort
+<?php
+$jours=array("Lu"=>"Lundi","Ma"=>"Mardi",
+"Me"=>"Mercredi","Je"=>"Jeudi","Ve"=>"Vendredi",
+"Sa"=>"Samedi","Di"=>"Dimanche" );
+var_dump($jours);
+natsort($jours);
+var_dump($jours);
+?>
+3.13.9 Résultat brut html
+array(7) {
+["Lu"]=>
+string(5) "Lundi"
+["Ma"]=>
+string(5) "Mardi"
+["Me"]=>
+string(8) "Mercredi"
+["Je"]=>
+string(5) "Jeudi"
+["Ve"]=>
+string(8) "Vendredi"
+["Sa"]=>
+string(6) "Samedi"
+["Di"]=>
+string(8) "Dimanche"
+}
+array(7) {
+["Di"]=>
+string(8) "Dimanche"
+["Je"]=>
+string(5) "Jeudi"
+["Lu"]=>
+string(5) "Lundi"
+["Ma"]=>
+string(5) "Mardi"
+["Me"]=>
+string(8) "Mercredi"
+["Sa"]=>
+string(6) "Samedi"
+(suite sur la page suivante)
+3.13. Les tableaux en PHP
+33
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+["Ve"]=>
+string(8) "Vendredi"
+}
+3.13.10 Exécution
+tritabnat
+On peut aussi utiliser la fonction natcasesort() si on ne veut pas se préoccuper de la casse des chaines présentes dans le tableau, soit à peu près l’ordre du dictionnaire . . .
+
+3.14 Les tableaux prédéfinis de PHP
+3.14.1 Les tableaux concernant le protocole HTTP :
+— $_GET[ ], $_POST[ ] ou $_REQUEST[ ] qui englobe les 2
+— $_SERVER[ ] : Variables décrivant le client ou la page courante
+— $_GLOBALS[ ] variables globales
+— $_COOKIE[ ] pour les cookies
+— $_SESSION[ ] pour les sessions
+3.14.2 Exemple récupération de $_SERVER[ ] grâce à la fonction
+getenv() :
+<?php
+function infos(){
+$env = array('remote_addr','http_accept_language','http_
+˓→host',
+'http_user_agent','script_filename','server_addr',
+'server_name','server_signature','server_software',
+'request_method','query_string','request_uri','script_name
+˓→');
+// Construction d'un tableau associatif
+// Avec les valeurs lues dans l'environnement
+$retour =array();
+foreach ($env as $clef) $retour[$clef] = getenv($clef);
+return $retour;
+}
+echo("Voici les infos disponibles:<BR>");
+$tab = infos();
+(suite sur la page suivante)
+34
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+foreach ($tab as $clef=>$val) echo $clef." :".$val."<br> \n";
+?>
+3.14.3 Résultat
+Voici les infos disponibles:
+remote_addr :::1
+http_accept_language :fr-fr
+http_host :localhost
+http_user_agent :Mozilla/5.0 (Macintosh; U; Intel Mac OS X
+˓→10_6_4;
+fr-fr)
+AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0.2
+˓→Safari/533.18.5
+script_filename :/Users/roza/Sites/php/exemples/infospy.php
+server_addr :::1
+server_name :localhost
+server_signature :
+server_software :Apache/2.2.14 (Unix) mod_ssl/2.2.14
+OpenSSL/0.9.8l DAV/2 PHP/5.3.2
+request_method :GET
+query_string :
+request_uri :/~roza/php/exemples/infospy.php
+script_name :/~roza/php/exemples/infospy.php
+Ùser-Agent <http://localhost/~roza/php/exemples/infospy.
+
+˓→php>`_
+3.14.4 Exécution
+infospy
+3.15 L’inclusion de fichiers externes
+3.15.1 include :
+— Semblable aux include du C/C++
+— Réalise une inclusion physique du fichier demandé
+3.15.2 include_once :
+— identique au include
+— protège contre d’éventuelles inclusions multiples
+3.15. L’inclusion de fichiers externes
+35
+
+Cours PHP Accéléré, Version 0.9.1
+— qui pourraient mener à des erreurs (redéclarations, etc.)
+
+<?php include_once("connect.php"); ?>
+3.15.3 require et require_once :
+— fonctionnent comme le include et le include_once respectivement
+— mais le programme s’arrête si le fichier inclus n’existe pas
+<?php
+require("malib.php");
+require_once("connect.php");
+?>
+3.15.4 dirname()
+Pour savoir dans quel répertoire on se trouve on peut utiliser la fonction PHP dirname()
+<?php
+include_once(dirname(__FILE__) . '/config/config.inc.php');
+?>
+Indication : Lorsqu’on inclus ou désigne des fichiers, il vaut mieux utiliser des chemins relatifs pour repérer les fichiers (comme ci dessus) plutôt que de donner un chemin absolu par rapport à la racine du serveur du style /home/user/www/config/config.inc.php Cela sera beaucoup plus portable d’un serveur à l’autre et vous évitera bien des déboires !
+
+Avertissement : L’utilisation systématique de la version avec once (include_once ou re-
+quire_once)n’est pas recommandée car elle peut causer des ralentissements à l’exécution du programme.
+
+3.16 Les Objets en PHP
+3.16.1 Evolutions et grands principes :
+— Les objets existent en PHP à partir de la version 4
+— Changements importants en PHP 5 : Convergence vers le modèle objet de Java
+— Introduction comme en Java d’interfaces et de classes abstraites
+— emploi des modifieurs private et public comme en java
+— On retrouve aussi __toString(), __clone() et un mécanisme de traitement des exceptions semblable à celui de Java.
+
+36
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+— Les constructeurs s’appellent désormais : __construct()
+— et les destructeurs __destruct()
+— les méthodes portent le mot clef function mais ne signalent pas leur type de retour
+— les commentaires de documentation se font à la manière de Java
+Indication : Les objets s’instancient avec le mot clef new comme en Java ou C++ mais on utilise -> pour signifier l’appel d’une méthode. Le . est déjà pris pour la concaténation des chaînes. . .
+
+3.16.2 Un Objet Simple Etudiant en PHP
+Fabriquons maintenant un objet simple en PHP. Ecrivons un objet représentant un étudiant avec ses données :
+— identifiant
+— nom
+— date de naissance
+et des méthodes pour opérer sur ces données :
+— constructeur
+— getters et setters
+— equals()
+— toString() pour affichage
+ce qui donne le code suivant :
+<?php
+/** Classe Etudiant en PHP */
+class Etudiant{
+/** Identification unique d'un etudiant */
+protected $etudiant_id;
+/** Nom de l'etudiant */
+protected $nom;
+/** Date de naissance de l'etudiant */
+protected $naissance;
+public function __construct($id, $nom,$naissance){
+$this->etudiant_id = (int)$id;
+// cast vers integer
+$this->nom = (string)$nom;
+// cast vers string
+$this->naissance= (int)$naissance;
+// cast vers date(timestamp)
+}
+/**
+* Fonction de comparaison simplifiee entre etudiants
+* == comparera id, nom et naissance
+*/
+(suite sur la page suivante)
+3.16. Les Objets en PHP
+37
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+public function equals(etudiant $etudiant){
+return ($this->getId() == $etudiant->getId());
+}
+public function getId(){
+return $this->etudiant_id;
+}
+public function getNom(){
+return $this->nom;
+}
+public function getNaissance(){
+return $this->naissance;
+}
+public function __toString(){
+setlocale(LC_TIME, "fr_FR");
+$ne=strftime('%A %d %B %Y',$this->naissance);
+return 'etudiant: id=' . $this->getId().', nom='.$this->
+˓→getNom()."
+$ne";
+}
+}
+/* Test : */
+date_default_timezone_set('Europe/Paris');
+$etu=new Etudiant(234,"Talon",time());
+var_dump($etu);
+echo "<br/>";
+echo $etu;
+?>
+Resultat :
+object(Etudiant)#1 (3) {
+["etudiant_id":protected]=>
+int(234)
+["nom":protected]=>
+string(5) "Talon"
+["naissance":protected]=>
+int(1537386847)
+}
+<br/>etudiant: id=234, nom=Talon Mercredi 19 septembre 2018
+Execution
+etudiant php
+38
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+Indication : Lorsqu’on utilise l’opérateur de comparaison == sur des objets, ceux-ci sont comparés en utilisant les règles suivantes :
+deux objets sont égaux s’ils sont instances de la même classe et ont les mêmes attributs et valeurs, les valeurs étant comparées avec l’opérateur ==.
+
+Lors de l’utilisation de l’opérateur d’identité , les objets sont identiques uniquement s’ils font référence à la même instance de la même classe.
+
+Avertissement :
+Beaucoup de programmeurs débutants se contentent d’utiliser PHP
+comme un langage purement procédural sans utiliser son côté objet. Ceci les bloquera tôt ou tard dans l’apprentissage du langage et des grands frameworks PHP. Si vous êtes trop mal à l’aise avec les Objets, suivez d’abord un cours d’introduction à la programmation Objet, en Java, Python ou C++ par exemple.
+
+3.17 Les collections en PHP
+3.17.1 En PHP standard, Collections = Arrays :
+— Si on se contente de ce qu’offre PHP en standard, les collections se résument à l’utilisation des tableaux associatifs en PHP
+— Le framework des Collections en Java est beaucoup plus riche
+3.17.2 DataStructures ds :
+Il faut installer une librairie supplémentaire ds (DataStructures) pour avoir accès à un Framework similaire en PHP.
+
+Voir Documentation Collections php (http ://php.net/manual/fr/book.ds.php) On va pour utiliser la commande pecl pour installer ds comme une extension :
+pecl install ds
+Puis charger l’extension en ajoutant aux fichiers .ini de PHP :
+extension=ds.so
+Cette extension nous donne accès à des classes similaires à celles du framework des Collections en Java. Les classes proposées sont par exemple :
+— Sequence
+— Vector
+— Deque
+— Vector
+3.17. Les collections en PHP
+39
+Cours PHP Accéléré, Version 0.9.1
+— Pair
+— Set
+— Stack
+— Queue
+— PriorityQueue
+3.17.3 Utilisation de Ds :
+Les classes et interfaces de ds s’utilisent dans un espace de nommage Ds :
+<?php
+$vector = new \Ds\Vector();
+$vector->push("un");
+$vector->push("deux");
+$vector->push("trois", "quatre");
+// [ , ] = unpacking
+$vector->push( ["cinq", "six"]);
+print_r($vector);
+?>
+3.17.4 Exemple d’utilisation de la classe Set
+Utilisons maintenant concrètement la classe Set.
+
+Question HTML dans un select multiple :
+Prenons un petit formulaire en HTML qui propose un choix de couleurs dans un select :
+< p>Quelles sont les couleurs du maillot des panthères du Fleury
+˓→Loiret
+Handball ?
+
+< select name="coul[]" multiple size=5>
+< option value="jaune">Jaune
+< option value="rose">Rose
+< option value="bleu">Bleu
+< option value="noir">Noir
+< option value="blanc">Blanc
+< option value="vert">Vert
+</select>
+</p>
+Réponse PHP avec Collections
+<?php
+if (! empty($_GET['coul'])){
+(suite sur la page suivante)
+40
+Chapitre 3. Tables des matières :
+
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+$couleursReponse = new \Ds\Set($_GET['coul']);
+$couleursCorrectes = new \Ds\Set(['rose','noir','blanc
+˓→']);
+// Calculons la différence des 2 ensembles et voyons si
+˓→elle
+est vide
+if (($couleursReponse->diff($couleursCorrectes))->isEmpty())
+echo "Bravo les couleurs de Fleury Hand Ball sont
+˓→bien
+Rose Noir et Blanc !";
+else
+echo "Mauvaise réponse : les couleurs de Fleury
+˓→Hand
+Ball sont: Rose Noir et Blanc !";
+}
+Sans Collections, on utilise les tableaux . . .
+
+Sans Ds, nous aurions été obligés de nous contenter de tableaux PHP et d’utiliser par exemple la méthode array_diff : Voir : array_diff php (http ://php.net/manual/fr/function.array-diff.php) Avec des Arrays :
+On peut ici s’en sortir avec de simples tableaux PHP en vérifiant que la taille du tableau des réponses données est la même que celle du tableau des bonnes réponses, puis que les contenus de ces tableaux sont identiques.
+
+<?php
+if (! empty($_GET['coul'])){
+$couleursReponse = $_GET['coul'];
+$couleursCorrectes = array(['rose','noir','blanc']);
+if (count($couleursReponse) == count($couleursCorrectes) && !
+
+˓→array_diff($couleursReponse,
+$couleursCorrectes))
+echo "Bravo les couleurs de Fleury Hand Ball sont bien Rose
+˓→Noir
+et Blanc !";
+else
+echo "Mauvaise réponse : les couleurs de Fleury Hand Ball
+˓→sont:
+Rose Noir et Blanc !";
+}
+3.18 Connexion aux bases de données depuis PHP
+3.18.1 Une table simple en SQL :
+3.18. Connexion aux bases de données depuis PHP
+41
+Cours PHP Accéléré, Version 0.9.1
+CREATE TABLE `CARNET` (
+ÌDìnt(11) NOT NULL AUTO_INCREMENT,
+`NOM` varchar(30) DEFAULT NULL,
+`PRENOM` varchar(30) DEFAULT NULL,
+`NAISSANCÈ date DEFAULT NULL,
+`VILLÈ varchar(30) DEFAULT NULL,
+PRIMARY KEY (ÌD`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+INSERT INTO `CARNET` VALUES
+(1,'SMITH','JOHN','1980-12-17','ORLEANS'),
+(2,'DURAND','JEAN','1983-01-13','ORLEANS'),
+(3,'GUDULE','JEANNE','1967-11-06','TOURS'),
+(4,'ZAPATA','EMILIO','1956-12-01','ORLEANS'),
+(5,'JOURDAIN','NICOLAS','2000-09-10','TOURS'),
+(6,'DUPUY','MARIE','1986-01-11','BLOIS'),
+(7,'ANDREAS','LOU','1861-02-12','ST Petersbourg'),
+(9,'Kafka','Franz','1883-07-03','Prague'),
+(11,'Dalton','Joe','2003-12-06','Dallas');
+On insère cette table dans MySQL en ligne de commande ou à l’aide de PHPMyAdmin. Puis,
+pour consulter cette table depuis PHP, on utilise le connecteur PDO qui offre une interface de connexion utilisable pour tous les SGBD (Systemes de Gestion de Bases de Donnees) habituels comme MySQL, PostgreSQL, Oracle ou Microsoft SQL Server.
+
+3.18.2 Connexion Simple en PHP avec PDO
+<!doctype html>
+<html>
+<head>
+<title>
+Connexion à MySQL avec PDO
+</title>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>
+Interrogation de la table CARNET avec PDO
+</h1>
+<?php
+require("connect.php");
+// pour oracle: $dsn="oci:dbname=//serveur:1521/base
+// pour sqlite: $dsn="sqlite:/tmp/base.sqlite"
+$dsn="mysql:dbname=".BASE.";host=".SERVER;
+try{
+$connexion=new PDO($dsn,USER,PASSWD);
+}
+(suite sur la page suivante)
+42
+Chapitre 3. Tables des matières :
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+catch(PDOException $e){
+printf("Échec de la connexion : %s\n", $e->getMessage());
+exit();
+}
+$sql="SELECT * from CARNET";
+if(!$connexion->query($sql)) echo "Pb d'accès au CARNET";
+else{
+foreach ($connexion->query($sql) as $row)
+echo $row['PRENOM']." ".
+
+$row['NOM']."né(e) le ".
+
+$row['NAISSANCE']."<br/> \n";
+}
+?>
+</body>
+</html>
+Avec un fichier connect.php contenant les informations de connexion au serveur MySQL :
+<?php
+define('USER',"scott");
+define('PASSWD',"tiger");
+define('SERVER',"localhost");
+define('BASE',"dbscott");
+?>
+Resultat brut html :
+<!doctype html>
+<html>
+<head>
+<title>
+Connexion à MySQL avec PDO
+</title>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>
+Interrogation de la table CARNET avec PDO
+</h1>
+JOHN SMITHné(e) le 1980-12-17<br/>
+JEAN DURANDné(e) le 1983-01-13<br/>
+JEANNE GUDULEné(e) le 1967-11-06<br/>
+EMILIO ZAPATAné(e) le 1956-12-01<br/>
+NICOLAS JOURDAINné(e) le 2000-09-10<br/>
+MARIE DUPUYné(e) le 1986-01-11<br/>
+(suite sur la page suivante)
+3.18. Connexion aux bases de données depuis PHP
+43
+Cours PHP Accéléré, Version 0.9.1
+(suite de la page précédente)
+LOU ANDREASné(e) le 1861-02-12<br/>
+Franz Kafkané(e) le 1883-07-03<br/>
+Joe Daltonné(e) le 2003-12-06<br/>
+</body>
+</html>
+Execution
+c
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>

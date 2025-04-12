@@ -1,0 +1,623 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+You are a helpful assistant specialized in topic modeling. Always respond in valid JSON format only.
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+<task>
+  <instruction>
+    Write the results of simulating topic modeling for the following documents.
+Assume you will identify 8 topics, each composed of 8 representative words.
+    Return ONLY valid JSON output like:
+[
+  { "id": "topic_1", "keywords": ["...", "...", "..."] }
+]
+</instruction>
+  <documents>
+    <document>
+      <chunk i="3">
+"31"
+• D - Jour de la semaine, en trois lettres (et en anglais) : par exemple "Fri" (pour Vendredi)
+• F - Mois, textuel, version longue; en anglais, i.e. "January" (pour Janvier)
+• g - Heure, au format 12h, sans les zéros initiaux i.e. "1" à "12"
+• G - Heure, au format 24h, sans les zéros initiaux i.e. "0" à "23"
+• h - Heure, au format 12h, "01" à "12"
+• H - heure, au format 24h, "00" à "23"
+• i - Minutes; "00" à "59"
+• I (i majuscule) - "1" si l'heure d'été est activée, "0" si l'heure d'hiver .
+
+• j - Jour du mois sans les zéros initiaux: "1" à "31"
+S. ROHAUT
+Cours Programmation PHP
+Page 34/93
+
+• l - ('L' minuscule) - Jour de la semaine, textuel, version longue; en anglais, i.e. "Friday" (pour Vendredi)
+• L - Booléen pour savoir si l'année est bissextile ("1") ou pas ("0")
+• m - Mois; i.e. "01" à "12"
+• M - Mois, en trois lettres (et en anglais) : par exemple "Apr" (pour Avril)
+• n - Mois sans les zéros initiaux; i.e. "1" à "12"
+• O - Différence d'heures avec l'heure de Greenwich, exprimée en heures; i.e. "+0200"
+• r - Format de date RFC 822; i.e. "Thu, 21 Dec 2000 16:01:07 +0200" (ajouté en PHP 4.0.4)
+• s - Secondes; i.e. "00" à "59"
+• S - Suffixe ordinal d'un nombre, en anglais, sur deux lettres : i.e. "th", "nd"
+• t - Nombre de jours dans le mois donné, i.e. "28" à "31"
+• T - Fuseau horaire de la machine ; i.e. "MET"
+• U - Secondes depuis une époque
+• w - Jour de la semaine, numérique, i.e. "0" (Dimanche) to "6" (Samedi)
+• W - Numéro de semaine dans l'année ISO-8601 : les semaines commencent le lundi (ajouté en
+PHP 4.1.0)
+• Y - Année, 4 chiffres; i.e. "1999"
+• y - Année, 2 chiffres; i.e. "99"
+• z - Jour de l'année; i.e. "0" à "365"
+• Z - Décalage horaire en secondes (i.e. "-43200" à "43200")
+Tout autre caractère peut être employé et ne sera pas interprété. Si vous désirez employer l'un de ces
+caractères, il faut le verrouiller avec un antislash. ATTENTION AVEC CETTE FONCTION LE
+RESULTAT EST EN ANGLAIS.
+
+On peut récupérer le timestamp actuel avec la fonction « time ». La commande suivante a la même
+effet que la précédente :
+echo date("d/m/Y", time()); // 06/01/2004
+9.2.2 date locale strftime()
+Pour formater le résultat en local (pour tenir compte de la localisation) il faut utiliser la fonction
+« strftime » qui tient compte de la langue. On aura donc un résultat en français. Le premier paramètre est la chaîne de formatage. Le second est un éventuel timestamp.
+
+• %a - nom abrégé du jour de la semaine (local).
+
+• %A - nom complet du jour de la semaine (local).
+
+• %b - nom abrégé du mois (local).
+
+• %B - nom complet du mois (local).
+
+• %c - représentation préférée pour les dates et heures, en local.
+
+• %C - numéro de siècle (l'année, divisée par 100 et arrondie entre 00 et 99)
+S. ROHAUT
+Cours Programmation PHP
+Page 35/93
+
+• %d - jour du mois en numérique (intervalle 01 à 31)
+• %D - identique à %m/%d/%y
+• %e - numéro du jour du mois. Les chiffres sont précédés d'un espace (de ' 1' à '31')
+• %h - identique à %b
+• %H - heure de la journée en numérique, et sur 24-heures (intervalle de 00 à 23)
+• %I - heure de la journée en numérique, et sur 12- heures (intervalle 01 à 12)
+• %j - jour de l'année, en numérique (intervalle 001 à 366)
+• %m - mois en numérique (intervalle 1 à 12)
+• %M - minute en numérique
+• %n - newline character
+• %p - soit àm' oùpm' en fonction de l'heure absolue, ou en fonction des valeurs enregistrées en
+local.
+
+• %r - l'heure au format a.m. et p.m.
+
+• %R - l'heure au format 24h
+• %S - secondes en numérique
+• %t - tabulation
+• %T - l'heure actuelle (égal à %H:%M:%S)
+• %u - le numéro de jour dans la semaine, de 1 à 7. (1 représente Lundi)
+• %U - numéro de semaine dans l'année, en considérant le premier dimanche de l'année comme le
+premier jour de la première semaine.
+
+• %V - le numéro de semaine comme défini dans l'ISO 8601:1988, sous forme décimale, de 01 à
+53. La semaine 1 est la première semaine qui a plus de 4 jours dans l'année courante, et dont
+Lundi est le premier jour.
+
+• %W - numéro de semaine dans l'année, en considérant le premier lundi de l'année comme le
+premier jour de la première semaine
+• %w - jour de la semaine, numérique, avec Dimanche = 0
+• %x - format préféré de représentation de la date sans l'heure
+• %X - format préféré de représentation de l'heure sans la date
+• %y - l'année, numérique, sur deux chiffres (de 00 à 99)
+• %Y - l'année, numérique, sur quatre chiffres
+• %Z - fuseau horaire, ou nom ou abréviation
+• %% - un caractèrè%' littéral
+9.2.3 Retour par tableau getdate()
+La fonction « getdate » permet aussi de récupérer la date et l'heure actuels (avec éventuellement un
+timestamp en paramètre) mais sous forme de tableau indexé selon les valeurs suivantes :
+• "seconds" - secondes
+• "minutes" - minutes
+S. ROHAUT
+Cours Programmation PHP
+Page 36/93
+
+• "hours" - heures
+• "mday" - jour du mois
+• "wday" - jour de la semaine, numérique. 0: dimanche jusqu'à 6: samedi
+• "mon" - mois, numérique
+• "year" - année, numérique
+• "yday" - jour de l'année, numérique; i.e. "299"
+• "weekday" - jour de la semaine, texte complet (en anglais); i.e. "Friday"
+• "month" - mois, texte complet (en anglais); i.e. "January"
+$aujourdhui = getdate();
+$mois = $aujourdhui['month'];
+$mjour = $aujourdhui['mday'];
+$annee = $aujourdhui['year'];
+echo "$mjour/$mois/$annee";
+9.2.4 L'heure localtime()
+Pour l'heure on peut utiliser les fonctions « localtime » qui peut aussi prendre un paramètre timestamp et qui retourne un tableau indexé selon les valeurs suivantes ;
+• "tm_sec" - secondes
+• "tm_min" - minutes
+• "tm_hour" - heure
+• "tm_mday" - jour du mois
+• "tm_mon" - mois de l'année
+• "tm_year" - Année, incompatible an 2000
+• "tm_wday" - Jour de la semaine
+• "tm_yday" - Jour de l'année
+• "tm_isdst" - Est-ce que l'heure d'hiver a pris effet?
+
+9.3 Récupérer n'importe quelle date
+On peut récupérer n'importe quelle date en timestamp ou en chaîne. On peut pour cela utiliser la
+fonction « strtotime ». Elle prend comme paramètre une chaîne de texte en anglais qu'elle essaie de
+convertir en timestamp. Voici quelques exemples.
+
+echo strtotime("now"); // timestamp actuel
+echo strtotime("-1 day"); // hier
+echo strtotime("+1 day"); // demain
+echo strtotime("11 september 2001"); // Le 11 septembre 2001
+echo strtotime("+1 year +2 weeks +3 days"); // dans 1 an 2 semaines 3 jours
+S. ROHAUT
+Cours Programmation PHP
+Page 37/93
+
+10 MySQL
+10.1 Présentation
+MySQL est un SGBDR : « Système de Gestion de base de Données Relationnel » qui se définit lui-
+même comme étant « La base de données Open Source la plus populaire au monde ». Rien que ça.
+
+Et c'est vrai ! Edité par la société MySQL AB, MySQL est un produit Open Source libre d'utilisation
+sous licence GPL pour les projets libres. Cependant une licence commerciale est nécessaire dans les
+autres cas, notamment si on souhaite redistribuer MySQL avec un produit non libre ou si on
+souhaite un support technique.
+
+La version de production actuelle de MySQL est la version 4 (4.0.17 à l'écriture de ce support), mais
+la grande majorité des serveurs des hébergeurs sont encore dans les dernières versions de MySQL
+3.23 (3.23.58). La future version actuellement en développement est la 5.0.0 et n'est surtout pas à
+utiliser en production.
+
+Les principales qualités de MySQL sont sa simplicité et sa rapidité. Son principale défaut est le
+manque de fonctionnalités dites avancées (dans les versions précédentes) : clé étrangères,
+procédures stockées, triggers et selects imbriqués notamment. Mais cela ne doit pas occulter sa
+puissance avec l'ajout de fonctionnalités avancées comme une syntaxe SQL étendue (replace, limit,
+delete), les index de recherche « fulltext » permettant de créer des moteurs de recherche,
+
+La prochaine version stable (5.0) comblera les lacunes des précédentes versions avec le support
+complet de la syntaxe SQL ANSI-99.
+
+10.2 Outils
+10.2.1 PhpMyAdmin
+S'il reste bien entendu possible d'utiliser MySQL en ligne de commande, un peu comme « sqlplus »
+de Oracle, on est bien plus à l'aise avec un environnement plus intuitif. Ainsi, l'outil phpMyAdmin
+est une interface web à MySQL permettant d'effectuer la plupart des tâches de maintenance et
+d'utilisation. Cette solution fonctionne depuis n'importe quel navigateur et est indépendante de la
+machine. On accède à phpMyAdmin généralement par l'URL http://server_name/mysql.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 38/93
+
+10.2.2 MysqlCC
+MysqlCC (MySQL Control Center) est le front-end graphique officiel de MySQL, développé par la
+même société. Basé sur e toolkit Qt, il est disponible sous Windows, Unix (linux) et bientôt sur
+MacOS. Il permet l'administration du serveur, la gestion des bases et tables, l'exécution de requêtes
+SQL interactives avec coloration syntaxique
+
+10.3 Créer une base
+A partir de l'écran d'accueil de phpMyAdmin, on saisit le nom de la base dans « Créer une base de
+données ». Il faut de préférence choisir un nom simple et intuitif. Puis on clique sur « Créer ». Après
+la création une nouvelle page s'affiche : c'est la page principale d'administration de la base. En haut
+seront toujours présents après l'exécution d'une commande les résultats de celle-ci. Cet écran permet
+notamment l'exécution de commandes SQL, et le travail sur les tables.
+
+10.4 Utilisateurs et droits
+Dans le menu de gauche, on choisit le « - » (tiret) qui correspond à la racine ou administration du
+serveur MySQL par lui-même. Dans la nouvelle page, on choisit « Utilisateurs et privilèges ». La
+page suivante permet d'ajouter un utilisateur. Il faut faire attention à une chose : le serveur. En effet,
+suivant la configuration initiale (sur Linux par exemple) les droits dépendent de la façon dont a été
+accédée la base. Ainsi si localhost et 127.0.0.1 sont identiques, si la base est appelée depuis une
+autre IP ou un autre nom, l'utilisateur n'aura pas tous les droits. En cas de doute, il suffit de choisir
+« Tout serveur ».
+
+Pour créer un administrateur, le mieux est de donner tous les privilèges. Pour un utilisateur
+« standard » (requêtes de sélection, d'ajout, de mises à jour et de suppression d'enregistrements) on
+choisira les privilèges Select, Insert, Update et Delete.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 39/93
+
+Une fois l'utilisateur créé, et si plusieurs bases sont présentes, on peut affiner les droits pour chacune des bases. La liste des utilisateurs et de leurs droits sur une base est affiché en haut. En choisissant
+« modifier » on peut affiner la sélection notamment en passant par « autres privilèges » : droits sur
+des bases, tables ou même colonnes.
+
+10.5 Créer et modifier des tables
+On retourne par le menu de gauche dans une base existante. Dans l'écran d'administration on saisit
+(bas de la page) le nom de la table et le nombre de champs (colonnes). Il sera possible après coup
+d'en rajouter ou d'en supprimer. Puis on choisit « Créer ».
+
+L'étape suivante consiste à définir la table. Intéressons-nous aux différents types de champs
+possibles.
+
+10.5.1 Types Numériques
+10.5.1.1 Types entiers
+Pour chaque entier on peut ajouter le mot clé « UNSIGNED » : non signé. Attention au type
+BIGINT qui a des limitations (voir documentation MySQL). Entre parenthèses : les valeurs
+UNSIGNED. Il est possible de fournir une précision d'affichage (nombre de chiffres). Par exemple
+une taille de 2 pour un TINYINT équivaut à une valeur de 0 à 99.
+
+• TINYINT : -128 à 127 (0 à 255)
+• SMALLINT : -32768 à 32767 (0 à 65535)
+• MEDIUMINT : -8388608 à 8388607 (0 à 16777215)
+• INT ou INTEGER : -2147483648 à 2147483647 (0 à 4294967295)
+• BIGINT : -9223372036854775808 à 9223372036854775807 (0 à 18446744073709551615)
+10.5.1.2 Types réels (flottants)
+• FLOAT : nombre en virgule flottante
+• DOUBLE, DOUBLE PRECISION, REAL : nombre en virgule flottante double-précision.
+
+• DECIMAL, DEC, NUMERIC : spécial, les valeurs sont « unpacked » : c'est une chaîne texte
+10.5.1.3 Types booléens
+• BIT, BOOL, BOOLEAN (depuis 4.1) : Un bit, équivaut à TINYINT(1)
+10.5.2 Types caractères
+Ces types méritent un peu plus d'explications.
+
+S. ROHAUT
+Cours Programmation PHP
+Page 40/93
+
+10.5.2.1 Types CHAR
+CHAR : une chaîne de caractère dont la taille peut être de 1 à 255 caractères. La taille est définie à
+la création de la table. Dans la table, le champ prend effectivement le nombre de caractères indiqué,
+même si la taille réelle est inférieure.
+
+VARCHAR : une chaîne de caractère dont la taille maximale peut être de 1 à 255 caractères mais
+dont la longueur peut être variable. MySQL stocke en plus un octet contenant la longueur de la
+chaîne. C'est une optimisation, une chaîne de 100 caractères va donc prendre 100+1 octets en place
+dans la table.
+
+On peut rajouter la définition BINARY. Par défaut les champs CHAR et VARCHAR sont triés sans
+tenir compte de la casse. L'attribut BINARY permet de trier en tenant compte de la casse selon la
+machine.
+
+Avec ces champs, les espaces finaux sont supprimés.
+
+10.5.2.2 Types TEXT
+Les types TEXT et BLOB permettent de stocker des quantités variables de texte selon leurs
+définitions. Ici « L » est la longueur du texte :
+• TINY(BLOB/TEXT) : L+1 octets avec L<2^8
+• BLOB/TEXT : L+2 octets avec L<2^16
+• MEDIUM(BLOB/TEXT) : L+3 octets avec L<2^24
+• LONG(BLOB/TEXT) : L+4 octets avec L<2^32
+TEXT et BLOB s'utilisent de manière identique mais il faut respecter les rêgles suivantes :
+• Lors de tris, un champ BLOB tient compte de la casse, pas un champ TEXT.
+
+• On ne peut pas faire de recherche FULLTEXT sur un champ de type BLOB. Il faudra utiliser les
+champs TEXT.
+
+• Les champs de type TEXT et BLOB ne prennent pas de valeurs par défaut.
+
+• Les espaces finaux ne sont pas supprimés.
+
+10.5.2.3 Type ENUM
+Un champ de type ENUM ne peut contenir qu'une chaîne de texte par plusieurs prédéfinies à la
+création de la table. Voici un exemple :
+CREATE TABLE test (
+id int NOT NULL auto_increment,
+c_enum enum('oui','non'),
+PRIMARY KEY (id)
+);
+S. ROHAUT
+Cours Programmation PHP
+Page 41/93
+
+Le champ c_enum ne pourra prendre que deux valeurs : oui ou non. Si on tente d'y mettre autre
+chose :
+insert into text (c_enum) values('toto');
+Dans ce cas une chaîne vide est insérée à la place. Si le champ est déclaré NOT NULL, la valeur par
+défaut devient la première de la liste d'énumération.
+
+10.5.2.4 Type SET
+Un type set ressemble un peu au type ENUM sauf que le champ peut avoir une ou plusieurs valeurs
+parmi une liste prédéfinie à la création de la table. Dans le type ENUM une seule valeur est
+autorisée dans le champ. Avec le type SET, plusieurs valeurs séparées par des espaces sont
+autorisées.
+
+CREATE TABLE test (
+id int(11) NOT NULL auto_increment,
+c_set set('oui','non'),
+PRIMARY KEY (id)
+);
+insert into test (c_set) values ('oui,non');
+insert into test (c_set) values ('non,oui');
+insert into test (c_set) values ('oui);
+on effectue une recherche d'un élément SET soit avec LIKE, soit avec la fonction FIND_IN_SET :
+select * from test where c_set LIKE '%oui%';
+select * from test where FIND_IN_SET('oui',c_set)>0;
+10.5.3 Types date
+Attention avec les dates : la logique de MySQL est de laisser aux développeurs le soin de contrôler
+la validité de leurs dates. Ainsi MySQL autorisera l'enregistrement d'une date de type 2004-02-30 !
+
+Les seuls tests effectués sont la validité du mois (entre 0 et 12) et la validité du jour (entre 0 et 31).
+
+Le zéro (0) est autorisé pour des raisons pratiques: stockage de l'année, ou de l'année/mois seulement par exemple. Voici quelques autres informations :
+• MySQL, dans les comparaisons notamment, essaie « d'interpréter » le format de date qu'on lui
+passe. C'est le cas pour les comparaisons entre des champs de type date et des champs texte.
+
+Dans la plupart des cas le résultat sera celui attendu mais attention tout de même au formalisme.
+
+• Les dates doivent être données de préférence au format année-mois-jour. L'année doit toujours
+apparaître en premier. Dans le cas d'un année-jour-mois attention : MySQL ne peut pas deviner si
+2004-02-05 est le 5 février ou le 2 mai
+
+• Si une date est utilisée dans un calcul numérique, elle est convertie en nombre (timestamp).
+
+• Si une valeur illégale est transmise, c'est la valeur zéro (0) qui est retenue. La valeur zéro dépend
+du type de champ.
+
+• La gestion de l'an 2000 se fait ainsi :
+• Dans le cas d'années à 4 chiffres, aucun souci. Il vaut mieux TOUJOURS utiliser des
+S. ROHAUT
+Cours Programmation PHP
+Page 42/93
+
+années sur 4 chiffres.
+
+• Dans le cas d'une année à deux chiffes, 00-69 sont converties en 2000-2069, 70-99 sont
+converties en 1970-1999.
+
+10.5.3.1 Formats supportés
+• AAAA-MM-JJ HH:MM:SS ou AA-MM-JJ HH:MM:SS. Les séparateurs peuvent être n'importe
+quoi : AAAA/MM/JJ HH.MM.SS est valable
+• AAAA-MM-JJ ou AA-MM-JJ, même remarque pour les séparateurs.
+
+• AAAAMMJJHHMMSS ou AAMMJJHHMMSS si la chaîne ou le nombre ont une signification
+en tant que date
+• AAAAMMJJ ou AAMMJJ, même remarque
+10.5.3.2 Type DATETIME
+Le type DATETIME permet de stocker la date et l'heure sous le format AAAA-MM-JJ HH:MM:SS.
+
+Son zéro est donc 0000-00-00 00:00:00.
+
+10.5.3.3 Type DATE
+Avec ce type seule la date est stockée au format AAAA-MM-JJ. Son zéro est 0000-00-00.
+
+10.5.3.4 Type TIMESTAMP
+Le type TIMESTAMP permet de stocker implicitement et automatiquement un timestamp (heure
+courante) lors d'un enregistrement de données avec INSERT ou UPDATE. Si une table dispose d'un
+champ TIMESTAMP, lors de l'ajout ou de la mise à jour d'un celui-ci sera automatiquement mis à
+jour pour cette ligne d'enregistrement. La colonne n'a pas besoin d'être explicitement spécifiée. Si on
+la spécifie, alors on peut lui mettre n'importe quelle valeur.
+
+CREATE TABLE test (
+id int(11) NOT NULL auto_increment,
+c_ts timestamp(14) NOT NULL,
+c_txt varchar(10) NOT NULL default '',
+PRIMARY KEY (id)
+)
+insert into test (c_txt) values('toto');
+select c_ts from test;
+20040112143212
+update test set c_txt='truc';
+select c_ts from test;
+20040112143339
+On remarque que le résultat retourné par MySQL sur la colonne TIMESTAMP n'est pas une valeur
+timestamp Unix (bien que telle en interne) mais une valeur formatée. Par défaut un TIMESTAMP
+S. ROHAUT
+Cours Programmation PHP
+Page 43/93
+
+retourne une valeur (numérique) sur 14 caractères. On peut choisir cette taille à la création de la
+table :
+• TIMESTAMP ou TIMESTAMP(14) : AAAAMMJJHHMMSS
+• TIMESTAMP(12) : AAMMJJHHMMSS
+• TIMESTAMP(10) : AAMMJJHHMM
+• TIMESTAMP(8) : AAAAMMJJ
+• TIMESTAMP(6) : AAMMJJ
+• TIMESTAMP(4) : AAMM
+• TIMESTAMP(2) : AA
+Avec tous ces formats, spécifiez toujours l'année le mois et le jour même avec un timestamp de 4 ou
+de 2 sinon la date sera invalide.
+
+10.5.3.5 Type TIME
+Le type TIME peut être utilisé pour stocker une information horaire. Son format est HH:MM:SS ou
+HHH:MM:SS et la valeur peut être négative. Les valeurs maximales possibles vont de -838:59:59 à
+838:59:59. TIME ne sert pas qu'à stocker une heure de la journée mais un intervalle ou une durée ce
+qui explique la plage horaire. On y accède comme ceci : D HH:MM:SS.fraction : D est le jour. La
+fraction n'est pas stockée. Ou encore : HH:MM:SS, HH:MM, D HH:MM:SS, D HH:MM, D HH, D
+SS, HHMMSS, .SS, MMSS,
+
+10.5.3.6 Type YEAR
+Le type YEAR stocke uniquement l'année, sur une plage allant de 1901 à 2155. L'interprétation des
+valeurs à deux chiffres et soumise à l'interprétation de la gestion de l'an 2000.
+
+10.5.4 Création : Syntaxe SQL
+On utilise la commande SQL CREATE.
+
+CREATE TABLE [IF NOT EXIST] nom_table
+(
+champ1 TYPE [NOT NULL| NULL] [DEFAULT valeur_defaut] [AUTO_INCREMENT] [PRIMARY
+KEY],
+,
+PRIMARY KEY(nom_champ),
+KEY [nom] (col1, col2, ),
+INDEX [nom] (col1, col2, ),
+UNIQUE [INDEX] [nom] (col1, col2, ),
+FULTEXT [INDEX] [nom] (col1, col2, )
+
+) TYPE=type_table;
+Notez que
+S. ROHAUT
+Cours Programmation PHP
+Page 44/93
+
+• KEY et INDEX sont des synonymes.
+
+• Un PRIMARY KEY est un index UNIQUE dont toutes les colonnes doivent être NOT NULL
+• Un PRIMARY KEY peut contenir plusieurs colonnes. Dans ce cas, PRIMARY KEY ne doit pas
+apparaître au niveau de la définition d'une colonne mais la syntaxe PRIMARY KEY(cols, ) doit
+être utilisée
+• Il ne peut y avoir qu'un seul index PRIMARY KEY, mais plusieurs index UNIQUE.
+
+• Si une application veut obtenir le PRIMARY KEY d'une table et qu'il n'existe pas, alors MySQL
+retournera le premier index UNIQUE trouvé.
+
+• Si on ne donne pas de noms à un index, celui-ci est généré automatiquement en prenant le nom
+de la première colonne de l'index suivi d'un suffixe numérique (col_1, col_2, ).
+
+• Bien que cela soit déconseillé, on peut établir un index sur une colonne TEXT ou BLOB. Mais
+dans ce cas il faut obligatoirement spécifier une longueur d'index.
+
+Par exemple :
+CREATE TABLE f_message (
+id_message int(10) unsigned NOT NULL auto_increment,
+id_msg_initial int(11) unsigned NOT NULL default '0',
+id_msg_prec int(10) unsigned NOT NULL default '0',
+id_forum int(10) NOT NULL default '0',
+login varchar(20) NOT NULL default '',
+date datetime NOT NULL default '0000-00-00 00:00:00',
+sujet varchar(200) NOT NULL default '',
+texte text,
+PRIMARY KEY (id_message),
+KEY precedent (id_msg_prec),
+KEY login (login),
+KEY forum (id_forum),
+KEY initial (id_msg_initial),
+FULLTEXT KEY ft1 (sujet,texte)
+) TYPE=MyISAM;
+10.5.5 Types de tables (MyISAM et InnoDB)
+Le Type de table est particulier à MySQL. Le type par défaut est « MyISAM », le gestionnaire de
+tables originel de MySQL, simple et rapide, correspondant à la majorité des besoins.
+
+Le second type principal est « InnoDB » et permet une gestion des transactions et verrouillage des
+données. Les « commit », « rollback », restauration après crash, et surtout les contraintes d'intégrité
+avec clés étrangères sont possibles.
+
+CREATE TABLE parent(id INT NOT NULL, PRIMARY KEY (id)) TYPE=INNODB;
+CREATE TABLE child(id INT, parent_id INT, INDEX par_ind (parent_id),
+FOREIGN KEY (parent_id) REFERENCES parent(id)
+ON DELETE SET NULL
+) TYPE=INNODB;
+On peut aussi utiliser les clauses « ON DELETE CASCADE » et « ON DELETE SET NULL ».
+
+Quelques règles sont à respecter pour l'utilisation :
+S. ROHAUT
+Cours Programmation PHP
+Page 45/93
+
+• Avec un ON DELETE CASCADE, si une ligne de la table parente est supprimée, les lignes
+correspondantes à la clé étrangère sont automatiquement supprimées dans la table fille. Dans
+l'exemple, une suppression d'un enregistrement de la table « parent » supprime tous les
+enregistrements de la table « child » dont le « parent_id » est égal au « id » de l'enregistrement de
+la table « parent » supprimé.
+
+• Avec un ON DELETE SET NULL, les enregistrements fils ne sont pas supprimés, mais les
+colonnes de la clé étrangère (ici parent_id) prennent la valeur NULL.
+
+• Un index doit exister pour la clé parente et la clé fille.
+
+10.5.6 Index FULLTEXT
+10.5.6.1 Création
+Dans ses dernières versions (3.23.23 et supérieures) MySQL permet l'indexation et la recherche sur
+un ou plusieurs champs de type TEXT. On peut ainsi créer des moteurs de recherches très
+rapidement. Pour ça il faut créer un index « FULLTEXT » ou en Texte Entier, où chaque mot du
+champ texte est en fait indexé.
+
+Les index FULLTEXT ne fonctionnent qu'avec des champs de type TEXT (pas BLOB) ou
+VARCHAR et sur des tables de type MyISAM uniquement. Voici comment créer un index
+FULLTEXT. Si la table existe déjà :
+CREATE FULLTEXT INDEX ft1 on f_message (sujet,texte);
+A la création de la table, on rajoute une ligne de création d'index :
+FULLTEXT KEY ft1 (sujet,texte)
+On peut préciser une ou plusieurs colonnes dans ce genre d'index. Mais ATTENTION : lors de la
+recherche si on a créé un index sur deux colonnes, on ne peut pas rechercher sur une seule des deux
+colonnes en même temps Dans ce cas il faudra créer plusieurs index FULLTEXT.
+
+10.5.6.2 Recherche
+On effectue une recherche avec les fonctions MATCH() et AGAINST(). La fonction MATCH
+permet de préciser sur quelles colonnes on effectue la recherche, et la fonction AGAINST les mots
+recherchés.
+
+SELECT id_message FROM f_message WHERE MATCH(sujet,texte) AGAINST('linux
+nvidia');
+Cette requête va effectuer une recherche sur les mots 'linux' et 'nvidia' dans les colonnes 'sujet' et
+'texte'. Elle va retourner les id des messages correspondants avec les plus pertinents en premier
+(ceux qui correspondent le mieux à la recherche). Cela est dû au fait que MATCH est dans une
+clause WHERE.
+
+La pertinence est déterminée par MySQL selon des critères (un peu opaques tout de même) comme
+le nombre de mots dans la ligne, le nombre de mots uniques dans la ligne, la longueur de la ligne.
+
+C'est la fonction MATCH qui retourne la pertinence sous forme d'un flottant supérieur ou égale à
+S. ROHAUT
+Cours Programmation PHP
+Page 46/93
+
+zéro. Le zéro signifie une pertinence nulle (pas de correspondance). Plus la valeur est élevée plus le
+résultat est pertinent.
+
+SELECT id_message, MATCH(sujet,texte) AGAINST('linux nvidia') FROM f_message;
+Cette requête récupère en seconde colonne la valeur de la pertinence. Celle-ci n'est pas classée car il
+n'y a pas de WHERE ou de ORDER BY. Voici une dernière méthode permettant de récupérer les
+champs et la pertinence triés par ordre de pertinence.
+
+SELECT id_message,sujet MATCH (sujet,texte) AGAINST ('linux nvidia')
+FROM f_messages WHERE MATCH (sujet,texte) AGAINST ('linux nvidia');
+10.5.6.3 Recherche booléenne
+Les versions 4.x de MySQL ont introduit la notion de recherche booléenne qui permet d'affiner ses
+recherches.
+
+SELECT id_message FROM f_message WHERE MATCH(sujet,texte) AGAINST ('+linux
++nvidia +ati' IN BOOLEAN MODE);
+Voici la signification des caractères supplémentaires
+• + : le mot doit obligatoirement être présent dans chaque enregistrement retourné
+• - : le mot ne doit pas être présent dans les enregistrements retournés
+• > et < : valorisation du mot. Un >toto <titi valorise plus toto que titi dans la recherche
+• ( et ) : grouper une série de mots
+• ~ : négation d'un mot. Contrairement au -, le mot est tout de même pris en compte avec une
+pertinence négative.
+
+• * : tronquage d'un mot : bon* => bonjour, bonsoir
+
+• les guillemets « " » : une chaîne recherchée telle quelle.
+
+10.6 MySQL et PHP
+10.6.1 Connexion à une base de données
+Deux étapes sont généralement nécessaires pour plus de simplicité. La seconde n'est pas obligatoire
+mais bien pratique dans le cas où on travaille sur une seule base de données dans toute la page.
+
+10.6.1.1 Connexion au serveur
+On utilise la fonction mysql_connect(). Cette fonction prend (au minimum) trois paramètres : le
+serveur (hostname) l'utilisateur et son mot de passe.
+
+$b_host="sql.tf-data.net"
+$b_user="toto";
+$b_pass="CreT1";
+S. ROHAUT
+Cours Programmation PHP
+Page 47/93
+
+$cnx=mysql_connect($b_host, $b_user, $b_pass);
+if(!$cnx) die ("erreur de connexion à MySQL");
+10.6.1.2 Choix d'une base
+On choisit une base de données par défaut avec la fonction mysql_select_db(). Elle prend au
+minimum un paramètre, le nom de la base. Le second paramètre optionnel est une ressource
+retournée par mysql_connect, en cas de connexion sur plusieurs serveurs MySQL. Par défaut, la
+fonction prend la dernière connexion ouverte (celle du dernier mysql_connect exécuté).
+
+$b_base="slyunix";
+$db=msql_select_db($b_base);
+if(!$db) die("Erreur de connexion à la base $b_base");
+10.6.1.3 Fermeture d'une connexion
+On ferme une connexion à MySQL avec la fonction mysql_close(). Cependant dans le cas de
+connexion non persistantes (voir à ce point) cette fonction n'est pas obligatoire car PHP ferme
+automatiquement les connexions à la fin d'un script.
+
+mysql_close($cnx);
+10.6.1.4 Séquence complète pour une base
+$b_host="sql.tf-data.net"
+$b_user="toto";
+$b_pass="CreT1";
+$b_base="slyunix";
+mysql_connect($b_host, $b_user, $b_pass) or die("erreur de connexion à MySQL");
+mysql_select_db
+      </chunk>
+    </document>
+</documents>
+</task>
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
