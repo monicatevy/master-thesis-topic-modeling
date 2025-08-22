@@ -1,0 +1,51 @@
+Run ID: 20250822-064803
+Input CSV: /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/annotations/abstracts/filtered/c050/rychkova_abstracts_lemmas_en_filtered.csv
+Artifacts root: /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803
+Matrix shape: 40 x 439 (docs × terms)
+Normalized shape: 40 x 439 (docs × terms)
+Normalized_T shape: 439 x 40 (terms × docs)
+
+[direct | beta=None]
+  bin_csv : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_direct_None/bin.csv
+  cxt     : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_direct_None/cxt
+  lattice : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_direct_None/lattice.png
+
+[medium | beta=1.0]
+  bin_csv : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_medium_10/bin.csv
+  cxt     : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_medium_10/cxt
+  lattice : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_medium_10/lattice.png
+
+[low | beta=1.0]
+  bin_csv : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_low_10/bin.csv
+  cxt     : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_low_10/cxt
+  lattice : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_low_10/lattice.png
+
+[high | beta=0.75]
+  bin_csv : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_075/bin.csv
+  cxt     : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_075/cxt
+  lattice : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_075/lattice.png
+
+[high | beta=1.0]
+  bin_csv : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_10/bin.csv
+  cxt     : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_10/cxt
+  lattice : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_10/lattice.png
+
+[high | beta=1.25]
+  bin_csv : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_125/bin.csv
+  cxt     : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_125/cxt
+  lattice : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_125/lattice.png
+
+[high | beta=1.5]
+  bin_csv : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_15/bin.csv
+  cxt     : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_15/cxt
+  lattice : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_15/lattice.png
+
+[high | beta=1.75]
+  bin_csv : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_175/bin.csv
+  cxt     : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_175/cxt
+  lattice : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_175/lattice.png
+
+[high | beta=2.0]
+  bin_csv : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_20/bin.csv
+  cxt     : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_20/cxt
+  lattice : /Users/monicasen/PycharmProjects/topic-modeling/datasets/rychkova_papers/matrix/rychkova_abstracts_lemmas_en_filtered__20250822-064803/bin_high_20/lattice.png

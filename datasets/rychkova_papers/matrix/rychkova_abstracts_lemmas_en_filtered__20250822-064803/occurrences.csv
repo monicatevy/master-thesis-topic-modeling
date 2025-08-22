@@ -1,0 +1,837 @@
+doc_id;babelSynsetID;word;count
+2010-BATI;bn:00000550n;academia;1
+2010-BATI;bn:00007985n;discipline;1
+2010-BATI;bn:00010264n;offer;1
+2010-BATI;bn:00014137n;business;4
+2010-BATI;bn:00023853n;criterion;1
+2010-BATI;bn:00032100n;example;1
+2010-BATI;bn:00032306n;experience;1
+2010-BATI;bn:00034898n;fitness;1
+2010-BATI;bn:00042117n;guideline;2
+2010-BATI;bn:00054019n;measurement;2
+2010-BATI;bn:00057017n;environment;1
+2010-BATI;bn:00059136n;operationalisation;1
+2010-BATI;bn:00059480n;formation;2
+2010-BATI;bn:00061500n;perception;2
+2010-BATI;bn:00063994n;practitioner;2
+2010-BATI;bn:00067280n;academic research;1
+2010-BATI;bn:00077585n;tool;1
+2010-BATI;bn:00102171a;empirical;2
+2010-BATI;bn:00110621a;significant;1
+2010-BATI;bn:00670896n;depth;1
+2010-BATI;bn:01932511n;criterion validity;1
+2010-BATI;bn:02245863n;usability;1
+2010-BATI;bn:02747390n;research community;1
+2010-BATI;bn:17095877n;empirical validation;1
+2010-BPM;bn:00005934n;deco;1
+2010-BPM;bn:00019220n;circumstance;1
+2010-BPM;bn:00021547n;concept;1
+2010-BPM;bn:00021961n;effect;1
+2010-BPM;bn:00031009n;initiative;1
+2010-BPM;bn:00032100n;example;1
+2010-BPM;bn:00054633n;methodology;1
+2010-BPM;bn:00055954n;mortgage;1
+2010-BPM;bn:00070404n;semantics;1
+2010-BPM;bn:00070697n;set;1
+2010-BPM;bn:00072760n;solution;1
+2010-BPM;bn:00073217n;specification;1
+2010-BPM;bn:00082226v;achieve;1
+2010-BPM;bn:00082845v;assemble;1
+2010-BPM;bn:00086465v;define;1
+2010-BPM;bn:00090876v;modeling;3
+2010-BPM;bn:00091200v;oriented;1
+2010-BPM;bn:00101019a;declarative;1
+2010-BPM;bn:00101225a;descriptive;1
+2010-BPM;bn:00111806a;theoretical;1
+2010-BPM;bn:00912901n;process model;1
+2010-BPM;bn:02291059n;rfp;1
+2010-BPM;bn:02370529n;bpmn;1
+2010-BPM;bn:03127800n;management process;3
+2010-BPM;bn:03537096n;case management;5
+2010-BPM;bn:03558977n;process specification;1
+2010-GRN;bn:00002179n;aim;1
+2010-GRN;bn:00005090n;applicability;2
+2010-GRN;bn:00005603n;input parameter;2
+2010-GRN;bn:00014137n;business;2
+2010-GRN;bn:00017153n;focus;1
+2010-GRN;bn:00020452n;knowledge;3
+2010-GRN;bn:00021961n;effect;1
+2010-GRN;bn:00022168n;context;1
+2010-GRN;bn:00031973n;evaluation;1
+2010-GRN;bn:00032100n;example;1
+2010-GRN;bn:00049573n;project;1
+2010-GRN;bn:00053662n;mass;1
+2010-GRN;bn:00054019n;measurement;3
+2010-GRN;bn:00059480n;formation;2
+2010-GRN;bn:00063994n;practitioner;1
+2010-GRN;bn:00067280n;academic research;3
+2010-GRN;bn:00067417n;retail company;1
+2010-GRN;bn:00070697n;set;1
+2010-GRN;bn:00082247v;gather;1
+2010-GRN;bn:00083370v;believe;1
+2010-GRN;bn:00084595v;implement;1
+2010-GRN;bn:00087826v;illustrate;1
+2010-GRN;bn:00101358a;difficult;1
+2010-GRN;bn:00102620a;extensive;1
+2010-GRN;bn:00106527a;meaningful;1
+2010-GRN;bn:00108829a;possible;2
+2010-GRN;bn:00108977a;present;2
+2010-GRN;bn:00114778r;usually;1
+2010-GRN;bn:00353055n;quality;1
+2010-GRN;bn:00655130n;enterprise architecture;1
+2011-RDN;bn:00005158n;approval;1
+2011-RDN;bn:00020452n;knowledge;1
+2011-RDN;bn:00021547n;concept;1
+2011-RDN;bn:00055954n;mortgage;1
+2011-RDN;bn:00059480n;formation;1
+2011-RDN;bn:00083095v;banking;1
+2011-RDN;bn:00086465v;define;1
+2011-RDN;bn:00105258a;intensive;1
+2011-RDN;bn:00108880a;practical;1
+2011-RDN;bn:00285559n;business process model;1
+2011-RDN;bn:00912901n;process model;1
+2011-RDN;bn:03127800n;management process;1
+2011-RDN;bn:03537096n;case management;1
+2011-RDN;bn:15340438n;process work;1
+2011-RN;bn:00005934n;deco;1
+2011-RN;bn:00021248n;community;1
+2011-RN;bn:00026107n;demand;1
+2011-RN;bn:00027523n;discussion;1
+2011-RN;bn:00030721n;goal;1
+2011-RN;bn:00053867n;matter;1
+2011-RN;bn:00073217n;specification;1
+2011-RN;bn:00077462n;today;1
+2011-RN;bn:00087826v;illustrate;1
+2011-RN;bn:00090876v;modeling;2
+2011-RN;bn:00108977a;present;2
+2011-RN;bn:01648323n;descriptive knowledge;1
+2011-RN;bn:02841200n;separation process;1
+2011-RN;bn:03387425n;abstraction level;1
+2011-RN;bn:15340438n;process work;1
+2012-R;bn:00005934n;deco;2
+2012-R;bn:00020452n;knowledge;1
+2012-R;bn:00021547n;concept;1
+2012-R;bn:00021961n;effect;1
+2012-R;bn:00022168n;context;1
+2012-R;bn:00023853n;criterion;1
+2012-R;bn:00027407n;handicap;1
+2012-R;bn:00032100n;example;1
+2012-R;bn:00033729n;manner;2
+2012-R;bn:00047021n;reason;1
+2012-R;bn:00047734n;control flow;1
+2012-R;bn:00052815n;post;1
+2012-R;bn:00055452n;modeler;1
+2012-R;bn:00059480n;formation;2
+2012-R;bn:00060099n;bpm;1
+2012-R;bn:00061314n;pen;1
+2012-R;bn:00077462n;today;1
+2012-R;bn:00083370v;believe;1
+2012-R;bn:00084801v;characterize;1
+2012-R;bn:00087826v;illustrate;1
+2012-R;bn:00090876v;modeling;2
+2012-R;bn:00092757v;remain;1
+2012-R;bn:00104644a;imperative;1
+2012-R;bn:00285715n;process automation;1
+2012-R;bn:00912901n;process model;2
+2012-R;bn:01190125n;scenario;1
+2012-R;bn:03127800n;management process;1
+2012-R;bn:03191980n;process specification language;1
+2012-R;bn:03537096n;case management;3
+2013-BBRWa;bn:00007020n;attention;1
+2013-BBRWa;bn:00014137n;business;1
+2013-BBRWa;bn:00021496n;simulation;1
+2013-BBRWa;bn:00033729n;manner;1
+2013-BBRWa;bn:00056990n;natural language;1
+2013-BBRWa;bn:00073206n;specialist;1
+2013-BBRWa;bn:00077585n;tool;1
+2013-BBRWa;bn:00087626v;enforce;3
+2013-BBRWa;bn:01096526n;business rule;3
+2013-BBRWa;bn:01384947n;declarative language;1
+2013-BBRWa;bn:15051182n;capture;1
+2013-BBRWa;bn:15125301n;system;1
+2013-BBRWb;bn:00003125n;modification;1
+2013-BBRWb;bn:00014137n;business;3
+2013-BBRWb;bn:00022991n;creation;1
+2013-BBRWb;bn:00032060n;evolution;1
+2013-BBRWb;bn:00047734n;control flow;1
+2013-BBRWb;bn:00054061n;mechanism;1
+2013-BBRWb;bn:00064755n;property;1
+2013-BBRWb;bn:00066506n;response;1
+2013-BBRWb;bn:00070651n;service;5
+2013-BBRWb;bn:00073217n;specification;2
+2013-BBRWb;bn:00077585n;tool;1
+2013-BBRWb;bn:00087881v;explore;1
+2013-BBRWb;bn:00090880v;simulate;1
+2013-BBRWb;bn:00096212a;abstract;1
+2013-BBRWb;bn:00111686a;technical;3
+2013-BBRWb;bn:00251565n;alloy;1
+2013-BBRWb;bn:00940403n;enterprise service;1
+2013-BBRWb;bn:00969301n;service design;1
+2013-BBRWb;bn:02527555n;business requirement;1
+2013-BBRWb;bn:03181403n;alloy analyzer;1
+2013-KPR;bn:00017124n;center;1
+2013-KPR;bn:00023236n;Gov;1
+2013-KPR;bn:00046705n;information;1
+2013-KPR;bn:00082542v;allow;1
+2013-KPR;bn:00084527v;handle;1
+2013-KPR;bn:00084801v;characterize;1
+2013-KPR;bn:00087881v;explore;1
+2013-KPR;bn:00089664v;incorporate;1
+2013-KPR;bn:00091200v;oriented;1
+2013-KPR;bn:00101268a;elaborate;1
+2013-KPR;bn:00104162a;high;1
+2013-KPR;bn:03127800n;management process;2
+2013-KPR;bn:03537096n;case management;4
+2013-R;bn:00006997n;attempt;1
+2013-R;bn:00021383n;complexity;1
+2013-R;bn:00032100n;example;1
+2013-R;bn:00046576n;industry;1
+2013-R;bn:00055954n;mortgage;1
+2013-R;bn:00070404n;semantics;1
+2013-R;bn:00077585n;tool;1
+2013-R;bn:00085805v;simulate;1
+2013-R;bn:00085840v;validate;1
+2013-R;bn:00086465v;define;1
+2013-R;bn:00087826v;illustrate;1
+2013-R;bn:00102039a;efficient;1
+2013-R;bn:00109636a;regular;1
+2013-R;bn:00111002a;specific;1
+2013-R;bn:00212740n;finite state machine;1
+2013-R;bn:00251565n;alloy;1
+2013-R;bn:00612059n;specification language;1
+2013-R;bn:00912901n;process model;2
+2013-R;bn:01329353n;mathematical model;1
+2013-R;bn:01567557n;process development;1
+2013-R;bn:02057536n;operational semantics;1
+2013-R;bn:02788029n;business process;1
+2013-R;bn:03127800n;management process;5
+2013-R;bn:03181403n;alloy analyzer;1
+2013-R;bn:03537096n;case management;7
+2013-R;bn:14965500n;approval;1
+2013-RKPLG;bn:00045800n;idea;1
+2013-RKPLG;bn:00081578n;workflow;1
+2013-RKPLG;bn:00086734v;evolve;1
+2013-RKPLG;bn:00087587v;enable;1
+2013-RKPLG;bn:00108977a;present;1
+2013-RKPLG;bn:00109873a;rigid;1
+2013-RKPLG;bn:00115252r;eventually;1
+2013-RKPLG;bn:00285559n;business process model;1
+2013-RKPLG;bn:01598370n;business process management;1
+2013-RKPLG;bn:02491398n;formal concept analysis;1
+2013-RKPLG;bn:02788029n;business process;1
+2013-RKPLG;bn:03643901n;engine;1
+2013-RKPLG;bn:15125301n;system;1
+2013-RZS;bn:00001426n;governance;1
+2013-RZS;bn:00016413n;size;1
+2013-RZS;bn:00021547n;concept;2
+2013-RZS;bn:00025691n;decentralise;1
+2013-RZS;bn:00026980n;education;1
+2013-RZS;bn:00049181n;Sweden;1
+2013-RZS;bn:00059480n;formation;1
+2013-RZS;bn:00082486v;propose;1
+2013-RZS;bn:00083240v;refer;1
+2013-RZS;bn:00084730v;centralized;1
+2013-RZS;bn:00089667v;increase;1
+2013-RZS;bn:00100194a;conceptual;1
+2013-RZS;bn:00101268a;elaborate;1
+2013-RZS;bn:00655130n;enterprise architecture;1
+2013-RZS;bn:03439996n;organizational structure;3
+2013-SRZN;bn:00002179n;aim;1
+2013-SRZN;bn:00005442n;architecture;1
+2013-SRZN;bn:00020452n;knowledge;2
+2013-SRZN;bn:00025691n;decentralise;1
+2013-SRZN;bn:00025913n;deficiency;1
+2013-SRZN;bn:00033729n;manner;2
+2013-SRZN;bn:00053823n;change;1
+2013-SRZN;bn:00084730v;centralized;1
+2013-SRZN;bn:00100485a;incorporated;1
+2013-SRZN;bn:00106335a;major;1
+2013-SRZN;bn:00115834r;primarily;1
+2013-SRZN;bn:03439996n;organizational structure;1
+2013-TMRW;bn:00014137n;business;1
+2013-TMRW;bn:00016413n;size;1
+2013-TMRW;bn:00021497n;software;1
+2013-TMRW;bn:00021961n;effect;1
+2013-TMRW;bn:00031009n;initiative;1
+2013-TMRW;bn:00036826n;method call;1
+2013-TMRW;bn:00049573n;project;1
+2013-TMRW;bn:00051538n;literature;1
+2013-TMRW;bn:00059480n;formation;1
+2013-TMRW;bn:00059507n;orientation;1
+2013-TMRW;bn:00067181n;report;1
+2013-TMRW;bn:00070651n;service;2
+2013-TMRW;bn:00077585n;tool;1
+2013-TMRW;bn:00080772n;web;1
+2013-TMRW;bn:00083184v;exist;1
+2013-TMRW;bn:00086733v;develop;2
+2013-TMRW;bn:00090045v;maintain;1
+2013-TMRW;bn:00105984a;likely;1
+2013-TMRW;bn:00107970a;organisational;1
+2013-TMRW;bn:00655130n;enterprise architecture;1
+2013-TMRW;bn:00943355n;seam;3
+2013-TMRW;bn:02438245n;service model;1
+2013-TMRW;bn:15125301n;system;2
+2014-RKPLG;bn:00007985n;discipline;1
+2014-RKPLG;bn:00017746n;fictional character;1
+2014-RKPLG;bn:00021464n;computer;2
+2014-RKPLG;bn:00023853n;criterion;1
+2014-RKPLG;bn:00028658n;dream;1
+2014-RKPLG;bn:00032306n;experience;1
+2014-RKPLG;bn:00034242n;fiction;1
+2014-RKPLG;bn:00044576n;man;1
+2014-RKPLG;bn:00045632n;theory;1
+2014-RKPLG;bn:00047021n;reason;1
+2014-RKPLG;bn:00049476n;kubrick;1
+2014-RKPLG;bn:00058285n;number;1
+2014-RKPLG;bn:00066414n;reality;1
+2014-RKPLG;bn:00067280n;academic research;1
+2014-RKPLG;bn:00069680n;scientist;2
+2014-RKPLG;bn:00082941v;automated;1
+2014-RKPLG;bn:00084733v;reflect;1
+2014-RKPLG;bn:00086931v;discuss;1
+2014-RKPLG;bn:00099215a;capable;1
+2014-RKPLG;bn:00108886a;pragmatic;1
+2014-RKPLG;bn:00116395r;objectively;1
+2014-RKPLG;bn:01305513n;process management;1
+2014-RKPLG;bn:02220931n;imdb;1
+2014-RKPLG;bn:02813568n;20th century;1
+2014-RKPLG;bn:03134448n;space odyssey;1
+2014-RKPLG;bn:03537096n;case management;2
+2014-ZRS;bn:00001426n;governance;2
+2014-ZRS;bn:00016433n;case example;2
+2014-ZRS;bn:00020452n;knowledge;2
+2014-ZRS;bn:00025691n;decentralise;2
+2014-ZRS;bn:00026980n;education;1
+2014-ZRS;bn:00033729n;manner;1
+2014-ZRS;bn:00037180n;match;1
+2014-ZRS;bn:00049181n;Sweden;1
+2014-ZRS;bn:00053823n;change;1
+2014-ZRS;bn:00059480n;formation;2
+2014-ZRS;bn:00070206n;sector;1
+2014-ZRS;bn:00084730v;centralized;1
+2014-ZRS;bn:00086366v;decentralized;1
+2014-ZRS;bn:00096445a;good;1
+2014-ZRS;bn:00100485a;incorporated;1
+2014-ZRS;bn:00104162a;high;1
+2014-ZRS;bn:00115834r;primarily;1
+2014-ZRS;bn:00655130n;enterprise architecture;1
+2014-ZRS;bn:01718454n;peer production;1
+2014-ZRS;bn:03232471n;ea framework;2
+2014-ZRS;bn:03439996n;organizational structure;2
+2014-ZRSa;bn:00001426n;governance;2
+2014-ZRSa;bn:00007985n;discipline;1
+2014-ZRSa;bn:00020452n;knowledge;2
+2014-ZRSa;bn:00021394n;component;1
+2014-ZRSa;bn:00025691n;decentralise;1
+2014-ZRSa;bn:00026980n;education;1
+2014-ZRSa;bn:00033729n;manner;1
+2014-ZRSa;bn:00045800n;idea;1
+2014-ZRSa;bn:00053823n;change;1
+2014-ZRSa;bn:00082215v;adapt;1
+2014-ZRSa;bn:00084730v;centralized;1
+2014-ZRSa;bn:00086366v;decentralized;1
+2014-ZRSa;bn:00087826v;illustrate;1
+2014-ZRSa;bn:00096151a;able;1
+2014-ZRSa;bn:00100485a;incorporated;1
+2014-ZRSa;bn:00104162a;high;1
+2014-ZRSa;bn:00115834r;primarily;1
+2014-ZRSa;bn:00655130n;enterprise architecture;1
+2014-ZRSa;bn:03232471n;ea framework;2
+2014-ZRSa;bn:03439996n;organizational structure;2
+2015-KRDLG;bn:00026535n;design process;1
+2015-KRDLG;bn:00030721n;goal;3
+2015-KRDLG;bn:00032100n;example;1
+2015-KRDLG;bn:00035297n;flood management;4
+2015-KRDLG;bn:00049573n;project;1
+2015-KRDLG;bn:00064626n;technique;1
+2015-KRDLG;bn:00074557n;strategic level;2
+2015-KRDLG;bn:00082225v;fulfill;1
+2015-KRDLG;bn:00082226v;achieve;1
+2015-KRDLG;bn:00082358v;align;1
+2015-KRDLG;bn:00083370v;believe;1
+2015-KRDLG;bn:00085805v;simulate;2
+2015-KRDLG;bn:00090876v;modeling;1
+2015-KRDLG;bn:00092757v;remain;1
+2015-KRDLG;bn:00099258a;central;1
+2015-KRDLG;bn:00102521a;executable;1
+2015-KRDLG;bn:00108977a;present;1
+2015-KRDLG;bn:00912901n;process model;1
+2015-KRDLG;bn:00971296n;po;1
+2015-KRDLG;bn:01128895n;harel statecharts;1
+2015-KRDLG;bn:01190125n;scenario;3
+2015-KRDLG;bn:01283920n;goal modeling;1
+2015-KRDLG;bn:01305513n;process management;2
+2015-KRDLG;bn:02836923n;crisis management;2
+2015-KRDLG;bn:03091997n;oka river;1
+2015-KRDLG;bn:03127800n;management process;5
+2015-KRDLG;bn:03393005n;abstract process;1
+2015-KRDLG;bn:03424909n;level order;1
+2015-KRLG;bn:00001265n;adaptability;1
+2015-KRLG;bn:00017124n;center;1
+2015-KRLG;bn:00023236n;Gov;1
+2015-KRLG;bn:00032100n;example;1
+2015-KRLG;bn:00035297n;flood management;1
+2015-KRLG;bn:00050969n;toolkit;1
+2015-KRLG;bn:00068562n;run time;1
+2015-KRLG;bn:00072760n;solution;1
+2015-KRLG;bn:00073217n;specification;1
+2015-KRLG;bn:00077585n;tool;1
+2015-KRLG;bn:00082215v;adapt;1
+2015-KRLG;bn:00082486v;propose;1
+2015-KRLG;bn:00083370v;believe;1
+2015-KRLG;bn:00084595v;implement;1
+2015-KRLG;bn:00090876v;modeling;1
+2015-KRLG;bn:00091028v;need;1
+2015-KRLG;bn:00091282v;overcome;1
+2015-KRLG;bn:00114251r;constantly;1
+2015-KRLG;bn:00427376n;smart city;1
+2015-KRLG;bn:01128895n;harel statecharts;1
+2015-KRLG;bn:01190125n;scenario;3
+2015-KRLG;bn:02370529n;bpmn;1
+2015-KRLG;bn:02410789n;process design;1
+2015-KRLG;bn:02836923n;crisis management;1
+2015-KRLG;bn:03127800n;management process;2
+2015-KRLG;bn:03506057n;process control;1
+2015-KRLG;bn:03814567n;stat;1
+2015-KRLGa;bn:00020452n;knowledge;3
+2015-KRLGa;bn:00023236n;Gov;1
+2015-KRLGa;bn:00025331n;information system;1
+2015-KRLGa;bn:00032100n;example;2
+2015-KRLGa;bn:00032306n;experience;1
+2015-KRLGa;bn:00035297n;flood management;2
+2015-KRLGa;bn:00051253n;limitation;1
+2015-KRLGa;bn:00072760n;solution;1
+2015-KRLGa;bn:00082215v;adapt;1
+2015-KRLGa;bn:00082486v;propose;1
+2015-KRLGa;bn:00083370v;believe;1
+2015-KRLGa;bn:00084595v;implement;1
+2015-KRLGa;bn:00086931v;discuss;1
+2015-KRLGa;bn:00090876v;modeling;1
+2015-KRLGa;bn:00091028v;need;1
+2015-KRLGa;bn:00091200v;oriented;2
+2015-KRLGa;bn:00427376n;smart city;1
+2015-KRLGa;bn:01128895n;harel statecharts;1
+2015-KRLGa;bn:01190125n;scenario;1
+2015-KRLGa;bn:01510781n;management system;1
+2015-KRLGa;bn:02387665n;collaboration;1
+2015-KRLGa;bn:02438777n;volunteer;1
+2015-KRLGa;bn:02836923n;crisis management;2
+2015-KRLGa;bn:03127800n;management process;3
+2015-KRLGa;bn:03195989n;importance;1
+2015-KRLGa;bn:03298514n;flexibility;1
+2015-KRLGa;bn:03399058n;advantage;1
+2015-KRLGa;bn:03792862n;cos;1
+2016-BRZ;bn:00001302n;address;1
+2016-BRZ;bn:00005095n;application;1
+2016-BRZ;bn:00016433n;case example;1
+2016-BRZ;bn:00017153n;focus;1
+2016-BRZ;bn:00023853n;criterion;1
+2016-BRZ;bn:00025691n;decentralise;1
+2016-BRZ;bn:00033729n;manner;1
+2016-BRZ;bn:00051538n;literature;1
+2016-BRZ;bn:00076251n;taxonomy;1
+2016-BRZ;bn:00086567v;demonstrate;1
+2016-BRZ;bn:00087550v;enter;1
+2016-BRZ;bn:00097800a;classical;1
+2016-BRZ;bn:00099030a;bureaucratic;1
+2016-BRZ;bn:00102049a;efficient;1
+2016-BRZ;bn:00102589a;explicit;1
+2016-BRZ;bn:00107970a;organisational;2
+2016-BRZ;bn:00115285r;explicitly;1
+2016-BRZ;bn:03502105n;business model;1
+2016-BRZ;bn:03617553n;enterprise model;1
+2016-Dall;bn:00002178n;intention;1
+2016-Dall;bn:00021477n;video game;1
+2016-Dall;bn:00022168n;context;1
+2016-Dall;bn:00025331n;information system;2
+2016-Dall;bn:00028142n;domain;1
+2016-Dall;bn:00030721n;goal;1
+2016-Dall;bn:00042771n;mobile device;1
+2016-Dall;bn:00046705n;information;1
+2016-Dall;bn:00066402n;real world;1
+2016-Dall;bn:00067280n;academic research;1
+2016-Dall;bn:00082233v;describe;2
+2016-Dall;bn:00285559n;business process model;1
+2016-Dall;bn:00671881n;user experience;1
+2016-Dall;bn:00909458n;smartphones;1
+2016-Dall;bn:00912901n;process model;1
+2016-Dall;bn:01042120n;formalism;1
+2016-Dall;bn:01190125n;scenario;1
+2016-Dall;bn:03156296n;tablet;1
+2016-Dall;bn:14672884n;urban game;1
+2016-Dall;bn:14710229n;intention mining;1
+2016-Dall;bn:15125301n;system;1
+2016-KRLG;bn:00000870n;success;1
+2016-KRLG;bn:00002705n;algorithm;4
+2016-KRLG;bn:00020452n;knowledge;3
+2016-KRLG;bn:00021496n;simulation;1
+2016-KRLG;bn:00023236n;Gov;2
+2016-KRLG;bn:00026817n;diagram;1
+2016-KRLG;bn:00032100n;example;1
+2016-KRLG;bn:00032306n;experience;2
+2016-KRLG;bn:00058285n;number;2
+2016-KRLG;bn:00068562n;run time;1
+2016-KRLG;bn:00070404n;semantics;1
+2016-KRLG;bn:00080130n;visualisation;1
+2016-KRLG;bn:00082233v;describe;1
+2016-KRLG;bn:00082596v;analyse;1
+2016-KRLG;bn:00087587v;enable;1
+2016-KRLG;bn:00095091v;transform;1
+2016-KRLG;bn:00099258a;central;1
+2016-KRLG;bn:00099598a;main;1
+2016-KRLG;bn:00101660a;objective;1
+2016-KRLG;bn:00108829a;possible;1
+2016-KRLG;bn:01128895n;harel statecharts;3
+2016-KRLG;bn:01190125n;scenario;5
+2016-KRLG;bn:01691263n;higraph;3
+2016-KRLG;bn:03127800n;management process;1
+2016-KRLG;bn:03309733n;optimisation;1
+2016-KRLG;bn:03537096n;case management;1
+2017-RLGS;bn:00021547n;concept;1
+2017-RLGS;bn:00023236n;Gov;1
+2017-RLGS;bn:00025331n;information system;1
+2017-RLGS;bn:00067975n;road;1
+2017-RLGS;bn:00082379v;adopt;1
+2017-RLGS;bn:00082542v;allow;1
+2017-RLGS;bn:00090876v;modeling;1
+2017-RLGS;bn:00091200v;oriented;1
+2017-RLGS;bn:00102521a;executable;1
+2017-RLGS;bn:00119381n;Cmp;3
+2017-RLGS;bn:00182115n;chapter;1
+2017-RLGS;bn:00445734n;specific complexity;1
+2017-RLGS;bn:01128895n;harel statecharts;3
+2017-RLGS;bn:03127800n;management process;2
+2017-RLGS;bn:03149059n;predictive analysis;1
+2017-RLGS;bn:03537096n;case management;2
+2017-RLGS;bn:03558977n;process specification;1
+2017-RLGS;bn:14456945n;manager;1
+2017-RZ;bn:00001426n;governance;2
+2017-RZ;bn:00019281n;citizen;2
+2017-RZ;bn:00025691n;decentralise;1
+2017-RZ;bn:00029687n;ecosystem;1
+2017-RZ;bn:00033729n;manner;4
+2017-RZ;bn:00045632n;theory;1
+2017-RZ;bn:00046713n;information technology;1
+2017-RZ;bn:00047021n;reason;1
+2017-RZ;bn:00063331n;policy maker;1
+2017-RZ;bn:00064594n;production;1
+2017-RZ;bn:00070651n;service;1
+2017-RZ;bn:00082379v;adopt;1
+2017-RZ;bn:00082822v;demand;1
+2017-RZ;bn:00089575v;identify;1
+2017-RZ;bn:00101348a;different;1
+2017-RZ;bn:00102049a;efficient;1
+2017-RZ;bn:00102874a;federate;1
+2017-RZ;bn:00103816a;innovative;1
+2017-RZ;bn:00105350a;intrinsic;1
+2017-RZ;bn:00107970a;organisational;1
+2017-RZ;bn:00109211a;public;4
+2017-RZ;bn:00109532a;reusable;1
+2017-RZ;bn:00751658n;government policy;1
+2017-RZ;bn:01381379n;public value;1
+2017-RZ;bn:02422212n;open innovation;1
+2017-RZ;bn:03640362n;information technology governance;1
+2017-RZ;bn:03815028n;make work;1
+2017-ZR;bn:00001426n;governance;4
+2017-ZR;bn:00002179n;aim;1
+2017-ZR;bn:00007985n;discipline;1
+2017-ZR;bn:00020452n;knowledge;1
+2017-ZR;bn:00026980n;education;1
+2017-ZR;bn:00029806n;student;1
+2017-ZR;bn:00059480n;formation;5
+2017-ZR;bn:00064594n;production;1
+2017-ZR;bn:00070651n;service;2
+2017-ZR;bn:00082705v;apply;1
+2017-ZR;bn:00084086v;succeed;1
+2017-ZR;bn:00087826v;illustrate;1
+2017-ZR;bn:00089667v;increase;1
+2017-ZR;bn:00099443a;centralized;1
+2017-ZR;bn:00100026a;compound;1
+2017-ZR;bn:00101348a;different;1
+2017-ZR;bn:00107268a;new;1
+2017-ZR;bn:00109211a;public;2
+2017-ZR;bn:00111285a;strategic;1
+2017-ZR;bn:00111325a;structured;1
+2017-ZR;bn:01381379n;public value;1
+2017-ZR;bn:02422212n;open innovation;1
+2018-RR;bn:00000551n;faculty member;1
+2018-RR;bn:00009677n;organism;1
+2018-RR;bn:00021497n;software;1
+2018-RR;bn:00023236n;Gov;1
+2018-RR;bn:00030933n;recruitment process;1
+2018-RR;bn:00032100n;example;1
+2018-RR;bn:00044544n;homeostasis;1
+2018-RR;bn:00060798n;participant;1
+2018-RR;bn:00082723v;take account;1
+2018-RR;bn:00104268a;homeostatic;1
+2018-RR;bn:00115252r;eventually;1
+2018-RR;bn:00328261n;appreciative system;1
+2018-RR;bn:00522942n;steady state;1
+2018-RR;bn:00912901n;process model;1
+2018-RR;bn:01128895n;harel statecharts;1
+2018-RR;bn:01190125n;scenario;2
+2018-RR;bn:01944346n;system model;1
+2018-RR;bn:02788029n;business process;1
+2018-RR;bn:15260210n;doctoral school;1
+2019-BRLG;bn:00001304n;address;1
+2019-BRLG;bn:00007985n;discipline;1
+2019-BRLG;bn:00017124n;center;1
+2019-BRLG;bn:00019763n;customer;1
+2019-BRLG;bn:00020452n;knowledge;5
+2019-BRLG;bn:00045800n;idea;2
+2019-BRLG;bn:00053116n;management;2
+2019-BRLG;bn:00059928n;overview;1
+2019-BRLG;bn:00060099n;bpm;2
+2019-BRLG;bn:00061826n;request;1
+2019-BRLG;bn:00067280n;academic research;1
+2019-BRLG;bn:00070574n;sequence;1
+2019-BRLG;bn:00082215v;adapt;1
+2019-BRLG;bn:00082392v;outline;1
+2019-BRLG;bn:00086465v;define;1
+2019-BRLG;bn:00086931v;discuss;1
+2019-BRLG;bn:00087881v;explore;1
+2019-BRLG;bn:00099258a;central;1
+2019-BRLG;bn:00099532a;characteristic;1
+2019-BRLG;bn:00108977a;present;1
+2019-BRLG;bn:00111806a;theoretical;1
+2019-BRLG;bn:01598370n;business process management;1
+2019-RRW;bn:00000551n;faculty member;1
+2019-RRW;bn:00009657n;behavior;1
+2019-RRW;bn:00009677n;organism;1
+2019-RRW;bn:00023236n;Gov;1
+2019-RRW;bn:00030933n;recruitment process;1
+2019-RRW;bn:00032100n;example;1
+2019-RRW;bn:00037279n;gap;1
+2019-RRW;bn:00044544n;homeostasis;1
+2019-RRW;bn:00060798n;participant;4
+2019-RRW;bn:00064430n;rationale;1
+2019-RRW;bn:00066414n;reality;1
+2019-RRW;bn:00086465v;define;1
+2019-RRW;bn:00101176a;explicit;1
+2019-RRW;bn:00104268a;homeostatic;1
+2019-RRW;bn:00108977a;present;1
+2019-RRW;bn:00110842a;social;1
+2019-RRW;bn:00328261n;appreciative system;3
+2019-RRW;bn:00522942n;steady state;1
+2019-RRW;bn:01128895n;harel statecharts;1
+2019-RRW;bn:01944346n;system model;1
+2019-RRW;bn:02788029n;business process;2
+2019-RRW;bn:15125301n;system;1
+2019-RRW;bn:15260210n;doctoral school;1
+2020-KRNRW;bn:00007020n;attention;1
+2020-KRNRW;bn:00007985n;discipline;1
+2020-KRNRW;bn:00021248n;community;2
+2020-KRNRW;bn:00022168n;context;1
+2020-KRNRW;bn:00025331n;information system;2
+2020-KRNRW;bn:00032100n;example;1
+2020-KRNRW;bn:00032306n;experience;2
+2020-KRNRW;bn:00033729n;manner;1
+2020-KRNRW;bn:00043952n;heuristic;4
+2020-KRNRW;bn:00045632n;theory;1
+2020-KRNRW;bn:00045800n;idea;1
+2020-KRNRW;bn:00054633n;methodology;3
+2020-KRNRW;bn:00057017n;environment;1
+2020-KRNRW;bn:00058285n;number;1
+2020-KRNRW;bn:00058907n;ology;1
+2020-KRNRW;bn:00067280n;academic research;3
+2020-KRNRW;bn:00077270n;time;1
+2020-KRNRW;bn:00087826v;illustrate;1
+2020-KRNRW;bn:00087870v;explain;1
+2020-KRNRW;bn:00087881v;explore;1
+2020-KRNRW;bn:00100536a;global;2
+2020-KRNRW;bn:02012311n;user story;1
+2020-KRNRW;bn:02138008n;system engineering;2
+2020-KRNRW;bn:02356174n;use case;1
+2020-KRNRW;bn:15591207n;point;1
+2023-KRHS;bn:00001302n;address;1
+2023-KRHS;bn:00005105n;technology;1
+2023-KRHS;bn:00016413n;size;1
+2023-KRHS;bn:00023869n;literature analysis;1
+2023-KRHS;bn:00033729n;manner;1
+2023-KRHS;bn:00034894n;fit;1
+2023-KRHS;bn:00076341n;technique;1
+2023-KRHS;bn:00086467v;define;1
+2023-KRHS;bn:00086942v;discuss;1
+2023-KRHS;bn:00087634v;engineering;1
+2023-KRHS;bn:00099520a;immutable;1
+2023-KRHS;bn:00100162a;comprehensive;1
+2023-KRHS;bn:00102039a;efficient;1
+2023-KRHS;bn:00890994n;software pattern;2
+2023-KRHS;bn:01115911n;supply chain;1
+2023-KRHS;bn:01650764n;transaction;1
+2023-KRHS;bn:02161285n;scm;3
+2023-KRHS;bn:03569682n;engineering design;1
+2023-RG;bn:00000318n;ability;1
+2023-RG;bn:00005105n;technology;3
+2023-RG;bn:00014137n;business;1
+2023-RG;bn:00020452n;knowledge;1
+2023-RG;bn:00021248n;community;1
+2023-RG;bn:00025331n;information system;1
+2023-RG;bn:00025693n;decision making;1
+2023-RG;bn:00032120n;extract;1
+2023-RG;bn:00032322n;expert;1
+2023-RG;bn:00047017n;integrity;1
+2023-RG;bn:00051538n;literature;1
+2023-RG;bn:00059480n;formation;1
+2023-RG;bn:00061500n;perception;1
+2023-RG;bn:00067280n;academic research;1
+2023-RG;bn:00072545n;social science;1
+2023-RG;bn:00078496n;trustworthiness;4
+2023-RG;bn:00086008v;create;1
+2023-RG;bn:00101372a;digital;2
+2023-RG;bn:00106335a;major;1
+2023-RG;bn:01097033n;modern society;1
+2023-RG;bn:03136677n;research literature;1
+2023-RZS;bn:00001302n;address;1
+2023-RZS;bn:00020452n;knowledge;2
+2023-RZS;bn:00022168n;context;1
+2023-RZS;bn:00026980n;education;1
+2023-RZS;bn:00036845n;interaction;1
+2023-RZS;bn:00069579n;strategy;2
+2023-RZS;bn:00078496n;trustworthiness;2
+2023-RZS;bn:00082409v;jeopardize;1
+2023-RZS;bn:00087587v;enable;1
+2023-RZS;bn:00104162a;high;1
+2023-RZS;bn:00237517n;business ecosystem;1
+2023-RZS;bn:01401585n;dbe;5
+2023-RZS;bn:03112228n;digital technology;1
+2023-RZS;bn:03155334n;system design;1
+2023-RZS;bn:03718727n;social business;1
+2024-BRLG;bn:00017624n;probability;1
+2024-BRLG;bn:00020452n;knowledge;1
+2024-BRLG;bn:00021494n;computer science;1
+2024-BRLG;bn:00021547n;concept;1
+2024-BRLG;bn:00025331n;information system;1
+2024-BRLG;bn:00032309n;experiment;1
+2024-BRLG;bn:00036821n;output;2
+2024-BRLG;bn:00045153n;humanity;1
+2024-BRLG;bn:00049573n;project;1
+2024-BRLG;bn:00058679n;offer;1
+2024-BRLG;bn:00067171n;replacement;1
+2024-BRLG;bn:00076732n;text;1
+2024-BRLG;bn:00080130n;visualisation;2
+2024-BRLG;bn:00082282v;evolve;1
+2024-BRLG;bn:00082596v;analyse;1
+2024-BRLG;bn:00085491v;compose;1
+2024-BRLG;bn:00087763v;evaluate;1
+2024-BRLG;bn:00092058v;propose;1
+2024-BRLG;bn:00099598a;main;1
+2024-BRLG;bn:00108977a;present;1
+2024-BRLG;bn:00114778r;usually;1
+2024-BRLG;bn:00632106n;profit;1
+2024-BRLG;bn:02259054n;topic modeling;2
+2024-BRLG;bn:02491398n;formal concept analysis;1
+2024-BRLG;bn:03128426n;advance;1
+2024-BRLG;bn:03195989n;importance;1
+2024-BRLG;bn:03224833n;latent dirichlet allocation;1
+2024-BRLG;bn:17317913n;babelfy;1
+2024-HRH;bn:00001426n;governance;2
+2024-HRH;bn:00003839n;anarchist;1
+2024-HRH;bn:00005095n;application;1
+2024-HRH;bn:00005105n;technology;2
+2024-HRH;bn:00005442n;architecture;1
+2024-HRH;bn:00016287n;implementation;1
+2024-HRH;bn:00023236n;Gov;1
+2024-HRH;bn:00025691n;decentralise;4
+2024-HRH;bn:00054633n;methodology;1
+2024-HRH;bn:00059480n;formation;3
+2024-HRH;bn:00082596v;analyse;1
+2024-HRH;bn:00085746v;verify;1
+2024-HRH;bn:00087587v;enable;1
+2024-HRH;bn:00087881v;explore;1
+2024-HRH;bn:00111685a;technological;3
+2024-HRH;bn:00983111n;traceability;1
+2024-HRH;bn:01132275n;archimate;1
+2024-HRH;bn:01426742n;challenge;1
+2024-HRH;bn:02888045n;reference architecture;1
+2024-HRH;bn:03232471n;ea framework;1
+2024-HRH;bn:03349373n;political structure;1
+2024-HRH;bn:03788121n;design science research;1
+2024-KHRS;bn:00001557n;advancement;1
+2024-KHRS;bn:00005105n;technology;1
+2024-KHRS;bn:00014137n;business;1
+2024-KHRS;bn:00025965n;level;1
+2024-KHRS;bn:00030721n;goal;2
+2024-KHRS;bn:00036761n;fulfillment;1
+2024-KHRS;bn:00082226v;achieve;1
+2024-KHRS;bn:00082705v;apply;1
+2024-KHRS;bn:00084733v;reflect;1
+2024-KHRS;bn:00111286a;strategic;1
+2024-KHRS;bn:00111688a;technological;1
+2024-KHRS;bn:00128944n;enterprise information system;1
+2024-KHRS;bn:00254320n;software product line;1
+2024-KHRS;bn:00983111n;traceability;1
+2024-KHRS;bn:01530448n;mda;4
+2024-KHRS;bn:02180118n;component model;1
+2024-KHRS;bn:03264794n;sysml;1
+2024-KHRS;bn:03385495n;low level;1
+2024-KHRS;bn:03617553n;enterprise model;1
+2024-KHRS;bn:15125301n;system;1
+2024-RKHPNS;bn:00005442n;architecture;1
+2024-RKHPNS;bn:00012419n;limit;1
+2024-RKHPNS;bn:00014137n;business;1
+2024-RKHPNS;bn:00026535n;design process;1
+2024-RKHPNS;bn:00027670n;show;1
+2024-RKHPNS;bn:00030721n;goal;2
+2024-RKHPNS;bn:00037681n;propagation;1
+2024-RKHPNS;bn:00047021n;reason;1
+2024-RKHPNS;bn:00076330n;tech;1
+2024-RKHPNS;bn:00086681v;specified;1
+2024-RKHPNS;bn:00095108v;translate;1
+2024-RKHPNS;bn:00102526a;illustrative;1
+2024-RKHPNS;bn:00102581a;technical;2
+2024-RKHPNS;bn:03617553n;enterprise model;1
+2024-RKHPNS;bn:17323822n;constraint;2
+2024-RR;bn:00000648n;acceptance;2
+2024-RR;bn:00001302n;address;1
+2024-RR;bn:00021486n;monitor;1
+2024-RR;bn:00031027n;entity;1
+2024-RR;bn:00033950n;feedback loop;1
+2024-RR;bn:00049573n;project;1
+2024-RR;bn:00059480n;formation;1
+2024-RR;bn:00078496n;trustworthiness;3
+2024-RR;bn:00083240v;refer;1
+2024-RR;bn:00101176a;explicit;1
+2024-RR;bn:00106482a;real;1
+2024-RR;bn:00109131a;prospective;1
+2024-RR;bn:00109659a;relevant;1
+2024-RR;bn:00110842a;social;1
+2024-RR;bn:00114778r;usually;1
+2024-RR;bn:00983111n;traceability;1
+2024-RR;bn:02437884n;physical system;1
+2024-RR;bn:03155334n;system design;1
+2025-AR;bn:00005105n;technology;1
+2025-AR;bn:00017153n;focus;1
+2025-AR;bn:00020452n;knowledge;1
+2025-AR;bn:00021961n;effect;1
+2025-AR;bn:00035805n;predictor;1
+2025-AR;bn:00051538n;literature;1
+2025-AR;bn:00059480n;formation;1
+2025-AR;bn:00067280n;academic research;1
+2025-AR;bn:00068131n;role play;1
+2025-AR;bn:00069579n;strategy;1
+2025-AR;bn:00082668v;anticipate;1
+2025-AR;bn:00083184v;exist;1
+2025-AR;bn:00084595v;implement;1
+2025-AR;bn:00100674a;critical;1
+2025-AR;bn:03137835n;mod;1
+2025-LR;bn:00000648n;acceptance;1
+2025-LR;bn:00004456n;respondent;1
+2025-LR;bn:00005105n;technology;3
+2025-LR;bn:00007498n;awareness;1
+2025-LR;bn:00009657n;behavior;1
+2025-LR;bn:00017153n;focus;1
+2025-LR;bn:00020452n;knowledge;1
+2025-LR;bn:00032100n;example;1
+2025-LR;bn:00033948n;feedback;1
+2025-LR;bn:00045632n;theory;1
+2025-LR;bn:00059480n;formation;2
+2025-LR;bn:00072544n;social interaction;1
+2025-LR;bn:00077993n;transformer;1
+2025-LR;bn:00082596v;analyse;1
+2025-LR;bn:00103514a;generative;1
+2025-LR;bn:00105239a;integrative;1
+2025-LR;bn:00108803a;popular;1
+2025-LR;bn:01172008n;ai assistant;1
+2025-LR;bn:01184015n;language model;1
+2025-LR;bn:03358315n;conceptual framework;1

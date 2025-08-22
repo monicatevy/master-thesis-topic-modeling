@@ -1,0 +1,1334 @@
+// <Lattice object of 89 atoms 302 concepts 40 coatoms at 0x7fd831abed60>
+digraph Lattice {
+	node [label="" shape=circle style=filled width=.25]
+	edge [dir=none labeldistance=1.5 minlen=2]
+	c0
+	c1
+	c1 -> c1 [color=transparent headlabel=Gov labelangle=270]
+	c1 -> c0
+	c2
+	c2 -> c2 [color=transparent headlabel="academic research" labelangle=270]
+	c2 -> c0
+	c3
+	c3 -> c3 [color=transparent headlabel=acceptance labelangle=270]
+	c3 -> c0
+	c4
+	c4 -> c4 [color=transparent headlabel=achieve labelangle=270]
+	c4 -> c0
+	c5
+	c5 -> c5 [color=transparent headlabel=adapt labelangle=270]
+	c5 -> c0
+	c6
+	c6 -> c6 [color=transparent headlabel=address labelangle=270]
+	c6 -> c0
+	c7
+	c7 -> c7 [color=transparent headlabel=adopt labelangle=270]
+	c7 -> c0
+	c8
+	c8 -> c8 [color=transparent headlabel=aim labelangle=270]
+	c8 -> c0
+	c9
+	c9 -> c9 [color=transparent headlabel=analyse labelangle=270]
+	c9 -> c0
+	c10
+	c10 -> c10 [color=transparent headlabel=architecture labelangle=270]
+	c10 -> c0
+	c11
+	c11 -> c11 [color=transparent headlabel=attention labelangle=270]
+	c11 -> c0
+	c12
+	c12 -> c12 [color=transparent headlabel=believe labelangle=270]
+	c12 -> c0
+	c13
+	c13 -> c13 [color=transparent headlabel=bpm labelangle=270]
+	c13 -> c0
+	c14
+	c14 -> c14 [color=transparent headlabel=business labelangle=270]
+	c14 -> c0
+	c15
+	c15 -> c15 [color=transparent headlabel="business process" labelangle=270]
+	c15 -> c0
+	c16
+	c16 -> c16 [color=transparent headlabel="business process model" labelangle=270]
+	c16 -> c0
+	c17
+	c17 -> c17 [color=transparent headlabel="case management" labelangle=270]
+	c17 -> c0
+	c18
+	c18 -> c18 [color=transparent headlabel=center labelangle=270]
+	c18 -> c0
+	c19
+	c19 -> c19 [color=transparent headlabel=central labelangle=270]
+	c19 -> c0
+	c20
+	c20 -> c20 [color=transparent headlabel=centralized labelangle=270]
+	c20 -> c0
+	c21
+	c21 -> c21 [color=transparent headlabel=community labelangle=270]
+	c21 -> c0
+	c22
+	c22 -> c22 [color=transparent headlabel=concept labelangle=270]
+	c22 -> c0
+	c23
+	c23 -> c23 [color=transparent headlabel=context labelangle=270]
+	c23 -> c0
+	c24
+	c24 -> c24 [color=transparent headlabel="control flow" labelangle=270]
+	c24 -> c0
+	c25
+	c25 -> c25 [color=transparent headlabel=criterion labelangle=270]
+	c25 -> c0
+	c26
+	c26 -> c26 [color=transparent headlabel=decentralise labelangle=270]
+	c26 -> c0
+	c27
+	c27 -> c27 [color=transparent headlabel=define labelangle=270]
+	c27 -> c0
+	c28
+	c28 -> c28 [color=transparent headlabel=demand labelangle=270]
+	c28 -> c0
+	c29
+	c29 -> c29 [color=transparent headlabel=discipline labelangle=270]
+	c29 -> c0
+	c30
+	c30 -> c30 [color=transparent headlabel=discuss labelangle=270]
+	c30 -> c0
+	c31
+	c31 -> c31 [color=transparent headlabel=education labelangle=270]
+	c31 -> c0
+	c32
+	c32 -> c32 [color=transparent headlabel=effect labelangle=270]
+	c32 -> c0
+	c33
+	c33 -> c33 [color=transparent headlabel=efficient labelangle=270]
+	c33 -> c0
+	c34
+	c34 -> c34 [color=transparent headlabel=elaborate labelangle=270]
+	c34 -> c0
+	c35
+	c35 -> c35 [color=transparent headlabel=enable labelangle=270]
+	c35 -> c0
+	c36
+	c36 -> c36 [color=transparent headlabel="enterprise architecture" labelangle=270]
+	c36 -> c0
+	c37
+	c37 -> c37 [color=transparent headlabel="enterprise model" labelangle=270]
+	c37 -> c0
+	c38
+	c38 -> c38 [color=transparent headlabel=example labelangle=270]
+	c38 -> c0
+	c39
+	c39 -> c39 [color=transparent headlabel=experience labelangle=270]
+	c39 -> c0
+	c40
+	c40 -> c40 [color=transparent headlabel=explicit labelangle=270]
+	c40 -> c0
+	c41
+	c41 -> c41 [color=transparent headlabel=explore labelangle=270]
+	c41 -> c0
+	c42
+	c42 -> c42 [color=transparent headlabel=focus labelangle=270]
+	c42 -> c0
+	c43
+	c43 -> c43 [color=transparent headlabel=formation labelangle=270]
+	c43 -> c0
+	c44
+	c44 -> c44 [color=transparent headlabel=goal labelangle=270]
+	c44 -> c0
+	c45
+	c45 -> c45 [color=transparent headlabel=governance labelangle=270]
+	c45 -> c0
+	c46
+	c46 -> c46 [color=transparent headlabel=high labelangle=270]
+	c46 -> c0
+	c47
+	c47 -> c47 [color=transparent headlabel=idea labelangle=270]
+	c47 -> c0
+	c48
+	c48 -> c48 [color=transparent headlabel=illustrate labelangle=270]
+	c48 -> c0
+	c49
+	c49 -> c49 [color=transparent headlabel=implement labelangle=270]
+	c49 -> c0
+	c50
+	c50 -> c50 [color=transparent headlabel=information labelangle=270]
+	c50 -> c0
+	c51
+	c51 -> c51 [color=transparent headlabel="information system" labelangle=270]
+	c51 -> c0
+	c52
+	c52 -> c52 [color=transparent headlabel=knowledge labelangle=270]
+	c52 -> c0
+	c53
+	c53 -> c53 [color=transparent headlabel=literature labelangle=270]
+	c53 -> c0
+	c54
+	c54 -> c54 [color=transparent headlabel=major labelangle=270]
+	c54 -> c0
+	c55
+	c55 -> c55 [color=transparent headlabel="management process" labelangle=270]
+	c55 -> c0
+	c56
+	c56 -> c56 [color=transparent headlabel=manner labelangle=270]
+	c56 -> c0
+	c57
+	c57 -> c57 [color=transparent headlabel=methodology labelangle=270]
+	c57 -> c0
+	c58
+	c58 -> c58 [color=transparent headlabel=modeling labelangle=270]
+	c58 -> c0
+	c59
+	c59 -> c59 [color=transparent headlabel=offer labelangle=270]
+	c59 -> c0
+	c60
+	c60 -> c60 [color=transparent headlabel=organisational labelangle=270]
+	c60 -> c0
+	c61
+	c61 -> c61 [color=transparent headlabel=perception labelangle=270]
+	c61 -> c0
+	c62
+	c62 -> c62 [color=transparent headlabel=present labelangle=270]
+	c62 -> c0
+	c63
+	c63 -> c63 [color=transparent headlabel="process management" labelangle=270]
+	c63 -> c0
+	c64
+	c64 -> c64 [color=transparent headlabel="process model" labelangle=270]
+	c64 -> c0
+	c65
+	c65 -> c65 [color=transparent headlabel="process work" labelangle=270]
+	c65 -> c0
+	c66
+	c66 -> c66 [color=transparent headlabel=project labelangle=270]
+	c66 -> c0
+	c67
+	c67 -> c67 [color=transparent headlabel=propose labelangle=270]
+	c67 -> c0
+	c68
+	c68 -> c68 [color=transparent headlabel=reality labelangle=270]
+	c68 -> c0
+	c69
+	c69 -> c69 [color=transparent headlabel=reason labelangle=270]
+	c69 -> c0
+	c70
+	c70 -> c70 [color=transparent headlabel=refer labelangle=270]
+	c70 -> c0
+	c71
+	c71 -> c71 [color=transparent headlabel=reflect labelangle=270]
+	c71 -> c0
+	c72
+	c72 -> c72 [color=transparent headlabel=scenario labelangle=270]
+	c72 -> c0
+	c73
+	c73 -> c73 [color=transparent headlabel=semantics labelangle=270]
+	c73 -> c0
+	c74
+	c74 -> c74 [color=transparent headlabel=service labelangle=270]
+	c74 -> c0
+	c75
+	c75 -> c75 [color=transparent headlabel=simulate labelangle=270]
+	c75 -> c0
+	c76
+	c76 -> c76 [color=transparent headlabel=simulation labelangle=270]
+	c76 -> c0
+	c77
+	c77 -> c77 [color=transparent headlabel=size labelangle=270]
+	c77 -> c0
+	c78
+	c78 -> c78 [color=transparent headlabel=software labelangle=270]
+	c78 -> c0
+	c79
+	c79 -> c79 [color=transparent headlabel=specification labelangle=270]
+	c79 -> c0
+	c80
+	c80 -> c80 [color=transparent headlabel=strategy labelangle=270]
+	c80 -> c0
+	c81
+	c81 -> c81 [color=transparent headlabel=system labelangle=270]
+	c81 -> c0
+	c82
+	c82 -> c82 [color=transparent headlabel=technique labelangle=270]
+	c82 -> c0
+	c83
+	c83 -> c83 [color=transparent headlabel=technology labelangle=270]
+	c83 -> c0
+	c84
+	c84 -> c84 [color=transparent headlabel=theory labelangle=270]
+	c84 -> c0
+	c85
+	c85 -> c85 [color=transparent headlabel=tool labelangle=270]
+	c85 -> c0
+	c86
+	c86 -> c86 [color=transparent headlabel=traceability labelangle=270]
+	c86 -> c0
+	c87
+	c87 -> c87 [color=transparent headlabel=trustworthiness labelangle=270]
+	c87 -> c0
+	c88
+	c88 -> c1
+	c88 -> c38
+	c89
+	c89 -> c1
+	c89 -> c41
+	c90
+	c90 -> c90 [color=transparent headlabel="harel statecharts" labelangle=270]
+	c90 -> c1
+	c91
+	c91 -> c1
+	c91 -> c55
+	c92
+	c92 -> c1
+	c92 -> c72
+	c93
+	c93 -> c2
+	c93 -> c23
+	c94
+	c94 -> c2
+	c94 -> c29
+	c95
+	c95 -> c2
+	c95 -> c51
+	c96
+	c96 -> c4
+	c96 -> c44
+	c97
+	c97 -> c4
+	c97 -> c55
+	c98
+	c98 -> c5
+	c98 -> c18
+	c99
+	c99 -> c5
+	c99 -> c52
+	c100
+	c100 -> c6
+	c100 -> c40
+	c101
+	c101 -> c6
+	c101 -> c52
+	c102
+	c102 -> c8
+	c102 -> c20
+	c103
+	c103 -> c8
+	c103 -> c48
+	c104
+	c104 -> c8
+	c104 -> c52
+	c105
+	c105 -> c105 [color=transparent headlabel=application labelangle=270]
+	c105 -> c26
+	c106
+	c106 -> c106 [color=transparent headlabel="apply strategic" labelangle=270]
+	c106 -> c0
+	c107
+	c107 -> c10
+	c107 -> c26
+	c108
+	c108 -> c108 [color=transparent headlabel=behavior labelangle=270]
+	c108 -> c38
+	c109
+	c109 -> c12
+	c109 -> c38
+	c110
+	c110 -> c12
+	c110 -> c49
+	c111
+	c111 -> c12
+	c111 -> c66
+	c112
+	c112 -> c112 [color=transparent headlabel=remain labelangle=270]
+	c112 -> c12
+	c113
+	c113 -> c14
+	c113 -> c81
+	c114
+	c114 -> c114 [color=transparent headlabel=technical labelangle=270]
+	c114 -> c14
+	c115
+	c115 -> c14
+	c115 -> c85
+	c116
+	c116 -> c15
+	c116 -> c27
+	c117
+	c117 -> c117 [color=transparent headlabel=eventually labelangle=270]
+	c117 -> c15
+	c118
+	c118 -> c15
+	c118 -> c64
+	c119
+	c119 -> c16
+	c119 -> c64
+	c120
+	c120 -> c16
+	c120 -> c81
+	c121
+	c121 -> c121 [color=transparent headlabel="case example" labelangle=270]
+	c121 -> c26
+	c122
+	c122 -> c122 [color=transparent headlabel=characterize labelangle=270]
+	c122 -> c17
+	c123
+	c123 -> c17
+	c123 -> c55
+	c124
+	c124 -> c17
+	c124 -> c58
+	c125
+	c125 -> c17
+	c125 -> c64
+	c126
+	c126 -> c18
+	c126 -> c41
+	c127
+	c127 -> c19
+	c127 -> c52
+	c128
+	c128 -> c19
+	c128 -> c72
+	c129
+	c129 -> c21
+	c129 -> c48
+	c130
+	c130 -> c22
+	c130 -> c51
+	c131
+	c131 -> c22
+	c131 -> c55
+	c132
+	c132 -> c22
+	c132 -> c67
+	c133
+	c133 -> c23
+	c133 -> c48
+	c134
+	c134 -> c23
+	c134 -> c52
+	c135
+	c135 -> c23
+	c135 -> c64
+	c136
+	c136 -> c25
+	c136 -> c38
+	c137
+	c137 -> c25
+	c137 -> c56
+	c138
+	c138 -> c25
+	c138 -> c69
+	c139
+	c139 -> c26
+	c139 -> c45
+	c140
+	c140 -> c26
+	c140 -> c56
+	c141
+	c141 -> c141 [color=transparent headlabel=deco labelangle=270]
+	c141 -> c58
+	c142
+	c142 -> c27
+	c142 -> c33
+	c143
+	c143 -> c27
+	c143 -> c38
+	c144
+	c144 -> c27
+	c144 -> c52
+	c145
+	c145 -> c27
+	c145 -> c62
+	c146
+	c146 -> c146 [color=transparent headlabel=theoretical labelangle=270]
+	c146 -> c27
+	c147
+	c147 -> c147 [color=transparent headlabel=describe labelangle=270]
+	c147 -> c72
+	c148
+	c148 -> c148 [color=transparent headlabel="design process" labelangle=270]
+	c148 -> c44
+	c149
+	c149 -> c29
+	c149 -> c39
+	c150
+	c150 -> c29
+	c150 -> c43
+	c151
+	c151 -> c29
+	c151 -> c47
+	c152
+	c152 -> c29
+	c152 -> c48
+	c153
+	c153 -> c30
+	c153 -> c39
+	c154
+	c154 -> c154 [color=transparent headlabel=initiative labelangle=270]
+	c154 -> c32
+	c155
+	c155 -> c155 [color=transparent headlabel=set labelangle=270]
+	c155 -> c32
+	c156
+	c156 -> c33
+	c156 -> c56
+	c157
+	c157 -> c35
+	c157 -> c52
+	c158
+	c158 -> c36
+	c158 -> c52
+	c159
+	c159 -> c36
+	c159 -> c77
+	c160
+	c160 -> c160 [color=transparent headlabel="evolve formal concept analysis" labelangle=270]
+	c160 -> c0
+	c161
+	c161 -> c38
+	c161 -> c39
+	c162
+	c162 -> c38
+	c162 -> c43
+	c163
+	c163 -> c38
+	c163 -> c64
+	c164
+	c164 -> c38
+	c164 -> c85
+	c165
+	c165 -> c165 [color=transparent headlabel=executable labelangle=270]
+	c165 -> c55
+	c166
+	c166 -> c39
+	c166 -> c51
+	c167
+	c167 -> c167 [color=transparent headlabel=number labelangle=270]
+	c167 -> c39
+	c168
+	c168 -> c168 [color=transparent headlabel=social labelangle=270]
+	c168 -> c40
+	c169
+	c169 -> c41
+	c169 -> c57
+	c170
+	c170 -> c42
+	c170 -> c53
+	c171
+	c171 -> c43
+	c171 -> c45
+	c172
+	c172 -> c43
+	c172 -> c52
+	c173
+	c173 -> c43
+	c173 -> c83
+	c174
+	c174 -> c44
+	c174 -> c72
+	c175
+	c175 -> c44
+	c175 -> c81
+	c176
+	c176 -> c48
+	c176 -> c62
+	c177
+	c177 -> c52
+	c177 -> c55
+	c178
+	c178 -> c178 [color=transparent headlabel=possible labelangle=270]
+	c178 -> c52
+	c179
+	c179 -> c53
+	c179 -> c60
+	c180
+	c180 -> c180 [color=transparent headlabel=oriented labelangle=270]
+	c180 -> c55
+	c181
+	c181 -> c55
+	c181 -> c75
+	c182
+	c182 -> c55
+	c182 -> c85
+	c183
+	c183 -> c56
+	c183 -> c69
+	c184
+	c184 -> c64
+	c184 -> c72
+	c185
+	c185 -> c185 [color=transparent headlabel=usually labelangle=270]
+	c185 -> c66
+	c186
+	c186 -> c69
+	c186 -> c84
+	c187
+	c187 -> c74
+	c187 -> c85
+	c188
+	c188 -> c79
+	c188 -> c85
+	c189
+	c189 -> c81
+	c189 -> c85
+	c190
+	c190 -> c190 [color=transparent headlabel=technological labelangle=270]
+	c190 -> c86
+	c191
+	c191 -> c1
+	c191 -> c9
+	c191 -> c35
+	c192
+	c192 -> c18
+	c192 -> c91
+	c193
+	c193 -> c88
+	c193 -> c92
+	c194
+	c194 -> c1
+	c194 -> c39
+	c194 -> c52
+	c195
+	c195 -> c90
+	c195 -> c92
+	c196
+	c196 -> c91
+	c196 -> c180
+	c197
+	c197 -> c197 [color=transparent headlabel="run time" labelangle=270]
+	c197 -> c92
+	c198
+	c198 -> c21
+	c198 -> c95
+	c199
+	c199 -> c93
+	c199 -> c133
+	c200
+	c200 -> c93
+	c200 -> c95
+	c201
+	c201 -> c30
+	c201 -> c94
+	c202
+	c202 -> c2
+	c202 -> c52
+	c202 -> c62
+	c203
+	c203 -> c2
+	c203 -> c53
+	c203 -> c83
+	c204
+	c204 -> c30
+	c204 -> c99
+	c205
+	c205 -> c6
+	c205 -> c27
+	c205 -> c30
+	c206
+	c206 -> c6
+	c206 -> c156
+	c207
+	c207 -> c207 [color=transparent headlabel="system design" labelangle=270]
+	c207 -> c6
+	c207 -> c87
+	c208
+	c208 -> c9
+	c208 -> c173
+	c209
+	c209 -> c209 [color=transparent headlabel="main visualisation" labelangle=270]
+	c209 -> c9
+	c210
+	c210 -> c52
+	c210 -> c110
+	c211
+	c211 -> c14
+	c211 -> c37
+	c211 -> c44
+	c212
+	c212 -> c212 [color=transparent headlabel="measurement practitioner" labelangle=270]
+	c212 -> c14
+	c213
+	c213 -> c15
+	c213 -> c62
+	c213 -> c81
+	c214
+	c214 -> c214 [color=transparent headlabel="business process management" labelangle=270]
+	c214 -> c47
+	c214 -> c62
+	c215
+	c215 -> c48
+	c215 -> c125
+	c216
+	c216 -> c123
+	c216 -> c180
+	c217
+	c217 -> c217 [color=transparent headlabel="organizational structure" labelangle=270]
+	c217 -> c20
+	c217 -> c26
+	c218
+	c218 -> c20
+	c218 -> c31
+	c218 -> c45
+	c219
+	c219 -> c25
+	c219 -> c149
+	c220
+	c220 -> c220 [color=transparent headlabel="ea framework" labelangle=270]
+	c220 -> c139
+	c221
+	c221 -> c79
+	c221 -> c141
+	c222
+	c222 -> c222 [color=transparent headlabel=environment labelangle=270]
+	c222 -> c149
+	c223
+	c223 -> c151
+	c223 -> c152
+	c224
+	c224 -> c31
+	c224 -> c46
+	c224 -> c52
+	c225
+	c225 -> c32
+	c225 -> c36
+	c225 -> c66
+	c226
+	c226 -> c226 [color=transparent headlabel=exist labelangle=270]
+	c226 -> c32
+	c226 -> c53
+	c227
+	c227 -> c60
+	c227 -> c156
+	c228
+	c228 -> c48
+	c228 -> c158
+	c229
+	c229 -> c229 [color=transparent headlabel=solution labelangle=270]
+	c229 -> c38
+	c229 -> c55
+	c230
+	c230 -> c42
+	c230 -> c173
+	c231
+	c231 -> c231 [color=transparent headlabel=importance labelangle=270]
+	c231 -> c51
+	c231 -> c67
+	c232
+	c232 -> c51
+	c232 -> c196
+	c233
+	c233 -> c41
+	c233 -> c94
+	c233 -> c151
+	c234
+	c234 -> c2
+	c234 -> c32
+	c234 -> c42
+	c234 -> c49
+	c235
+	c235 -> c99
+	c235 -> c151
+	c236
+	c236 -> c236 [color=transparent headlabel="alloy alloy analyzer" labelangle=270]
+	c236 -> c75
+	c236 -> c85
+	c237
+	c237 -> c12
+	c237 -> c32
+	c237 -> c133
+	c238
+	c238 -> c238 [color=transparent headlabel="crisis management flood management" labelangle=270]
+	c238 -> c12
+	c238 -> c55
+	c239
+	c239 -> c171
+	c239 -> c218
+	c240
+	c240 -> c240 [color=transparent headlabel=increase labelangle=270]
+	c240 -> c218
+	c241
+	c241 -> c171
+	c241 -> c220
+	c242
+	c242 -> c242 [color=transparent headlabel=today labelangle=270]
+	c242 -> c48
+	c242 -> c141
+	c243
+	c243 -> c243 [color=transparent headlabel=mortgage labelangle=270]
+	c243 -> c27
+	c243 -> c55
+	c243 -> c64
+	c244
+	c244 -> c180
+	c244 -> c229
+	c245
+	c245 -> c245 [color=transparent headlabel=allow labelangle=270]
+	c245 -> c196
+	c245 -> c216
+	c246
+	c246 -> c84
+	c246 -> c94
+	c246 -> c149
+	c246 -> c167
+	c247
+	c247 -> c247 [color=transparent headlabel=approval labelangle=270]
+	c247 -> c243
+	c248
+	c248 -> c72
+	c248 -> c238
+	c249
+	c249 -> c249 [color=transparent headlabel=bpmn labelangle=270]
+	c249 -> c79
+	c249 -> c229
+	c250
+	c250 -> c250 [color=transparent headlabel="process specification" labelangle=270]
+	c250 -> c124
+	c250 -> c216
+	c251
+	c251 -> c152
+	c251 -> c218
+	c252
+	c252 -> c32
+	c252 -> c124
+	c252 -> c125
+	c252 -> c141
+	c252 -> c163
+	c253
+	c253 -> c73
+	c253 -> c123
+	c253 -> c125
+	c253 -> c243
+	c254
+	c254 -> c36
+	c254 -> c139
+	c254 -> c217
+	c254 -> c218
+	c255
+	c255 -> c255 [color=transparent headlabel="different open innovation production public public value" labelangle=270]
+	c255 -> c45
+	c256
+	c256 -> c256 [color=transparent headlabel=Sweden labelangle=270]
+	c256 -> c254
+	c257
+	c257 -> c257 [color=transparent headlabel="change incorporated primarily" labelangle=270]
+	c257 -> c52
+	c257 -> c217
+	c258
+	c258 -> c258 [color=transparent headlabel="need smart city" labelangle=270]
+	c258 -> c5
+	c258 -> c67
+	c258 -> c88
+	c258 -> c91
+	c258 -> c109
+	c258 -> c110
+	c258 -> c229
+	c258 -> c238
+	c259
+	c259 -> c259 [color=transparent headlabel=deficiency labelangle=270]
+	c259 -> c259 [color=transparent labelangle=90 taillabel="2013-SRZN"]
+	c259 -> c54
+	c259 -> c102
+	c259 -> c104
+	c259 -> c107
+	c259 -> c140
+	c259 -> c257
+	c260
+	c260 -> c260 [color=transparent headlabel="business rule capture declarative language enforce natural language specialist" labelangle=270]
+	c260 -> c260 [color=transparent labelangle=90 taillabel="2013-BBRWa"]
+	c260 -> c11
+	c260 -> c56
+	c260 -> c76
+	c260 -> c113
+	c260 -> c115
+	c260 -> c189
+	c261
+	c261 -> c261 [color=transparent headlabel="handle incorporate" labelangle=270]
+	c261 -> c261 [color=transparent labelangle=90 taillabel="2013-KPR"]
+	c261 -> c34
+	c261 -> c46
+	c261 -> c50
+	c261 -> c89
+	c261 -> c122
+	c261 -> c126
+	c261 -> c192
+	c261 -> c245
+	c262
+	c262 -> c262 [color=transparent headlabel="banking intensive practical" labelangle=270]
+	c262 -> c262 [color=transparent labelangle=90 taillabel="2011-RDN"]
+	c262 -> c65
+	c262 -> c119
+	c262 -> c131
+	c262 -> c144
+	c262 -> c172
+	c262 -> c177
+	c262 -> c247
+	c263
+	c263 -> c263 [color=transparent headlabel="engine rigid workflow" labelangle=270]
+	c263 -> c263 [color=transparent labelangle=90 taillabel="2013-RKPLG"]
+	c263 -> c35
+	c263 -> c117
+	c263 -> c120
+	c263 -> c160
+	c263 -> c213
+	c263 -> c214
+	c264
+	c264 -> c264 [color=transparent headlabel=decentralized labelangle=270]
+	c264 -> c158
+	c264 -> c220
+	c264 -> c224
+	c264 -> c254
+	c264 -> c257
+	c265
+	c265 -> c265 [color=transparent headlabel="appreciative system doctoral school faculty member homeostasis homeostatic organism participant recruitment process steady state system model" labelangle=270]
+	c265 -> c15
+	c265 -> c88
+	c265 -> c90
+	c266
+	c266 -> c266 [color=transparent headlabel=conceptual labelangle=270]
+	c266 -> c266 [color=transparent labelangle=90 taillabel="2013-RZS"]
+	c266 -> c34
+	c266 -> c70
+	c266 -> c132
+	c266 -> c159
+	c266 -> c240
+	c266 -> c256
+	c267
+	c267 -> c267 [color=transparent headlabel="anticipate critical mod predictor role play" labelangle=270]
+	c267 -> c267 [color=transparent labelangle=90 taillabel="2025-AR"]
+	c267 -> c80
+	c267 -> c170
+	c267 -> c203
+	c267 -> c226
+	c267 -> c230
+	c267 -> c234
+	c268
+	c268 -> c268 [color=transparent headlabel="abstraction level descriptive knowledge discussion matter separation process" labelangle=270]
+	c268 -> c268 [color=transparent labelangle=90 taillabel="2011-RN"]
+	c268 -> c28
+	c268 -> c44
+	c268 -> c65
+	c268 -> c129
+	c268 -> c176
+	c268 -> c221
+	c268 -> c242
+	c269
+	c269 -> c269 [color=transparent headlabel="business ecosystem dbe digital technology interaction jeopardize social business" labelangle=270]
+	c269 -> c269 [color=transparent labelangle=90 taillabel="2023-RZS"]
+	c269 -> c80
+	c269 -> c101
+	c269 -> c134
+	c269 -> c157
+	c269 -> c207
+	c269 -> c224
+	c270
+	c270 -> c270 [color=transparent headlabel="constraint illustrative limit propagation show specified tech translate" labelangle=270]
+	c270 -> c270 [color=transparent labelangle=90 taillabel="2024-RKHPNS"]
+	c270 -> c10
+	c270 -> c69
+	c270 -> c114
+	c270 -> c148
+	c270 -> c211
+	c271
+	c271 -> c271 [color=transparent headlabel="entity feedback loop monitor physical system prospective real relevant" labelangle=270]
+	c271 -> c271 [color=transparent labelangle=90 taillabel="2024-RR"]
+	c271 -> c3
+	c271 -> c70
+	c271 -> c86
+	c271 -> c100
+	c271 -> c168
+	c271 -> c185
+	c271 -> c207
+	c272
+	c272 -> c272 [color=transparent headlabel="Cmp chapter manager predictive analysis road specific complexity" labelangle=270]
+	c272 -> c272 [color=transparent labelangle=90 taillabel="2017-RLGS"]
+	c272 -> c7
+	c272 -> c90
+	c272 -> c130
+	c272 -> c131
+	c272 -> c165
+	c272 -> c232
+	c272 -> c245
+	c272 -> c250
+	c273
+	c273 -> c273 [color=transparent headlabel="ability create decision making digital expert extract integrity modern society research literature social science" labelangle=270]
+	c273 -> c273 [color=transparent labelangle=90 taillabel="2023-RG"]
+	c273 -> c54
+	c273 -> c61
+	c273 -> c87
+	c273 -> c198
+	c273 -> c203
+	c274
+	c274 -> c274 [color=transparent headlabel="comprehensive engineering engineering design fit immutable literature analysis scm software pattern supply chain transaction" labelangle=270]
+	c274 -> c274 [color=transparent labelangle=90 taillabel="2023-KRHS"]
+	c274 -> c77
+	c274 -> c82
+	c274 -> c83
+	c274 -> c142
+	c274 -> c205
+	c274 -> c206
+	c275
+	c275 -> c275 [color=transparent headlabel="take account" labelangle=270]
+	c275 -> c275 [color=transparent labelangle=90 taillabel="2018-RR"]
+	c275 -> c78
+	c275 -> c117
+	c275 -> c118
+	c275 -> c163
+	c275 -> c184
+	c275 -> c193
+	c275 -> c195
+	c275 -> c265
+	c276
+	c276 -> c276 [color=transparent headlabel="able component" labelangle=270]
+	c276 -> c276 [color=transparent labelangle=90 taillabel="2014-ZRSa"]
+	c276 -> c223
+	c276 -> c228
+	c276 -> c235
+	c276 -> c251
+	c276 -> c264
+	c277
+	c277 -> c277 [color=transparent headlabel="ai assistant awareness conceptual framework feedback generative integrative language model popular respondent social interaction transformer" labelangle=270]
+	c277 -> c277 [color=transparent labelangle=90 taillabel="2025-LR"]
+	c277 -> c3
+	c277 -> c84
+	c277 -> c108
+	c277 -> c162
+	c277 -> c208
+	c277 -> c230
+	c278
+	c278 -> c278 [color=transparent headlabel="advancement component model enterprise information system fulfillment level low level mda software product line sysml" labelangle=270]
+	c278 -> c278 [color=transparent labelangle=90 taillabel="2024-KHRS"]
+	c278 -> c71
+	c278 -> c96
+	c278 -> c106
+	c278 -> c113
+	c278 -> c175
+	c278 -> c190
+	c278 -> c211
+	c279
+	c279 -> c279 [color=transparent headlabel="bureaucratic business model classical demonstrate enter explicitly taxonomy" labelangle=270]
+	c279 -> c279 [color=transparent labelangle=90 taillabel="2016-BRZ"]
+	c279 -> c37
+	c279 -> c100
+	c279 -> c105
+	c279 -> c121
+	c279 -> c137
+	c279 -> c140
+	c279 -> c170
+	c279 -> c179
+	c279 -> c206
+	c279 -> c227
+	c280
+	c280 -> c280 [color=transparent headlabel="good match peer production sector" labelangle=270]
+	c280 -> c280 [color=transparent labelangle=90 taillabel="2014-ZRS"]
+	c280 -> c121
+	c280 -> c172
+	c280 -> c239
+	c280 -> c241
+	c280 -> c256
+	c280 -> c264
+	c281
+	c281 -> c281 [color=transparent headlabel="abstract business requirement creation enterprise service evolution mechanism modification property response service design" labelangle=270]
+	c281 -> c281 [color=transparent labelangle=90 taillabel="2013-BBRWb"]
+	c281 -> c24
+	c281 -> c41
+	c281 -> c114
+	c281 -> c115
+	c281 -> c187
+	c281 -> c188
+	c281 -> c236
+	c282
+	c282 -> c282 [color=transparent headlabel="domain formalism intention intention mining mobile device real world smartphones tablet urban game user experience video game" labelangle=270]
+	c282 -> c282 [color=transparent labelangle=90 taillabel="2016-Dall"]
+	c282 -> c50
+	c282 -> c119
+	c282 -> c120
+	c282 -> c135
+	c282 -> c147
+	c282 -> c174
+	c282 -> c175
+	c282 -> c184
+	c282 -> c200
+	c283
+	c283 -> c283 [color=transparent headlabel="compound new structured student succeed" labelangle=270]
+	c283 -> c283 [color=transparent labelangle=90 taillabel="2017-ZR"]
+	c283 -> c74
+	c283 -> c102
+	c283 -> c103
+	c283 -> c106
+	c283 -> c150
+	c283 -> c239
+	c283 -> c240
+	c283 -> c251
+	c283 -> c255
+	c284
+	c284 -> c284 [color=transparent headlabel="develop likely maintain method call orientation report seam service model web" labelangle=270]
+	c284 -> c284 [color=transparent labelangle=90 taillabel="2013-TMRW"]
+	c284 -> c78
+	c284 -> c154
+	c284 -> c159
+	c284 -> c179
+	c284 -> c187
+	c284 -> c189
+	c284 -> c225
+	c284 -> c226
+	c285
+	c285 -> c285 [color=transparent headlabel="anarchist archimate challenge design science research implementation political structure reference architecture verify" labelangle=270]
+	c285 -> c285 [color=transparent labelangle=90 taillabel="2024-HRH"]
+	c285 -> c89
+	c285 -> c105
+	c285 -> c107
+	c285 -> c169
+	c285 -> c190
+	c285 -> c191
+	c285 -> c208
+	c285 -> c241
+	c286
+	c286 -> c286 [color=transparent headlabel="characteristic customer management outline overview request sequence" labelangle=270]
+	c286 -> c286 [color=transparent labelangle=90 taillabel="2019-BRLG"]
+	c286 -> c13
+	c286 -> c98
+	c286 -> c101
+	c286 -> c126
+	c286 -> c127
+	c286 -> c144
+	c286 -> c145
+	c286 -> c146
+	c286 -> c201
+	c286 -> c202
+	c286 -> c204
+	c286 -> c205
+	c286 -> c214
+	c286 -> c233
+	c286 -> c235
+	c287
+	c287 -> c287 [color=transparent headlabel="algorithm diagram higraph objective optimisation success transform" labelangle=270]
+	c287 -> c287 [color=transparent labelangle=90 taillabel="2016-KRLG"]
+	c287 -> c73
+	c287 -> c76
+	c287 -> c127
+	c287 -> c128
+	c287 -> c147
+	c287 -> c157
+	c287 -> c167
+	c287 -> c178
+	c287 -> c191
+	c287 -> c194
+	c287 -> c195
+	c287 -> c197
+	c287 -> c209
+	c288
+	c288 -> c288 [color=transparent headlabel="gap rationale" labelangle=270]
+	c288 -> c288 [color=transparent labelangle=90 taillabel="2019-RRW"]
+	c288 -> c68
+	c288 -> c108
+	c288 -> c116
+	c288 -> c143
+	c288 -> c145
+	c288 -> c168
+	c288 -> c213
+	c288 -> c265
+	c289
+	c289 -> c289 [color=transparent headlabel="abstract process align fulfill goal modeling level order oka river po strategic level" labelangle=270]
+	c289 -> c289 [color=transparent labelangle=90 taillabel="2015-KRDLG"]
+	c289 -> c63
+	c289 -> c82
+	c289 -> c96
+	c289 -> c97
+	c289 -> c111
+	c289 -> c112
+	c289 -> c128
+	c289 -> c148
+	c289 -> c165
+	c289 -> c174
+	c289 -> c181
+	c289 -> c248
+	c290
+	c290 -> c290 [color=transparent headlabel="academia criterion validity depth empirical empirical validation fitness guideline operationalisation research community significant usability" labelangle=270]
+	c290 -> c290 [color=transparent labelangle=90 taillabel="2010-BATI"]
+	c290 -> c59
+	c290 -> c61
+	c290 -> c115
+	c290 -> c136
+	c290 -> c150
+	c290 -> c161
+	c290 -> c162
+	c290 -> c164
+	c290 -> c212
+	c290 -> c219
+	c290 -> c222
+	c291
+	c291 -> c291 [color=transparent headlabel="explain global heuristic ology point system engineering time use case user story" labelangle=270]
+	c291 -> c291 [color=transparent labelangle=90 taillabel="2020-KRNRW"]
+	c291 -> c11
+	c291 -> c129
+	c291 -> c166
+	c291 -> c169
+	c291 -> c198
+	c291 -> c199
+	c291 -> c200
+	c291 -> c222
+	c291 -> c223
+	c291 -> c233
+	c291 -> c246
+	c292
+	c292 -> c292 [color=transparent headlabel="handicap imperative modeler pen post process automation process specification language" labelangle=270]
+	c292 -> c292 [color=transparent labelangle=90 taillabel="2012-R"]
+	c292 -> c13
+	c292 -> c24
+	c292 -> c109
+	c292 -> c112
+	c292 -> c122
+	c292 -> c135
+	c292 -> c136
+	c292 -> c137
+	c292 -> c138
+	c292 -> c183
+	c292 -> c215
+	c292 -> c237
+	c292 -> c242
+	c292 -> c252
+	c293
+	c293 -> c293 [color=transparent headlabel="20th century automated capable computer dream fiction fictional character imdb kubrick man objectively pragmatic scientist space odyssey" labelangle=270]
+	c293 -> c293 [color=transparent labelangle=90 taillabel="2014-RKPLG"]
+	c293 -> c63
+	c293 -> c68
+	c293 -> c71
+	c293 -> c138
+	c293 -> c153
+	c293 -> c186
+	c293 -> c201
+	c293 -> c219
+	c293 -> c246
+	c294
+	c294 -> c294 [color=transparent headlabel="adaptability constantly overcome process control process design stat toolkit" labelangle=270]
+	c294 -> c294 [color=transparent labelangle=90 taillabel="2015-KRLG"]
+	c294 -> c98
+	c294 -> c164
+	c294 -> c182
+	c294 -> c188
+	c294 -> c192
+	c294 -> c193
+	c294 -> c197
+	c294 -> c248
+	c294 -> c249
+	c294 -> c258
+	c295
+	c295 -> c295 [color=transparent headlabel="advantage collaboration cos flexibility limitation management system volunteer" labelangle=270]
+	c295 -> c295 [color=transparent labelangle=90 taillabel="2015-KRLGa"]
+	c295 -> c153
+	c295 -> c161
+	c295 -> c166
+	c295 -> c177
+	c295 -> c194
+	c295 -> c204
+	c295 -> c210
+	c295 -> c231
+	c295 -> c232
+	c295 -> c244
+	c295 -> c258
+	c296
+	c296 -> c296 [color=transparent headlabel="assemble circumstance declarative descriptive rfp" labelangle=270]
+	c296 -> c296 [color=transparent labelangle=90 taillabel="2010-BPM"]
+	c296 -> c57
+	c296 -> c97
+	c296 -> c143
+	c296 -> c146
+	c296 -> c154
+	c296 -> c155
+	c296 -> c221
+	c296 -> c244
+	c296 -> c249
+	c296 -> c250
+	c296 -> c252
+	c296 -> c253
+	c297
+	c297 -> c297 [color=transparent headlabel="citizen ecosystem federate government policy identify information technology information technology governance innovative intrinsic make work policy maker reusable" labelangle=270]
+	c297 -> c297 [color=transparent labelangle=90 taillabel="2017-RZ"]
+	c297 -> c7
+	c297 -> c28
+	c297 -> c183
+	c297 -> c186
+	c297 -> c227
+	c297 -> c255
+	c298
+	c298 -> c298 [color=transparent headlabel="attempt complexity finite state machine industry mathematical model operational semantics process development regular specific specification language validate" labelangle=270]
+	c298 -> c298 [color=transparent labelangle=90 taillabel="2013-R"]
+	c298 -> c116
+	c298 -> c118
+	c298 -> c142
+	c298 -> c181
+	c298 -> c182
+	c298 -> c215
+	c298 -> c236
+	c298 -> c247
+	c298 -> c253
+	c299
+	c299 -> c299 [color=transparent headlabel="advance babelfy compose computer science evaluate experiment humanity latent dirichlet allocation output probability profit replacement text topic modeling" labelangle=270]
+	c299 -> c299 [color=transparent labelangle=90 taillabel="2024-BRLG"]
+	c299 -> c59
+	c299 -> c130
+	c299 -> c132
+	c299 -> c160
+	c299 -> c185
+	c299 -> c209
+	c299 -> c231
+	c300
+	c300 -> c300 [color=transparent headlabel="applicability difficult evaluation extensive gather input parameter mass meaningful quality retail company" labelangle=270]
+	c300 -> c300 [color=transparent labelangle=90 taillabel="2010-GRN"]
+	c300 -> c103
+	c300 -> c104
+	c300 -> c111
+	c300 -> c134
+	c300 -> c155
+	c300 -> c176
+	c300 -> c178
+	c300 -> c185
+	c300 -> c199
+	c300 -> c202
+	c300 -> c210
+	c300 -> c212
+	c300 -> c225
+	c300 -> c228
+	c300 -> c234
+	c300 -> c237
+	c301
+	c301 -> c259
+	c301 -> c260
+	c301 -> c261
+	c301 -> c262
+	c301 -> c263
+	c301 -> c266
+	c301 -> c267
+	c301 -> c268
+	c301 -> c269
+	c301 -> c270
+	c301 -> c271
+	c301 -> c272
+	c301 -> c273
+	c301 -> c274
+	c301 -> c275
+	c301 -> c276
+	c301 -> c277
+	c301 -> c278
+	c301 -> c279
+	c301 -> c280
+	c301 -> c281
+	c301 -> c282
+	c301 -> c283
+	c301 -> c284
+	c301 -> c285
+	c301 -> c286
+	c301 -> c287
+	c301 -> c288
+	c301 -> c289
+	c301 -> c290
+	c301 -> c291
+	c301 -> c292
+	c301 -> c293
+	c301 -> c294
+	c301 -> c295
+	c301 -> c296
+	c301 -> c297
+	c301 -> c298
+	c301 -> c299
+	c301 -> c300
+}

@@ -1,0 +1,456 @@
+babelSynsetID;words
+bn:00000318n;ability
+bn:00000550n;academia
+bn:00000551n;faculty member
+bn:00000648n;acceptance
+bn:00000870n;success
+bn:00001265n;adaptability
+bn:00001302n;address
+bn:00001304n;address
+bn:00001426n;governance
+bn:00001557n;advancement
+bn:00002178n;intention
+bn:00002179n;aim, objective, target
+bn:00002705n;algorithm
+bn:00003125n;modification
+bn:00003839n;anarchist
+bn:00004456n;respondent
+bn:00005090n;applicability
+bn:00005095n;application
+bn:00005105n;technology
+bn:00005158n;approval
+bn:00005442n;architecture
+bn:00005603n;input parameter
+bn:00005934n;deco
+bn:00006997n;attempt
+bn:00007020n;attention, interest
+bn:00007498n;awareness
+bn:00007985n;discipline, field, study
+bn:00009657n;behavior
+bn:00009677n;organism
+bn:00010264n;offer
+bn:00012419n;limit
+bn:00014137n;business, business system
+bn:00016287n;implementation
+bn:00016413n;size, type
+bn:00016433n;case example, case study
+bn:00017124n;center
+bn:00017153n;focus
+bn:00017624n;probability
+bn:00017746n;fictional character
+bn:00019220n;circumstance
+bn:00019281n;citizen
+bn:00019763n;customer
+bn:00020452n;knowledge, process
+bn:00021248n;community
+bn:00021383n;complexity
+bn:00021394n;component
+bn:00021464n;computer, computer technology
+bn:00021477n;video game
+bn:00021486n;monitor
+bn:00021494n;computer science
+bn:00021496n;simulation
+bn:00021497n;software, unit
+bn:00021547n;concept
+bn:00021961n;effect, outcome, result
+bn:00022168n;context
+bn:00022991n;creation
+bn:00023236n;Gov, state
+bn:00023853n;criterion, standard
+bn:00023869n;literature analysis
+bn:00025331n;information system
+bn:00025691n;decentralise, decentralization, decentralize, decentralized organization
+bn:00025693n;decision making
+bn:00025913n;deficiency
+bn:00025965n;level
+bn:00026107n;demand
+bn:00026535n;design process, redesign
+bn:00026817n;diagram
+bn:00026980n;education
+bn:00027407n;handicap
+bn:00027523n;discussion
+bn:00027670n;show
+bn:00028142n;domain
+bn:00028658n;dream
+bn:00029687n;ecosystem
+bn:00029806n;student
+bn:00030721n;goal
+bn:00030933n;recruitment process
+bn:00031009n;initiative
+bn:00031027n;entity
+bn:00031973n;evaluation
+bn:00032060n;evolution
+bn:00032100n;example
+bn:00032120n;extract
+bn:00032306n;experience
+bn:00032309n;experiment
+bn:00032322n;expert
+bn:00033729n;manner, style, way
+bn:00033948n;feedback
+bn:00033950n;feedback loop
+bn:00034242n;fiction
+bn:00034894n;fit
+bn:00034898n;fitness
+bn:00035297n;flood management
+bn:00035805n;predictor
+bn:00036761n;fulfillment
+bn:00036821n;output
+bn:00036826n;method call
+bn:00036845n;interaction
+bn:00037180n;match
+bn:00037279n;gap
+bn:00037681n;propagation
+bn:00042117n;guideline
+bn:00042771n;mobile device
+bn:00043952n;heuristic, heuristics
+bn:00044544n;homeostasis
+bn:00044576n;man
+bn:00045153n;humanity
+bn:00045632n;theory
+bn:00045800n;idea
+bn:00046576n;industry
+bn:00046705n;information
+bn:00046713n;information technology
+bn:00047017n;integrity
+bn:00047021n;reason
+bn:00047734n;control flow, iteration
+bn:00049181n;Sweden
+bn:00049476n;kubrick
+bn:00049573n;project, task
+bn:00050969n;toolkit
+bn:00051253n;limitation
+bn:00051538n;literature
+bn:00052815n;post
+bn:00053116n;management
+bn:00053662n;mass
+bn:00053823n;change
+bn:00053867n;matter
+bn:00054019n;measurement
+bn:00054061n;mechanism
+bn:00054633n;methodology, research methodology
+bn:00055452n;modeler
+bn:00055954n;mortgage
+bn:00056990n;natural language
+bn:00057017n;environment, nature
+bn:00058285n;number
+bn:00058679n;offer
+bn:00058907n;ology
+bn:00059136n;operationalisation
+bn:00059480n;formation, organisation, organization, support organization
+bn:00059507n;orientation
+bn:00059928n;overview
+bn:00060099n;bpm
+bn:00060798n;participant
+bn:00061314n;pen
+bn:00061500n;perception
+bn:00061826n;request
+bn:00063331n;policy maker
+bn:00063994n;practitioner
+bn:00064430n;rationale
+bn:00064594n;production
+bn:00064626n;technique
+bn:00064755n;property
+bn:00066402n;real world
+bn:00066414n;reality
+bn:00066506n;response
+bn:00067171n;replacement
+bn:00067181n;report
+bn:00067280n;academic research, research, researcher
+bn:00067417n;retail company
+bn:00067975n;road
+bn:00068131n;role play
+bn:00068562n;run time
+bn:00069579n;strategy
+bn:00069680n;scientist
+bn:00070206n;sector
+bn:00070404n;semantics
+bn:00070574n;sequence
+bn:00070651n;service
+bn:00070697n;set
+bn:00072544n;social interaction
+bn:00072545n;social science
+bn:00072760n;solution
+bn:00073206n;specialist
+bn:00073217n;specification
+bn:00074557n;strategic level
+bn:00076251n;taxonomy
+bn:00076330n;tech
+bn:00076341n;technique
+bn:00076732n;text
+bn:00077270n;time
+bn:00077462n;today
+bn:00077585n;tool
+bn:00077993n;transformer
+bn:00078496n;trustworthiness
+bn:00080130n;visualisation, visualization
+bn:00080772n;web
+bn:00081578n;workflow
+bn:00082215v;adapt
+bn:00082225v;fulfill
+bn:00082226v;achieve
+bn:00082233v;describe
+bn:00082247v;gather
+bn:00082282v;evolve
+bn:00082358v;align
+bn:00082379v;adopt
+bn:00082392v;outline
+bn:00082409v;jeopardize
+bn:00082486v;propose
+bn:00082542v;allow
+bn:00082596v;analyse, analyze
+bn:00082668v;anticipate
+bn:00082705v;apply, employ
+bn:00082723v;take account
+bn:00082822v;demand
+bn:00082845v;assemble
+bn:00082941v;automated
+bn:00083095v;banking
+bn:00083184v;exist
+bn:00083240v;refer, relate
+bn:00083370v;believe, consider
+bn:00084086v;succeed
+bn:00084527v;handle
+bn:00084595v;implement
+bn:00084730v;centralized
+bn:00084733v;reflect
+bn:00084801v;characterize
+bn:00085491v;compose
+bn:00085746v;verify
+bn:00085805v;simulate
+bn:00085840v;validate
+bn:00086008v;create
+bn:00086366v;decentralized
+bn:00086465v;define
+bn:00086467v;define
+bn:00086567v;demonstrate
+bn:00086681v;specified
+bn:00086733v;develop
+bn:00086734v;evolve
+bn:00086931v;discuss
+bn:00086942v;discuss
+bn:00087550v;enter
+bn:00087587v;enable
+bn:00087626v;enforce
+bn:00087634v;engineering
+bn:00087763v;evaluate
+bn:00087826v;illustrate
+bn:00087870v;explain
+bn:00087881v;explore, search
+bn:00089575v;identify
+bn:00089664v;incorporate
+bn:00089667v;increase
+bn:00090045v;maintain
+bn:00090876v;modeling
+bn:00090880v;simulate
+bn:00091028v;need
+bn:00091200v;oriented
+bn:00091282v;overcome
+bn:00092058v;propose
+bn:00092757v;remain
+bn:00095091v;transform
+bn:00095108v;translate
+bn:00096151a;able
+bn:00096212a;abstract
+bn:00096445a;good
+bn:00097800a;classical
+bn:00099030a;bureaucratic
+bn:00099215a;capable
+bn:00099258a;central, key
+bn:00099443a;centralized
+bn:00099520a;immutable
+bn:00099532a;characteristic
+bn:00099598a;main
+bn:00100026a;compound
+bn:00100162a;comprehensive
+bn:00100194a;conceptual
+bn:00100485a;incorporated
+bn:00100536a;global, universal
+bn:00100674a;critical
+bn:00101019a;declarative
+bn:00101176a;explicit
+bn:00101225a;descriptive
+bn:00101268a;elaborate
+bn:00101348a;different
+bn:00101358a;difficult
+bn:00101372a;digital
+bn:00101660a;objective
+bn:00102039a;efficient
+bn:00102049a;efficient
+bn:00102171a;empirical
+bn:00102521a;executable
+bn:00102526a;illustrative
+bn:00102581a;technical
+bn:00102589a;explicit
+bn:00102620a;extensive
+bn:00102874a;federate
+bn:00103514a;generative
+bn:00103816a;innovative
+bn:00104162a;high
+bn:00104268a;homeostatic
+bn:00104644a;imperative
+bn:00105239a;integrative
+bn:00105258a;intensive
+bn:00105350a;intrinsic
+bn:00105984a;likely
+bn:00106335a;major
+bn:00106482a;real
+bn:00106527a;meaningful
+bn:00107268a;new
+bn:00107970a;organisational, organizational
+bn:00108803a;popular
+bn:00108829a;possible
+bn:00108880a;practical
+bn:00108886a;pragmatic
+bn:00108977a;present
+bn:00109131a;prospective
+bn:00109211a;public
+bn:00109532a;reusable
+bn:00109636a;regular
+bn:00109659a;relevant
+bn:00109873a;rigid
+bn:00110621a;significant
+bn:00110842a;social
+bn:00111002a;specific
+bn:00111285a;strategic
+bn:00111286a;strategic
+bn:00111325a;structured
+bn:00111685a;technological
+bn:00111686a;technical
+bn:00111688a;technological
+bn:00111806a;theoretical
+bn:00114251r;constantly
+bn:00114778r;usually
+bn:00115252r;eventually, finally
+bn:00115285r;explicitly
+bn:00115834r;primarily
+bn:00116395r;objectively
+bn:00119381n;Cmp
+bn:00128944n;enterprise information system
+bn:00182115n;chapter
+bn:00212740n;finite state machine
+bn:00237517n;business ecosystem
+bn:00251565n;alloy
+bn:00254320n;software product line
+bn:00285559n;business process model, enterprise process management
+bn:00285715n;process automation
+bn:00328261n;appreciative system
+bn:00353055n;quality
+bn:00427376n;smart city
+bn:00445734n;specific complexity
+bn:00522942n;steady state
+bn:00612059n;specification language
+bn:00632106n;profit
+bn:00655130n;enterprise architecture
+bn:00670896n;depth
+bn:00671881n;user experience
+bn:00751658n;government policy
+bn:00890994n;software pattern
+bn:00909458n;smartphones
+bn:00912901n;process model, process modeling
+bn:00940403n;enterprise service
+bn:00943355n;seam
+bn:00969301n;service design
+bn:00971296n;po
+bn:00983111n;traceability
+bn:01042120n;formalism
+bn:01096526n;business rule
+bn:01097033n;modern society
+bn:01115911n;supply chain
+bn:01128895n;harel statecharts, statecharts
+bn:01132275n;archimate
+bn:01172008n;ai assistant
+bn:01184015n;language model
+bn:01190125n;scenario
+bn:01283920n;goal modeling
+bn:01305513n;process management, process manager
+bn:01329353n;mathematical model
+bn:01381379n;public value
+bn:01384947n;declarative language
+bn:01401585n;dbe
+bn:01426742n;challenge
+bn:01510781n;management system
+bn:01530448n;mda
+bn:01567557n;process development
+bn:01598370n;business process management
+bn:01648323n;descriptive knowledge
+bn:01650764n;transaction
+bn:01691263n;higraph, higraphs
+bn:01718454n;peer production
+bn:01932511n;criterion validity
+bn:01944346n;system model
+bn:02012311n;user story
+bn:02057536n;operational semantics
+bn:02138008n;system engineering
+bn:02161285n;scm, supply chain management
+bn:02180118n;component model
+bn:02220931n;imdb
+bn:02245863n;usability
+bn:02259054n;topic modeling
+bn:02291059n;rfp
+bn:02356174n;use case
+bn:02370529n;bpmn
+bn:02387665n;collaboration
+bn:02410789n;process design
+bn:02422212n;open innovation
+bn:02437884n;physical system
+bn:02438245n;service model
+bn:02438777n;volunteer
+bn:02491398n;formal concept analysis
+bn:02527555n;business requirement
+bn:02747390n;research community
+bn:02788029n;business process
+bn:02813568n;20th century
+bn:02836923n;crisis management
+bn:02841200n;separation process
+bn:02888045n;reference architecture
+bn:03091997n;oka river
+bn:03112228n;digital technology
+bn:03127800n;management process
+bn:03128426n;advance
+bn:03134448n;space odyssey
+bn:03136677n;research literature
+bn:03137835n;mod
+bn:03149059n;predictive analysis
+bn:03155334n;system design
+bn:03156296n;tablet
+bn:03181403n;alloy analyzer
+bn:03191980n;process specification language
+bn:03195989n;importance
+bn:03224833n;latent dirichlet allocation
+bn:03232471n;ea framework
+bn:03264794n;sysml
+bn:03298514n;flexibility
+bn:03309733n;optimisation
+bn:03349373n;political structure
+bn:03358315n;conceptual framework
+bn:03385495n;low level
+bn:03387425n;abstraction level
+bn:03393005n;abstract process
+bn:03399058n;advantage
+bn:03424909n;level order
+bn:03439996n;organizational structure
+bn:03502105n;business model
+bn:03506057n;process control
+bn:03537096n;case management
+bn:03558977n;process specification
+bn:03569682n;engineering design
+bn:03617553n;enterprise model
+bn:03640362n;information technology governance
+bn:03643901n;engine
+bn:03718727n;social business
+bn:03788121n;design science research
+bn:03792862n;cos
+bn:03814567n;stat
+bn:03815028n;make work
+bn:14456945n;manager
+bn:14672884n;urban game
+bn:14710229n;intention mining
+bn:14965500n;approval
+bn:15051182n;capture
+bn:15125301n;system
+bn:15260210n;doctoral school
+bn:15340438n;process work
+bn:15591207n;point
+bn:17095877n;empirical validation
+bn:17317913n;babelfy
+bn:17323822n;constraint
