@@ -1,0 +1,6 @@
+.DS_Store
+# macOS metadata
+._*
+.AppleDouble
+.Spotlight-V100
+.Trashes
