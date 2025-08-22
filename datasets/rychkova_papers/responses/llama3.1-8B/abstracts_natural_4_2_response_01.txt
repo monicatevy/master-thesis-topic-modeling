@@ -1,0 +1,14 @@
+Topic 1: **Trust and Blockchain Technology**
+Keywords: trust, blockchain, security, decentralization, governance
+
+Topic 2: **Enterprise Architecture and Governance**
+Keywords: enterprise architecture, governance, decentralization, peer-to-peer, IT governance
+
+Topic 3: **Business Process Management and Case Management**
+Keywords: business process management, case management, process agility, adaptability, context-aware
+
+Topic 4: **Information Systems and Technology**
+Keywords: information systems, technology, innovation, decentralization, peer-to-peer
+
+Topic 5: **Knowledge Management and Process Modeling**
+Keywords: knowledge management, process modeling, declarative specifications

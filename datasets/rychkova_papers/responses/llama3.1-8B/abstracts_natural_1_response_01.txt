@@ -1,0 +1,13 @@
+Topic 1 : trust, organization, regulation
+Topic 2 : blockchain, technology, adoption
+Topic 3 : GDPR, data, privacy
+Topic 4 : architecture, modeling, enterprise
+Topic 5 : case, management, process
+Topic 6 : trust, blockchain, business
+Topic 7 : IT, governance, organization
+Topic 8 : process, management, adaptation
+Topic 9 : EA, architecture, decentralization
+Topic 10 : case, management, modeling
+Topic 11 : process, adaptability, control
+Topic 12 : enterprise, architecture, innovation
+Topic 13 : business,

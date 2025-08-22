@@ -1,0 +1,14 @@
+Topic 1: Enterprise Architecture and Governance
+ Enterprise Architecture, Governance, IT, Business, Process, Organization, Management
+
+Topic 2: Blockchain Technology and Trust
+ Blockchain, Trust, Technology, Adoption, Acceptance, Models, Governance
+
+Topic 3: Data Protection and Regulation
+ GDPR, Data, Protection, Regulation, Compliance, Business, Process, Management
+
+Topic 4: Knowledge-Intensive Processes and Case Management
+ Case Management, Process, Knowledge, Intensive, Business, Organization, Management
+
+Topic 5: Formal Methods and Model-Driven Architecture
+ Formal, Methods, Model-Driven, Architecture, Business, Process,

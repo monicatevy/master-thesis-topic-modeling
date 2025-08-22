@@ -1,0 +1,14 @@
+Topic 1: **Trust and Blockchain**
+Representative keywords: trust, blockchain, technology, adoption, regulation
+
+Topic 2: **Enterprise Architecture and Governance**
+Representative keywords: architecture, governance, enterprise, decentralization, IT
+
+Topic 3: **Case Management and Business Processes**
+Representative keywords: case management, business process, modeling, adaptability, knowledge-intensive processes
+
+Topic 4: **IT Governance and Alignment**
+Representative keywords: IT governance, alignment, business-IT, measurement, assessment
+
+Topic 5: **Formal Methods and Process Modeling**
+Representative keywords: formal methods, process modeling, declar

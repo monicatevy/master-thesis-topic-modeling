@@ -1,0 +1,5 @@
+Topic 1 : AI Trust and Adoption : GPT trust, blockchain technology, trust determinants, trustworthiness requirements
+Topic 2 : Enterprise Architecture and Governance : Enterprise Architecture, governance, decentralization, peer-to-peer principles, IT governance
+Topic 3 : Business Process Modeling and Analysis : Business Process Modeling, case management, process agility, context-aware business process management, declarative modeling
+Topic 4 : Knowledge-Intensive Processes and Case Management : Case Management, knowledge-intensive processes, adaptive case management, context-based configuration rules, declarative configurable specifications
+Topic 5 : Business-IT Alignment and Governance : Business-IT
