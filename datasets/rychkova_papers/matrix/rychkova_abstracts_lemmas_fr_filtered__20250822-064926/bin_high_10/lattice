@@ -1,0 +1,10 @@
+// <Lattice object of 1 atoms 2 concepts 1 coatoms at 0x7fd83290c310>
+digraph Lattice {
+	node [label="" shape=circle style=filled width=.25]
+	edge [dir=none labeldistance=1.5 minlen=2]
+	c0
+	c0 -> c0 [color=transparent labelangle=90 taillabel="2021-JDR 2024-RDJ"]
+	c1
+	c1 -> c1 [color=transparent headlabel="affect business process examiner organizations primary research systematic literature review way" labelangle=270]
+	c1 -> c0
+}
