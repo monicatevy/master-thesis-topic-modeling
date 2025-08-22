@@ -1,0 +1,650 @@
+Abstract— Business process modeling is a valuable technique
+helping organizations to specify their processes, to analyze their
+structure and to improve their performance. Conventional
+process modeling techniques are proven to be inefficient while
+dealing with non-repetitive, knowledge-intensive processes such
+as Case Management processes. In this work we use the MAP
+notation to model a Mortgage Approval Process as defined in
+Banking. To increase the navigability and practical value of map
+models, we extend the MAP notation with the concepts of Roles,
+Relations between roles, and Role Configuration Rules.
+Keywords: Role ; Process model MAP
+I. INTRODUCTION
+In the modern economy, companies are more and more
+interested in expanding their businesses and exploring new
+markets. Proliferation of Information and Communication
+Technologies (ICT) fosters collaboration and makes people
+across the globe work together as they are sitting in one office.
+Working cultures, local policies and regulations, however,
+remain specific to a country or a region forcing the companies
+to customize their processes for each particular case and to take
+into account where and under which conditions the process is
+executed) [1].
+Business process modeling is a valuable technique helping
+organizations to specify their processes, to analyze their
+structure and to improve their performance. Conventional
+techniques for business process modeling are imperative - they
+encourage the early specification of the control flow [2][3][4].
+Using these techniques, specification of numerous options and
+variations in a process model related to its context of execution
+becomes tedious if at all possible [5][6][7][8].
+Similar problem statements have been identified and
+studied in the area of process engineering.
+For more than ten years process engineering remains a key
+issue for the information system (IS) communities [9]. For
+instance, [10] [11] [12] [13] show that an improved
+development process leads to improved productivity of the
+software systems industry and improves systems quality.
+Similarly to a business process, IS development process
+was traditionally organized into sequences of activities (e.g.,
+“analysis,” “design,” “coding,” “testing”) [14] [15], with a
+rigid control flow. Later on, these activity sequences were
+replaced by values and practices [16] [17]. However, [18]
+highlights that, in practice, IS engineers are faced with
+countless methodical choices: they can choose to execute one
+activity completely or partially, to combine aspects of two or
+more different activities, or to ignore an activity. Thus,
+decisions made through the IS development process should
+reflect the situation at hand and help an IS engineer to specify
+and enact a unique process adapted to this situation.
+In response to this problem, several methodologies
+supporting intentions have been developed [19] [20] [21].
+Intention-oriented process modeling focuses on what the
+process is intended to achieve (i.e. what is the reason behind
+the process execution), instead of how it is going to achieve.
+[22]. Nevertheless, many of these methodologies do not
+employ the concept of intention/goal as an integral part of their
+process model. These process models focus on how the process
+is performed and externalize what the process is intended to
+accomplish – the intention. In MAP process models, [21], in
+contrast, the intentional level is used to guide engineers
+through IS processes by dynamic choices of the executable
+service sequences. Each time when an intention is realized, the
+model suggests an executable service (or several alternative
+services) that can be invoked on the next step. The resulting IS
+development process is adaptive and flexible as it is
+constructed dynamically following the situation.
+In this paper we use the MAP methodology to model a
+Mortgage Approval Process as defined in Banking. Providing a
+flexible mechanism for flexible and customizable process
+specification, original MAP notation, nevertheless, remains
+restrictive: it does not allow us to specify roles for this process.
+The concept of Role is a key concept in process modeling.
+Roles are present in nearly all process models - they help the
+modeler to structure the process model, by grouping the
+responsibilities and answering the question “who does what?”.
+IS designer, developer, stakeholder, decision-maker, client,
+clerk – are all examples of roles. According to [27] the role is
+the definition of an organizational intention shared by a
+collection of users, all of whom having the same privileges and
+obligations to a set of work processes in an organization. The
+role is also the main concept for the representation of
+cooperative processes. In other words, the role is the basic
+block of the organization perspective [47], which reflects
+information about the organizational structure and actors to
+which the business process is intended. Roles can be
+represented and used differently in process models depending
+on the notation.
+The original MAP meta-model presented in [21] does not
+include the concept of Role. However, roles implicitly
+participate in decision-making in all the levels of an
+organizational process expressed by a map. For example, it can
+be a specific role responsible for making a choice between
+several alternatives in the map. The notion of role will then be
+useful to explicitly define who can take the navigation
+decisions. Roles can also be present in the description of an
+executable service (e.g. some activities may be performed by
+specific roles and only them). Therefore, in order to improve
+guidance on maps, it is important to include the concept of role
+into the MAP metamodel.
+In this work we extend the MAP notation with the concepts
+of Roles, Relations between roles, and Role Configuration
+Rules. These modeling concepts were introduced as a part of
+DeCo (Declarative Configurable Process Specification)
+approach in [1]. This mechanism allows us to anticipate
+abundant variations of context as, even within the same bank,
+different agencies may have different stuffing and thus,
+different distribution of responsibilities between employees. As
+a result, different actors may be required/available to execute
+the Mortgage Approval Process. We will demonstrate how
+these variations can be incorporated within the same map.
+The reminder of this paper has the following structure. In
+Section 2 we discuss the related works and identify the
+advantages of MAP applied to modeling case management
+processes. We also explain the limitations of the existing MAP
+notation and provide the rationale for its extension. In Section 3
+we present an example of the Mortgage Approval Process and
+explain the MAP meta-model on this example. In Section 4 we
+extend the MAP notation with the mechanism to explicit Role
+variability modeling. In Section 5 we present our conclusions
+and discuss our future work.
+II. RELATED WORK
+A. Process flexibility
+Business process modeling is a valuable technique helping
+organizations to specify their business processes, analyze their
+structure and improve their performance. Conventional
+techniques for business process modeling are imperative - they
+encourage the early specification of the control flow. However,
+for certain forms of business processes the control flow cannot
+be identified at design time.
+One of the examples is a Case Management Process [25].
+The case management process can be characterized as follows:
+it (i) has a descriptive nature, (ii) varies largely depending on
+its execution context, (iii) involves a lot of, often implicit,
+decision making resulted from communication/ negotiation
+among human actors, (iv) is based on the available/emerging
+case-related knowledge [26]. For such processes, early
+specification of the control flow is not only challenging but
+also unnecessary and even harmful.
+As advocated in [27] an unstructured (i.e. without
+predefined control flow) process cannot be represented in
+terms of flow of tasks or activities or operations... The model
+proposed in [27] allows to represent it as a ‘black box’
+associated to a set of resources that it uses and produces and a
+set of participating roles. The key concept of such kind of
+unstructured processes is the information and knowledge
+sharing in the work group (i.e. among actors playing roles).
+Another paradigm to deal with non-prescriptive or non
+imperative processes is provided by conversation models. The
+latter are based on the speech act theory and on the principle
+that each sentence expressed by someone represents an
+intention, a commitment [28]. For instance, the Action model
+[29] defines a structure to represent the conversation
+relationship between two participants, customer and performer.
+The type of process models addressed in [30], [31], [32] is
+based on the decision-oriented paradigm according to which
+the successive transformations of the product are considered as
+consequences of decisions. The underlying paradigm is that a
+process model does not have only to specify the linking of
+activities or product states but also the intention behind the
+execution of activities and their ordering at the run time.
+Decision-oriented models guide the decision making process
+that shapes the business and thus help reasoning about the
+rationale of decisions [33]. This paradigm seems to be the
+particularly appropriate for representing processes requiring
+flexibility.
+This paradigm does not require modeling the process
+control flow in advance and allows alternative strategies to be
+considered.
+B. Variability
+In [34][35] the concept of configurable process has been
+presented and the modeling formalism to deal with process
+configurability at multiple perspectives is defined. Namely the
+authors present the Configurable Integrated EPC (C-iEPC)
+modeling notation that extends the well-known Event Process
+Chain (EPC) notation and addresses the process configurability
+along the control-flow, data, and resource perspectives.
+According to this approach, “Given a configurable process
+model, analysts are able to define a configuration of this model
+by assigning values to its variation points based on a set of
+requirements. Once a configuration is defined, the model can
+be individualized automatically.”
+In [26] the method for Declarative Configurable process
+specifications (DeCo) is presented. This method defines an
+extension to BPMN [36] graphical notation and identifies
+three types of relations between roles: synonym, alternative
+and specialization.
+C. Roles and Actors
+The concept of Role is closely related to the concept of
+Actor in modeling methodologies. Various definitions of
+Actors and Roles can be found in literature. The most common
+definition states that an Actor specifies a Role played by a user
+or any other system that interacts with the subject [37]. In I*
+[19], actors are considered as “active entities that carry out
+actions to achieve goals by exercising their know-how and
+could be composed of Agents, Roles and Positions, each of
+which is an actor in a more specialized sense”. OPF [38] gives
+another definition of an actor (a producer) which is “a core
+abstract method component that models someone or something
+that performs work units” (produces work products or provides
+services).
+Several attempts have been made to introduce the concept
+of Role in the MAP notation [39][23]. In [39], the MAP metamodel has been extended with the concept of Indicator.
+Indicators are used to help decision-making in the navigation
+through a process map. A typology of indicators was defined
+based on well-known project characteristics (for instance the
+cost, the duration, the formality degree, and so on). This
+indicator typology includes a particular indicator, which
+represents the Expert role. This indicator is used to define
+which roles are linked to each executable services of a map.
+However, this information, even if it helps the guidance
+through a map, doesn’t give the user enough information about
+the variability inherent to the role concept. For instance, it
+cannot be used to know if a specific expert role is related to
+other expert roles in the project.
+In [23] the concept of Role has been added to the MAP
+meta-model in order to support the “operationalization” of
+MAP process models. Namely, this concept provides an
+explicit relation between an intentional process perspective
+captured by MAP process model and its organizational
+perspectives described by a business process. Enhancing the
+MAP notation using the role concept also allowed us to
+explicitly link navigation guidelines associated to a map with
+the roles executing them. Namely, for the intention selection
+and the strategy selection guidelines, the role taking the
+navigation decisions can be specified. For the intention
+achievement guidelines, the role executing the corresponding
+section in the map can be specified. The third capability added
+to the MAP notation thanks to the role was the possibility to
+deal with non-structured processes as suggested previously in
+[27]. While improving the traceability between different
+process perspectives, the extended MAP process model
+presented in [23] provides little guidance for process users and
+does not enable process customizations.
+The purpose of this work is to enhance the concept of Role
+in MAP and to provide the mechanisms for (i) expressing role
+variability and (ii) role configuration. These mechanisms will
+improve the guidance on maps taking into account all the role
+relationships present in the project.
+III. APPLYING MAP TO CASE MANAGEMENT
+PROCESS MODELING
+A. Example: The Mortgage Approval Process
+In this paper we consider an example of processing a
+mortgage claim as defined by different financial institutions in
+the USA. The information provided below results from our
+study of multiple information sources (e.g. http://www.
+homebuyinginstitute.com/, http://www.mortgage-resourcecenter.com/, http://homebuyereducation.bankofamerica.com/,
+http://www.homeloancenter.com/ etc.). It represents a
+compilation of guidelines, recommendations, and descriptions
+of the Mortgage Approval Process, provided by different loan
+consulting firms, financial advisors, and banks, available on the
+web.
+A mortgage is a loan for buying a house. On the USA
+market, there exist various mortgages that will be appropriate
+for special situations such as bad credit loans, first time
+homebuyer, etc. The terms and length of the mortgages are
+negotiable and can be adapted for the applicant’s situation.
+The mortgage approval process can be divided into the
+following steps:
+1. Pre-qualification
+2. Formal application
+3. Document review
+4. Pre-approval
+5. Property appraisal
+6. Final Approval
+7. Closing
+The goal of the pre-qualification step is to determine the
+potential mortgage amount that the applicant is eligible for.
+The purpose of the formal application is to provide the lender
+with a package of documents characterizing in details the
+current financial situation (assets) of the applicant as well as
+his/her employment and credit history. Document review
+follows the formal application and may include the preapproval step. The pre-approval letter issued as a result of a
+pre-approval indicates that a thorough analysis of the
+applicant’s credit, income, and assets has been completed and
+that the applicant is pre-approved by a lender for a specific
+loan amount. Being optional, this letter, however, may
+represent a valuable negotiation instrument for an applicant
+while searching for a property. When the applicant selects the
+property, the potential mortgage lender initiates the Property
+appraisal. The result of the appraisal defines the amount of the
+mortgage and a corresponding down payment that has to be
+paid by the applicant. The lender makes “approve”, “not
+approve”, or “approve with conditions” final decisions based
+on the document review and the appraisal results. If the loan is
+approved, a commitment letter is issued for the applicant, and
+a closing date is set up. Closing (also called settlement) is a
+final step. During the mortgage closing, the mortgage lenders
+will purchase the house and hold the title, as the applicant
+makes payments to them.
+Pre-qualification and Pre-approval are compulsory steps;
+Pre-approval and Property appraisal can be considered as parts
+of a Document review and serve as a baasis for the Final
+approval.
+Below, we illustrate how this processs can be modeled
+using the MAP meta-model.
+B. The MAP meta-model
+Goal modeling is an effective wayy for identifying
+requirements of software systems by focusing on
+understanding the intentions of the involvedd stakeholders [40]
+[41] and the process model MAP is an exammple of goal model
+that has been conceived to meet this challenge. A map
+expression provides a synthetic view of thhe variability of a
+process in a relatively easy to understand wway. Variations are
+revealed in two ways, by the gradual movement down the
+different levels of a top map, and byy the alternative
+strategies/paths available at a given mapp level [42]. The
+intentional MAP meta-model has been intrroduced in the IS
+engineering domain [21] and validated iin several fields:
+requirement engineering [43], method eengineering [44],
+enterprise knowledge development [45] andd process modeling
+[21].
+The map corresponding to the mortgage aappraisal process is
+presented in Fig. 1.
+Figure 1. High level map of the Mortgage Approval Prrocess and Refinement
+map of the section A of this map
+A map is a diagram composed of nodes and edges. Nodes
+are intentions to realize and edges are strateggies to reach these
+intentions. An edge enters a noode if its associated strategy can
+be used to achieve the target inntention (the given node). Since
+there can be multiple edges enntering a node, a map is able to
+represent multiple ways to achieve an intention.
+Fig.1 (a) represents a Higgh-level map of the mortgage
+approval process defined in thee previous section. There are two
+intensions specified on this leveel: Define Mortgage Application
+and Approve Mortgage Appliccation. The former intention is
+realized when the Formal application is completed and
+validated (steps 1 and/or 2 of thhe example); the latter is realized
+when Final Approval decision is made (step 6 of the example).
+The final intention (Stop) corresponds to the process
+termination and can be realizedd either by Closing the mortgage
+(in case of a positive approval ddecision) (step 7) or by rejection
+of the mortgage claim otherwise.
+Fig.2 shows the MAP model using the UML formalism.
+The key element of a map is aa section. A section represents a
+triplet: a source intention, a ttarget intention, and a strategy
+linking these source and target intentions. The section
+corresponds to a process of achhieving the target intention from
+a specific situation following aa particular strategy. In Fig.1 (a)
+the triplet <Define Mortgage appplication, By complete revision
+with pre-approval, Approve moortgage application> represents
+a section that can be interrpreted as follows: when the
+application has been completedd and validated, the process can
+continue to its final approval ffollowing the complete revision
+with a pre-approval intermediatte step.
+linked to
+target source
+path thread
+1..* 1..* 1..*
+bundle
+refers follows
+Figure 2. MAAP meta-model
+Three kinds of relationships are defined for sections:
+thread, path and bundle.
+A thread relationship represents the possibility to achieve a
+target intention from the source intention following several
+different paths (defined by a different strategy). Each of these
+paths can be seen as a section in the map. Multiple strategies
+leading to an intension describe multiple ways to realize this
+intension. On the High-level map shown in Fig.1 (a), the
+Approve Mortgage Application intention can be realized either
+by complete document revision, which include Document
+review (step 3) and Property Appraisal (step 5) or by complete
+revision with Pre-approval (steps 3-4-5).
+A path relationship represents the precedence (or the order)
+between sections. We say that one section succeeds (precedes)
+another if and only if the source (target) intention of the former
+is the target (source) intention of the latter. There is absolutely
+no path predefined as the engineer constructs his own path
+following the situation at hand. Given the thread and the path
+relationships, an intention can be achieved by several
+combinations of sections. In our example, the mortgage lender
+can navigate through the map presented in Fig.1 (a) in order to
+approve a mortgage. Several paths are possible, e.g. the
+application can be submitted directly or following the prequalification procedure first; approval can be granted without
+the pre-approval step or with the latter, etc.
+A bundle relationship shows the possibility for several
+sections having the same source and target intentions to be
+mutually exclusive. (Mutual exclusion is depicted by dashed
+lines in a map). In Fig. 1 (a) the strategy “By closing” linking
+the Approve Mortgage Application intention to the terminal
+intention Stop represents a bundle relationship. It combines two
+sections that are mutually exclusive: either the closing is done
+in escrow or face-to-face.
+A section in a map may be refined with another map using
+the refinement relationship. Refinement is an abstraction
+mechanism by which a complex assembly of sections at level
+i+1 is viewed as a unique section at level i. This relationship
+introduces levels in the process representation as each map
+may be represented as a hierarchy of maps. Fig.1 (b) represents
+the refinement of a section of the high level map illustrated in
+Fig.1 (a) and provides more details on Final Approval process
+of a mortgage application.
+When a section cannot be refined any further, an
+Executable Service that fulfills the intention may operationalize
+it. It implies the transformation of the product under
+development with the execution of a service (which can be a
+guideline, a workflow, an algorithm, a business process model,
+etc.).
+A map specifies one ‘Intention Selection Guideline’ (ISG)
+per each intention I i , except for ‘Stop’ intention. Given an
+intention I i , an ISG identifies the set of intentions {I j } that can
+be achieved in the next step and proposes arguments to select
+one of them. There is also one ‘Strategy Selection Guideline’
+(SSG) per intentions pair <I i ,I j >. Given two Intentions I i , I j and
+a set of possible strategies S ij1 , S ij2 , ..S ijn applicable to I j , the
+associated SSG guides the selection of a S ijk . We can say that
+ISGs and SSGs describe the know-how of a domain in socalled decision process chunks [23].
+IV. EXTENDING MAP FOR ROLE AND ROLE
+VARIABILITY MODELING
+Enabling multiple strategic choices, the MAP specification
+does not provide enough information for realization of these
+choices. One of the recurrent problems is the role assignment.
+As specified in DeCo [1], synonyms, alternatives,
+optional/obligatory process elements and hierarchies of
+elements defined by generalization/specialization relations
+provide a mechanism for modeling process variability. The
+configuration rules, on the other hand, support the
+configuration of variants based on the situation.
+In this work we apply these mechanisms to model
+variability of roles in maps. In our example, the roles
+associated with the Mortgage Approval Process can vary not
+only from country to country and from one bank to another
+following theirs internal policies, but also from one agency to
+another within one bank (e.g. based on the size of this agency).
+Whereas some sections of an abstract mortgage process
+illustrated in Fig 1(a) can be assigned to abstract actors (e.g.
+Mortgage lender), concrete role assignments for the refined
+Mortgage Approval Process (Fig. 1(b)) may depend on the
+financial institution: small banks have only several (2-4) roles
+associated with the process, whereas in big agencies the
+application processing and decision making is more likely to be
+assigned to a number of different roles with different
+responsibilities. As our study shows, the same responsibility
+can also be performed by several roles or delegated from one
+role to another according to some internal rules.
+As a result, different actors may be required/available to
+execute the Mortgage Approval Process. Thus, to provide the
+efficient guidance for both administration and personnel of a
+bank, an explicit specification of roles, relations between them
+(e.g. hierarchy, alternatives or possible replacements, and
+synonyms) is required.
+A. Enhanced MAP concepts
+Role variability is important in the real life process
+descriptions: in the organizations the same responsibilities are
+often associated to multiple roles, at the same time, some role
+names can have double meaning depending on the project or
+process. Thus, the process gets overloaded with exceptions and
+becomes extremely complex providing little support and
+guidance. To get more practical value, the explicit specification
+of roles, their relations and rules of role configuration/
+assignment is required.
+Figure 3 represents an extended meta-model of MAP and
+includes the following concepts: Role, Relations between roles,
+and Role Configuration Rule. These concepts enable a
+mechanism for modeling role variability in MAP process
+models. Variability of roles in business process models is a
+mechanism to address the organizational complexity. It was
+discussed in [35].
+Start
+uses
+linked to uses
+target source
+*
+1..* Map
+* * refine 0..1
+bundle
+refers follows
+Executable
+Service made by
+*
+is executed by
+relation
+apply
+*
+Figure 3. Enhanced MAP meta-model
+A role is the definition of an organizational intention shared
+by a number of actors [46]. Role can be identified with a set of
+responsibilities and can be fulfilled by one or several actors in
+the organization. Loan consultant, Loan officer, and Appraisal
+agent – are examples of roles.
+In the enhanced MAP meta-model, the concept of role is
+specialized into individual role and group role. For example,
+Loan Consultant is an individual role whereas a Loan
+Processor is a group role. A group role contains several
+individual roles.
+As in [26] [1], we define three types of relations between
+roles: Synonym, Alternative and Configuration.
+Role configuration expresses possible instantiation of a
+generic role into configured roles. For instance, the Mortgage
+Lender may be configured into several other roles, as the Loan
+Consultant, the Loan processor, the Closing Agent and so on.
+Within a configuration, different roles can be related via
+synonym or alternative relations.
+Synonym relation expresses the fact that a specific role can
+be found in different organizations/processes under different
+names while still encapsulating the same set of responsibilities
+(i.e. this role has “synonyms”). For example, in the Mortgage
+Approval Process, the Loan Consultant role is a synonym to
+the Loan Broker role. Thus, during the process instantiation,
+both roles can be assigned to the same actor.
+Alternative relation expresses the fact that, under specific
+conditions, the responsibilities associated with one role can be
+fulfilled by another role (or delegated to it). For example, if the
+local agency does not have its own Appraisal agent, an
+External Appraisal agent can be recruited to perform the
+property appraisal task. Along those lines, the role of the Loan
+Processor, that performs an application revision and decision
+making, can be fulfilled by a Loan Broker (for the smaller
+agencies).
+We associate the executable service supporting a map
+section to one or several roles. This captures the knowledge
+about which tasks can be taken by which role and offers a
+better guidance of the map execution. The executable service
+(i.e. a business process chunk [23], a method chunk [42]...)
+encapsulates a process knowledge specified in the
+organizational layer (by answering what, who, when, where
+and how questions).
+B. Modeling the Role hierarchy for Mortgage
+Approval Process
+Figure 4. Role hierarchy and relations between roles in Mortgage Approval
+Process
+Figure 4 illustrates the hierarchy of Roles defined in
+Mortgage Approval Process. The roles are modeled as
+rectangles (following the UML notation) with the name in the
+upper compartment.
+A rectangle with thick outline and the "C" in the right
+corner is a “compact” notation that refers to a role that can be
+further configured in the process model based on the situation
+or context. We envisage integrating the Role element into the
+MAP notation using this compact representation. For
+convenience, the configuration details can be shown on a
+separate diagram as represented in Fig.4.
+In our example, the abstract role Mortgage lender combines
+a set of complementary and possibly overlapping
+responsibilitie. These responsibilities can be fulfilled by a
+single actor or shared by a group of actors, giving a rise to
+more specific roles: Loan Consultant, Loan Processor,
+Underwriter, etc.
+In the diagram representing the details of role
+configuration, we define another two types of relations
+between roles: Synonym relation, depicted by a dashed line
+with a tag “syn” and Alternative relation, ddepicted by a solid
+line with a tag “alt”. These relations refleect the policies of
+organization and are used to explicitly deescribe “who does
+what” based on the concrete context.
+Namely, the synonym relation refers to tthe fact that in the
+context of a given process, two roles have abbsolutely the same
+responsibilities. Thus, they can be defined innterchangeably (for
+different organizations for example). In ouur example, Loan
+Broker and Loan Officer roles are synonnyms of the Loan
+Consultant role as within the mortgage apprroval process they
+fulfill the same responsibilities.
+The alternative relation refers to the sittuations when the
+responsibilities of one role can be delegateed to another role,
+otherwise not having those responsibilities. In our example in
+Fig.4, Loan Processor role has an alternative - the Loan officer
+role. This alternative is bounded by a condiition R1 (depicted
+with a shaded circle) meaning that whenevver the number of
+agents in the local agency is less thenn 6 persons, the
+responsibilities in the Mortgage approval process normally
+fulfilled by a Loan Processor can (will) be ffulfilled by a Loan
+Officer.
+Along those lines, External Appraisal Agent and State
+Attorney are alternative roles for the bank AAppraisal agent and
+Attorney respectively. These alternatives can be activated
+whenever their corresponding roles insidde the bank are
+unavailable.
+We emphasize here that all the considereed relations can be
+defined for a given process only, e.g. whereas for one process
+two roles can be considered as synonyms, ffoor another process
+this will not necessarily be the case as the sets of
+responsibilities fulfilled by the same rolee within different
+processes might be different.
+We specify configuration rules for the rolle diagram. These
+rules define the conditions when the synonnym or alternative
+relation between roles can be activated; theyy can be expressed
+in a form of a predicate evaluating to Truue if condition is
+satisfied at a given context of False otherwisse. In our example
+depicted in Fig. 4 the Rule R1 describess a condition for
+activating alternative relation: it states thaat the number of
+agency employees should be less than 6 in orrder to activate the
+alternative relation between the Loan Proocessor and Loan
+Officer roles. Otherwise, in a bigger agenccy, the documents
+revision should not be delegated to a Loan Offficer.
+Fig.5 illustrates other examples of rules tthat can be used to
+configure the roles: the availability of a givven role in the real
+environment, geographical location of an aggency – these and
+many other factors can affect the configurattion of the process
+model, in particular imposing the role and acttors configuration.
+R1 # agents < 66
+Figure 5. Role configuration rule exammples
+Configuration rules can bbe defined on the level of a
+company, its country divisioon, and/or its local branch or
+agency.
+The extended map with thee role specifications is illustrated
+in Fig. 6.
+Figure 6. Mortgage approoval process enhanced maps
+The upper part of the figuree depicts the high level view on
+the Mortgage Approval Processs. The section A represents the
+process of our interest – the Moortgage approval as executed by
+a Bank. This section is asssigned to the abstract role of
+Mortgage Lender.
+The bottom part of Fig. 6 rrepresents the refinement of this
+section and can be interpreted aas follows:
+The mortgage application ccan be made either by following
+a pre-qualification process or by directly making an
+appointment in a bank (we caall it “a personal contact”). The
+Loan Consultant is a role ressponsible for guiding the client
+through both of these processess. After the formal application is
+completed, the document reviiew process is initiated by the
+mortgage lender; this process cconsists of several steps and can
+be accomplished following diffferent paths. The pre-approval of
+the mortgage is assigned to a ssingle role (the Loan Processor).
+The final approval should be caarried out by the Loan Processor
+and should be accompanied byy the property appraisal process
+carried out by the Appraisall agent. There are three roles
+assigned for the closing processs. Grateful
+V. CONCLUSION AND FUTURE WORK
+This paper proposes a mechanism to model roles and role
+variability in the intentional meta-model MAP. Namely, we
+extended the MAP notation with the concepts of Roles,
+Relations between roles, and introduced the Role Configuration
+Rules (formalization of these concepts will be addressed in our
+future publications).
+The proposed mechanism enables a better guidance and
+navigation on maps as each process step can be defined for
+specific roles only. The number of proposed alternatives to
+navigate through the map is then reduced to the steps
+compatibles with the user role.
+We illustrated our modeling process on the example of the
+Mortgage Approval process as defined in the USA banks (the
+simplified specification has been considered). The Mortgage
+approval process is an example of Case Management process.
+As shown in [26], modeling this process using traditional
+imperative modeling style can be difficult if at all possible. In
+this paper we demonstrated the advantages of intentional
+modeling using MAP enriched with role modeling mechanism.
+The first advantage is that the main user (the mortgage lender
+in our example) has a perfect view of the stakeholders involved
+into processes. The second advantage is that the resulting
+model allows us to anticipate variations of context (e.g.
+different bank agencies having different distribution of
+responsibilities between employees) while managing the model
+complexity.
+Proposed notation for modeling role variability is not
+limited for MAP; as proposed in DeCo [1], it can be used to
+extend another process modeling notations such as BPMN
+[36].
+In future, we plan to extend the notation proposed in this
+work by adding cardinality constraints.

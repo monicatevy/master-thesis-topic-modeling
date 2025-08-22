@@ -1,0 +1,685 @@
+I. INTRODUCTION
+Organizations with rigid centralized management style
+fail to sustain dynamic environments due to their inertia
+in decision making and lack of agility. Political, social
+and economic systems progressively transforming to distributed, network, and novel organization forms accordingly
+are emerging [1]. Recently coined terms such as “proactive
+enterprise” or “liquid enterprise” describe the nature of
+such organizations. Transparent or dynamically changing
+boundaries, agile processes, interactions aligned with realtime business goals, and virtual collaborations are all ITenabled capabilities of emerging organization forms [2].
+In [3], organizational structure is defined as “institutional
+arrangements and mechanisms for mobilizing [...] resources
+at all levels of the system”. The changes to management
+and operational styles brought on by decentralization requires major changes in organization processes and heavily
+involves IT.
+While emerging technologies serve as the main catalyst
+for organizational transformations, utilizing the right technologies and evolving thus to digitized business processes to
+automate organizations core capabilities [4] – is primordial
+for organizations.
+Traditionally, this is addressed by the enterprise architecture (EA) discipline. EA “defines the underlying principles,
+in Decentralized Environments:
+Art
+Zdravkovic (cid:3) and Selmin Nurcan y
+and Systems Sciences
+15, Kista, Sweden
+jelenaz@dsv.su.se
+en Informatique
+90 rue Tolbiac, 75013 Paris, France
+nurcan@univ-paris1.fr
+Figure 1. Enterprise Architecture
+standards, and best practices according to which current and
+future activities of the enterprise should be conducted” [5].
+EA methods and tools produce artifacts to specify the current
+state of a company’s architecture (architecture as-is, specify
+the target architecture (architecture to-be), and identify how
+to best cross the gap between them (architectural roadmap).
+These produced artifacts are often addressed in literature
+as EA description; the process that an organization has to
+execute in order to obtain its EA description is called EA
+method (Fig.1). A traditional EA project, though, consists
+in implementing an EA method and producing an EA
+description. To assure that the organization will continuously
+follow the principles and achieve the designated goals after
+the termination of the EA project a third element has to be
+defined. We call this element EA engine.
+Created in early 1990s, the de-facto EA methodologies
+support organizations in creation and evolution of their IT in
+structured and disciplined way: they focus on centralization
+of IT and its tight binding to the organizational structure and
+properties (e.g. centralized management). Such properties,
+however, do not necessarily exist in decentralized organizations. Consequently, implementation of these methodologies
+in organizations of 2010s becomes difficult and inefficient,
+and the role of EA as a driver for IT transformations is
+compromised.
+As an example, consider a public organization acquiring
+a software system with the objective of integrated facility
+management across divisions. Divisions were not involved
+in the decision making process (due to centralized strategic
+planning) and eventually refused to shut down their local
+systems and switch to the global one (due to decentralized
+IT management). As a consequence, the strategic initiative
+for integration failed; the divisions protected their interests
+(local systems tailored for their needs), but were still charged
+for the acquired system they never used (due to centralized
+budgeting). This example demonstrates a mismatch between
+the architecture principles (tendency towards integration),
+architecture engine (the process of prioritizing, evaluating
+and eventually deciding on the global system to adopt) and
+the organizational structure that inherits some centralized
+mechanisms while being strongly decentralized.
+We claim that structured and disciplined approach to IT
+evolution not necessarily has to rely upon IT centralization.
+Therefore, novel EA concepts are needed to ensure that the
+development and evolution of IT is harmonized with the
+properties of decentralized organizations.
+In this paper, we analyze various forms of organizational
+structures presented in literature, outline the characteristics
+of decentralization, and identify the challenges related to
+decentralization in organizational IT. We define decentralization in organizational IT as a continuum with three phases:
+Centralized IT, Federal IT and Decentralized IT. The main
+contribution of this paper is an assessment of the three
+prevalent EA methodologies (TOGAF, Zachman and FEA)
+and their capacity to support the decentralization. These
+three frameworks were chosen as they are highly influential,
+as evidenced by their extensive coverage in literature, for
+example [5]–[9]. Furthermore, Sessions [9] identifies them,
+along with the Gartner Methodology, as making up about
+90 percent of the field.
+This assessment finally leads us to a set of recommendations for decentralized-aware EA. This paper is part of
+research work still in its early phases, and as such, empirical
+validation has not yet been done at this stage.
+The remainder of this article is organized as follows:
+In Section II we discuss the role of EA in organization and provide an overview of three EA methodologies:
+TOGAF, Zachman and FEA; in Section III we discuss
+different forms of organizational structure (generic and ITspecific) presented in the literature focusing on their degree
+of (de)centralization. We outline the main characteristics
+of decentralization and highlight the challenges related to
+decentralization in IT. In Section IV we examine how
+the presented EA methodologies support (de)centralization.
+In Section V, we propose a set of recommendations for
+decentralized-aware EA.
+II. ENTERPRISE ARCHITECTURE FRAMEWORKS
+A. A Common Perspective on Enterprise Architecture
+While there is no singular agreed-upon definition for EA,
+different definitions [4], [5], [8]–[12] do have much in common. EA is a discipline that takes a holistic, design-oriented
+approach to transforming high-level business vision and
+goals into the integration of an enterprise’s organizational
+structure, business processes, and information systems. This
+transformation involves identifying and implementing the
+necessary change for this to occur. This paper will break the
+frameworks down into three separate components (Fig.1):
+EA method, EA description, and EA engine.
+The Method aims to lay the groundwork for the EA
+project. Typically, this involves setting up teams, responsibilities, and the overall process of collecting and approving
+the EA artifacts (e.g. as-is and to-be architectures) which
+form the second component, the EA description. The Engine
+involves setting up a support structure for ensuring the
+ongoing adoption of the to-be architecture. The remainder
+of this section will look at three different EA frameworks
+from the perspective of of these three phases: The Open
+Group Architecture Framework (TOGAF), the Zachman
+Framework, and the Federal Enterprise Architecture (FEA).
+B. TOGAF
+The Open Group Architecture Framework (TOGAF) is an
+EA framework created by The Open Group.
+1) EA Method: TOGAF includes a very detailed EA
+method, called the Architecture Development Method
+(ADM), made up of a preliminary phase and eight core
+phases (labeled A–H) [12, Ch. 5-15]:
+Preliminary
+establish initial commitment and governance;
+A set a high-level vision for the future architecture (includes management approved goals and
+requirements) to create a “Statement of Architecture Work” for forming contracts and obtaining
+approval from project sponsors;
+B–D create the as-is and to-be architectures, and analyze
+the gap between them;
+E–F create plans for crossing the gap;
+G–H concerned with implementation, ongoing governance, and change management.
+2) EA Description: TOGAF views architecture from
+the perspective of four different architecture domains [9]:
+business (processes and functions), application, data, and
+technical (specific infrastructure).
+The various architectural artifacts in TOGAF are organized across an Architectural Landscape [12, Ch. 20].
+Here, TOGAF specifies three levels of detail: strategic, for
+overall direction setting at the executive level; segment, for
+architectures at the level of a specific project or program; and
+capability, for governance related activities. Additionally, the
+Architecture Landscape can be partitioned for supporting
+different organizational units [12, Ch. 40].
+TOGAF’s Architecture Content Framework describes the
+outputs of the architecture efforts from the ADM. This
+includes the “deliverables” that are specified in the contracts
+and subject to formal approval [12, Ch. 33].
+3) EA Engine: TOGAF outlines an ADM phase concerned with the ongoing change management process for
+the architecture of an enterprise [12, Ch. 16]. In this phase,
+a governance body sets criteria for determining if a change
+requires an architecture update if a new cycle of the ADM
+needs to be started.
+TOGAF describes a formal review process for determining compliance with the goal to “first and foremost,
+catch errors in the project architecture early, and thereby
+reduce the cost and risk of changes required later in the
+lifecycle” [12, Ch. 48].
+TOGAF outlines a formal approach to architecture governance led by an “Architecture Board” [12, Ch. 47]. The
+TOGAF Architecture Governance Framework [12, Ch. 50]
+suggests guidelines for developing a formal architecture
+governance structure.
+C. Zachman
+The Zachman Framework was the first EA, first introduced by John Zachman in 1987 [9], [13]. It consists only
+of a taxonomy, and as such only fits into the EA Description
+aspect of EA.
+1) EA Description: The Zachman Framework breaks
+down EA into a grid of perspectives. Each perspective is
+characterized by its target audience and the issue it is aimed
+at. ZF covers six issues: What (data and entities), How
+(functional), Where (locations and networks), Who (people
+relationships), When (events and performance criteria), and
+Why (motivations and goals) [5]. Each issue is viewed from
+six different perspectives: executive, business management,
+architect, engineer, technician, and enterprise users.
+The executive perspective provides an estimate of a system’s functionality and cost [5]. The business management
+perspective is a view of how an owner thinks the business
+operates [14]. The architect perspective takes a systems
+viewpoint and describes the operations and interactions of
+the enterprise’s systems. The engineer perspective describes
+the technology and design of individual systems. The technician perspective takes the technically detailed perspective
+of a “sub-contractor” who is implementing a system. The
+enterprise users perspective describes the perspective of the
+system users.
+D. FEA
+The Federal Enterprise Architecture (FEA)is an effort
+by the federal government of the United States to create
+an EA for the entire government. FEA is a complete EA
+framework, covering all three components of EA. FEA takes
+an approach where individual organizational units develop
+their own architectures that fit into an overall framework of
+common standards and interoperability.
+1) EA Description: FEA develops architecture for segments and enterprise services. A segment is a “major line-ofbusiness functionality” [9] for an individual organizational
+unit (such as an agency or department).
+The EA artifacts defined by FEA include baseline segment
+architectures, target segment architectures and transition
+strategy (for achieving the target architecture).
+2) EA Method: FEA defines a four step iterative process
+for creating architectures for each segment and service [15]:
+1) analysis, where the baseline architecture, current problems, and vision for the target architecture are outlined;
+2) definition, where the detailed target architecture of the
+segment and how to get there is defined; 3) investment
+strategy; and 4) project planning and implementation.
+3) EA Engine: FEA describes “EA governance and management processes” [15, Sec. 2] to control architecture development. These process are implemented to manage standards, enforce compliance, manage collaboration between
+agencies, and approve architectures for implementation.
+FEA defines a value measurement process: “a continuous,
+customer-focused process relying on feedback from EA
+stakeholders and other value measures to increase the quality
+and effectiveness of EA products and services to support
+business decisions” [15, Sec. 5].
+III. ORGANIZATIONAL STRUCTURE AND
+DECENTRALIZATION
+This section will first discuss the forms of organizational structure defined in the literature. Second, the
+(de)centralization of current organizations and, as a consequence, their styles of IT governance will be explored.
+We conclude this section by underpinning the challenges
+organizations have to face due to decentralization.
+A. What is a Decentralized Organization?
+Much research has been done on specific forms of organizational structure. Taxonomies of organization forms
+are defined in [16], [17]. Classic and modern types of
+organizational structure are often recognized. Classic types
+include simple centralized organizations [18], bureaucratic
+organizations [19], divisional structure and functional structure. Modern types include matrix structures, flat organizations and adhocracies. New forms of organizational structure
+include collaborative networks, virtual organizations and
+coopetitions.
+According to Robbins [20], organizational structure has
+three components: complexity, formalization and centralization. Complexity refers to the degree to which activities
+within the organization are differentiated; Formalization
+refers to the degree to which work is standardized; Centralization refers to the degree to which decision making is
+concentrated at one point in the organization.
+Following Luthens [21], (de)centralization can be also
+defined according to three factors: geographical or territorial
+concentration of operations, functions, and extent of concentration of decision making powers. In [11], the following
+characteristics of centralization are defined: the allocation
+of decision rights, the structure of communication lines, and
+the choice of forms of coordination.
+In a completely centralized organization, all decision making authority would reside with a single, top-level authority.
+In a completely decentralized enterprise all members would
+have equal decision making rights. Here, hierarchy manages
+the interdependencies between the different subunits of the
+organization and often makes direct interactions and communications unnecessary [22]. Decentralized organizations
+instead have less formalized communication lines [11], and
+more fluid, project oriented teams [23].
+Centralized organizations lean towards a vertical style of
+coordination [24] characterized by formal authority, standardization, and planning and control systems. Decentralized
+organizations lean towards lateral coordination characterized
+by meetings, task forces, coordinating roles, matrix structures, and networks [24].
+Below, we will consider popular forms of organizations,
+focusing on their degree of centralization.
+B. Forms of Organizational Structure and Decentralization
+1) Classic Organizational Structures: Pearlson and Saunders offer a thorough description of a pure hierarchical organization structure [11]: Except for the top level position, each
+position has one superior and zero or more subordinates.
+Decision rights and communication lines are strictly defined
+and work their way down from the top. The scope of a
+position is specialized and strictly defined by your superior
+and one works in assigned teams. The primary benefit of
+a hierarchy is that the high levels of management have
+strict governance and control over the company. Hierarchical
+organization structures are suited for stable environments.
+Hierarchical organizations an be subdivided into simple
+centralized and bureaucratic organizations: In simple centralized organizations, both strategic planning and operational
+decision making authority belong to one person at the top.
+This structure can be found in small and single-owner
+organizations with only two hierarchical levels. Bureaucratic
+organizations [19] are characterized by a multi-level hierarchical structure and use of standard methods and procedures
+for performing work.
+Hierarchical organizations generally divide their labor
+either in terms of common activities or in terms of output. Two organizational structures (Functional structure and
+Divisional structure) can be identified accordingly.
+2) Modern Organizational Structures: Matrix structure is
+another popular style of organization structure [11] that can
+be seen as a mixture of functional and divisional structures.
+In this form, individuals are assigned two or more supervisors covering different dimensions of the enterprise. Pearlson
+and Saunders state that matrix organization structures are
+suited for dynamic environments with lots of uncertainty,
+presumably because their authority structure allows them to
+cover multiple aspects when making decisions. However,
+like a hierarchical structure, a matrix structure is a rigid
+construct with strictly defined roles, communication lines
+and decision rights. Authority still comes from the top in a
+centralized manner, even though it becomes more distributed
+among matrix managers at the lower levels.
+A flat organization employs a novel type of structure
+where only one or two hierarchical levels are defined.
+Valve Corporation, a software company in the video game
+industry [25], employs such a structure and is an example of
+high decentralization. In contrast with the simple centralized
+organization described above, individual employees have
+complete freedom: Nobody reports to anyone, and everyone
+is free to choose their own projects.
+Adhocracy [11], [23] aims to discard traditional hierarchies in favor of decentralized decision rights and flexible
+communication lines connecting the entire enterprise. An
+adhocracy has a rapidly changing set of project oriented
+groups that have decision making authority and other powers
+[20]. Mintzberg describes an adhocracy as “a loose, flexible,
+self-renewing organic form tied together mostly through
+lateral means” [18].
+3) Post-Modern Organizational Structures: New forms of
+organizational structure enabled uniquely by modern information and communication technologies Internet emerged
+recently: collaborative networks [26], virtual (boundaryless)
+organizations and coopetition [27].
+Camarinha-Matos and Afsarmanesh define collaborative
+networks (CNs) as being composed of “a variety of entities
+(e.g., organizations and people) that are largely autonomous,
+geographically distributed, and heterogeneous in terms of
+their: operating environment, culture, social capital, and
+goals” [26]. Three common characteristics in various CNs
+are autonomy in the individual entities, a drive towards
+meeting common or complementing goals, and the use of
+an agreed-upon framework for collaboration.
+A virtual organization is a group of independent organizations working together to achieve some goal. Coopetitions,
+as described in [27], are characterized by a complex relationship between firms where they simultaneously compete and
+collaborate and benefit from both. These entities are engaged
+into collaboration in response to a specific market situation,
+customer demand, etc. Such organization structures are
+grounded on a sustainable collaboration between partners
+without any centralized control.
+4) Decentralization in Organizational IT: According to
+Rockart et al. [28], changes in business and technology
+as well as progressive decentralization of organization as
+a whole drives the changes in roles and structure of IT
+units. The works presented in [28]–[31] focus on the relation
+between the structure of an organization and its IT.
+Fulk [29] discusses the interplay between communication
+technology and various organizational forms. The authors
+consider communication technologies as one of the key
+enablers of inter- and intra-organizational changes.
+In [30], authors study how different organizational forms
+affect the knowledge transfer in organization. They claim
+that “Organizational forms enable different kinds of motivation and have different capacities to generate and transfer
+tacit knowledge.”
+Weill [31] defines six forms of organizational structures
+in IT: business monarchy, IT monarchy, feudal, federal, IT
+duopoly and anarchy. In a business monarchy all IT related
+decisions are made in a centralized manner by the top-level
+executives. In an IT monarchy, a group of IT professionals
+are responsible for making the decisions in a centralized
+manner. An IT duopoly is characterized by two groups (IT
+and business executives) collaboratively making decisions.
+The feudal form is much less centralized; individual organizational units are responsible for their own decisions.
+Federal IT aims to balance these through a combination of
+central IT and IT in the business units. Anarchy is a style
+of governance where small teams or even individuals are
+responsible for their own decisions.
+Many organizations today tend to combine both centralization and decentralization in order to obtain the advantages
+of both styles: global integration and efficiency due to
+centralized management in some key areas, and agility and
+high quality of local customer services due to decentralized
+decision making in others [28].
+Figure 2 maps the organizational forms presented above
+to an axis depicting the degree of (de)centralization.
+For the purpose of our study, we consider three types
+of organizational structure in IT: Centralized IT, where
+all IT related decisions are made in a centralized manner
+by the top-level executives, Decentralized IT, where each
+organizational subunit manages its own IT in a completely
+autonomous and independent manner, and Federal IT that
+can be seen as a combination of central IT management and
+IT management in the subunits.
+C. Challenges of Progressive Decentralization in Organizational IT
+The emergence of decentralized organizational structures
+means significant changes for organizations that adopt them.
+However, this transformation is not a mere question of
+“flattening” the organization by shifting authority and decision making power from the top to the bottom. In classic
+organizations, not only does hierarchy ensure control and
+Figure 2. Organizational taxonomy: From Centralized to Decentralized
+coordination, it also manages interdependencies between
+different subunits of an organization and often makes direct
+interactions and communications unnecessary [22].
+Therefore, the main challenge related to decentralization
+and “weakening hierarchy” is a lack of interaction and
+communication between organizational subunits.
+The decentralization of an organization and subsequent
+change to its management and operation style requires
+major changes in organization processes and heavily involves IT. Caruso, Rogers and Bazerman [32] highlight
+the importance of information sharing and coordination for
+these organizations. According to [28], a major risk of IT
+decentralization is lack of synergy and integration due to a
+lack of standardization.
+Enterprise Architecture is a discipline that allows an
+organization to develop and evolve its IT in a manner
+harmonized with it. It provides methodology and sets up
+structures for assessing current state of IT (architecture AsIs); for planning, agreeing upon and communicating its
+future state (architecture To-Be); and for carrying out this
+transformation. In order for this harmonization to be successful in decentralized organizations, it is important that EA
+methodologies and structures acknowledge decentralization
+and help the organization to tackle its related challenges.
+In the next section we examine how decentralization in
+IT is addressed by current EA practices.
+IV. EXISTING EA PRACTICES TO SUPPORT
+DECENTRALIZATION: ANALYSIS AND SHORTCOMINGS
+The field of Enterprise Architecture (EA) emerged in order to combat two increasingly prevalent problems facing enterprises: system complexity and business-IT alignment [9].
+As enterprises rely more and more on information systems
+of increasing complexity, these problems become even more
+important.
+A. TOGAF
+1) Concepts supporting a centralized organization:
+EA Method and EA Engine: TOGAF’s approach to
+architecture governance involves an Architecture Board
+“to oversee the implementation of the [architecture] strategy” [12, Ch. 47]. This board has an important role in
+Architecture Governance, such as “[p]roviding the basis for
+all decision-making with regard to the architectures” [12,
+Ch. 47] and enforcing architecture compliance.
+Having a single entity responsible for high-level decision
+making suits well for organizations with strong centralization in IT (Centralized IT to Federal IT in Fig. 2).
+TOGAF does suggest that the board has enterprise-wide
+representation [12, Ch. 47] which may support some level
+of decentralization, however it suggests the representation
+comes in the form of “senior managers”; a concept primarily
+from traditional organization structures.
+Throughout TOGAF, references are made to the existence
+of a bureaucratic or hierarchical centralized structure in
+place; some examples:
+(cid:15) A formal governance framework for all architectural
+material is specified in the preliminary phase, a concept
+related to the rigid forms of traditional organizational
+structure.
+(cid:15) After the completion of “Phase A: Architecture Vision”,
+TOGAF requires approval of the current vision of the
+architecture. This requirement assumes there is someone with a higher level of decision-making authority to
+give approval.
+(cid:15) The set of strategic architectures from the Architecture
+Landscape which is meant for the “executive level” [12,
+Ch. 20].
+EA Description: TOGAF suggests the development of
+architecture principles that “define the underlying general
+rules and guidelines for the use and deployment of all IT
+resources and assets across the enterprise” [12, Ch. 23].
+Having a central set of principles that is to be applied to
+an entire organization supports centralization.
+TOGAF includes the concept of an Architecture Repository for storing all architectural artifacts and deliverables.
+Having a single place to store all information is highly
+supportive of centralization.
+2) Concepts supporting decentralized organization:
+EA Method and EA Engine: TOGAF supports decentralization through the concept of partitions. The Architecture Landscape can be divided into separate parts in order to
+support “federated architectures – independently developed,
+maintained, and managed architectures that are subsequently
+integrated within an integration framework” [12, Ch. 40].
+This supports the idea of different organizational units developing their own individual architectures. The mechanism
+for integrating the individual architectures under the roof of
+the corporate architecture is not explicit.
+TOGAF indirectly supports decentralization through the
+suggestion that it be tailored to fit the needs of the enterprise.
+This allows TOGAF to support any kind of enterprise, but
+the guidelines provided are minimal.
+B. Zachman
+1) Concepts supporting centralized organization:
+EA Description: The Zachman Framework aims to
+model a complete enterprise using a matrix of 36 elements,
+with alignment and composite integration relations defined
+between these elements.
+The perspectives of Zachman Framework line up with
+a bureaucratic organizational structure: the defined views
+(from executive to user) constitute an explicit organizational
+hierarchy. Clear separation between domains make this
+framework suitable for matrix organizations as well.
+The lack of flexibility in definition of domains and views
+and the requirement to fill in the matrix is perhaps the
+Zachman Framework’s main shortcoming with respect to
+decentralization. A primary aspect of decentralized organizations is their high level of flexibility. For a decentralized
+organization where both roles and domains are not uniformly
+defined (implicit) for sub-units, the use of the Zachman
+Framework becomes difficult, if at all possible.
+EA Method and EA Engine: Providing a schema for
+organizing architectural artifacts of an enterprise, the Zachman Framework does not imply any particular method for
+collecting these artifacts (what we call EA Method in Fig.
+1). Neither does it suggest anything the set of structures that
+we call EA Engine.
+Therefore, tailoring and implementation of Zachman
+framework for a concrete organizational structure depends
+on experience of the EA (consultancy) team.
+To summarize, the Zachman Framework provides a detailed taxonomy of EA artifacts that supports a hierarchical
+view on the organization. The application of this framework
+in decentralized organizations remains unclear.
+C. FEA
+1) Concepts supporting centralized organization:
+EA Description: Through the use of a common set
+of reference models, FEA prescribes standards that are to
+be followed throughout the organization. This limits the
+flexibility that the individual organizational units have and
+makes this framework suitable for bureaucratic organizations
+with a high level of standardization of its processes.
+In FEA, however, individual organizational units have
+the freedom to develop their own architecture as long as
+it fits in to the set standards. This supports some level
+of decentralization and suits to organizations with federal
+structure, where individual units have input into decisions.
+EA Method and EA Engine: Segment architecture development is defined by FEA as a collaborative approach
+conducted by a team composed of business experts, enterprise architects and technical experts. FEA defines a
+set of segment architecture stakeholders and their roles (
+[15, Table 2-2]) in segment architecture development. For
+example, the role of senior management is defined to set the
+agency strategic goals. These roles naturally line up with the
+centralized to federal organization of IT (Fig.2).
+The mechanism for integrating the segment architectures
+under the roof of the corporate architecture is assured
+by specific governance and management processes which,
+though implying different stakeholders, remain centralized.
+All steps of segment architecture development are supervised by a manager, pointing on centralized management
+and budgeting.
+Transition strategy is defined for the agency level though
+it is assessed on the global level. Governance-wide collaboration and reuse based on standards is outlined by FEA as
+an important part of EA transition strategy.
+2) Concepts supporting decentralized organization:
+EA Description: The resulting segment architecture is
+positioned by FEA as a shared vision for business and
+IT transformation within a core mission area or common
+service. Each segment can have its own architecture that
+responds to its business needs.
+EA Method and EA Engine: The development of segment architectures is described as a collaborative process
+between EA architects and other stakeholders. The focus is
+placed on the “reconciliation” of the segment architecture
+with an agency architecture and cross-agency initiative,
+emphasizing the importance of cross-agency collaboration,
+common opportunities and initiatives.
+Architectural analysis and architectural definition steps of
+segment architecture development involve business owners
+at the agency level who define business and information
+management requirements for the segment. This ensures
+local interests are looked after within a corporation.
+FEA is targeting groups of independent federal agencies
+with the objective to increase their interoperability and quality of service. Among three EA methodologies considered in
+our study, FEA is the only one recognizing the need of interand intra-agency cooperation and communication. Nevertheless, many of the concepts on which the EA method and EA
+engine of FEA are grounded remain strongly centralized.
+V. TOWARDS DEFINITION OF DECENTRALIZED EA
+The challenge of decentralization is not a new one;
+other efforts have been able to address their view on it
+with success. The specifics of the challenge varies between
+domains, however there may exist general principles that can
+be taken and applied to EA.
+One such effort is peer-to-peer architectures, which “typically lack dedicated, centralized infrastructure, but rather depend on the voluntary participation of peers to contribute resources out of which the infrastructure is constructed” [33].
+We argue that peer-to-peer is a relevant concept to decentralization in EA for two reasons. First, individuals in
+highly decentralized organization are able to contribute to
+the enterprise in a manner that is completely up to them.
+This is similar to peers in a peer-to-peer system, where the
+peers participate in a completely voluntary manner. Second,
+the challenge that peer-to-peer systems overcome is similar
+to the main challenge faced by decentralized organizations:
+“to figure out a mechanism and architecture for organizing
+the peers in such a way so that they can cooperate to
+provide a useful service to the community of users” [33].
+This is similar to the main challenge facing decentralized
+organizations – a lack of cooperation – previously identified.
+With EA being a potential solution to this challenge of
+decentralization in organizations and the parallels between
+the domains of peer-to-peer systems and decentralized organizations, we propose that peer-to-peer principles may be
+applicable to EA for enhancing their support of decentralization. This section will briefly present and discuss two
+relevant principles from peer-to-peer.
+A. Peer production
+Benkler defines peer production as “production systems
+that depend on individual action that is self-selected and
+decentralized, rather than hierarchically assigned” [34]. Peer
+production works on the idea of the individuals willingly
+coordinating with one another by expressing their own views
+while understanding the views of others.
+Peer production takes many different forms. One example
+are user-driven media sites such as Reddit and Slashdot,
+which follow a peer-production model for producing “relevance/accreditation” [34] on user-submitted content. On
+these sites, the users have the ability to vote on the submitted
+content in order to decide on the content’s relevance or
+credibility. Another example of relevance production are
+crowdfunding sites such as Kickstarter where individuals
+decide on the funding of user-submitted projects by giving
+their own money. Peer production is also used to produce
+content, such as in the case of Wikipedia, a completely userdriven encyclopedia.
+If we view enterprises as being composed of peers, the
+idea of peer production becomes useful for EA. For example,
+the EA Engine of TOGAF relies on an Architecture Board
+responsible high-level decisions and governance. Instead
+of a central board responsible for making decisions, a
+model based on the principle of peer production for relevance/accreditation could be used instead. This would better
+support decentralization as decision making would then be
+distributed amongst the peers that make the organization.
+B. Trust management in peer-to-peer
+Due to the fact that peers in peer-to-peer systems are able
+to operate in a completely independent manner, there exists
+the problem of knowing whether or not the contribution
+made by a peer is trustworthy or not. Consequently, some
+researchers have proposed various methods for determining
+trust in a peer-to-peer environment. For example, Aberer and
+Table I
+EXISTING AND PROSPECTIVE SUPPORT OF PROGRESSIVE DECENTRALIZATION BY EA FRAMEWORKS
+EA component Existing support for centralized or-
+ganizations
+Existing support for decen-
+tralized organizations
+Applicable P2P principles for a solution
+EA method: Approval process based on hierar-
+chy; architecture development is coor-
+dinated, supervised and evaluated by
+well-defined roles in a company; EA
+teams coordinate architectural work
+and communicate results; results are
+controlled and evaluated centrally by
+program manager)
+Federated architectures; pos-
+sibility to adapt ADM for a
+specific organization; archi-
+tecture development process
+involves multiple stakehold-
+ers
+peer production principles for creation and eval-
+uation of EA artifacts; P2P trust management
+replacing approval mechanism
+EA description: Strategic level architectures; hierarchy
+of architecture principles; a common
+set of reference models; hierarchi-
+cal organization of EA artifacts with
+explicitly defined roles and domains
+(Zachman)
+Architecture partitions; archi-
+tecture reference models; seg-
+ment architecture; the con-
+cept of “shared vision”
+User-driven content submission and change
+management of the content (i.e. the structure is
+defined by the users)
+EA engine: Architecture board; formal governance
+framework; common principles for an
+entire organization (i.e global commit-
+ment is taken for granted); centrally
+integration of various (seg-
+ment) architectures is assured
+by (centralized) management
+and governance
+Peer production for relevance/accreditation (e.g.
+decision making in budgeting, strategy, opportu-
+nity evaluation, solution evaluation); user-driven
+content submission and change management of
+Table I
+EXISTING AND PROSPECTIVE SUPPORT OF PROGRESSIVE DECENTRALIZATION BY EA FRAMEWORKS
+managed architecture repository
+the content; P2P trust management
+Despotovic [35] have proposed determining whether a peer
+is trustworthy or not based on a peers history of interactions
+with other peers in the system. This assessment is performed
+by the individual peers, and as such, is appropriate for a
+peer-to-peer environment. TOGAF employs the idea of an
+approval process grounded on the presence of centralized
+authority to ensure that the presented architectural material
+is valid for the enterprise. In a decentralized environment,
+this central authority is not likely to exist. Peer-to-peer trust
+management may offer a solution here: Instead of explicit
+approval, the acceptance of a peer’s contribution to EA can
+be based on a peer’s level of trustworthiness.
+VI. CONCLUSION
+In this study we have analyzed the problem of non-fit between emerging decentralized organizational environments
+and established EA methodologies.
+We have argued that decentralization in organizational
+structures and IT governance is common in many modern
+organizations. These organizations are following different
+patterns by fostering entirely new relationships between
+business processes and IT. The classification of organizational forms of IT presented in Section III, was used to
+assess if the dominant EA methodologies can support them.
+Current EA frameworks fail to solve this major concern
+in decentralized environments. We have surveyed Zachman
+Framework, TOGAF and FEA, and concluded that the first is
+unable to support any significant aspect of decentralization.
+While the latter two provide some basic flexibility, in TOGAF, it is mainly facilitated by the ability to have a different
+architecture for organizational units and by providing space
+for new methods for the architecture development; in FEA,
+the conclusions are similar, while the top-level organization
+standards need to be obeyed by all units. Consequently, im-
+I
+DECENTRALIZATION BY EA FRAMEWORKS
+plementations of these methodologies are heavily limited to
+support new decentralized organization patterns fostered by
+virtual organizations, collaborative networks, coopetitions,
+and others. Lastly, we discussed how the application of specific peer-to-peer architecture principles–in particular peer
+production and trust management–could be projected onto
+the problem of employing EA in organizations following a
+decentralized organizational pattern.
+The aim of this research is to contribute to a ‘state of
+the art’ on enterprise modeling methodologies by analyzing
+the decentralization of organizations and supporting business
+patterns and technologies, and thereby the consequences of
+this trend to the requirements for new approaches to the use
+and management of IT resources. Regarding future work,
+our next steps involves contrasting the presented theories and
+argumentations empirically, i.e. by mapping them to EA of
+different organizations. Such an ongoing study concerns an
+organization in the public sector of Sweden, exposing many
+of decentralized behavior as discussed in this paper.

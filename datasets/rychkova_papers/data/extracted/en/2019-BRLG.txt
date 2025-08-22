@@ -1,0 +1,809 @@
+I. INTRODUCTION
+The term process comes from Latin and refers to a performed action or something that has been done to achieve
+a specific result [1]. No surprise that since Adam Smith
+and Frederick Taylor the de facto point of view on business
+processes was activity-centered, where business process are
+represented with a set of interrelated and ordered activities or
+tasks.
+Today, in the era of Data, a new point of view on the
+business processes has emerged. For many processes, success
+is not anymore in their predictability and efficiency, but in their
+capacity to adapt for the situation and to treat each customer’s
+request as unique. Such processes require creativity and collaboration. Their execution depends on the data collected for
+the current process instance or case and on the knowledge of
+an expert handling the case, rather than on the a` priori model.
+These are knowledge-intensive processes (KIP).
+We execute KIP to achieve a specific result, however the
+way we achieve it is not any more a universal sequence
+of actions that can be designed, validated and tested before
+execution. Thus, from the traditional, activity-centered point
+of view, KIP are challenging to automate, to control their
+execution and improve them.
+Various communities have grown with the objective to better
+study KIP and to share practices. ACM (adaptive case management) [2] is the community of practitioners promoting the
+methods and tools for adaptive case management as opposed
+to business process management. The WfMC Global Awards
+(Workflow Management Coalition) for Case Management recognizes and focuses upon successful use cases within Adaptive
+Case Management. CMMN (Case Management Modeling and
+Notation) [3][4] is the OMG case modeling standard. It also
+gathers a community of companies around the representation and support of cases, including IBM, Oracle, TIBCO,
+SAP and others. AdaptiveCM (International Workshop on
+Adaptive Case Management) and DEC2H (DECision and
+Hybrid approaches to processes) are annual workshops where
+researchers and practitioners publish and discuss about KIP
+and other non-workflow approaches for process management.
+Problems around automation, collaboration, flexibility, compliance, and structure have been raised. Other communities work
+on new approaches, like Speech-Act [5] or AI4BPM (Artificial
+Intelligence for Business Process Management).
+Business Process Management (BPM) discipline emerged
+in order to better manage and optimize processes [6]. BPM
+explores an activity-centered view on the processes, which
+is based on the assumption that any business process can
+be modeled with a (possibly large) sequence(s) of activities.
+Process activities according to BPM are interrelated, ordered in
+time, and known a` priori. The process model can be tested and
+validated; the resulting process will then follow (instantiate)
+this model at each execution. This activity-centered view
+provides control over processes and ensures compliance “by
+design”. The importance and complexity of KIP were exposed
+by the progress of BPM within companies: KIP scenarios can
+be hardly predefined and compliance for KIP can be ensured
+only at “run-time”. This makes application of traditional BPM
+practices for KIP difficult if at all possible and limits the
+automation of KIP.
+Strategy models, deciding important tasks to plan and which
+key processes should be optimized, rely on organization’s
+goals [7]. In goals modeling, businesses’ stakeholders are
+interested in the who, what, and why questions [8]. These
+activities share common practices and challenges with KIP:
+goals are the most important concepts to keep in mind;
+information processing, collaboration, and decision making are
+regular steps; assure compliance or constraint while executing
+a process is important.
+In this work, we study and analyze the challenges and
+practices in KIP management reported in the research literature. The objective is to highlight recurrent topics in the KIP
+literature, preferably on recent works, and characteristics that
+are still few or unsupported.
+In spite the reported advancements, KIP management remains challenging and new research questions are yet to be
+solved. We outline some perspectives in KIP research. In
+particular, we discuss an approach to structural and semantic
+analysis of KIP scenarios. This approach aims to provide
+the compliance support for KIP by suggesting process fragments fitting the execution context. The discussed solution
+contributes to the third group of solutions outlined above
+(execution support). It is based on classification techniques
+used in data science (for structural analysis), on ontologies
+(for semantic), and on association rules (for behavior).
+The paper is organized as follows. Section II presents
+the BPM context and defines KIP. Section III presents and
+discusses the three groups of solutions we identify in the
+literature: BPM extensions, theoretical foundations for KIP,
+execution support solutions for KIP. Section IV outlines the
+perspectives in KIP research. Section V presents our conclusions.
+II. BUSINESS PROCESS MANAGEMENT, KNOWLEDGE
+INTENSIVE PROCESSES, AND CASES
+A. Business Process Management
+The literature defines a business process as a set of interrelated activities that are performed in coordination in an
+organizational and technical environment, in order to achieve
+a business goal [9][10].
+Business process management is a discipline that includes
+concepts, methods and techniques to support the design,
+administration, configuration, enactment, and analysis of business process [10]. BPM seeks to manage and optimize business
+processes in order to deliver the best outputs (product, service,
+...) [6].
+BPM recognises the 6 phases of the process lifecycle [6]:
+process identification, process discovery/process modeling,
+process analysis, process redesign/process improvement, process implementation, process monitoring and controlling.
+BPM uses the activity-centered point of view on the processes, where activities define the states of process entities.
+BPMN [11] (Business Process Model and Notation) and
+EPC [12] (Event-driven Process Chain) are examples of modeling languages, which are widely used by academics and
+practitioners. In these modeling languages, the activities and
+events are defined and explicitly ordered forming workflows
+that will be executed.
+Other modeling languages, less restrictive, also exist under
+the declarative paradigm. These languages propose constraints
+as basis for modeling [13].
+To support management and optimization of business processes, multiple IT solutions were developed. Process Aware
+Information Systems (PAIS) are systems that “support operational business processes by combining advances in in-
+formation technology with recent insights from management
+science” [13]. Workflow Management Systems (WfMS), an
+example of a PAIS, are systems for process modeling and/or
+automation. A process represented by a workflow model is the
+core of a WfMS [6]. Business Process Management Systems
+(BPMS) are the successors of WfMS. They support different
+features for process monitoring and use business intelligence
+for process improvement [6].
+B. Knowledge Intensive Processes
+Process automation and optimization with PAIS, exposed a
+specific type of processes, difficult to manage within the established BPM paradigm. From industrial processes to current
+service processes, automation encountered the “knowledgeintensive economy” [14]. Since a few decades, knowledge is
+considered as one of the most important competitive advantage for companies [15][16][17]. The knowledge management
+(KM) discipline studies “how knowledge is created, developed,
+retained and applied in the workplace and how it enables
+organizational learning and innovation” [18].
+In the context of business processes, some specific human
+activities couldn’t easily be modeled with regular process
+modeling languages, and therefore, were left as dedicated
+activities or sub-processes [19].
+Processes where knowledge is a key characteristics are
+called knowledge intensive processes (KIP). Compared to
+manual tasks defined in BPMN 2.0 [11], where a process
+participant accomplishes a manual task, knowledge-intensive
+activities or tasks are characterized by their intensity in
+knowledge and by the requirements to use and transform this
+knowledge within processes. KIP emphasizes the importance
+of the experience or tacit knowledge of process participants
+also called knowledge workers. The role of knowledge workers
+is to accomplish specific activities that are characterized by
+complexity or require creativity.
+KM and KIP open a fairly new research field where many
+definitions and characteristics co-exist. The following characteristics of KIP are defined in [14]:
+KIP embed a lot of knowledge: the tasks are complex;
+• the decision making requires a lot of information to be
+processed simultaneously.
+KIP require a lot of human collaboration to execute the
+• process.
+KIP have a high degree of uncertainty: the activities might
+• not follow the expected order, and activities that were not
+initially planned might appear. This makes the structure
+of KIP very loose.
+KIP require creativity: original ideas and improvisation.
+•
+Traditional business processes may have some of these
+characteristics too. However, in the case of KIP, all of them
+are typically present, making a process very difficult to model
+and manage within the BPM paradigm.
+Concerning uncertainty, a distinction must be done between
+the ordering of activities, and the unpredictable activities.
+Unpredictable activities depends on the context of execution and require improvisation based on tacit knowledge.
+For example, in some unique situations, it is expected that
+knowledge workers improvise or try new actions based on
+their assumptions (tacit knowledge).
+Several terms are used for KIP in the literature: knowledge intensive business process (KIBP) [20][14] or artful
+process [21][22], which highlights the fact that an art is
+required to execute them, and it would be extremely difficult
+to transpose it within an IT system. In this article, we will use
+the term KIP to denote all of those types of processes.
+C. Adaptive Case Management
+As the KIP field grows and exposes limitations of BPM
+support, some attempts to support KIP within IS evolved
+around case paradigm [23]. A community of practitioners,
+known as ACM, worked specifically on this point of view [2]
+and in what extent cases can handle KIP challenges [24][25].
+Following [26], Case Management Process (CMP) are
+“driven by emergent knowledge about the case subject or
+the environment; largely based on human expertise; highly
+unpredictable; difficult to replicate; hard to analyze and improve as no HOWTOs available” [26]. Cases differs slightly
+from KIP because of the point of view adopted. Within the
+common points, we can find the unpredictability and nonrepeatability (KIP allows each process instance to differs,
+exactly like each case is unique) from which we can deduce the
+low or nonexistent structure, and also the knowledge-intensive
+property where knowledge workers (KIP) or case managers
+(ACM) must deal with a lot of information and experience
+to take a decision. A mapping between KIP characteristics
+from [27] and multiple definitions of case management has
+been made in [25]. Major distinctions come from the goaloriented property (each case/instance must have one or more
+goals that evolve with time) and data-centered property (cases
+are updated with information given by each service or human
+consulted). [28] also adds boundaries (context and scope of
+the case) and event-driven (activities are executed following
+events).
+Beyond ACM, multiple case-oriented applications were
+and are investigated. As mentioned in [25], case handling
+initialized multiple approaches with the case idea: “Case Management, Adaptive Case Management, Dynamic Case Management, Production Case Management, and Emerging Case
+Management”. As another example, Case-Based Reasoning
+(CBR) [29] also tries to “... solve(s) problems by relating some
+similar previously solved problems (past experiences) stored
+in a case base ...” [29] by using artificial intelligence. CBR
+is using a problem description to propose solutions.
+III. MOTIVATION, PROBLEMS, AND SOLUTIONS FOR
+KNOWLEDGE INTENSIVE PROCESSES
+We gather papers in three main steps. First, we search for
+the terms “weakly structured” “knowledge intensive process”
+models qualities in google scholar and relationships “weakly
+structured” “knowledge models” taxonomy. The extracted
+articles are kept if they are focusing on KIP or KM in their
+title and abstract. Second, we searched within AdaptiveCM
+proceedings of 2012, 2015, 2016, and 2018 in order to extract
+ACM works proposing practical solutions. The case point of
+view is preferred because some results in the first step are
+directly coming from the ACM community or are adopting its
+point of view, and we chose this point of view for the proposed
+solution. Finally, extra works from previous researches about
+modeling languages for KIP are added. Some KIP papers may
+be missing as the goal of the research evolves from works
+talking about processes’ without structure or weakly one, to
+KIP and their challenges. We organize these papers in three
+groups:
+The first group includes the solutions grounded on BPM
+practices. These works extend BPM in order to support KIP
+and to provide an appropriate level of flexibility and user
+support for KIP management.
+In the second group, we discuss the works that exploit
+new paradigms for KIP management, study characteristics and
+propose theoretical foundations for KIP. In these works, KIP
+management is considered as a discipline that is an alternative
+to (and not an extension of) BPM.
+The third group of works reflects the pragmatic views on
+KIP. Here we discuss the works focusing on the practitioners’
+needs and presenting concrete solutions for KIP execution
+support. This group is specifically oriented on already implemented solutions (as opposed to theories and characteristics
+from the second group) which are not derived from BPM (as
+opposed to the first group).
+A. Extension of BPM for KIP
+KIP or processes that strongly rely on human decisions, collaboration or knowledge always existed in the organizations.
+BPM develop a theory and practices to help organizations in
+optimizing their processes [2][6][14]. The rapid expansion of
+BPM and process automation, proliferation of BPMN as a
+de-facto standard for process modeling in the beginning of
+2000s revealed that KIP can have only limited support from
+BPM. Van Elst et al. [30] study how KIP can be supported
+by process models and workflow. Authors emphasize that KIP
+are exploratory, non-repetitive in detail, and not completely
+known a` priori. Authors conclude that by nature, KIP can’t
+be supported by traditional BPM, yet some BPM practices
+might improve quality and efficiency of knowledge work, and
+even improve the process modeling activity itself. Herrmann
+et al. [31] also recognize flexibility in KIP as a crucial factor
+for their efficiency. As traditional BPMS and WfMS require
+predefined structures to optimize business productivity, they
+are not suitable for KIP management.
+Various KIP-supporting solutions based on BPM extensions
+and adaptations are proposed during the last decade:
+Van der Aalst et al. [13] propose a declarative specification
+language for workflows. They use constraints to define the
+space of process execution scenarios along with activities and
+events. A declarative specification simplifies the model as less
+scenarios need to be modeled. It also leaves more flexibility
+to the process executor as some activities can be chosen at
+run-time.
+BPMN 2.0 [11] replaces its predecessor in 2011 and defines
+several KIP-friendly concepts. One of them is an ad-hoc subprocess, which allows modeler to define a group of activities
+without sequences between them. Other features enable more
+flexible scenario execution: one can specify a sub-process
+where activities will be executed as many time as the process executor requires. New notation also allows for explicit
+dependencies between activities and data.
+Riss et al. [32] study how PAIS are deployed to increase
+productivity at the cost of rigidity. They propose an approach
+that keeps flexibility and control with a bottom-up process
+development and evolution. This approach uses knowledge
+workers’ execution experience in order to make the company’s
+BPM evolving. However, they also state that this approach is
+based on static models, reducing the ability to adapt to quick
+changes happening in the real processes or in the regulations.
+Shkundina et al. [33] study the challenges a user meets
+during the knowledge-intensive process execution. The authors
+conclude that a process workflow provides no context for a
+concrete task that needs to be executed. As a result, a user
+spends a lot of time searching for relevant information or
+guidance in order to make her decisions. The authors propose
+to enhance the workflow tasks with the information about their
+context. Some metrics for measuring similarity between tasks
+based on their execution contexts are proposed.
+Moura et al. [34] state that computing infrastructure is
+not adequate enough to support user activities within KIP.
+Collaboration support represents a particular challenge. They
+propose an approach and a tool that recommend during design
+time and execute at run-time the best dedicated communication
+services for the KIP.
+Manfreda et al. [35] perform a case study to find which
+BPM methods can be reused in the case of KIP. Globally, the
+main BPM phases are compatible with KIP, but, local adaptations are required to support innovation and collaboration
+between the great number of participants. They propose to
+introduce methods dedicated to KIP into BPM phases, and
+workshops for initial and modelling existing processes phases.
+For analysis phase, qualitative methods are preferred. In their
+specific case study, to-be models are not required.
+Sallos et al. [36] linked BPM literature with knowledge
+intensive entrepreneurship (KIE) literature, in order to build a
+conceptual framework for business process improvement (BPI)
+in the context of KIE.
+Gromoff et al. [37] outline multiple problems around KIP
+management in a survey made on 98 russian companies.
+The problems concerned the process transparency, missing
+links between KIP events from one instance to another one,
+few knowledge-intensive control making reporting inefficient,
+absence of knowledge-intensive change management reducing the predictability, and no system approach hindering the
+support from the other parts of the organizations. All of
+these problems motivated the authors to support flexibility
+for process management in knowledge-intensive perspective.
+However, authors do not support the idea that a better process
+formalization will lead to better execution. They propose to
+improve management of KIP with a self-adaptive system. The
+system respects KIP’s requirements for flexibility within the
+ideas of process optimization methods and BPMS.
+Another addition to BPM is Business Rules Management
+(BRM) and business rules management systems (BRMS). Following [38], “rules are explicit constraints on behavior and/or
+provide support to behavior”. Moreover, they are explicitly
+declarative instead of procedural, applied for business (and
+not for IT), and must be kept within their own repositories in
+order to be “applied across processes and procedures” [38].
+One objective of the rules is to separate the acceptable business
+activities from unacceptable ones. BRMS are the repositories
+for storing and integrating business rules within organizations
+in order to facilitate business processes [39].
+Whereas a significant effort is made to extend the existing
+BPM theory and practices in order to support KIP, other works
+consider that KIP-supporting solutions do not necessarily have
+to root in BPM or its adaptation.
+B. Theoretical Foundations for KIP
+In this group, we discuss the works that study KIP characteristics and create the foundations for future artifacts and
+KIP-supporting solutions.
+Is¸ik et al. in [14] study the differences between KIBP
+(KIP) and non-KIBP (regular processes). They list the most
+used or exposed characteristics found in the literature, in
+order to test which criteria are unique to KIP. Three criteria
+discriminates the two kinds of processes: KIP usually are
+complex, non- or few repeatable, and require creativity ;
+regular processes usually are simple, repeatable, and do not
+require a lot of creativity. However, following their study,
+structure and automation were not discriminating. Precisely,
+they stated that some KIP, or some parts of them, might be
+automated.
+Kushnareva et al. [40] study limitations of BPMN in the
+context of a specific case of crisis management process where
+decisions cannot lead to predefined activities because of the
+unpredictability of events. The proposed solution is using
+the statecharts formalism [41] in order to change the point
+of view (from the “HOW it must be done” to “WHAT
+must be done” [40]). This work is formalized [26] by using
+higraphs [42] (mathematical graphs).
+Hull et al. [43] introduce the Guard-Stage-Milestone (GSM)
+meta-model (which is also called GSM-ArtiFact) for lifecycle
+models. This approach is considered as entity-centric and is
+based on four key constructs: information model (data, events,
+and milestones concerning the stage), guard (required events
+to enter into a stage), stage bodies (container of sub-stages also
+composed of guards and milestones), and milestones (business
+goal(s) which ends the current stage instance when activated).
+The execution evolves in response to the events triggered by
+milestones and detected by guards.
+Dos Santos et al. [44] emphasize that KIP contain creative
+tasks, tacit knowledge, unpredictable decisions, and evolves
+dynamically following all of those characteristics. The knowledge manipulation, and how it is still difficult to represent in
+the process models, is a specific aspect that hinders KIP modeling with traditional methods. Specific knowledge-oriented
+techniques are able to describe some aspects of KIP, but not
+all of these aspects simultaneously. In order to handle all
+of the useful concepts, KIPO (Knowledge-Intensive Process
+Ontology) has been built following the 101 Methodology [45].
+KIPO is an high level ontology based on 5 pre-existing
+ontologies: Business Process Ontology (BPO), Collaborative
+Ontology (CO), Decision Ontology (DO), Business Rules
+Ontology (BRO), Knowledge-Intensive Process Core Ontology
+(KIPCO). Each pre-existing ontology describes a specific
+point of view, based on criteria gathered from a literature
+review. KIPO is domain agnostic and its concepts are enriched
+with stereotypes from Unified Foundational Ontology [46], an
+ontology built using philosophical, linguistics, and cognitive
+psychology theories. All of these concepts allow to represent
+nearly any part of a KIP.
+Di Ciccio et al. [27] note that following the research trend
+there is no holistic system supporting knowledge workers
+and process. Therefore, they acknowledge a missing mapping
+between characteristics and system requirements in KIP. The
+mapping would ease the choice of the existing approaches for
+practitioners and researchers following the point of view used
+on KIP. The authors gathered 25 requirements induced by 8
+characteristics of KIP. The characteristics were derived from a
+literature review and 3 application scenarios. Following these
+characteristics, KIP can be described by: knowledge-driven,
+collaboration-oriented, unpredictable, emergent, goal-oriented,
+event-driven, constraint- and rule- driven, non-repeatable. The
+requirements are organized within 7 classes: data, knowledge
+actions, rules and constraints, goals, processes, knowledge
+workers, environment. Following authors, these requirements
+and characteristics allow to rethink the process life cycle.
+Instead of the regular design, execute, monitor, analyze, and
+re-design steps, it becomes easier to think about templates
+and fragments to reuse in a design, execution, and adaptation
+continuum.
+Marin et al. [25] reuse Di Ciccio et al. [27] KIP characteristics and requirements in order to compare them with current
+case management definition and test how well CMMN can
+implement KIP. Case Management definitions mainly support
+7 of 8 characteristics (one of them is slightly supported by
+one definition). The characteristics of KIP were classified between 2 categories : modelling (4) and execution (4). CMMN
+supports all of the 4 modelling characteristics of KIP (2 fully,
+2 partly), making it a good candidate for KIP modeling.
+Zensen et al. [47] compare BPMN and CMMN using an
+example of KIP and provide guidelines for their usage. They
+study four characteristics of each modeling language: process structure, routing and control-flow, communications and
+events, data aspect and data-flow. Whereas BPMN is perfect
+for repetitive work with few data exchange, few exceptions,
+and strict workflow, CMMN is data-centered and allows for
+more flexibility in ordering tasks within a workflow. Their
+findings show that the two languages are complementary: Each
+modeling language can potentially integrate the other for a
+specific activity or task.
+Hislop et al. [48] define a gap between theory and practice
+in KM field. They propose directions for future research in
+KM field, based on multiple papers. According to the authors,
+KM can benefit from IT in order to increase socialising,
+connectivity and collaboration in order to create and co-create
+knowledge. Multiple technologies are presented as examples.
+Nevertheless, the biggest organizations, or the most modern
+ones, are still unable to benefit from those technologies.
+Too much information is available within organizations, but
+multiple factors (technical and organizational) hinder the possibilities of their usage by knowledge workers.
+All of these characteristics specific to KIP introduce new
+solutions, which represent alternatives to BPM and workflowinspired approaches.
+C. Execution Support for KIP
+Di Ciccio et al. [22] study the informal communications
+and processes generated on the fly in certain situations. They
+propose MailofMine, a tool that builds workflow structure
+from a collection of mails, in order to represent the artful
+processes (KIP) implicitly hidden behind the communications.
+Based on process mining or workflow mining techniques, it
+extracts tasks and presents them graphically with a global
+and a local views. On local view, each task is shown with
+its constraints: time (before/after another task), implication
+(required tasks), repeatability (how many times each may
+be done). In global view, all the tasks are presented with
+their interdependencies or constraints (orders between tasks,
+and how many times they may be achieved). The difference
+between local and global view lies on the readability criteria.
+The local view is more adapted to check the constraints of
+one task, and the global view is more adapted to have a main
+view of the whole process. KIP are therefore considered as a
+collection of constraints.
+Moura et al. [34][49] aim to support the execution of knowledge intensive activities requiring collaboration. KIP usually
+require collaboration between multiple actors and services,
+but authors argue that infrastructures are not able to support
+these activities. They propose XcuteKIP, a semi-automatic
+recommendation system of collaborative services for KIP,
+based on the previously shown KIPO [44] (precisely by using
+the Collaborative Ontology). Each collaborative activity of a
+KIP is mapped to services, in order to calculate the most
+appropriate collaborative service to run the process and make
+people communicate adequately.
+In addition to these original solutions, ACM appeared as a
+new domain of research. Some particularities of ACM make
+it interesting:
+ACM manipulates cases, which can be view as an
+• equivalent of a process instance (each instance/case is
+somewhat different to another one, following events).
+These cases can be stored when finished, and reused via
+templates [50] to help knowledge worker make better
+decisions.
+ACM uses goals to help knowledge worker to choose the
+• best action to do. Each case might have multiple goals
+or sub-goals, offering multiple choices for each step.
+ACM is data-centric. Because of unpredictability, instead
+• of using the activity-centered view where the instance is
+moving from one state to another one on a predefined
+workflow model following rules, each case can be seen
+as a file where data are added or modified by knowledge
+workers and/or resources which generate data.
+The ACM community studied multiple characteristics of this
+point of view, and proposed some solutions to handle cases
+within information systems.
+Huber et al. [24] study ACM in order to fill the gap left
+between BPM and KIP. BPM is typically used to increase
+the performance of processes by standardizing repetitive work
+with WfMS. As KIP are unstructured by nature and require
+flexibility, BPM is unable to correctly support them and
+increase their efficiency. However, ACM is proposed to fill
+the gap by giving a general structure from previous cases,
+and leave the exact execution open to change. The main
+problem with this idea, is how to apply ACM in practice
+within organizations. Some questions around scaling in large
+companies and how implied collaboration would work are
+opened.
+Huber et al. [51] study ACM in the context of Open
+Innovation. Companies are creating more complex products
+and services, requiring cooperation between multiple teams.
+Open Innovation (OI), a paradigm supporting collaboration,
+includes creative activities that are unpredictable and highly
+knowledge-intensive. The authors try to use ACM to support
+these unpredictable and knowledge-intensive activities which
+requires a lot of collaboration.
+Cognini et al. [19] study how to partially structure processes
+depending on the possible variances. As knowledge work is
+not predictable, there usually are no predefined structure available to help a knowledge worker to take a decision. Authors
+are using CBR methodology in order to use process fragments
+and propose solutions to knowledge workers. They propose
+a “case-based process fragment modelling language named
+Business Process Feature Model (BPFM)”, which can be
+used as a “case content representation (modelling language)”.
+BPFM is compared to BPMN, CMMN, and DECLARE [52]
+modelling languages to expose the required features supported
+or missing. As CBR is used in the execution context, BPFM is
+used to follow the steps/activities realized and the data used.
+Tran et al. [53] propose an approach to allow flexibility
+within processes while checking its compliance, using logic
+rules in ACM. Therefore, ISIS Papyrus ACM System [54] is
+extended to support compliance checking. During design time,
+the usual methods of model checking can be applied. However,
+at run-time, as goals evolve, state-based rules and data-based
+rules are used to propose a predefined set of possible goals
+and tasks. New tasks can be proposed from generic templates,
+in this case, the knowledge worker takes the responsibility of
+complying with the rules. When tasks are completed, their
+results are gathered to create new compliance rules to achieve
+goals.
+Tenschert et al. [55] present an approach to detect micro
+processes by using speech acts. Instead of monitoring actions,
+the progress of knowledge work is based on interactions.
+Authors expect to “bridge the gap between structured, semistructured and ad-hoc processes” by focusing on interactions.
+The approach allows to create templates that reduces the need
+to seek information within documents, and help knowledge
+worker to automatically fill (partially or fully) data depending
+on the current case.
+Czepa et al. [56] discuss how to ease the update of compliance rules for knowledge workers and business users using
+constraints and ontologies. Machine learning techniques are
+used to learn from past cases, and recommend next actions.
+Routis et al. [57] propose directions to upgrade CMMNenabled platforms. Authors stated limitations within the platforms. Typically, conditions on data or event are not supported,
+closed cases are not well exploited when reused, knowledge
+workers can’t make modification on case model during execution phase. The notion of Case Learning is introduced
+as the procedure to improve case model when the context
+changes by offering suggestions instead of restrictions from the
+CMMN flow. A first goal would be to implement a method that
+could transform a CMMN model into a Case Template, and
+vice versa. The second goal is to validate the Case Learning
+procedure as a useful tool for knowledge workers.
+Bider et al. [58] test if patterns could be used in nonworkflow models, precisely with goals patterns within STateoriented Business Process Modeling (SToBPM). SToBPM
+represents the state of a process instance within a dimensional
+space as a vector. Multiple types of data can be embedded
+as parameters of the process instance. Patterns used in this
+approach have characteristics: first, they are not activities/tasks
+patterns with their order like in workflow models ; second, “the
+patterns are rather semantic than syntactic”. This early test
+shown interesting positive results, even if it was very specific
+to SToBPM and goals patterns.
+Zasada [59] proposes to derive patterns from legal texts,
+using content analysis methods, in order to help elicitation of
+food industry compliance requirements. Patterns are extracted
+from legal texts using content analysis in a semi-automated
+procedure, and are stored as regular expressions. Even if the
+method is still not fully automated, the generated rules are a
+machine readable knowledge that can be reused.
+Sid et al. [60] focus on flexibility in KIP by using artificial intelligence planning techniques. They allow knowledge
+workers choose any granularity level during execution, and
+dynamically change goals. Their solution aims to support the
+knowledge worker in achieving its goals instead of giving him
+too much freedom with few control or excessive restrictions
+on the given recommendations.
+IV. DISCUSSION
+In spite of the recent advancements, KIP management
+remains challenging for practitioners and many research ques-
+tions are yet to be solved by researchers. In this section we
+summaries the challenges and outline some perspectives of the
+future research in KIP.
+The reported literature acknowledges various aspects of
+KIP that make them different from regular business processes
+and, thus, challenging to automate and manage with already
+established methods and tools [32][34].
+Based on our study, the following questions still need to
+be addressed by researchers and practitioners in the future.
+We illustrate these questions with an example of a meeting
+deciding on the orientation to take for a company. A meeting
+can be seen as a KIP as it implies a lot of collaboration
+between multiple participants, creativity is required to bring
+new solutions, decisions are often made, and each meeting is
+unique.
+A. How to manage efficiently and effectively the information
+and knowledge that is manipulated (i.e., created, used, updated) by KIP?
+According to [48], many organizations struggle with the
+amount of information they have to manage. Lack of information and knowledge management practices and tools, and lack
+of integration between knowledge management and process
+management have a negative impact on KIP.
+Whereas ACM proposes some solutions that address
+knowledge-intensity “by design” [51], BPM solutions require
+an extension [35].
+In our example, recording each participants’ speeches and
+documents used would help to see how a decision has been
+made in the case where the team has to change. However, the
+huge amount of texts, documents, and meetings are hindering
+their usage: few people have time to hear or read again everything. One solution is to extend documents and transcriptions
+by adding relevant tags on them (which document has been
+used to take which decision). Another solution would be to
+follow Adaptive Open Innovation [51] phases instead.
+B. How to support collaboration and context-specific decision
+making for KIP?
+Collaboration between knowledge workers participating in
+KIP remain challenging [34]. According to [32], the organizations are often preoccupied with process standardization
+and control. Supporting collaboration and creativity is not a
+priority for them. An excess of control or formalization has a
+negative impact on knowledge workers and KIP [37]. [22]
+offers help for informal communications, but solutions for
+collaboration support in highly-controlled environments are
+yet to be developed.
+In the illustrative example, meetings are usually made
+around a table using pencils and papers, and optionally with
+video-conference for distant people. Forcing people to use
+a precise software instead of their own tools might reduce
+their creativity and freedom, therefore breaking the goal of
+the meeting: presenting and sharing creative ideas in order to
+take decision. As there are no known solutions to combine
+standardization and creativity, only homemade adaptations
+may work.
+C. How to integrate context information in KIP design?
+A perspective to design and build a KIP supporting system
+based on some “a` priori” model (by analogy with BPMS
+and WfMS) is attractive: model simulation, validation and
+verification enable compliance “by design” and could save a
+lot of efforts in implementation. KIP however are contextor case-sensitive: each of their execution scenario is unique.
+Compared to workflow execution, KIP execution can be considered “unpredictable” as its execution scenario is driven (a)
+by a context (a current situation) and (b) by a tacit knowledge
+of an expert (or group of experts) involved.
+A traditional workflow model does not provide enough flexibility to support KIP. Within current solutions, the workflow
+can be partially skipped or organised as flexible ad-hoc subprocess [11], however a new activity cannot be added to the
+workflow at run-time if not planned in advance.
+Declarative modeling languages propose a partial solution:
+if the activity does not violate predefined constraints, it can
+be executed [53].
+In our example, each meeting has precise objectives. Even
+if the main phases are globally known (agenda’s presentation,
+and discussion of each topic), the knowledge brought by each
+person might change the agenda based on the internal and
+external context of the company. Foreseeing these information
+while building the agenda is difficult as the situation evolves
+continuously based on the talks and decisions. Constraints,
+like prioritization and time limits, avoid unending talks on
+unexpected and useless topics. Sharing the agenda and main
+information before the meeting also reduce off topic talks.
+D. How to support compliance in KIP?
+Frequent changes in regulations and rules have to be followed by the processes and have to be reflected by corresponding PAIS [56][61]. BRM brought solutions for compliance by
+managing rules within specific transverse repositories using
+dedicated languages [62]. Rules and declarative approaches
+allow to create a frame where knowledge workers are free
+as long as they stay inside. For KIP, automated compliance
+checking is a challenge: due to context-sensitivity, compliance
+checking in KIP needs to be done at run-time, when some
+activity is created and/or instantiated according to the execution context. Decisions about the next activity to execute are
+often made by a knowledge worker in KIP [40]. Thus, it is
+the responsibility of a knowledge worker to ensure that this
+activity comply with the regulations and norms. A possibility
+to analyze an activity instance, its compliance and its potential
+impact on the process scenario would be of a great value for
+knowledge workers [53][56].
+The lack of formalization in regulations and norms also
+makes compliance checking in KIP challenging. These regulations and norms are often specified as an unstructured text,
+which is hard to access and to use for knowledge workers
+during the process execution [61]. Formalizing regulations and
+integrating them into PAIS can improve the situation and help
+the knowledge worker to ensure the compliance [59].
+In the example, the order of the agenda might be very
+important. It is the responsibility of each participant to present
+relevant ideas. However, it is difficult to prevent the discussions to move on another topic, except if the agenda is
+regularly reminded. In some emergency cases, it might be
+required to change of topics.
+E. How to support flexibility in KIP scenario?
+Flexibility in KIP is studied in multiple
+works [32][31][61][37][53][51][47]. Some works tried
+to offer some solutions for managing flexibility in BPM,
+like [11]. However, the paradox of organizations expecting
+to standardize their processes with BPM, and respecting
+regulations, while giving enough freedom of action to their
+knowledge worker is still unsolved. KIP are overlapping
+multiple fields of research, like BPM and KM, allowing
+multiple points of views. In the illustrative example, flexibility
+is available by the nature of a meeting: people are talking
+following simple rules (people raise their hands before having
+their speaking slot). If everybody is in accordance to, an
+unexpected topic can be discussed even if not on the agenda.
+However, if no agreement is found, it becomes difficult to
+add a topic.
+Two points of view on KIP are prevalent today: an activitycentered view where the process is specified with a sequence
+of activities, and a data-centered view, where the process is
+specified with the data (also referred to as a “case”) it requires
+or manipulates.
+Using the activity-centered view, the process designer can
+explore the process (KIP) execution logs in order to analyze
+the process steps and identify the process structure [22]. The
+activity-centered view highlights structure, and focuses on the
+order of activities. Here, some high level structures [24] or
+patterns [19] can be explored.
+Within the data-centered view, a KIP seeks to achieve one
+or multiple goals through collaboration between participants.
+KIP can be managed using a document (a case folder). Each
+participant uses an information from the case folder and makes
+decisions based on it. Participants can execute activities for the
+case based on the available inputs and required outputs [2].
+This point of view ensures more flexibility in decisions and
+process scenarios compared to workflow (or activity-centered
+view).
+The two points of view are complimentary: the activitycentered view can be used to provide a global “roadmap”
+for a KIP - a sequence of steps to achieve the goal(s) - at
+design time. This roadmap is not hindering local flexibility for
+complex steps. These steps (or subprocesses) can be detailed
+using the data-centered view at run time. Conversely, patterns
+for some complex (or highly prescriptive) activities can be
+defined at design time, using the activity-centered paradigm.
+At run-time, a knowledge worker can choose a pattern or
+a combination of patterns when appropriate, maintaining the
+global flexibility.
+Multiple ideas of patterns applied to KIP or ACM are
+discussed. In [59], compliance patterns are studied within legal
+texts and transformed into regular expressions in order to
+check compliance. [58] introduces goal patterns for SToBPM.
+[19] represented cases with CBR and BPFM in order to help
+knowledge workers by proposing solutions based on process
+fragments.
+Using activity-centered point of view on the illustrative
+example would give a list of topics to talk about. In the strict
+vision, it would be impossible to talk about something else
+than the current topic. As a meeting is by nature flexible,
+applying the data-centered point of view allows to change
+of topic following the information given by each participant.
+Some topics might be linked because of their impact on the
+company, they must therefore be addressed together and in
+a precise order. In this case, the linked topics added in the
+agenda can be seen as fragments of patterns.
+F. How to explore and reuse process fragments in KIP?
+The idea of studying past cases in order to identify and
+reuse fitting fragments in the next instances (like in CBR)
+of KIP is highlighted in [27][19] and seems to have a great
+potential. A possible way to help knowledge workers could be
+to provide patterns of past solutions, and check compliance of
+an instance compared to a reference, by using a combination of
+mathematical technique and ontologies. We expect to compare
+the logs of activities of current instance of KIP, with the previous finished KIP or reference from regulations and standards,
+similarly to what CBR does when searching the most close
+solution to a problem.
+The illustrative example is based on an agenda and topics.
+In order to build the next agenda on specific topics already addressed in the past, it might be useful to reuse past fragments.
+If these topics were not added in the initial agenda, but during
+the unexpected deviation of talks, it might be useful to reuse
+this order in the new agenda as a reminder of the context to
+every participant.
+In [9], several methods are combined to evaluate the similarity of business process models. Similarly, three techniques
+can be combined in order to check the structure, the semantic,
+and the behavior of process fragments. In order to compare
+the structure of patterns, we propose to use Formal Concept
+Analysis (FCA) [63]. FCA is a method for data structuring
+that is based on deriving a concept hierarchy from a collection of objects and their properties [64][65]. This method is
+applied for knowledge discovery in databases (KDD) [66]. The
+semantic comparison is expected to be done using concepts
+from BabelNet [67] or semantic distance from WordNet [68].
+Behavior comparison can be done using association rules, like
+A Priori [69]. Association rules generate rules describing in
+which conditions some objects might appear, based on traces
+of execution.
+We expect to show first how FCA and semantic analysis
+can generate interesting fragments, then how association rules
+can propose an order of assembly. The first contribution will
+extract fragments of interest for the business based on its
+domain ontology. The second contribution will propose to the
+knowledge worker how to combine these fragments.
+V. CONCLUSION
+Knowledge-intensive process management represents a
+challenge for modern organizations: KIP are often complex
+and context-specific; they require flexibility; they involve
+collaboration and rely on creativity and tacit knowledge of
+participants. Product design, change management, problem
+solving, diagnostics, customer relationship management, education, apprenticeship - are some examples of KIP.
+Strategic modeling activities share common practices and
+challenges with KIP: first priority on goals; information
+processing, collaboration, decision making as usual steps;
+importance of compliance or constraint while executing a
+process. Contributions from the KIP domain bring answers
+and practices to strategic modeling.
+In this article we provided an overview of the current work
+on KIP. We examined several groups of contributions:
+the works defining KIP management solutions as an
+• extension of BPM solutions. These works use the activitycentered point of view on KIP and add new concepts and
+semantics in order to increase the run-time flexibility of
+processes and improve the context-awareness.
+the works developing theoretical foundations for KIP
+• and considering KIP management as an alternative to
+BPM. These works explore alternative, non-workflow approaches to process management (data-centered, artifactcentered, etc).
+the works proposing pragmatic solutions for KIP execu• tion support. These works are driven by the practitioners
+needs and focused on implementation and practical value
+on the first place.
+In spite of significant efforts of researchers and practitioners
+in the domain, more research is still required in order to
+enhance PAIS with KIP management capabilities: some major
+challenges concern run-time flexibility, standardization and
+compliance support. Run-time flexibility refers to a capacity
+of a PAIS to add, skip or modify process tasks at run-time.
+Standardization and compliance support refers to a capacity
+of a PAIS to help knowledge workers to respect regulations.
+Context-specific guidance for knowledge workers, automatic
+identification of compliant and non-compliant activities at runtime are possible solutions.
+Patterns in KIP and process execution context are studied
+in the literature. Identifying patterns in previous activities
+and resolved cases/instances can be helpful for developing
+recommendations for knowledge workers. For example, a
+corresponding solution can help a knowledge worker to identify an activity that fits the situation and, at the same time,
+comply with the norms and regulations defined for current
+KIP instance. We are going to develop this idea in the future
+work.

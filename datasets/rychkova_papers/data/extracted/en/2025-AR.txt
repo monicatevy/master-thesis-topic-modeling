@@ -1,0 +1,660 @@
+1 Introduction
+The rise of Blockchain technology (BCT) marked a
+new digital era by eliminating the need for centralized authorities, creating a trustless environment for
+transactions. Instead of placing their faith in an intermediary, users could trust the blockchain. Historically, trust has been crucial for the adoption of new
+technologies. For instance, distrust in security hindered online shopping adoption in the 90s [Hoffman
+et al., 1999]. Despite enhanced transparency, reduced
+costs, and improved traceability, BCT adoption remains limited1. According to PwC2, in 2020, “45 %
+of companies investing in blockchain technology believe that lack of trust among users will be a significant obstacle in blockchain adoption”.
+Technology adoption, defined as the act of beginning to use a new technology, is closely related to,
+but distinct from, technology acceptance. While technology acceptance encompasses a more subjective behavioral intention to support or embrace the technology, it serves as a precursor to actual use (i.e., adopa https://orcid.org/0000-0002-1100-0116
+1Deloitte, 2021 Global Blockchain Survey,
+available at: https://www.deloitte.com/global/en/
+our-thinking/insights/topics/emerging-technologies/
+understanding-blockchain-potential.html
+2PwC, ”Time for Trust: How Blockchain Will
+Transform Business and the Economy,” available
+at: https://www.pwc.com/gx/en/issues/blockchain/
+tion). Research community uses various theoretical
+models to explain the BCT acceptance mechanism
+and to define its factors [AlShamsi et al., 2022, AlAshmori et al., 2022, Norbu et al., 2024]. One of the
+recurring factors of BCT acceptance is trust.
+Three forms of trust are widely recognized in the
+literature: social trust, digital trust, and trust in technology. Social (or interpersonal) trust is defined as
+the subjective probability that an entity - a trustee
+- has the required capacity and willingness to perform an action that is beneficial or at least not detrimental to another entity - a trustor - in a specific
+context [Gambetta et al., 2000]. Compared to social trust, digital trust defines relationships between
+entities in the digital world. It is the measure of
+confidence that a trustor has in the trustee’s ability
+to protect data and privacy of individuals [Pietrzak
+and Takala, 2021]. Trust in technology is another
+form of trust that reflects trustor’s beliefs that a specific technology has the attributes necessary to perform as expected in a situation where negative consequences are possible [Mcknight et al., 2011, Meeßen
+et al., 2019]. These forms of trust are intrinsic to
+organizations and have important implications in organizational decision-making and technology adoption [Mcknight et al., 2011, De Filippi et al., 2020].
+They need to be explicitly addressed both in policy
+making, digital transformation strategies and solution
+design.
+While the research studies confirm that trust is an
+important factor in BCT acceptance, the conceptual-
+ization of trust and its specific role are not discussed
+in detail. In this critical review, we intend to contribute into a deeper understanding of this role. We
+examine the impact of trust on BCT acceptance, focusing on the role it plays in the defined theoretical
+models — whether as a predictor, mediator, or moderator. We explore the conceptualization of trust within
+the defined BCT acceptance models. By analyzing
+how trust is defined and measured, we aim to determine whether the researchers refer to social trust,
+digital trust, or trust in technology in their theoretical
+frameworks.
+The remainder of this article is organized as follows: In section 2, we go through the definition of
+key terms and discuss the related works. Our research
+methodology is described in section 3. In section 4,
+we report the results of the analysis of 21 selected
+studies, answering to our research questions. In section 5, we discuss our results and their potential implications and present our conclusions in section 6.
+2 Background and Related Works
+2.1 Theoretical Models for Technology
+Acceptance
+While adoption is focused on consistent use of technology in daily activities, it is often associated with
+technology acceptance. Technology acceptance refers
+to the willingness and readiness of individuals or organizations to adopt and use new technology. Technology acceptance is closely related to and often predicts technology adoption [Davis, 1989, Venkatesh
+et al., 2003].
+Theoretical models such as the Technology Acceptance Model (TAM) are often applied within the
+context of information systems to understand predictors of human behavior toward potential acceptance or
+rejection of the technology [Marangunic´ and Granic´,
+2015]. The theoretical models specify a set of constructs and the relationships between them that explain a phenomenon of interest. The theoretical BCT
+acceptance models, for example, explain the effect of
+specified independent variables on Behavioral Intention (BI) to use BCT - the dependent variable.
+The constructs defined by the theoretical models
+can play a role of predictors, mediators or moderators (Fig. 1) for the examined phenomena. Predictors are independent variables that directly influence
+the dependent variable. Mediators are variables that
+explain the mechanism through which predictors influence the dependent variable. They act as intermediaries in the causal chain, helping to clarify how or
+why a certain effect occurs. Moderators are variables
+that affect the strength or direction of the relationship
+between predictors and the dependent variable. They
+provide insights into when or under what conditions
+certain effects occur. Some variables function both as
+predictors and mediators, depending on the specific
+relationships being examined.
+Trust in blockchain technology (BCT) can be
+measured either directly, through survey items like
+”Do you find BCT trustworthy?”, or indirectly by capturing data on trust antecedents or related indicators.
+Direct questions pose a challenge as they leave ”trustworthiness” open to individual interpretation. Indicators are the observable variables that reflect the presence or extent of trust. They depend on the trust conceptualization chosen for the study (see Table 1).
+Figure 1: Overview of the variables and their relations in
+theoretical acceptance models
+Understanding acceptance factors and relationships between them is crucial for technology adoption. Knowing the predictors allows for the design of
+targeted interventions. Understanding mediators provides insights into the adoption process (i.e., how or
+why a certain effect occurs). For example, trust might
+mediate the relationship between system quality and
+user acceptance. Understanding moderators allows
+for the development of context-specific strategies. For
+instance, age, gender, or cultural background might
+moderate technology adoption, necessitating tailored
+communication and support strategies for different
+groups.
+Several theoretical acceptance models are widely
+acknowledged in the literature. The Technology Acceptance Model (TAM) developed by Fred Davis in
+1989 is a theoretical framework used to understand
+and predict user acceptance of information technology [Davis, 1989]. This model defines two primary
+predictors of user acceptance: Perceived usefulness
+is the degree to which a person believes that using a
+particular system would enhance his or her job performance. Perceived ease of use is the degree to
+which a person believes that using a particular system would be free of effort. TAM2 [Venkatesh and
+Davis, 2000] extends the original model by introducing the concepts of social influence processes (subjective norm, voluntariness, and image) and cognitive
+instrumental processes (job relevance, output quality,
+result demonstrability, and perceived ease of use) as
+key drivers of user acceptance.
+The Unified Theory of Acceptance and Use
+of Technology (UTAUT) was created in 2003
+[Venkatesh et al., 2003]. Built upon TAM, it identifies
+the four predictors of acceptance: performance expectancy, effort expectancy, social influence and facilitating conditions. Those four factors are influenced
+by four moderators: age, gender, experience, and voluntariness of use, which result in possible gaps between the intentions to use a technology and the actual use of the technology.
+The Task-to-Performance Fit (TTF) model [Goodhue and Thompson, 1995] is a theoretical framework
+that examines how well technology matches the tasks
+it is intended to support, and how this fit impacts performance and technology adoption.
+The Technology-Organization-Environment
+(TOE) [Baker, 2012] framework defines the factors that influence the organization’s decision to
+adopt new technology divided into three contexts:
+technological, organizational, and environmental.
+Acceptance predictors from these theoretical
+models show the importance of combining technical
+factors and social factors, related to user’s personality
+and the context of use.
+2.2 Trust
+Trust is a social construct that emerges from interactions between individuals or groups and can be described by a situation where a subject (trustor) is
+willing to rely on a chosen actions of an object of
+trust (trustee) [Rousseau et al., 1998, Gambetta et al.,
+2000, Mayer et al., 1995]. Mayer, Davis and Schoorman define trust as a function of the trustee’s perceived ability, benevolence, and integrity and of the
+trustor’s propensity to trust [Mayer et al., 1995]. Here
+ability defines a group of skills, competencies, and
+characteristics that enable a trustee to have influence
+within some specific domain; benevolence defines the
+extent to which a trustee is believed to want to do
+good to the trustor, aside from an egocentric profit
+motive; integrity refers to trustee’s moral quality of
+being sincere, honest, and her capacity and willingness to adhere to some rules/principles.
+Advances in technology introduce the new models of social and business interactions, where IT artifacts can take the role of a trustee [So¨llner et al.,
+2012]. Trust in technology reflects trustor’s beliefs
+that a specific technology has the attributes necessary to perform as expected in a given situation where
+negative consequences are possible [Mcknight et al.,
+2011] [Meeßen et al., 2019]. According to [So¨llner
+et al., 2012], the antecedents of social trust (i.e., ability, benevolence and integrity [Mayer et al., 1995])
+are poorly suited for studying trust relationships between users and IT artifacts, since they are defined
+to fit the human character traits and human decision
+making. The authors of [Mcknight et al., 2011] provide a framework for understanding how trust in technology is formed and its effects on technology usage.
+They put forward performance, functionality and reliability as the factors of trust in specific technology.
+Digital trust defines relationships between entities in the digital world. It is the measure of confidence that a trustor has in the trustee’s ability to
+protect data and privacy of individuals [Pietrzak and
+Takala, 2021]. Digital trust and Trust in Technology
+are closely related to specific properties of a technology or solution (e.g., security, reliability, availability etc.), with digital trust focused on data security and privacy. Whereas these properties are considered objective measures of technology trustworthiness in the literature [Murtin et al., 2018, Jacovi
+et al., 2021, Garry and Harwood, 2019, Rychkova and
+Ghriba, 2023,Gharib et al., 2020], they are not always
+good predictors of technology acceptance: users (social actors) do not always have the technical expertise
+to objectively evaluate the complex technical properties and ground their decisions on their subjective beliefs. This work examines the complex nature of trust
+in blockchain and its effect on the BCT adoption. Table 1 provides an overview of the trust conceptualizations and factors.
+2.3 Trust and Blockchain Adoption
+Blockchain technology has emerged as a potential solution to cope with mistrust in traditional (centralized) institutions and online intermediaries in general [De Filippi et al., 2020]. Blockchain can be defined as a distributed database that allows its users to
+transact in a public and pseudonymous setup without the reliance on an intermediary or central authority [Glaser, 2017]. Despite its popularity and efficiency, blockchain technology experiences challenges
+of user adoption. Depending on the industry sector and the use case, privacy, security, scalability, interoperability, performance are considered the main
+challenges [Konstantinidis et al., 2018, Casino et al.,
+2019,Belotti et al., 2019,Marengo and Pagano, 2023].
+Theoretical models of acceptance are used by researchers to reason about the factors of blockchain
+Table 1: The types of Trust
+Ref. theory
+Social trust [Mayer et al., 1995]
+Trust in technology [Mcknight et al., 2011]
+Digital trust [Pietrzak and Takala, 2021]
+adoption in a structured way. The study by Shin
+[Shin, 2019] shows the impact of Trust, Security and
+Privacy factors on the blockchain-based-solution acceptance (behavioral intention to use). Following
+this work, the studies in [Jena, 2022, Kumar et al.,
+2022, Alazab et al., 2021] extend the TAM/UTAUT
+models with Trust, Perceived Security and Perceived
+Privacy. The authors of [AlShamsi et al., 2022] are
+examining the technology acceptance models, theories and influential factors in BC adoption. Among
+the 11 factors identified, trust is the most common factor affecting the BCT adoption. The authors of [Taufiq et al., 2018] study the influence factors of BCT
+adoption taking the example of the payments system
+in Indonesia banking industry. They highlight the importance of non-technical factors, such as attitude,
+subjective norm, cognitive style of the user. In [AlAshmori et al., 2022], the authors identify the 18 factors of BCT adoption. These factors are consistent
+with TAM / UTAUT theoretical frameworks and include trust. The systematic literature review [Taherdoost, 2022] confirms that trust is an important factor
+of BCT adoption, in particular for supply chain industry. The authors of [Marengo and Pagano, 2023]
+conduct a systematic literature review to examine the
+factors of adoption of BCT across different countries
+and industries and identify trust as a recurring factor
+for supply chain, real estate, and banking. The study
+presented in [Norbu et al., 2024] focuses on trust as
+a primary driver for BCT adoption in digital payment
+systems.
+While existing literature confirms that trust is an
+important factor in BCT acceptance, the nature of
+trust and its specific role are not discussed in detail.
+In this work, we investigate the role of trust within
+the proposed theoretical models (i.e., as a predictor,
+mediator, or moderator). We also analyze the conceptualization of trust used in these models. By analyzing how trust is defined and measured, we aim to determine whether the researchers refer to social trust,
+digital trust, or trust in technology in their theoretical
+frameworks.
+Understanding the nature of trust and its impact on
+and their factors
+Factors
+Ability, benevolence, integrity,
+propensity to trust, perceived risk
+Performance, functionality,
+reliability, propensity to trust,
+institution-based trust
+Data privacy, data security, confidentiality
+BCT acceptance is crucial for addressing the adoption
+process. We use trust conceptualization from social
+sciences [Gambetta et al., 2000, Mayer et al., 1995]
+and from technology [Mcknight et al., 2011, Pietrzak
+and Takala, 2021], addressing this concept from the
+broader perspective.
+3 Methodology
+In this study, we present a critical review of theoretical models predicting BCT acceptance. Unlike a systematic literature review, our approach offers a more
+reflective analysis, emphasizing judgment and argument over exhaustiveness. We particularly focus on
+the interpretation and critical evaluation of theoretical acceptance models supported by empirical data,
+aiming to uncover trends, patterns, and conflicts in
+the literature. Although formal guidelines for critical
+reviews are not universally established, we adapted
+the systematic literature review principles by Kitchenham and Charter [Kitchenham et al., 1995], following
+these steps: defining research questions, identifying
+relevant studies, extracting data, conducting critical
+analysis and evaluation, and reporting the results.
+3.1 Research questions
+We formulate the following research questions for our
+review:
+RQ1 : What are the most commonly used theoretical
+models to explain blockchain acceptance?
+RQ2: How is the Trust construct addressed in the
+studies?
+RQ2.1 How is Trust defined in these studies?
+RQ2.2 What trust indicators are used?
+RQ3: What types of Trust are associated with BCT
+acceptance?
+RQ4: How does Trust influence BCT acceptance?
+3.2 Study selection
+For our critical review, we selected the studies that
+explicitly integrate trust in their proposed theoretical models of BCT acceptance. The flow diagram
+adopted from PRISMA (Preferred Reporting Items
+for Systematic Reviews and Meta-Analyses) presents
+an overview of the source selection process in Fig. 2.
+A literature search was conducted using the Scopus
+database (scopus.com). We used the following keywords for our search: blockchain, trust, acceptance
+OR adoption, model OR framework. To improve relevance, these terms have to appear in the title, abstract
+or key words of the retrieved studies.
+According to dimensions.ai, the interest in BCT
+adoption reflected by the number of publications on
+this topic increases exponentially since 2019. Therefore, for our study, we chose articles published from
+January 2019 on. We limit the publication year by
+2023 to obtain a consistent set of publications that will
+not be affected by more recent apparitions. The resulting query is illustrated in Fig. 2. 218 sources have
+been automatically identified in the Scopus database.
+After removing non-primary sources we kept 175
+records for screening.
+We proceeded by screening the metadata of identified records and eliminated irrelevant studies based
+on the following exclusion criteria:
+EC1: The study does not formalize a theoretical
+acceptance model.
+EC2: The study does not provide an empirical validation of the proposed model.
+EC3: The study does not consider trust among the
+factors of acceptance or adoption.
+We kept 57 records for the full text assessment.
+We proceeded with the full text reading and kept 18
+relevant studies for the analysis. We conducted backward and forward citation analysis of the eligible publications from the previous step (a so-called “snowballing” technique) and identified 14 records which
+were re-injected into the process. Three studies have
+been eventually added to our data set. The final set of
+21 studies was used for the analysis.
+3.3 Data Extraction
+We examined each selected study, extracting data on:
+• The theoretical BCT acceptance model proposed
+by the study: the reference acceptance model
+(e.g., TAM); the factors affecting BCT acceptance
+according to the model;
+• Conceptualization and measurement of trust in the
+study: the reference definition from the literature;
+the indicators (i.e., the questions on trust) defined
+by the study;
+• The role attributed to trust within the proposed acceptance model: the hypothesis related to trust;
+the results of empirical validation of these hypothesis.
+The critical analysis of the extracted data is presented
+in the next section.
+4 Results
+Through the analysis of the extracted data, we addressed our research questions and obtained the following results:
+4.1 What are the most commonly used
+theoretical models to explain
+blockchain acceptance?
+The examined studies adapted and extended various
+theoretical acceptance models to reason about BCT.
+TAM [Davis, 1989] is the most commonly used theoretical model that was extended in 14 studies out
+of 21. Six studies use UTAUT [Venkatesh et al.,
+2003] as their ground model. Other models used include Technology-Organization-Environment (TOE)
+and Theory of Planned Behavior (TPB). While most
+of the studies use a single theoretical model, studies in [Alazab et al., 2021, Kamble et al., 2019, Ullah et al., 2021] are grounded on several theoretical
+models. Table 2 provides the summary.
+4.2 How is the Trust construct
+addressed in the studies?
+4.2.1 How is Trust defined in the studies?
+To address this research question, we analyze the explicit definitions of trust presented in the text as well
+as the indicators used in the studies to measure Trust
+as an independent variable.
+10 studies out of 21 provide the explicit definitions in the text. Seven studies define trust as a social construct grounded on willingness of an individual to take risk or to be vulnerable to the actions of
+another party [Queiroz et al., 2021, Jena, 2022, Khazaei, 2020, Hannoun et al., 2021], or on confidence in
+the ability and integrity of the other party [Yu et al.,
+2021, Gil-Cordero et al., 2020, Albayati et al., 2020],
+which is aligned with the definition from [Gambetta
+Figure 2: The PRISMA flowchart summarizing
+Table 2: Theoretical models
+Model Studies Ref
+TAM 14 [Kumar et al., 2022, Saputra
+Li, 2021, Rijanto, 2021, Palos-Sanchez
+2021, Gil-Cordero et al., 2020,
+et al., 2019, Ullah et al., 2021,
+UTAUT 6 [Chang et al., 2022,Jena, 2022,Queiroz
+2021, Hannoun et al., 2021]
+Other 4 [Kamble et al., 2019, Ullah
+2021]
+et al., 2000]. Study in [Chang et al., 2022] defines trust in association with transparency as ‘the degree to which one believes that data provided with
+blockchain technology and services is error-free, safe,
+and transacted transparently.’ Calculation-based trust
+grounded in rational evaluation and the expectation
+of benefits or costs is used in two studies [Chittipaka
+et al., 2022, Liu and Ye, 2021]. Other studies do not
+provide an explicit definition of trust.
+4.2.2 What trust indicators are used in the
+studies?
+Trust construct is a latent variable that cannot be directly observed. It is measured in the studies via
+trust antecedents and trust-related indicators used in
+a survey or questionnaire. These indicators and antecedents are defined by the conceptualization of trust
+(e.g., social trust, trust in technology or digital trust)
+as presented in the Table 1.
+The nine studies use trustworthiness as a direct indicator of trust: [Queiroz et al., 2021, Kumar et al.,
+2022, Yu et al., 2021, Gil-Cordero et al., 2020, Saputra and Darma, 2022, Albayati et al., 2020, Dirsehan, 2020, Liu and Ye, 2021, Chang et al., 2022].
+the literature selection process
+adapted for BCT acceptance
+and Darma, 2022, Sciarelli et al., 2021, Gao and
+et al., 2021, Yu et al., 2021, Liu and Ye,
+Albayati et al., 2020, Dirsehan, 2020, Kamble
+Shrestha et al., 2021]
+et al., 2021,Khazaei, 2020,Alazab et al.,
+et al., 2021, Chittipaka et al., 2022, Alazab et al.,
+In these surveys, the perception of blockchain trustworthiness is assessed through affirmative statements
+such as ”I believe that blockchain is trustworthy”
+[Queiroz et al., 2021] and ”BCT is trustworthy” [Yu
+et al., 2021, Chang et al., 2022]. Respondents express
+their agreement with these statements using the Likert
+scale, relying on their own interpretation of ”trustworthiness.”
+Studies in [Kumar et al., 2022, Saputra and
+Darma, 2022, Albayati et al., 2020] focus on promise
+and commitment of BCT. This indicator evaluates
+whether users believe that the technology prioritizes their best interests. Studies in [Queiroz et al.,
+2021, Gil-Cordero et al., 2020] include questions on
+trust in the legal structures surrounding blockchain
+and cryptocurrencies referred to as institutional trust
+in [Mcknight et al., 2011]. ”I am confident that the
+legal and technological structures protect me from
+problems with cryptocurrencies” [Gil-Cordero et al.,
+2020] underscore the importance of the institutional
+trust. Studies in [Liu and Ye, 2021, Kamble et al.,
+2019] emphasize trust built upon experiences, their
+questions suggest that familiarity and previous interactions with the system or service play a crucial
+role in forming trust. Trust is measured via safety
+and security in [Palos-Sanchez et al., 2021, Yu et al.,
+2021,Chang et al., 2022,Chittipaka et al., 2022,Dirsehan, 2020]. Other indicators mentioned include: reliability, transparency, integrity, honesty, fairness, confidence, capability, skills.
+We analyze the indicators implying user’s trust
+in other model constructs. For example, in [PalosSanchez et al., 2021], the respondents are requested
+to express their belief in BCT security as its ’ability
+to act in the user’s interest’. The survey items related
+to this indicator include: IT Devices using blockchain
+technology would be safe from external threats, such
+as hacking; IT Devices using blockchain technology
+would be safe from the risk of data forgery and alteration; IT Devices using blockchain technology would
+secure personal information. This is consistent with
+the definition of trust in technology [Mcknight et al.,
+2011]. In [Gil-Cordero et al., 2020], the following
+trust indicator is used: ’I have confidence in the system’. Similarly, the indicators of privacy and information quality are formulated using an implicit notion of trust in [Gil-Cordero et al., 2020, Ullah et al.,
+2021, Liu and Ye, 2021, Palos-Sanchez et al., 2021].
+4.3 What types of Trust are associated
+with BCT acceptance?
+By analyzing the definitions of trust presented in the
+text, along with the trust indicators and indicators implying user trust in other model constructs, we classified the Trust constructs used in the studies into Social
+trust, Trust in technology, and Digital trust. Table 3
+provides a summary of this classification.
+Social trust conceptualization is used in the nine
+studies. These studies either use explicit trust definition consistent with [Gambetta et al., 2000, Mayer
+et al., 1995] or they define their trust indicators using
+the factors of social trust from Table 1. For example,
+in [Kumar et al., 2022], respondents are asked about
+their perception of BCT’s commitment to their best
+interests: ’It gives an impression of promise and commitment; It keeps my interest in consideration’ - property consistent with the predictors of social trust. The
+factors of Trust in technology are found in the nine
+studies, and the factors of digital trust - in the seven
+studies. For example, the indicator ’My firm’s data in
+the cloud might be utilized by an outsider without our
+consent’ is used in [Chittipaka et al., 2022], the indicator ’Data in blockchain technology would be saved
+securely.’ is used in [Chang et al., 2022] to measure
+trust. These indicators associate trust with reliability
+and security of data on the blockchain.
+Several studies define trust indicators based on
+multiple conceptualizations. For example, in [Kumar
+et al., 2022], the definition of trust provided in the text
+is implicit, co-notated with privacy and security (consistent with digital trust), whereas the trust indicators
+are defined using the notion of commitment and ’consideration of the user’s best interests’ (aka benevolence), consistent with social trust.
+Our analysis shows that social trust plays important role in defining trust in BCT. In several studies, social trust is identified with a relationship built
+between the users (trustors) and the BCT providers
+(trustees) - social entities. For example, in [Albayati
+et al., 2020], the trust indicator ’I believe the service
+providers (both cryptocurrency and blockchain) keep
+my best interests in mind.’ is used. In the other studies, the technology itself is identified with the qualities intrinsic for a social entity: in [Kumar et al.,
+2022, Saputra and Darma, 2022], trust indicators include the affirmations ’It [technology] keeps my interest in consideration’ and ’The services provided by
+My T Wallet keep my best interests in mind.’
+Trust in technology is a fundamental conceptualization of trust in BCT as well: it provides the user
+with objective metrics to assess trustworthiness, such
+as reliability, performance, functionality.
+Digital trust conceptualization focuses on more
+specific technical properties related to data security
+and privacy in the digital world. In the examined
+acceptance models, these properties are often integrated into the Perceived Usefulness construct in
+TAM, or Perceived Security and Perceived Privacy
+constructs, specifically defined in the models [Jena,
+2022, Shrestha et al., 2021, Kumar et al., 2022].
+4.4 How does Trust influence BCT
+acceptance?
+We examined the hypotheses made in the studies
+about the role of trust on BCT acceptance and validation of these hypotheses.
+4.4.1 Trust as a Predictor of BCT acceptance:
+Predictors are independent variables that directly influence the dependent variable.
+Trust → VAR X
+Trust has a direct effect on behavioral intention (BI)
+to use BCT according to 10 studies. In [Chittipaka
+et al., 2022], trust is positioned as a predictor of Adoption, which stands for actual use and follows the BI.
+Trust is defined as a predictor of Attitude towards use
+in [Kumar et al., 2022, Albayati et al., 2020]. While
+attitude towards use reflects how positively or negatively an individual feels about using a technology,
+Table 3: Trust affecting
+Study reference
+Social trust [Gil-Cordero et al., 2020] [Jena,
+2021] [Saputra and Darma, 2022]
+noun et al., 2021] [Albayati et
+Trust in technology [Gil-Cordero et al., 2020] [Jena,
+et al., 2021] [Yu et al., 2021]
+2020] [Queiroz et al., 2021]
+Digital trust [Kumar et al., 2022] [Chittipaka
+2022] [Liu and Ye, 2021] [Palos-Sanchez
+N/A [Sciarelli et al., 2021] [Rijanto,
+behavioral intention reflects the individual’s readiness
+and plan to use that technology. They are often used
+interchangeably. In some theories, however, the attitude precedes BI. Therefore, we conclude that 13
+studies recognize trust as having direct effect on acceptance.
+Seven studies show significant effect of trust on
+other constructs that affect acceptance: Perceived
+usefulness, Perceived ease of use, Performance expectancy, Perceived privacy. Table 4 provides a summary of our results.
+4.4.2 Trust as a Mediator:
+Mediators are variables that explain the mechanism
+through which predictors influence the dependent
+variable. They act as intermediaries in the causal
+chain, helping to clarify how or why a certain effect
+occurs.
+VAR X → Trust → VAR Y
+According to [Jena, 2022], Trust acts as a mediator
+between Facilitating conditions and Performance expectancy and BI (behavioral intention to use BCT).
+This means that facilitating conditions and performance expectancy enhance users’ trust, which in turn
+affects their intention to use BCT. According to [GilCordero et al., 2020], trust mediates the effect of eWorm (the electronic word of mouth), web quality,
+and Perceived risk on BI. Here e-Wom refers to ’any
+positive or negative statement made by potential, actual or former customers about a product or company, which is made available to a multitude of people
+and institutions through the Internet’. Similarly, Perceived privacy [Shrestha et al., 2021] has a positive
+effect on Trust, which in turn affects the intention to
+use BCT. Trust mediates the effect of Perceived Security [Kumar et al., 2022, Shrestha et al., 2021] and
+Perceived privacy [Kumar et al., 2022] on Attitude towards use BCT. Table 5 presents the summary of the
+BCT acceptance
+2022] [Alazab et al., 2021] [Queiroz et al.,
+[Kumar et al., 2022] [Dirsehan, 2020] [Hanal., 2020]
+2022] [Alazab et al., 2021] [Palos-Sanchez
+[Liu and Ye, 2021] [Ullah et al., 2021] [Dirsehan,
+et al., 2022] [Gao and Li, 2021] [Chang et al.,
+et al., 2021] [Kamble et al., 2019]
+2021] [Shrestha et al., 2021]
+results.
+4.4.3 Trust as a Moderator:
+Moderators are variables that affect the strength or
+direction of the relationship between predictors and
+dependent variable. They provide insights into when
+or under what conditions certain effects occur. Some
+variables function both as predictors and mediators,
+depending on specific relationships being examined.
+Trust → (VAR X ×VAR Y )
+Trust is defined as enhancing the effects of other
+variables on BI: Performance expectancy, Effort expectancy, Social influence, Facilitating conditions
+[Alazab et al., 2021], Subjective knowledge [Dirsehan, 2020]. According to [Gil-Cordero et al., 2020],
+Trust moderates the effect of e-Worm, web quality
+and Perceived risk on the user behavior. According
+to [Shrestha et al., 2021], Trust increases the positive impact of Privacy on the Attitude towards use
+of BCT. According to [Palos-Sanchez et al., 2021],
+Trust moderates the effect of the perceived risk on
+perceived easiness of use. This means that the level
+of trust a user has can influence how perceived risk
+impacts their perception of the technology’s ease of
+use. Specifically, higher trust can mitigate the negative effects of perceived risk, making the technology
+seem easier to use despite potential risks. Conversely,
+lower trust can amplify the negative impact of perceived risk on perceived ease of use.
+5 Discussion
+Analyzing the theoretical models of BCT acceptance,
+we found that social trust is widely used when reasoning about, defining, or measuring trust. Social trust
+factors appear as indicators in 9 out of 21 studies.
+Table 4: Trust as a direct Predictor
+VAR X (dependent) Study
+Behavioral intention (BI) [Jena, 2022] [Gao and Li,
+and Ye, 2021] [Queiroz et
+and Darma, 2022] [Gil-Cordero
+Adoption [Chittipaka et al., 2022]
+Attitude towards use [Kumar et al., 2022] [Albayati
+Perceived usefulness [Liu and Ye, 2021] [Dirsehan,
+Perceived ease of use [Albayati et al., 2020] [Saputra
+Performance expectancy [Chang et al., 2022]
+Perceived privacy [Palos-Sanchez et al., 2021]
+Table 5: Trust as a Mediator and Moderator
+Role of Trust VAR X (independent)
+Facilitating conditions, Performance
+Mediator expectancy, eWorm, Web quality,
+Perceived risk, Privacy
+Perceived Security, Perceived Privacy
+Performance expectancy, Effort expectency, Social influence, FacilitatModerator ing conditions, Subjective Knowledge
+eWorm, Web quality, Perceived risk
+Perceived privacy
+Perceived risk
+Abilities of BCT to eliminate the need for a central
+authority, to ensure transparency and immutability of
+transactions also frequently used as trust indicators.
+While many studies focus on technical properties of
+blockchain and co-notate the acceptance of BCT with
+perceived security and privacy [Jena, 2022, Kumar
+et al., 2022, Alazab et al., 2021], they also highlight the important role of benevolence of the service provider or the technology itself [Kumar et al.,
+2022, Albayati et al., 2020, Dirsehan, 2020]. Integrity
+and honesty of BCT is also used as a trust indicator [Kumar et al., 2022, Liu and Ye, 2021, Albayati
+et al., 2020].
+Trust in technology, which focuses on technological properties and excludes the factor of benevolence
+(as technology is considered not to be able to act
+or not in users’ best interests), is used in nine stud-
+of the BCT Acceptance: Summary
+2021] [Yu et al., 2021] [Hannoun et al., 2021] [Liu
+al., 2021] [Khazaei, 2020] [Dirsehan, 2020] [Saputra
+et al., 2020]
+et al., 2020]
+2020]
+and Darma, 2022] [Palos-Sanchez et al., 2021]
+of the BCT Acceptance: Summary
+VAR Y (depen- Study
+dent)
+BI [Jena, 2022] [Gil-Cordero
+et al., 2020] [Shrestha et al.,
+2021]
+Attitude [Kumar et al., 2022]
+[Shrestha et al., 2021]
+BI [Alazab et al., 2021] [Dirsehan, 2020]
+User Behavior [Gil-Cordero et al., 2020]
+Attitude [Shrestha et al., 2021]
+Perceived ease [Palos-Sanchez et al., 2021]
+of use
+ies. This form of trust serves as a foundational element. The results suggest that before considering
+blockchain adoption, users must first establish trust in
+the technology itself. However, once this basic trust
+is formed, the focus appears to shift toward the digital
+functionalities and attributes of blockchain, referred
+to as Digital Trust.
+Digital trust, similar to trust in technology but centered on data privacy, security and confidentiality, is
+used in seven studies. Some studies incorporate multiple trust conceptualizations.
+These findings suggest that trust is a multifaceted
+concept in BCT acceptance models, with different dimensions of trust (social, technological, and digital)
+playing distinct roles. Understanding these dimensions can enhance the precision of acceptance models
+and improve the interventions to boost BCT adoption.
+Another outcome of our study is the importance
+of considering BCT independently from BCT solution providers. While BCT is often referred to as a
+”trust machine”, which excludes human factors and
+social trust, solution providers and software engineers
+remain crucial social actors. Therefore, trust building
+between solution providers and users must be examined and taken into account alongside trust in BCT as
+a technological entity.
+According to 13 studies, trust has a direct impact
+on the behavioral intention, attitude towards use or
+adoption of BCT. Several studies highlight the effect
+of trust on perceived usefulness and perceived ease
+of use. Mediating effect of trust explaining the effect
+of other variables on BCT acceptance is found in the
+four studies, while moderating effect is confirmed in
+the five studies.
+There is no general agreement among the studies about mediating or moderating role of trust. For
+example, according to [Jena, 2022], trust mediates
+(or explains) the effect of Performance expectancy on
+behavioral intention to use BCT. In other terms, expected performance leads to trust, which, in its turn,
+leads to acceptance. However, according to [Alazab
+et al., 2021], trust only moderates this effect, meaning
+that the impact of performance expectancy on acceptance does not depend on trust. Along these lines,
+in [Kumar et al., 2022], trust mediates the effect of
+perceived privacy on the attitude towards use of BCT,
+while in [Shrestha et al., 2021] it is considered as a
+moderator for this effect.
+These findings highlight the critical role of trust in
+the acceptance of BCT, indicating that it, both directly
+and indirectly, shapes users’ attitudes and intentions.
+We suggest the following research questions that
+can be added to the research agendas:
+- What are the most effective communication strategies for BCT solution providers to build trust with
+their users?
+- How can organizations measure the level of trust in
+BCT among their users accurately?
+- What role does trust in technology provider play in
+enhancing trust in BCT?
+- What are the long-term impacts of early trustbuilding efforts on the sustained adoption of BCT?
+- How does trust in BCT compare to trust in traditional centralized systems?
+- What lessons can be learned from trust-building in
+other emerging technologies that can be applied to
+BCT?
+- How do users’ previous experiences with technology
+influence their trust in BCT?
+Related to Social trust:
+- How do various cultural contexts affect social trust
+in BCT solutions?
+- What actions taken by BCT solution providers are
+most effective in fostering social trust among users?
+- How does social trust develop over time with continued use of BCT?
+Related to Trust in technology / Digital trust:
+- What are the most critical technological features that
+affect user trust in BCT?
+- What are the best practices for ensuring data privacy
+and confidentiality in BCT to build digital trust?
+While our findings identify gaps and provide directions for future research on technology acceptance,
+the question ”How can we improve trust in emerging
+technologies, including BCT?” remains crucial. To
+incorporate the concept of trust into technology design, a specific type of requirement—trustworthiness
+requirements—has been defined in the literature
+[Amaral et al., 2020, Kambilo et al., 2023]. Other
+studies propose adapting current design practices
+by explicitly documenting and tracing user trust
+concerns and trustworthiness requirements, and by
+clearly justifying the design assumptions [Haley et al.,
+2004, Wang et al., 2016] behind technical decisions
+[Mohammadi, 2019, Rambert and Rychkova, 2024].
+We believe that understanding the role of trust in
+technology acceptance is crucial for developing new
+methods and approaches that support technology
+trustworthiness by design.
+6 Conclusion
+In this paper, we conducted a critical review to analyze the role of trust in the acceptance of blockchain
+technology (BCT). The concept of technology adoption is often used interchangeably with acceptance,
+but it is important to distinguish between the two.
+Adoption refers to the actual use and integration of
+technology into regular practice, while acceptance
+refers to the user’s willingness and intention to use
+the technology. In the theoretical models, acceptance
+is often identified with behavioral intention to use and
+is closely related to attitudes towards use. This distinction is crucial because a user may accept a technology (intend to use it) without fully adopting it
+(consistently using it in practice). Conversely, a decision to adopt a technology without full acceptance
+by the prospective users can lead to important issues
+such as low utilization rates, resistance, and potential
+abandonment of the technology. Understanding both
+concepts helps in designing better strategies for promoting both initial acceptance and sustained use of
+blockchain technology.
+We examined 21 scientific publications that de-
+fine theoretical BCT acceptance models, most of
+which extend the well-known Technology Acceptance Model (TAM) [Davis, 1989]. Our analysis focused on how trust is conceptualized, measured and
+integrated into the proposed models, identifying the
+types of trust and the roles trust plays in BCT acceptance.
+Our findings provide a nuanced understanding of
+trust’s multifaceted role, guiding future research to incorporate various dimensions of trust and refine survey instruments for more accurate measurement. This
+advances both theoretical development and practical
+application in the field of technology acceptance.
