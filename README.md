@@ -1,4 +1,4 @@
-# Master Thesis — Topic Modeling (CREA vs LLM)
+# Master Thesis — Topic Modeling (CREA vs LLMs)
 This repo contains the code and experiments for my master’s thesis:
 **Comparing CREA and Prompt-based LLMs for Topic Modeling**.
 
