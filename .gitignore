@@ -8,3 +8,7 @@
 # generated matrices & prompt experiments
 datasets/rychkova_papers/matrix/
 datasets/rychkova_papers/prompts/
+
+# caches
+__pycache__/
+.ipynb_checkpoints/
