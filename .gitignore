@@ -4,3 +4,7 @@
 .AppleDouble
 .Spotlight-V100
 .Trashes
+.idea/
+# generated matrices & prompt experiments
+datasets/rychkova_papers/matrix/
+datasets/rychkova_papers/prompts/
