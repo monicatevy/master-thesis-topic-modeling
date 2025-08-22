@@ -1,0 +1,166 @@
+{
+  "done_ids": [
+    "2010-BATI",
+    "2010-BPM",
+    "2010-GRN",
+    "2011-RDN",
+    "2011-RN",
+    "2012-R",
+    "2013-BBRWa",
+    "2013-BBRWb",
+    "2013-KPR",
+    "2013-R",
+    "2013-RKPLG",
+    "2013-RZS",
+    "2013-SRZN",
+    "2013-TMRW",
+    "2014-RKPLG",
+    "2014-ZRS",
+    "2014-ZRSa",
+    "2015-KRDLG",
+    "2015-KRLG",
+    "2015-KRLGa",
+    "2016-BRZ",
+    "2016-Dall",
+    "2016-KRLG",
+    "2017-RLGS",
+    "2017-RZ",
+    "2017-ZR",
+    "2018-RR",
+    "2019-BRLG",
+    "2019-RRW",
+    "2020-KRNRW",
+    "2023-KRHS",
+    "2023-RG",
+    "2023-RZS",
+    "2024-BRLG",
+    "2024-HRH",
+    "2024-KHRS",
+    "2024-RKHPNS",
+    "2024-RR",
+    "2025-AR",
+    "2025-LR"
+  ],
+  "info": {
+    "2016-BRZ": {
+      "max_pack": 8000
+    },
+    "2014-RKPLG": {
+      "max_pack": 8000
+    },
+    "2016-KRLG": {
+      "max_pack": 8000
+    },
+    "2025-LR": {
+      "max_pack": 7500
+    },
+    "2010-BATI": {
+      "max_pack": 8000
+    },
+    "2015-KRLGa": {
+      "max_pack": 8000
+    },
+    "2013-RZS": {
+      "max_pack": 8000
+    },
+    "2020-KRNRW": {
+      "max_pack": 8000
+    },
+    "2024-KHRS": {
+      "max_pack": 8000
+    },
+    "2024-RKHPNS": {
+      "max_pack": 8000
+    },
+    "2013-BBRWa": {
+      "max_pack": 8000
+    },
+    "2011-RDN": {
+      "max_pack": 8000
+    },
+    "2015-KRLG": {
+      "max_pack": 8000
+    },
+    "2019-BRLG": {
+      "max_pack": 8000
+    },
+    "2013-RKPLG": {
+      "max_pack": 8000
+    },
+    "2010-BPM": {
+      "max_pack": 7500
+    },
+    "2017-RLGS": {
+      "max_pack": 7500
+    },
+    "2019-RRW": {
+      "max_pack": 8000
+    },
+    "2024-HRH": {
+      "max_pack": 8000
+    },
+    "2012-R": {
+      "max_pack": 8000
+    },
+    "2017-RZ": {
+      "max_pack": 7500
+    },
+    "2018-RR": {
+      "max_pack": 7500
+    },
+    "2023-RZS": {
+      "max_pack": 8000
+    },
+    "2011-RN": {
+      "max_pack": 8000
+    },
+    "2025-AR": {
+      "max_pack": 8000
+    },
+    "2024-RR": {
+      "max_pack": 8000
+    },
+    "2023-KRHS": {
+      "max_pack": 8000
+    },
+    "2024-BRLG": {
+      "max_pack": 8000
+    },
+    "2023-RG": {
+      "max_pack": 8000
+    },
+    "2014-ZRSa": {
+      "max_pack": 7500
+    },
+    "2010-GRN": {
+      "max_pack": 8000
+    },
+    "2013-SRZN": {
+      "max_pack": 8000
+    },
+    "2013-TMRW": {
+      "max_pack": 8000
+    },
+    "2013-KPR": {
+      "max_pack": 8000
+    },
+    "2013-R": {
+      "max_pack": 8000
+    },
+    "2016-Dall": {
+      "max_pack": 8000
+    },
+    "2017-ZR": {
+      "max_pack": 8000
+    },
+    "2013-BBRWb": {
+      "max_pack": 7000
+    },
+    "2014-ZRS": {
+      "max_pack": 8000
+    },
+    "2015-KRDLG": {
+      "max_pack": 8000
+    }
+  }
+}
