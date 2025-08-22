@@ -2,3 +2,4 @@
 *.sh text eol=lf
 *.py text eol=lf
 *.csv text eol=lf
+*.ipynb linguist-detectable=false
