@@ -5,8 +5,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from scipy.spatial.distance import squareform
-from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
+from scipy.cluster.hierarchy import dendrogram
 from wordcloud import WordCloud
 
 def plot_heatmap(matrix: pd.DataFrame,
@@ -55,61 +54,6 @@ def plot_heatmap(matrix: pd.DataFrame,
         plt.savefig(save_path, dpi=300, bbox_inches="tight")
 
     plt.show()
-
-
-def compute_clusters_from_similarity(
-    sim_matrix: pd.DataFrame,
-    threshold: float | None = None,
-    n_clusters: int | None = None,
-    linkage_method: str = "complete",
-):
-    """
-    Compute hierarchical clustering from a similarity matrix and derive flat clusters.
-    Args:
-      sim_matrix: Square DataFrame of similarities in [0,1]
-      threshold: Cut distance used to derive flat clusters (criterion="distance")
-      n_clusters: Desired number of clusters (criterion="maxclust")
-      linkage_method: SciPy linkage method (e.g., 'average', 'complete', 'ward')
-    Returns:
-      Z: SciPy linkage matrix
-      clusters: pd.Series of cluster labels indexed by object
-      labels: list of object labels (row/col index of sim_matrix)
-    """
-
-    if (threshold is not None) and (n_clusters is not None):
-        raise ValueError("Provide either 'threshold' or 'n_clusters', not both.")
-    if not isinstance(sim_matrix, pd.DataFrame) or sim_matrix.shape[0] != sim_matrix.shape[1]:
-        raise ValueError("sim_matrix must be a square pandas.DataFrame.")
-    if sim_matrix.isna().any().any():
-        raise ValueError("sim_matrix contains NaNs; please clean or impute before clustering.")
-    if (sim_matrix.values < 0).any() or (sim_matrix.values > 1).any():
-        raise ValueError("Similarities must be in [0, 1].")
-
-    # Build distance matrix
-    similarity = sim_matrix.astype(float).copy()
-    dist = 1.0 - similarity
-    labels = dist.index.tolist()
-    dist = (dist + dist.T) / 2.0
-    np.fill_diagonal(dist.values, 0.0)
-
-    # Condensed vector for SciPy
-    dist_condensed = squareform(dist.values, checks=False)
-    Z = linkage(dist_condensed, method=linkage_method)
-
-    clusters = None
-    if threshold is not None:
-        clusters = pd.Series(
-            fcluster(Z, t=threshold, criterion="distance"),
-            index=labels,
-            name="cluster",
-        )
-    elif n_clusters is not None:
-        clusters = pd.Series(
-            fcluster(Z, t=n_clusters, criterion="maxclust"),
-            index=labels,
-            name="cluster",
-        )
-    return Z, clusters, labels
 
 
 def plot_dendrogram(
@@ -254,36 +198,3 @@ def plot_wordclouds_from_clusters(
         Path(save_path).parent.mkdir(parents=True, exist_ok=True)
         plt.savefig(save_path, dpi=300, bbox_inches="tight")
     plt.show()
-
-
-def clusters_to_df(clusters: pd.Series, save_path: str | None = None) -> pd.DataFrame:
-    """
-    Build a cluster table from cluster labels.
-    Args:
-      clusters: pd.Series mapping each term (index) to a cluster id (values)
-      save_path: Optional path to save the CSV
-    Returns:
-      df: Columns = ['cluster_id', 'n_terms', 'terms'], sorted by n_terms desc
-    """
-
-    df = pd.DataFrame({
-        "term": clusters.index.astype(str),
-        "cluster_id": clusters.astype(int).values,
-    })
-
-    table = (
-        df.groupby("cluster_id", as_index=False)
-          .agg(
-              n_terms=("term", "size"),
-              terms=("term", lambda s: ", ".join(map(str, s)))
-          )
-          .sort_values("n_terms", ascending=False, kind="stable")
-          .reset_index(drop=True)
-    )
-
-    if save_path:
-        out = Path(save_path)
-        out.parent.mkdir(parents=True, exist_ok=True)
-        table.to_csv(out, sep=";", index=False)
-
-    return table
